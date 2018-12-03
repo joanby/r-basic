@@ -1,11 +1,11 @@
 ---
-title: Presentación R. Tema 1
-author: Juan Gabriel Gomila Salas
-date: Software y problemas I - Curso 18-19
+title: Tema 1 - Introducción a R
+author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
+    widescreen: true
     css: JB_style.css
-    logo: Imgs/logoPichu.png
+    logo: Imgs/LogoCurso.png
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 - Software libre
 - Sintaxis sencilla e intuitiva
 - Enorme comunidad de usuarios (Comprehensive R Archive Network, CRAN)
-- ¿Aún tenéis dudas de por qué usarlo? [Haz click aquí](http://www.inside-r.org/why-use-r)
+- ¿Aún tenéis dudas de por qué usarlo? [Haz click aquí](https://www.r-bloggers.com/why-use-r-five-reasons/)
 
 
 ## ¿Qué es RStudio?
@@ -65,6 +65,7 @@ Es un entorno integrado para utilizar y programar con R
 
 ## Trabajando con RStudio
 
+<div class="aligncenter">
 ![](Imgs/Disquete.png)
 ![](Imgs/Carpeta.png)
 ![](Imgs/RScript.png)
@@ -77,7 +78,7 @@ Es un entorno integrado para utilizar y programar con R
 ![](Imgs/RHTML.png)
 ![](Imgs/RPresentation.png)
 ![](Imgs/RDocumentation.png)
-
+</div>
 <div class = "aligncenter">
 ![](Imgs/Easy.jpg)
 </div>
@@ -88,7 +89,7 @@ Es un entorno integrado para utilizar y programar con R
 - ```??...```: obtener ayuda por consola
 - Pestaña ```Help``` de Rstudio
 - Buscar en San Google (stackoverflow, R project...)
-- Foro de la asignatura
+- Foro del curso
 
 <div class="aligncenter">
 ![](Imgs/help.png)
@@ -97,7 +98,7 @@ Es un entorno integrado para utilizar y programar con R
 
 ## Paquetes: cómo instalarlos y cargarlos
 
-**Paquete**: librería con funciones y datos que no necesariamente vienen instaladas de serie 
+<l class="definition">Paquete.</l> Librería con funciones y datos que no necesariamente vienen instaladas de serie 
 
 - `install.packages("nombre_paquete", dep = TRUE)`: instala o actualiza un paquete de R
 - ```library(nombre_del_paquete)```: carga un paquete ya instalado
@@ -118,12 +119,12 @@ Es un entorno integrado para utilizar y programar con R
 - ```^```: potencia
 - ```%/%```: cociente entero
 - ``%%``: resto de división entera
-- ```pi```: número $\pi$
-- `Inf`: $\infty$
+- ```pi```: número [$\pi$](https://es.wikipedia.org/wiki/Número_π)
+- `Inf`: [$\infty$](https://es.wikipedia.org/wiki/Infinito)
 - `NaN`: indeterminación (Not a Number)
 - `NA`: valor desconocido (Not Available)
 
-## Ejemplo - Calculadora básica
+## Calculadora básica - Operaciones
 
 ```{r}
 2+2
@@ -147,12 +148,41 @@ sqrt(9)
 
 ## Calculadora básica - Combinatoria
 
-- ```factorial(x)```: $x!$
+- ```factorial(x)```: [$x!$](https://es.wikipedia.org/wiki/Factorial)
 - ```choose(n,m)```: $\begin{pmatrix}n\\ m\end{pmatrix}$
+
+- <l class="definition">Número factorial.</l> Se define como número factorial de un número entero positivo $n$ como $n!=n\cdot(n-1)\cdots 2\cdot 1$
+- <l class="definition">[Coeficiente binomial](https://es.wikipedia.org/wiki/Coeficiente_binomial).</l> Se define el coeficiente binomial de $n$ sobre $m$ como $$\begin{pmatrix}n\\ m\end{pmatrix}=\frac{n!}{m!(n-m)!}$$
+
+## Calculadora básica - Combinatoria
+
+<l class="definition">Triángulo de Pascal.</l>
+
+$$\begin{matrix}
+&&&&1&&&&\\
+&&&1&&1&&&\\
+&&1&&2&&1&&\\
+&1&&3&&3&&1&\\
+1&&4&&6&&4&&1\end{matrix}$$
+
+que se corresponde con ...
+
+## Calculadora básica - Combinatoria
+
+$$\begin{matrix}
+&&&&\begin{pmatrix}0\\0\end{pmatrix}&&&&\\
+&&&\begin{pmatrix}1\\0\end{pmatrix}&&\begin{pmatrix}1\\1\end{pmatrix}&&&\\
+&&\begin{pmatrix}2\\0\end{pmatrix}&&\begin{pmatrix}2\\1\end{pmatrix}&&\begin{pmatrix}2\\2\end{pmatrix}&&\\
+&\begin{pmatrix}3\\0\end{pmatrix}&&\begin{pmatrix}3\\1\end{pmatrix}&&\begin{pmatrix}3\\2\end{pmatrix}&&\begin{pmatrix}3\\3\end{pmatrix}&\\
+\begin{pmatrix}4\\0\end{pmatrix}&&\begin{pmatrix}4\\1\end{pmatrix}&&\begin{pmatrix}4\\2\end{pmatrix}&&\begin{pmatrix}4\\3\end{pmatrix}&&\begin{pmatrix}4\\4\end{pmatrix}\end{matrix}$$
+
+## Calculadora básica - Combinatoria
 
 ```{r}
 factorial(5)
 choose(4,2)
+factorial(6)
+factorial(5)*6
 ```
 
 
@@ -186,18 +216,15 @@ cos(pi)
 
 ## Un pequeño adelanto
 
-```{r}
+```{r, fig.height = 4, fig.width = 5, fig.align = "center"}
 x = seq(0,2*pi,0.1)
-plot(x,sin(x),type="l",col="blue",lwd=3,
-     xlab="", ylab="")
+plot(x,sin(x),type="l",col="blue",lwd=3, xlab="", ylab="")
 lines(x,cos(x),col="green",lwd=3)
 lines(x, tan(x), col="purple",lwd=3)
 legend("bottomleft",col=c("blue","green","purple"),
      legend=c("Seno","Coseno", "Tangente"), lwd=3, bty="n")
 ```
-<div class="aligncenter">
-![](Imgs/RplotSCT.png)
-</div>
+
 
 
 ## Variables y funciones
@@ -227,7 +254,7 @@ cuadrado(miVariable)
 - ``Conj(x)``: conjugado de $x$
 
 
-## Ejemplo - Números complejos
+## Números complejos
 
 ```{r}
 z = 2+3i
@@ -238,7 +265,7 @@ Conj(z2)
 ```
 
 
-## Ejercicio - R como calculadora {.exercise}
+## Ejercicio - R como calculadora {.important}
 
 1. ¿Cómo es la sentencia del número $e$?
 <!--exp(1)-->
@@ -281,7 +308,9 @@ rep("Mates",7)
 ```
 
 
-## Ejemplo - Función scan() {.example}
+## Vectores - Función scan() {.example}
+
+**Ejemplo**
 
 Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función scan:
 <div class = "aligncenter">
@@ -289,7 +318,7 @@ Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función
 </div>
 
 
-## Ejercicio - Vectores {.exercise}
+## Ejercicio - Vectores {.important}
 
 1. Repite tu año de nacimiento 10 veces
 <!--rep(miAño,10)-->
@@ -315,7 +344,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 - ```a:b```: define la secuencia de números **enteros** ($\mathbb{Z}$) consecutivos entre dos números $a$ y $b$
 
 
-## Ejercicio - Vectores {.exercise}
+## Ejercicio - Vectores {.important}
 
 1. Imprimid los números del 1 al 20
 <!--1:20 -->
@@ -345,7 +374,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 	- Cada entrada de ``cumsum(x)`` es la suma de las entradas de $x$ hasta su posición
 	
 
-## Ejemplo - Vectores
+## Vectores - Funciones
 
 ```{r}
 v = c(1,2,3,4,5,6)
@@ -393,7 +422,7 @@ rev(v)
 	- ```|```: O lógico
 	
 	
-## Ejemplo - Subvectores
+## Subvectores
 
 ```{r}
 v = c(14,5,6,19,32,0,8)
@@ -412,7 +441,7 @@ v[v != 19 & v>15]
 - ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
 
 
-## Ejercicio - Subvectores {.exercise} 
+## Ejercicio - Subvectores {.important} 
 
 1. Tomando el vector vec = c(0,9,98,2,6,7,5,19,88,20,16,0), dad 3 opciones diferentes para calcular el subvector c(9,19,20,16)
 <!--vec[c(2,8,10,11)]-->
@@ -434,7 +463,7 @@ v[v != 19 & v>15]
 
 ## Factor
 
-**Factor**: es como un vector, pero con una estructura interna más rica que permite usarlo para clasificar observaciones
+<l class="definition">Factor</l>: es como un vector, pero con una estructura interna más rica que permite usarlo para clasificar observaciones
 
 - `levels`: atributo del factor. Cada elemento del factor es igual a un nivel. Los niveles clasifican las entradas del factor. Se ordenan por orden alfabético
 - Para definir un factor, primero hemos de definir un vector y trasformarlo por medio de una de las funciones `factor()` o `as.factor()`.
@@ -449,14 +478,14 @@ v[v != 19 & v>15]
 -  `levels(factor)`: para obtener los niveles del factor
 
 
-## Factor Ordenado
+## Factor ordenado
 
-**Factor ordenado**: Es un factor donde los niveles siguen un orden
+<l class="definition">Factor ordenado.</l> Es un factor donde los niveles siguen un orden
 
 - `ordered(vector,levels=...)`: función que define un factor ordenado y tiene los mismos parámetros que factor
 
 
-## Ejemplo - Factores
+## Factores y facotres ordenados
 
 ```{r}
 fac = factor(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
@@ -472,7 +501,7 @@ facOrd
 
 ## List
 
-**List**: Lista formada por diferentes objetos, no necesariamente del mismo tipo, cada cual con un nombre interno
+<l class="definition">List.</l> Lista formada por diferentes objetos, no necesariamente del mismo tipo, cada cual con un nombre interno
 
 - `list(...)`: función que crea una list
     - Para obtener una componente concreta usamos la instrucción `list$componente`
@@ -485,17 +514,16 @@ facOrd
 - `names(list)`: para saber los nombres de la list
 
 
-## Ejemplo - List
+## Obtener información de una list
 
 ```{r}
 x = c(1,-2,3,4,-5,6,7,-8,-9,0)
-miLista = list(nombre = "X", vector = x, 
-               media = mean(x), sumas = cumsum(x))
+miLista = list(nombre = "X", vector = x, media = mean(x), sumas = cumsum(x))
 miLista
 ```
 
 
-## Ejemplo - List
+## Obtener información de una list
 
 ```{r}
 str(miLista)
@@ -517,7 +545,7 @@ names(miLista)
 	- Todas las entradas de una matriz han de ser del mismo tipo de datos
 	
 
-## Ejercicio - Matrices {.exercise}
+## Ejercicio - Matrices {.important}
 
 - ¿Cómo definirías una matriz constante? Es decir, ¿cómo definirías una matriz $A$ tal que $\forall\  i=1,...,n; j = 1,...,m$, $a_{i,j}=k$ siendo $k\in\mathbb{R}$? Como R no admite incógnitas, prueba para el caso específico $n = 3, m = 5, k = 0$
 <!-- matrix(0, nrow = 3, ncol = 5)-->
@@ -569,7 +597,7 @@ $$\begin{pmatrix}
 - `rowMeans(matriz)`: obtenemos las medias aritméticas por filas de la matriz
 
 
-## Ejemplo - Matrices
+## Matrices - Funciones
 
 <div class="example">
 Dada la matriz $$A = \begin{pmatrix}
@@ -615,7 +643,9 @@ apply(A, MARGIN = 2, FUN = sum)
 		- No calcula las potencias exactas, las aproxima
 
 
-## Ejercicio - Matrices {.exercise}
+## Matrices - Operaciones {.exercise}
+
+**Ejercicio**
 
 Observad qué ocurre si, siendo $A = \begin{pmatrix}
 2 & 0 & 2\\
@@ -644,7 +674,7 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
     - `eigen(matriz)$values`: nos da el vector con los vaps de la matriz en orden decreciente de su valor absoluto y repetidos tantas veces como su multiplicidad algebraica.
     - `eigen(matriz)$vectors`: nos da una matriz cuyas columnas son los veps de la matriz.
     
-## Ejemplo - Valores y vectores propios
+## Matrices - Valores y vectores propios
 
 ```{r}
 M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
@@ -652,7 +682,9 @@ eigen(M)
 ```
 
 
-## Ejercicio - Valores y vectores propios {.exercise}
+## Matrices - Valores y vectores propios {.exercise}
+
+**Ejercicio**
 
 Comprobad, con los datos del ejemplo anterior, que si $P$ es la matriz de vectores propios de $M$ en columna y $D$ la matriz diagonal cuyas entradas son los valores propios de $M$, entoces se cumple la siguiente igualdad llamada **descomposición canónica**: $$M = P\cdot D\cdot P^{-1}$$
 
@@ -662,7 +694,7 @@ Comprobad, con los datos del ejemplo anterior, que si $P$ es la matriz de vector
 Si hay algún vap con multiplicidad algebraica mayor que 1 (es decir, que aparece más de una vez), la función `eigen()` da tantos valores de este vap como su multiplicidad algebraica indica. Además, en este caso, R intenta que los veps asociados a cada uno de estos vaps sean [linealmente independientes](https://es.wikipedia.org/wiki/Dependencia_e_independencia_lineal). Por tanto, cuando como resultado obtenemos veps repetidos asociados a un vap de multiplicidad algebraica mayor que 1, es porque para este vap no existen tantos veps linealmente independientes como su multiplicidad algebraica y, por consiguiente, la matriz no es [diagonalizable](https://es.wikipedia.org/wiki/Matriz_diagonalizable).
 
 
-## Ejemplo - Valores y vectores propios
+## Matrices - Valores y vectores propios
 
 ```{r}
 M = matrix(c(0,1,0,-7,3,-1,16,-3,4), nrow=3, byrow=TRUE)
@@ -672,7 +704,7 @@ eigen(M)
 
 # Ejercicios de Repaso Tema 1
 
-## {.exercise}
+## {.important}
 
 - Si hubiéramos empezado a contar segundos a partir de las 12 campanadas que marcan el inicio de 2018, ¿a qué hora de qué día de qué año llegaríamos a los 250 millones de segundos? ¡Cuidado con los años bisiestos!
 <!-- 250000000/60 = 4166667 minutos. 
@@ -694,7 +726,7 @@ eigen(M)
 <!--n=0:40; x=3*5^n-1; which(x>3.5) -->
 
 
-## {.exercise}
+## {.important}
 
 - Dad la entrada (2,2) de $A\cdot (A+A )\cdot A$, on $A = \begin{pmatrix} 1 & 3\\ 2 & 4\end{pmatrix}$
 <!-- 240 -->
