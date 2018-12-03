@@ -1,0 +1,110 @@
+---
+title: Presentación R. Tema 2
+author: Juan Gabriel Gomila Salas
+date: Software y problemas I - Curso 18-19
+output: 
+  ioslides_presentation:
+    css: JB_style.css
+    logo: Imgs/raichu.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+#Data frames
+
+##Data frames
+
+Un data frame es una tabla de doble entrada, formada por variables en las columnas y observaciones de estas variables en las filas, de manera que cada fila contiene los valoresde las variables para un mismo caso o un mismo individuo.
+
+- `data()`: para abrir una ventana con la lista de los objetos de datos a los que tenemos acceso en la sesión actual de R (los que lleva la instalación básica de R y los que aportan los paquetes que tengamos cargados.
+
+    - Si entramos `data(package=.packages(all.available = TRUE))` obtendremos la lista de todos los objetos de datos a los que tenemos acceso, incluyendo los de los paquetes que tengamos instalados, pero que no estén cargados en la sesión actual.
+    
+
+## Obteniendo información del data frame
+
+- `head(d.f,n)`: para mostrar las $n$ primeras filas del data frame. Por defecto se muestran las 6 primeras filas
+- `tail(d.f,n)`: para mostrar las $n$ últimas filas del data frame. Por defecto semuestran las 6 últimas
+- `str(d.f)`: para conocer la estructura global de un data frame
+- `names(d.f)`:  para producir un vector con los nombres de las columnas
+  
+    
+## Ejemplo - Obteniendo información (Parte 1)
+
+```{r}
+str(Orange)
+```
+
+
+## Ejemplo - Obteniendo información (Parte 2)
+
+```{r}
+head(Orange,3)
+tail(Orange,3)
+```
+
+
+## Obteniendo información del data frame
+
+- `rownames(d.f)`: para producir un vector con los identificadores de las filas
+    - R entiende siempre que estos identificadores son palabras, aunque sean números, de ahí que los imprima entre comillas
+- `dimnames(d.f)`: para producir una list formada por dos vectores (el de los identificadores de las filas y el de los nombres de las columnas)
+
+- `dim(d.f)`: para producir un vector con el número de filas y el de columnas
+
+
+## Obteniendo información del data frame
+
+- `d.f$nombre_variable`: para obtener una columna concreta de un dataframe
+    - El resultado será un vector o un factor, según cómo esté definida la columna dentro del data frame
+    - Las variables de un data frame son internas, no están definidas en el entorno global de trabajo de R
+    
+
+## Sub-data frames
+
+- `d.f[n,m]`: para extraer “trozos” del data frame por filas y columnas (funciona exactamente igual que en matrices) donde $n$ y $m$ pueden definirse como:
+    - intervalos
+    - condiciones
+    - números naturales
+    - no poner nada
+    - Si sólo queremos definir la subtabla quedándonos con algunas variables, basta aplicar el nombre del data frame al vector de variables 
+    - Estas construcciones se pueden usar también para reordenar las filas o columnas
+    
+    
+## Ejemplo - Sub-data frames
+
+```{r}
+dataOrange = Orange
+dataOrange[c(10:12),]
+dataOrange[c(2,17),c(1,3)]
+```
+    
+    
+## Ejemplo - Sub-data frames
+
+```{r}
+dataOrange[2,3]
+dataOrange[dataOrange$circumference<=50,]
+```
+
+## Leyendo tablas de datos
+
+- `read.table()`: para definir un data frame a partir de una tabla de datos contenida en un fichero
+    - Este fichero puede estar guardado en nuestro ordenador o bien podemos conocer su url. Sea cual sea el caso, se aplica la función al nombre del fichero o a la dirección entre comillas
+    - `header = TRUE`: para indicar si la tabla que importamos tiene una primera fila con los nombres de las columnas. El valor por defecto es FALSE
+    - `sep`: para especificar las separaciones entre columnas en el fichero (si no es un espacio en blanco). Si es así, hay que introducir el parámetro pertinente entre comillas
+    - `dec`: para especificar el signo que separa la parte entera de la decimal (si no es un punto. Si es así, hay que introducir el parámetro pertinente entre comillas
+
+
+## Más parámetros de read.table()
+
+- `stringsAsFactors`: para prohibir la transformación de las columnas de palabras en factores debemos usar `stringsAsFactors=FALSE` (ya que por defecto, R realiza dicha transformación) 
+
+- Para importar un fichero de una página web segura (cuyo url empiece con https),
+no podemos entrar directamente la dirección en `read.table()`; una solución es instalar y cargar el paquete RCurl y entonces usar la instrucción `read.table (textConnection(getURL(“url ”)),...)`.
+
+
+## Ejemplo - Leyendo datos desde url
+
