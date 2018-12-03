@@ -1,0 +1,1359 @@
+\documentclass[12p,spanish]{article}
+\usepackage[spanish]{babel} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[spanish]{babel}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{geometry}                		
+\geometry{letterpaper}                   		
+\usepackage{color}
+\usepackage{pifont}
+
+
+
+\title{Guí­a Rápida R}
+\author{Marí­a Santos}
+\date {}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+
+{\bf\item R.I}
+
+\begin{itemize}
+	
+	\item {\bf Tema 0. Logí­stica}
+	
+	\begin{itemize}
+		\item library({\it paquete}): para cargar un paquete ya instalado
+		\item install.packages({\it paquete}, dep=TRUE): para instalar un paquete 
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}
+	\item {\bf Tema 1. La calculadora} 
+	
+	\begin{itemize}
+		\item + : suma
+		\item - : resta
+		\item \textasteriskcentered\  : multiplicación
+		\item / : división
+		\item \textasciicircum \  : potencia
+		\item \%/\%: cociente entero
+		\item \%\%: resto división entera
+		\item pi: número $\pi$
+		\item sqrt($x$): raí­z cuadrada de $x$
+		\item exp(1): número $e$
+			\begin{itemize}
+			\item[$\circ$]Si en vez de 1 ponemos otro número $x$, R calcula $e^x$
+			\end{itemize}
+		\item log($x$): logaritmo neperiano de $x$
+		\item log10($x$): logaritmo en base 10 de $x$
+		\item log($n$,$a$): logaritmo en base $a$ de $n$
+		\item factorial($x$): $x$ factorial, $x!$
+		\item choose($n,m$): número combinatorio de $n$ sobre $m$, $\begin{pmatrix}n\\ m\end{pmatrix}$
+		\item sin($x$): seno de $x$
+			\begin{itemize}
+			\item[$\circ$]El resultado de todas las funciones trigonométricas las da en radianes. Si lo queremos en grados, multiplicamos dicho resultado por $\frac{\pi}{180}$
+			\end{itemize} 
+		\item cos($x$): coseno de $x$
+		\item tan($x$): tangente de $x$
+		\item asin($x$): arcoseno de $x$
+		\item acos($x$): arcocoseno de $x$
+		\item atan($x$): arcotangente de $x$
+		\item abs($x$): valor absoluto de $x$
+		\item print($x$,$n$): muestra las $n$ cifras significativa del número $x$
+		\item round($x$,$n$): redondea a $n$ cifras significativas un resultado o vector numérico $x$
+			\begin{itemize}
+			\item[$\circ$]En caso de empate, R redondea al valor que termina en cifra par
+			\end{itemize}
+		\item floor($x$): parte entera por defecto de $x$
+		\item ceiling($x$): parte entera por exceso de $x$
+		\item trunc($x$): parte entera de $x$, eliminando la parte decimal
+		\item {\it nombre de la variable}={\it valor}: para definir una variable
+		\item {\it nombre de la función}=function({\it variable})$\{${\it función}$\}$: para definir una función
+			\begin{itemize}
+			\item[$\circ$]Entre paréntesis las variables
+			\item[$\circ$]Entre llaves las instrucciones
+			\end{itemize}
+		\item ls(): nos da la lista de los objetos definidos hasta el momento
+		\item rm($x$): borra la definición del objeto $x$ u objetos a los que se aplica
+		\item rm(list=ls()): borrar todas las definiciones anteriores
+		\item $a$+$b$i: número complejo
+			\begin{itemize}
+			\item[$\circ$]No hay que poner el operador $\ast$ entre el coeficiente imaginario $b$ e $i$
+			\item[$\circ$]Si el coeficiente de i es $1$ o $-1$, hay que escribirlo
+			\item[$\circ$]complex(real=...,imaginary=...): otra forma de definir un número complejo
+			\item[$\circ$]complex(modulus=...,argument=...): otra forma de definir un número complejo
+			\end{itemize}
+		\item sqrt(as.complex(-$x$)): para calcular la raí­z cuadrada de un número negativo $x$
+		\item Re($x$): muestra parte real de un número complejo $x$
+		\item Im($x$): muestra la parte imaginaria de un número complejo $x$
+		\item Mod($x$): calcula el módulo de un número complejo $x$
+		\item Arg($x$): calcula el argumento de un número complejo $x$
+		\item Conj($x$): calcula el conjugado de un número complejo $x$
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}
+	\item {\bf Tema 2. Introducción a la regresión lineal}
+	
+	\begin{itemize}
+		\item lm($y$\textasciitilde{}$x$, data={\it data frame}): para calcular la recta de regresión de $y$ en función de $x$
+			\begin{itemize}
+			\item[$\circ$]lm(log10($y$)\textasciitilde{}$x$): recta de regresión semilogarí­tmica
+			\item[$\circ$]lm(log10($y$)\textasciitilde{}log10($x$)): recta de regresión doble logarí­tmica
+			\end{itemize}
+		\item summary(lm(...)): para saber todo lo que ha calculado R con la función lm
+			\begin{itemize}
+			\item[$\circ$]summary(lm(...))\$r.squared: nos da el valor del coeficiente de determinación de $R^2$
+			\end{itemize}
+		\item abline(lm(...)): añade la recta de regresión al gráfico (ya creado) inmediatamente anterior
+		\item curve($f(x)$, add=TRUE): para añadir la curva $f(x)$ al gráfico (ya creado) inmediatamente anterior
+	\end{itemize}
+	
+	
+	
+	
+	
+	\newpage
+	\vspace{0.5cm}
+	\item {\bf Tema 3. Vectores}
+	
+	\begin{itemize}
+		\item[\ding{46}] Tipos de datos: 
+			\begin{itemize}
+			\item[$\diamond$] logical: lógicos (TRUE o FALSE)
+			\item[$\diamond$] integer: números enteros
+			\item[$\diamond$] numeric: números reales
+			\item[$\diamond$] complex: números complejos
+			\item[$\diamond$] character: palabras
+			
+			\vspace{0.25cm}
+			\item[$\circ$]Todos los objectos de un mismo vector han de ser del mismo tipo
+			\item[$\circ$]Cuando queramos usar vectores formados por objetos de diferentes tipos, tendremos que usar lists
+			\item[$\circ$]Character gana a complex, que gana a numeric, que gana a integer, que gana a logical
+			\end{itemize}
+			
+			\vspace{0.25cm}
+		\item c(...): para definir un vector
+			\begin{itemize}
+			\item[$\circ$]Si queremos crear un vector de palabras, tenemos que entrarlas obligatoriamente entre comillas
+			\end{itemize}
+		\item scan(): para definir un vector
+			\begin{itemize}
+			\item[$\ast$] sep: sirve para indicar el sí­mbolo usado para separar entradas consecutivas si no son espacios en blanco. Para ello se ha de igualar sep a este sí­mbolo entrecomillado
+			\item[$\ast$] dec: sirve para indicar el sí­mbolo que separa la parte entera de la decimal en los números reales si no es un punto. Esto se indica igualando dec al sí­mbolo correspondiente entre comillas
+			\item[$\ast$] what: sirve para indicar a R de qué tipo tiene que considerar los datos que se le entren
+			\item[$\circ$]R abre un entorno de diálogo donde podemos ir entrando datos separados por espacios en blanco; cada vez que pulsemos Intro, R importará los datos que hayamos escrito desde la vez anterior en que la pulsamos y abrirá una nueva lí­nea donde esperará más datos; cuando hayamos acabado, dejamos la última lí­nea en blanco (pulsando por última vez Intro) y R cerrará el vector
+			\item[$\circ$]La función scan también se puede usar para copiar en un vector el contenido de un fichero de texto situado en el directorio de trabajo, o del que conozcamos su dirección en Internet
+			\end{itemize}
+		\item rep($a,b$): para definir un vector constante que contiene el valor $a$ repetido $b$ veces
+			\begin{itemize}
+			\item[$\ast$] $a$: número o vector
+			\item[$\ast$] $b$: número o vector					
+			\item[$\ast$] times: repetimos el vector en bloque las veces que introduzcamos
+			\item[$\ast$] each: repetimos cada valor las veces que introduzcamos
+			\end{itemize}
+		\item seq($a,b,$ by$=p$): para generar una progresión aritmética de paso $p$ que empieza en $a$ hasta llegar a $b$
+			\begin{itemize}
+			\item[$\ast$] seq($a,b,$ length.out=$n$): define progresión aritmética de longitud $n$ que va de $a$ a $b$ con paso $p$. Por tanto $p=(b-a)/(n-1)$
+			\item[$\ast$] seq($a$,by=$p$, length.out=$n$): define la progresión aritmética de longitud $n$ y paso $p$ que empieza en $a$
+			\item[$\circ$]La instrucción $a:b$ define la secuencia de números enteros consecutivos entre dos números $a$ y $b$
+			\end{itemize}
+		\item fix($x$): para modificar fácilmente el vector $x$
+			\begin{itemize}
+			\item[$\circ$]R abre una ventana de edición. Hasta que no la cerremos no volveremos a nuestra sesión de R
+			\end{itemize}
+		\item sapply({\it vector},FUN={\it función}): para aplicar funciones a todos los elementos de un vector
+		\item sqrt($x$): calcula un nuevo vector con las raí­ces cuadradas de cada uno de los elementos del vector $x$
+		\item length($x$): calcula la longitud del vector $x$
+		\item max($x$): calcula el máximo del vector $x$
+		\item min($x$): calcula el mí­nimo del vector $x$
+		\item sum($x$): calcula la suma de las entradas del vector $x$
+			\begin{itemize}
+			\item[$\circ$]útil para evaluar sumatorios
+			\end{itemize}
+		\item prod($x$): calcula el producto de las entradas del vector $x$
+		\item mean($x$): calcula la media aritmética de las entradas del vector $x$
+		\item diff($x$): calcula el vector formado por las diferencias sucesivas entre entradas del vector original $x$
+		\item cumsum($x$): calcula el vector formado por las sumas acumuladas de las entradas del vector original $x$. 			\begin{itemize}
+			\item[$\circ$]Cada entrada de cumsum($x$) es la suma de las entradas de $x$ hasta su posición
+			\item[$\circ$]Permite definir sucesiones descritas mediante sumatorios
+			\item[$\circ$]No admite el parámetro na.rm=TRUE
+			\end{itemize}
+		\item sort($x$): ordena el vector en orden natural de los objetos que lo forman: el orden numérico creciente, orden alfabético....
+			\begin{itemize}
+			\item[$\ast$] dec: parámetro que si lo igualamos a TRUE estamos pidiendo que ordene el vector original $x$ en orden decreciente
+			\end{itemize}
+		\item rev($x$): invierte el orden de los elementos del vector $x$
+		\item {\it vector}[$i$]: da la $i$-ésima entrada del {\it vector}
+			\begin{itemize}
+			\item[$\circ$]Los í­ndices en R empiezan en 1
+			\item[$\circ$]{\it vector}[length({\it vector})]: nos da la última entrada del {\it vector}
+			\item[$\circ$]{\it vector}[length({\it vector})$-i$]: nos da la $(i+1)$-ésima entrada del {\it vector}
+			\item[$\circ$]{\it vector}[$-i$]: si $i$ es un número, este subvector está formado por todas las entradas del vector original, {\it vector}, menos la entrada $i$-ésima del original		
+			\item[$\circ$]Si $i$ en vez de un número resulta ser un vector, entonces es un vector de í­ndices y crea un nuevo vector, {\it vector}[$i$], con las entradas del vector original, {\it vector}, cuyos í­ndices pertenecen a $i$. Es una forma de definir un subvector de {\it vector}
+			\item[$\circ$]{\it vector}[$-i$]: si $i$ es un vector (de í­ndices), entonces este es el complementario de {\it vector}[$i$]. Sus entradas son las del {\it vector} original cuyos í­ndices no pertenecen a $i$
+			\end{itemize}
+		\item {\it vector}[$a:b$]: define un subvector de {\it vector} cuyas entradas van de la $a$-ésima a la $b$-ésima del vector original
+		\item[\ding{46}]Para crear subvectores también podemos utilizar operadores lógicos:
+			\begin{itemize}				
+			\item[$\diamond$] ==: =
+			\item[$\diamond$] !=: $\neq$
+			\item[$\diamond$] $<: <$
+			\item[$\diamond$] $>: >$
+			\item[$\diamond$] $<$=: $\le$
+			\item[$\diamond$] $>$=: $\ge$
+			\item[$\diamond$] !: NO lógico
+			\item[$\diamond$] \&: Y lógico
+			\item[$\diamond$] $|$: O lógico
+			\item[$\circ$]Si un vector no contiene ningún elemento que satisfaga la condición que imponemos, obtenemos como respuesta un vector vací­o. Naturalmente, tiene longitud 0
+			\item[$\circ$]Los operadores lógicos también se pueden usar para pedir si una condición sobre dos números concretos se satisface o no
+			\end{itemize}
+		\item which({$x$ cumple \it condición}): para obtener los í­ndices de las entradas del vector $x$ que satisfacen la {\it condición} dada
+		\item which.min($x$): nos da la primera posición en la que el vector $x$ toma su valor mí­nimo
+			\begin{itemize}
+			\item[$\ast$] which($x$==min($x$)): da todas las posiciones en las que el vector $x$ toma sus valores mí­nimos
+			\end{itemize}
+		\item which.max($x$): nos da la primera posición en la que el vector $x$ toma su valor máximo
+			\begin{itemize}
+			\item[$\ast$] which($x$==max($x$)): da todas las posiciones en las que el vector $x$ toma sus valores máximos
+			\end{itemize}	
+		\item $x$[$i$]=$a$: podemos modificar entradas de un vector simplemente declarando sus nuevos valores. Se puede hacer entrada a entrada o para todo un subvector de golpe
+			\begin{itemize}
+			\item[$\circ$]Puede ocurrir que añadamos un valor $n$ posiciones más allá de la última entrada. Entonces, las entradas sin valor, R las iguala a NA (Not Avilable), indicando que esas entradas no existen
+			\end{itemize}	
+		\item na.rm=TRUE: es un parámetro que tienen muchas de las funciones para vectores. Si la igualamos a TRUE hace que la función solo tenga en cuenta las entradas definidas
+			\begin{itemize}
+			\item[$\circ$]Este parámetro es interesante puesto que una función aplicada a un vector que contenga algún NA da NA		
+			\end{itemize}							
+			\item is.na($x$): sirve para extraer las entradas no definidas de un vector $x$
+			\begin{itemize}
+			\item[$\circ$]Por consiguiente which(is.na($x$)) nos da los í­ndices de las entradas NA del vector $x$
+			\item $x$[!is.na($x$)]: creará el subvector de $x$ sin entradas NA
+			\end{itemize}
+		\item na.omit($x$): borra las entradas no definidas de $x$
+			\begin{itemize}
+			\item[$\circ$]El resultado de na.omit($x$) contiene primero un vector formado por las entradas del vector original que no son NA, luego una serie de atributos: los í­ndices de las entradas que ha eliminado y el tipo de acción que ha llevado a cabo
+			\end{itemize}
+		\item attr({\it objeto, atributo})=NULL: elimina los atributos indicados del objeto indicado
+		\item factor: es como un vector, pero con una estructura interna más rica que permite usarlo para clasificar observaciones
+			\begin{itemize}
+			\item[$\ast$] levels: atributo del factor. Cada elemento del factor es igual a un nivel. Los niveles clasifican las entradas del factor. Se ordenan por orden alfabético
+			\item[$\circ$]Para definir un factor, primero hemos de definir un vector y trasformarlo por medio de una de las funciones factor o as.factor.
+			\end{itemize}
+		\item as.factor($x$): convierte el vector $x$ en un factor y toma como sus niveles los diferentes valores que aparecen en el vector
+		\item factor({\it vector},levels=...): define un factor a partir del vector y dispone de algunos parámetros que permiten modificar el factor que se crea:
+			\begin{itemize}
+			\item[$\ast$] levels: permite especificar los niveles e incluso añadir niveles que no aparecen en el vector
+			\item[$\ast$] labels: permite cambiar los nombres de los niveles
+			\end{itemize}
+		\item levels({\it factor}): para obtener los niveles del {\it factor}
+			\begin{itemize}
+			\item[$\circ$]Esta función también nos permite cambiar los nombres de los niveles de un factor
+			\item[$\circ$]Esta función también nos permite agrupar algunos niveles de un factor en uno solo
+			\end{itemize}
+		\item ordered({\it vector},levels=...): función que define un factor ordenado y tiene los mismos parámetros que factor
+		\item list(...): función que crea una list (lista formada por objetos que pueden ser de clases diferentes)
+			\begin{itemize}
+			\item[$\circ$]La sintaxis de la función list es entrar como argumento los diferentes objetos que van a formar la list, poniendo a cada uno un nombre adecuado. Dicho nombre es interno
+			\item[$\circ$]Para obtener una componente concreta usamos la instrucción {\it lista}\${\it nombre}
+			\item[$\circ$]También podemos indicar el objeto por su posición usando dobles corchetes {\it lista}$[[i]]$. Lo que obtendremos es un list formada por esa única componente, no el objeto que forma la componente
+			\end{itemize}
+		\item str({\it list}): para conocer la estructura interna de una list
+		\item names({\it list}): para saber los nombres de la list
+	\end{itemize}
+	
+	
+	
+	
+	
+	\newpage
+	\vspace{0.5cm}	 
+	\item {\bf Tema 4. Matrices}
+	
+	\begin{itemize}
+		\item matrix({\it vector}, nrow=$n$, byrow={\it valor lógico}): para definir una matriz de $n$ filas formada por las entradas del vector
+			\begin{itemize}
+			\item[$\ast$] nrow: número de filas
+			\item[$\ast$] byrow: si se iguala a TRUE, la matriz se construye por filas; si se iguala a FALSE, se construye por columnas. Valor por defecto, FALSE
+			\item[$\ast$] ncol: en vez de nrow podemos usar este parámetro (que indica el número de columnas)
+			\item[$\circ$]R muestra las matrices indicando como [$i$,] la fila $i$-ésima y [,$j$] la columna $j$-ésima
+			\item[$\circ$]Para construir una matriz de $n$ filas o $n$ columnas, es necesario que la longitud del vector al que se aplica la función matrix sea múltiplo de $n$. Si no es así­, R rellena la última fila o columna con entradas del principio del vector y emite un mensaje de advertencia
+			\item[$\circ$]En particular se puede definir una matriz constante aplicando la función matrix a un número. En este caso se han de usar los parámetros nrow y ncol para especificar el orden de la matriz
+			\item[$\circ$]Todas las entradas de una matriz han de ser del mismo tipo de datos
+			\end{itemize}
+		\item rbind({\it vector1}, {\it vector2}, ...): construye la matriz de filas {\it vector1}, {\it vector2},...
+			\begin{itemize}
+			\item[$\circ$]Los vectores han de tener la misma longitud
+			\item[$\circ$]También sirve para añadir filas a una matriz o concatenar por filas matrices con el mismo número de columnas
+			\end{itemize}
+		\item cbind({\it vector1}, {\it vector2}, ...): construye la matriz de columnas {\it vector1}, {\it vector2},...
+			\begin{itemize}
+			\item[$\circ$]Los vectores han de tener la misma longitud
+			\item[$\circ$]También sirve para añadir columnas a una matriz o concatenar por columnas matrices con el mismo número de filas
+			\end{itemize}
+		\item {\it matriz}[$i,j$]: indica la entrada ($i,j$) de la {\it matriz}
+			\begin{itemize}
+			\item[$\circ$]Esta construcción sirve también para definir submatrices, si $i$ y $j$ son vectores de í­ndices, estaremos definiendo la submatriz con las filas pertenecientes al vector $i$ y las columnas pertenecientes al vector $j$
+			\end{itemize}
+		\item {\it matriz}[$i$,]: indica la fila $i$-ésima de la {\it matriz}
+			\begin{itemize}
+			\item[$\circ$]El resultado es un vector
+			\item[$\circ$]Si lo que queremos es una matriz fila, dentro de los corchetes añadimos drop=FALSE
+			\item[$\circ$]Esta construcción sirve para definir submatrices, si $i$ es un vector de í­ndices, estaremos definiendo la submatriz con las filas pertenecientes al vector $i$
+			\end{itemize}
+		\item {\it matriz}[,$j$]: indica la columna $j$-ésima de la {\it matriz}
+			\begin{itemize}
+			\item[$\circ$]El resultado es un vector
+			\item[$\circ$]Si lo que queremos es una matriz columna, dentro de los corchetes añadimos drop=FALSE
+			\item[$\circ$]Esta construcción sirve para definir submatrices, si $j$ es un vector de í­ndices, estaremos definiendo la submatriz con las columnas pertenecientes al vector $j$
+			\end{itemize}	
+		\item diag({\it matriz}): para obtener la diagonal de la matriz
+		\item nrow({\it matriz}): nos devuelve el número de filas de la {\it matriz}
+		\item ncol({\it matriz}): nos devuelve el número de columnas de la {\it matriz}
+		\item dim({\it matriz}): nos devuelve las dimensiones de la {\it matriz}
+		\item sum({\it matriz}): obtenemos la suma de todas las entradas de la {\it matriz}
+		\item prod({\it matriz}): obtenemos el producto de todas las entradas de la {\it matriz}
+		\item mean({\it matriz}): obtenemos la media aritmética de todas las entradas de la {\it matriz}
+		\item colSums({\it matriz}): obtenemos las sumas por columnas de la {\it matriz}
+		\item rowSums({\it matriz}): obtenemos las sumas por filas de la {\it matriz}
+		\item colMeans({\it matriz}): obtenemos las medias aritméticas por columnas de la {\it matriz}
+		\item rowMeans({\it matriz}): obtenemos las medias aritméticas por filas de la {\it matriz}
+		\item apply({\it matriz}, MARGIN=..., FUN={\it función}): para aplicar otras funciones a las filas o las columnas de una matriz
+			\begin{itemize}
+			\item[$\ast$] MARGIN: ha de ser 1 si queremos aplicar la función por filas; 2 si queremos aplicarla por columnas, o c(1,2) si la queremos aplicar a cada entrada
+			\end{itemize}	
+		\item t({\it matriz}): para obtener la transpuesta de la {\it matriz}
+		\item +: para sumar matrices
+		\item *: para el producto de un escalar por una matriz
+		\item \%*\%: para multiplicar matrices
+			\begin{itemize}
+			\item[$\circ$]Si multiplicamos matrices con el sí­mbolo *, obtendremos una matriz que tiene en cada entrada ($i,j$) la multiplicación de las entradas ($i,j$) de cada una de las dos matrices
+			\item[$\circ$]Lo mismo ocurre si aplicamos {\it matriz}$^ n$: el resultado es una matriz con todas las entradas de la {\it matriz} elevadas a $n$
+			\end{itemize}
+		\item mtx.exp({\it matriz},$n$): para elevar	la {\it matriz} a $n$
+			\begin{itemize}
+			\item[$\circ$]Del paquete Biodem
+			\item[$\circ$]No calcula las potencias exactas, las aproxima
+			\end{itemize}
+		\item \%\textasciicircum\%: para elevar matrices
+			\begin{itemize}
+			\item[$\circ$]Del paquete expm
+			\item[$\circ$]No calcula las potencias exactas, las aproxima
+			\end{itemize}
+		\item det({\it matriz}): para calcular el determinante de la {\it matriz}
+			\begin{itemize}
+			\item[$\circ$]Para calcular el determinante de una matriz de complejos podemos hacerlo mediante prod(eigen({\it matriz})\$values) ya que es el producto de los valores propios contados con su multiplicidad
+			\end{itemize}
+		\item qr({\it matriz})\$rank: para calcular el rango de la {\it matriz}
+		\item solve({\it matriz}): para calcular la inversa de una matriz invertible
+			\begin{itemize}
+			\item[$\circ$]También sirve para resolver sistemas de ecuaciones lineales. Para ello introducimos solve({\it matriz},$b$), donde $b$ es el vector de términos independientes
+			\end{itemize}
+		\item eigen({\it matriz}): para calcular los valores y vectores propios
+			\begin{itemize}
+			\item eigen({\it matriz})\$values: nos da el vector con los valores propios de la {\it matriz}
+			\item eigen({\it matriz})\$vectors: nos da una matriz cuyas columnas son los vectores propios de la {\it matriz}
+			\item[$\circ$]Da los valores propios en orden decreciente de su valor absoluto y repetidos tantas veces como su multiplicidad
+			\item[$\circ$]Si hay algún valor propio con multiplicidad mayor que 1, da tantos valores de este valor propio como su multiplicidad. Además, en este caso procura que estos vectores propios sean linealmente independientes. Por tanto, cuando da vectores propios repetidos de algún valor propio es porque para este valor propio no existen tantos vectores propios linealmente independientes como su multiplicidad y, por consiguiente, la matriz no es diagonalizable
+			\item[$\circ$]Del resultado de eigen({\it matriz}) se puede obtener una descomposición canónica {\it matriz}$=PDP^{-1}$ de una matriz diagonalizable {\it matriz}: basta tomar como $D$ la matriz diagonal que tiene como diagonal principal el vector eigen({\it matriz})\$values y como P la matriz eigen({\it matriz})\$vectors
+			\end{itemize}
+		\item diag({\it vector}): para construir una matriz diagonal con un vector dado.
+			\begin{itemize}
+			\item[$\circ$]Si aplicamos diag a un número $n$, produce una matriz identidad de orden $n$
+			\end{itemize}
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}	 
+	\item {\bf Tema 5. Gráficos I}
+	
+	\begin{itemize}
+		\item plot(\textit{vector},\textit{vector}): para dibujar su gráfico básico de puntos
+			\begin{itemize}
+			\item[$\circ$]Si aplicamos plot a un solo vector $x=(x_1,...,x_n)$, R produce el gráfico de los puntos $(1,x_1),...,(n,x_n)$. Es decir, plot($x$) es una abreviatura de plot($1:n,x$)
+			\item[$\circ$]plot también sirve para representar el gráfico de una función definida mediante function: plot(\textit{función})
+			\item[$\ast$]log: para indicar si queremos un eje en escala logarítmica
+			\item[$\ast$]main=``\textit{título}'': para poner título al gráfico
+			\item[$\ast$]xlab=``\textit{etiqueta}'': para poner una etiqueta al eje de coordenadas $x$
+			\item[$\ast$]ylab=``\textit{etiqueta}'': para poner una etiqueta al eje de coordenadas $y$
+				\begin{itemize}
+				\item[$\circ$]Los valores de estos parámetros se tienen que entrar entre comillas o, si son fórmulas matemáticas, aplicarles la función expression() para que aparezcan en un formato matemático más adecuado
+				\end{itemize}
+			\item[$\ast$]pch=\textit{número natural}: para especificar el símbolo. Puede tomar como valor cualquier número natural $n\in [0,25]$
+				\begin{itemize}
+				\item[$\circ$]Por defecto plot dibuja círculos vacíos (pch = 1)
+				\end{itemize}
+			\item[$\ast$]cex = \textit{factor de escalado}: para modificar el tamaño de los símbolos
+			\item[$\ast$]col = \textit{nombre del color en inglés}: para especificar el color de los símbolos o las líneas
+				\begin{itemize}
+				\item[$\circ$]La paleta de R consta de 502 colores
+				\item[$\circ$]Los símbolos del 20 al 25 admiten un color para la línea (se especifica con el parámetro col) y uno para el relleno, el cual se especifica con el parámetro bg (el cual funciona del mismo modo que col)
+				\end{itemize}
+			\item[$\ast$]type: para indicar el tipo de gráfico que queremos producir. El valor del parámetro se tiene que entrar entre comillas y puede ser:
+				\begin{itemize}
+				\item[$\checkmark$]p: para dibujar los puntos como simples puntos (es el valor por defecto) 
+				\item[$\checkmark$]l: para dibujar los puntos unidos por líneas rectas sin que se vean los puntos
+				\item[$\circ$]La función plot aplicada a una función $f$ en realidad produce el gráfico de tipo ``l'' de una familia de puntos $(x,f(x))$. Por defecto, 101 puntos distribuidos uniformemente a lo largo del dominio (valor que puede ser modificado con el parámetro n)
+				\item[$\checkmark$]b: para dibujar puntos unidos por líneas rectas de manera que se vean los puntos, pero sin que las rectas entren dentro de los símbolos que representan los puntos
+				\item[$\checkmark$]o: como b pero ahora sí que las rectas entran dentro de los símbolos que representan los puntos
+				\item[$\checkmark$]h: para dibujar líneas verticales desde el eje de abscisas a cada punto (un histograma de líneas) 
+				\item[$\checkmark$]s: para dibujar un histograma de escalones
+				\item[$\checkmark$]n: para no dibujar los puntos, solo el exterior del gráfico
+				\end{itemize}
+			\item[$\ast$]lty: para especificar el tipo de línea
+				\begin{itemize}
+				\item[$\checkmark$]``solid'' (ó 1): produce una línea continua. Es el valor por defecto
+				\item[$\checkmark$]``dashed'' (ó 2): produce una línea discontinua
+				\item[$\checkmark$]``dotted'' (ó 3): produce una línea de puntos
+				\item[$\checkmark$]``dotdashed'' (ó 4): produce una línea que alterna puntos y rallas
+				\end{itemize}
+			\item[$\ast$]lwd=\textit{factor de escalado}: para especificar el grosor de las líneas
+			\item[$\ast$]xlim=\textit{vector de extremos del rango}: para modificar el rango del eje $x$
+			\item[$\ast$]ylim=\textit{vector de extremos del rango}: para modificar el rango del eje $y$
+				\begin{itemize}
+				\item[$\circ$]Si el argumento de plot son dos vectores, por defecto los rangos de los ejes de coordenadas van del mínimo al máximo de los vectores correspondientes
+				\item[$\circ$]Si el argumento de plot es una función $f$, por defecto el rango del eje de abscisas es el intervalo $[0,1]$ y el rango del eje de ordenadas va del valor mínimo al máximo de $f$ sobre el rango de las abscisas.
+				\end{itemize}
+			\item[$\ast$]xaxp: para modificar las posiciones de las marcas en el eje de abscisas
+			\item[$\ast$]yaxp: para modificar las posiciones de las marcas en el eje de ordenadas
+				\begin{itemize}
+				\item[$\circ$]Mediante la expresión xaxp=c($n1,n2,m$), imponemos que R dibuje $m + 1$ marcas igualmente espaciadas entre los puntos $n1$ y $n2$ del eje de abscisas. La sintaxis para yaxp es la misma
+				\item[$\circ$]Estas instrucciones no definen los rangos de los ejes de coordenadas, que se han de especificar con xlim e ylim si se quieren modificar
+				\end{itemize}
+			\end{itemize}
+		\item points($x,y$): añade un punto de coordenadas $(x, y)$ a un gráfico ya existente
+			\begin{itemize}
+			\item[$\circ$]Podemos declarar el color, el símbolo etc., de este punto mediante los parámetros usuales
+			\item[$\circ$]También sirve para añadir una familia de puntos. En este caso, hay que entrar en el argumento de points($x,y$) la lista $x$ de sus primeras coordenadas y la lista $y$ de sus segundas coordenadas
+			\end{itemize}
+		\item abline: para añadir una recta a un gráfico ya existente
+			\begin{itemize}
+			\item[$\checkmark$]abline($a,b$): añade la recta $y=ax+b$
+			\item[$\checkmark$]abline($v=x_0$): añade la recta vertical $x=x_0$
+			\item[$\checkmark$]abline($h=y_0$): añade la recta horizontal $y=y_0$
+			\item[$\circ$]Podemos especificar las características de estas rectas, como su grosor, su estilo o su color, mediante los parámetros pertinentes
+			\item[$\circ$]Los parámetros $v$ y $h$ de abline se pueden igualar a vectores numéricos, en cuyo caso la instrucción añade en un solo paso todas las rectas verticales u horizontales correspondientes, todas del mismo estilo
+			\end{itemize}
+		\item text($x,y$, labels=...): añade en el punto de coordenadas $(x,y)$ el texto especificado como argumento de labels. 
+			\begin{itemize}
+			\item[$\circ$]El texto se puede entrar entre comillas o en una expression
+			\item[$\ast$]pos: permite indicar la posición del texto alrededor de las coordenadas $(x,y)$. Admite los siguientes valores:
+				\begin{itemize}
+				\item[$\checkmark$]1: abajo
+				\item[$\checkmark$]2: izquierda
+				\item[$\checkmark$]3: arriba
+				\item[$\checkmark$]4: derecha
+				\item[$\checkmark$]sin especificar: el texto se sitúa centrado en el punto $(x,y)$
+				\end{itemize}
+			\item[$\circ$]La función text se puede usar para añadir varios textos en un solo paso. En este caso, $x$ e $y$ han de ser los vectores de abscisas y ordenadas de los puntos donde se añadirán los textos, labels el vector de textos, y pos el vector de sus posiciones; en este último vector, los textos que queremos centrados en su posición se han de indicar con NULL
+			\end{itemize}
+		\item lines(\textit{vector numérico},\textit{vector numérico}): añade a un gráfico existente una línea poligonal que une los puntos $(x_i, y_i)$ sucesivos
+			\begin{itemize}
+			\item[$\circ$]La apariencia de las líneas la podemos modificar con los parámetros usuales de grosor, color, estilo, etc.
+			\end{itemize}
+		\item curve: permite añadir la gráfica de una curva a un gráfico existente
+			\begin{itemize}
+			\item[$\ast$]add=TRUE. Si no, la curva no se añade
+			\item[$\circ$]La curva se puede especificar mediante una expresión algebraica con variable $x$, o mediante su nombre si la hemos definido antes
+			\item[$\circ$]La función curve también se puede usar para producir la gráfica de una función, como plot, con la ventaja sobre esta última que no sólo se puede aplicar a una función definida con function, sino también a una expresión algebraica. Además, la función curve admite todos los parámetros de plot
+			\end{itemize}
+		\item legend(\textit{posición}, legend=c(\textit{vector de nombres de las curvas}): para añadir una leyenda
+			\begin{itemize}
+			\item[$\ast$]posición: indica donde queremos situar la leyenda, y puede ser o bien dos números para especificar las coordenadas de su esquina superior izquierda, o bien una de las palabras siguientes:
+				\begin{itemize}
+				\item[$\checkmark$]`bottomright''
+				\item[$\checkmark$]``bottom''
+				\item[$\checkmark$]``bottomleft''
+				\item[$\checkmark$]``left''
+				\item[$\checkmark$]``topleft''
+				\item[$\checkmark$]``top''
+				\item[$\checkmark$]``topright''
+				\item[$\checkmark$]``right''
+				\item[$\checkmark$]``center''
+				\end{itemize}
+			\item[$\ast$]legend: vector que contiene los nombres (entre comillas o dentro de expression) con los
+que queremos identificar las curvas dentro de la leyenda
+			\end{itemize}
+		\item segments: para añadir segmentos a un gráfico existente
+		\item arrows: para añadir flechas a un gráfico existente
+		\item symbols: para añadir símbolos a un gráfico existente
+		\item polygon: para añadir polígonos cerrados especificando sus vértices a un gráfico existente
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}	%VOY POR AQUÍ
+	\item {\bf Tema 6. Data frames}
+	
+	\vspace{0.2cm}
+	Un data frame es una tabla de doble entrada, formada por variables en las columnas y observaciones de estas variables en las filas, de manera que cada fila contiene los valores de las variables para un mismo caso o un mismo individuo.
+	
+	\begin{itemize}
+		\item data(): para abrir una ventana con la lista de los objetos de datos a los que tenemos acceso en la sesión actual de R (los que lleva la instalación básica de R y los que aportan los paquetes que tengamos cargados)
+			\begin{itemize}
+			\item[$\circ$]Estos objetos no aparecen cuando hacemos ls() ni se borran con rm(list=ls())
+			\item[$\circ$]Si entramos data(package=.packages(all.available=TRUE)) obtendremos la lista de todos los objetos de datos a los que tenemos acceso, incluyendo los de los paquetes que tengamos instalados, pero que no estén cargados en la sesión actual
+			\end{itemize} 
+		\item head(\textit{data frame},$n$): para mostrar las $n$ primeras filas del data frame. Por defecto se muestran las 6 primeras filas
+		\item tail(\textit{data frame},$n$): para mostrar las $n$ últimas filas del data frame. Por defecto se muestran las 6 últimas
+		\item str(\textit{data frame}): para conocer la estructura global de un data frame
+		\item names(\textit{data frame}): para producir un vector con los nombres de las columnas
+		\item rownames(\textit{data frame}): para producir un vector con los identificadores de las filas
+			\begin{itemize}
+			\item[$\circ$]R entiende siempre que estos identificadores son palabras, aunque sean números, de ahí que los imprima entre comillas
+			\end{itemize}
+		\item dimnames(\textit{data frame}): para producir una list formada por dos vectores (el de los identificadores de las filas y el de los nombres de las columnas)
+		\item dim(\textit{data frame}): para producir un vector con el número de filas y el de columnas
+		\item \textit{data frame}\$\textit{nombre de la  variable}: para obtener una columna concreta de un data frame
+			\begin{itemize}
+			\item[$\circ$]El resultado será un vector o un factor, según cómo esté definida la columna dentro del data frame
+			\item[$\circ$]Las variables de un data frame son internas, no están definidas en el entorno global de trabajo de R
+			\end{itemize}
+		\item \textit{data frame}[$n,m$]: para extraer ``trozos'' del data frame por filas y columnas (depende de como definamos $n$ y $m$. Funciona del mismo modo que para matrices)
+			\begin{itemize}
+			\item[$\circ$]$n$ y $m$ pueden definirse como:
+				\begin{itemize}
+				\item[$\checkmark$] intervalos. Por ejemplo \textit{data frame}[1:3,5:8]
+				\item[$\checkmark$] condiciones. Por ejemplo \textit{data frame}[d.f\$Species==``dog'' \& d.f\$Age >7,]
+				\item[$\checkmark$] números. Por ejemplo \textit{data frame}[1,5] (que equivale a pedir la entrada (1,5))
+				\item[$\checkmark$] no poner nada. Por ejemplo, \textit{data frame}[,5] (donde estamos pidiendo la quinta columna con todas sus filas)
+				\item[$\circ$]Si sólo queremos definir la subtabla quedándonos con algunas variables, basta aplicar el nombre del data frame al vector de variables (sin necesidad de dejar el espacio en blanco seguido de una coma que serviría para indicar que nos referimos a columnas y no a filas)
+				\item[$\circ$]Estas construcciones se pueden usar también para reordenar las filas o columnas
+				\end{itemize}
+			\end{itemize}
+		\item read.table(): para definir un data frame a partir de una tabla de datos contenida en fichero
+			\begin{itemize}
+			\item[$\circ$]Este fichero puede estar en nuestro ordenador, y en este caso lo más práctico es que la tengamos en el directorio de trabajo de R, o bien podemos conocer su url. Sea cual sea el caso, se aplica la función al nombre del fichero o a la dirección entre comillas
+			\item[$\ast$]sep: para especificar las separaciones entre columnas en el fichero (si son distintas a espacios en blanco). Si es así, hay que introducir el parámetro pertinente entre comillas
+			\item[$\ast$]header=TRUE: para indicar si la tabla que importamos tiene una primera fila con los nombres de las columnas
+				\begin{itemize}
+				\item[$\circ$]En caso contrario, o bien igualar header=FALSE, o directamente no especificar el parámetro, ya que ese es su valor por defecto
+				\end{itemize}
+			\item[$\ast$]dec: para especificar el signo que separa la parte entera de la decimal en los números, si no es un punto. Si es así, hay que introducir el parámetro pertinente entre comillas
+			\item[$\ast$]stringsAsFactors: para prohibir la transformación de las columnas de palabras en factores debemos usar stringsAsFactors=FALSE (ya que por defecto, R realiza dicha transformación)
+			\item[$\circ$]Para importar un fichero de una página web segura (cuyo url empiece con https), no podemos entrar directamente la dirección en read.table; una solución es instalar y cargar el paquete RCurl y entonces usar la instrucción read.table (textConnection(getURL(``url '')),...).
+			\end{itemize}
+		\item read.csv: para importar ficheros en formato CSV
+		\item read.xls ó read.xlsx: para importar hojas de cálculo tipo Excel u OpenOffice en formato XLS o XLSX, respectivamente. Son del paquete xlsx
+		\item read.mtb: para importar tablas de datos de Minitab (del paquete foreign) 
+		\item read.spss: para importar tablas de datos SPSS (del paquete foreign)
+		\item write.table(\textit{data frame}, file=``\textit{nombre del fichero}''): para exportar un data frame a un fichero
+			\begin{itemize}
+			\item[$\circ$]Podemos usar el parámetro sep para indicar el símbolo de separación de columnas en el fichero que creemos y el parámetro dec para indicar la separación entre parte entera y parte decimal en los números
+			\end{itemize}
+		\item data.frame(\textit{vector1, ..., vectorn}): para construir un data frame a partir de unos vectores introducidos en el orden en el que queremos disponer las columnas de la tabla. 
+			\begin{itemize}
+			\item[$\circ$]R considera del mismo tipo de datos todas las entradas de una columna de un data frame
+			\item[$\circ$]Las variables tomarán los nombres de los vectores. Estos nombres también se pueden especificar en el argumento de data.frame, entrando una construcción de la forma \textit{nombre de la variable = vector con el contenido de la variable}
+			\item[$\ast$]row.names: para especificar los identificadores de las filas
+				\begin{itemize}
+				\item[$\circ$]Si hemos asignado identificadores a las filas, podemos usarlos para extraer subtablas del data frame (aunque también podemos seguir usando los números de las filas). Eso sí, hay que recordar que si se usan los identificadores, como son palabras, hay que escribirlos entre comillas
+				\end{itemize}
+			\item[$\ast$]stringsAsFactors: para prohibir la transformación de las columnas de palabras en factores debemos usar stringsAsFactors=FALSE (ya que por defecto, R realiza dicha transformación)
+			\end{itemize}
+		\item fix(\textit{data frame}): para crear/editar un data frame con el editor de datos
+		\item names(\textit{data frame})=\textit{vector de nombres de variables}: para cambiar los nombres de las variables
+		\item rownames(\textit{data frame})=\textit{vector de nombres de filas}: para modificar los identificadores de las filas
+			\begin{itemize}
+			\item[$\circ$]Como cada identificador ha de determinar el individuo al cual corresponde la fila, conviene que
+estos identificadores sean todos diferentes
+			\end{itemize}
+		\item paste(): para pegar vectores, entrada a entrada, usando como separador el que especificamos con sep (el valor por defecto es el espacio en blanco)
+			\begin{itemize}
+			\item[$\circ$]Si en lugar de pegar un vector pegamos un elemento, éste se entiende como un vector constante formado por el número adecuado de copias
+			\end{itemize}
+		\item dimnames(\textit{data frame})=list(\textit{vector con los nombres de las filas, vector con los nombres de las columnas}): para modificar los nombres de las filas y de las columnas simultáneamente
+		\item as.character: para transformar todos los datos de un objeto en palabras
+		\item as.integer: para transformar todos los datos de un objeto en números enteros
+		\item as.numeric: para transformar todos los datos de un objeto en números reales 
+		\item \textit{data frame}[\textit{número de fila}, ]=c(...): para añadir una fila a un data frame
+			\begin{itemize}
+			\item[$\circ$]Acción nada recomendable, ya que puede provocar resultados no deseados:
+				\begin{itemize}
+				\item[$\checkmark$]Las filas que añadimos de esta manera son vectores, y por lo tanto sus entradas han de ser todas del mismo tipo. Por consiguiente, esta opción sólo se puede usar en data frames cuyas variables contengan todas el mismo tipo de datos
+				\item[$\checkmark$]Si no añadimos las filas inmediatamente siguientes a la última del data frame, los valores entre su última fila y las que añadimos quedarán no definidos, y aparecerán como NA; esto puede ser un problema a la hora de aplicar funciones al data frame y además estropea los factores
+				\end{itemize}
+			\item[$\circ$]La mejor manera de añadir filas a un data frame es organiza?ndolas en un nuevo data frame con los mismos nombres de las variables, y a continuación concatenarlas al data frame usando la función rbind
+			\end{itemize}	
+		\item \textit{data frame}\$\textit{nueva variable}: para añadir una nueva variable al data frame
+			\begin{itemize}
+			\item[$\circ$]También podemos concatenar columnas a un data frame usando la función cbind; en este caso, se puede añadir directamente la columna, sin necesidad de convertirla previamente en un data frame. La variable añadida ha de tener la misma longitud que las variables del data frame original; en caso contrario, se añadirán valores NA a las variables del data frame original o a la variable que añadimos hasta completar la misma longitud
+			\item[$\circ$]Sobra decir que podemos usar también el editor
+			\end{itemize}
+		\item droplevels(\textit{data frame}): para borrar los niveles sobrantes de todos los factores, ya que las columnas que son factores heredan en los subdata frames todos los niveles del factor original, aunque no aparezcan en el trozo que hemos extraído
+		\item select(\textit{data frame, parámetros}): para especificar las variables que queremos extraer de un data frame
+			\begin{itemize}
+			\item[$\circ$]Del paquete dplyr
+			\item[$\ast$]starts\_with(``$x$''): extrae del data frame las variables cuyo nombre empieza con la palabra $x$
+			\item[$\ast$]ends\_with(``$x$'')) extrae del data frame las variables cuyo nombre termina con la palabra $x$
+			\item[$\ast$]contains(``$x$'')) extrae del data frame las variables cuyo nombre contiene en algún sitio la palabra $x$
+			\end{itemize}
+		\item subset(\textit{data frame, condición}, select=\textit{columnas}): para extraer del data frame las filas que cumplen la condición y las columnas especificadas
+			\begin{itemize}
+			\item[$\circ$]Si queremos todas las filas, no hay que especificar ninguna condición
+			\item[$\circ$]Si queremos todas las columnas, no hace falta especificar el parámetro select
+			\item[$\circ$]Las variables en la condición se especifican con su nombre, sin añadir antes el nombre del data frame
+			\end{itemize}		
+		\item sapply(\textit{data frame, función}): para aplicar una función a todas las columnas de un data frame en un solo paso
+			\begin{itemize}
+			\item[$\ast$]na.rm=TRUE: para evitar que el valor que devuelva la función para las columnas que contengan algún NA sea NA
+			\end{itemize}
+		\item aggregate(\textit{variable(s)}\textasciitilde\textit{factor(es)}, data=\textit{data frame}, FUN=\textit{función}): para aplicar una función a variables de un data frame clasificadas por los niveles de un, o más de un, factor
+			\begin{itemize}
+			\item[$\circ$]Si queremos aplicar la función a más de una variable, tenemos que agruparlas a la izquierda de la tilde con cbind
+			\item[$\circ$]Si queremos separar las variables mediante más de un factor, tenemos que agruparlos a la derecha de la tilde con signos +: \textit{factor1}+\textit{factor2}+...
+			\end{itemize}
+		\item attach(\textit{data frame}): para hacer que R entienda sus variables como globales y que las podamos usar por su nombre, sin necesidad de añadir delante el nombre del data frame y el símbolo \$
+			\begin{itemize}
+			\item[$\circ$]Si ya hubiera existido una variable definida con el mismo nombre que una variable del data frame al que aplicamos attach, hubiéramos obtenido un mensaje de error al ejecutar esta función, y no se hubiera reescrito la variable global original
+			\end{itemize}
+		\item detach(\textit{data frame}): para devolver la situación original, eliminando del entorno global las variables del data frame
+		
+	\end{itemize}
+	
+	
+	
+		
+	\vspace{0.5cm}	
+	\item {\bf Tema 8. Datos cualitativos}
+	
+	\begin{itemize}
+		\item table({\it vector ó factor}): muestra la tabla de frecuencias absolutas\\
+			\textasteriskcentered table({\it x,y}) siendo el vector {\it x} el de las filas e {\it y} el de las columnas: permite construir tablas de frecuencias conjuntas de dos o más variables\\
+			\textasteriskcentered Si le aplicamos la función table a un data frame de variables cualitativas, obtendremos su tabla de frecuencias absolutas, con las variables ordenadas tal y como aparecen en el data frame
+		\item names(table({\it x})): muestra los nombres de las columnas de un table\\
+			\textasteriskcentered Para mostrar los nombres de un vector que tienen frecuencia 0, hay que transformar el vector en un factor con los niveles deseados
+		\item table({\it x})[{\it í­ndice ó nombre}]: comando para referirnos a una entrada del table\\
+			\textasteriskcentered table({\it x})[{\it í­ndice ó nombre, í­ndice o nombre}]: para referirnos a una entrada de una table bidimensional
+		\item names(which(table({\it x})=={\it n})): muestra los niveles que tienen frecuencia absoluta {\it n} en {\it x}
+		\item names(which(table({\it x})==max(table({\it x})))): nos da la moda de {\it x}
+		\item prop.table(table({\it x})): muestra la tabla de frecuencias relativas\\
+			\textasteriskcentered También podemos calcular la tabla de frecuencias relativas de un vector de la forma: table({\it x})/lenght({\it x})\\
+			\textasteriskcentered prop.table(table({\it x,y})): calcula la tabla de frecuencias relativas globales\\
+			\textasteriskcentered prop.table(table({\it x,y}), margin={\it número}): con el parámetro margin especificamos la variable que define las subpoblaciones
+		\item t(table({\it x,y})): para trasponer la table bidimensional sin tener que recalcularla
+		\item aperm({\it table}, perm=...): permite cambiar el orden de las variables en una tabla multidimensional, igualando el parámetro perm a la lista de las variables en el orden deseado
+		\item CrossTable({\it x,y}, prop.chisq=FALSE) (del paquete gmodels): permite producir un resumen de la tabla de frecuencias absolutas y las tres tablas de frecuencias relativas
+		\item ftable({\it x,y,z}): muestra el table (en este caso tridimensional) en formato plano\\
+			\textasteriskcentered ftable({\it x,y,z}, row.vars ó col.vars=c({\it x,y})): permite especificar qué variables queremos que aparezcan como filas o como columnas\\
+			\textasteriskcentered También lo podemos usar con data frames. 
+		\item sum({\it table}): nos permite obtener el número total de individuos de la muestra
+		\item summary({\it data frame}): obtenemos una tabla con las frecuencias absolutas de cada variable del data frame de variables cualitativas. (Â¡Â¡Esta tabla solo sirve para ver la información!!)
+		\item apply({\it data frame}, MARGIN=2, FUN=table): para calcular en un solo paso la table de cada variable
+		\item barplot(table({\it x}), col={\it color/es},main={\it tí­tulo})\\
+			\textasteriskcentered La función \textbackslash n produce un cambio de lí­nea si se encuentra dentro de una frase entre comillas\\
+			\textasteriskcentered La función \textbackslash " \hspace{0.4mm} escribe unas comillas en el texto\\
+			\textasteriskcentered Por defecto, un gráfico de barras de un table bidimensional  es un diagrama de barras apiladas
+		\item barplot(table{\it x,y}, beside=TRUE): organiza las barras una junto a la otra obteniendo un diagrama de barras por bloques
+		\item barplot(table({\it x, y}), legend.text=TRUE): permite poner una leyenda\\
+			\textasteriskcentered La leyenda se puede modificar con el parámetro args.legend igualado a una list con los parámetros que usarí­amos en la función legend
+		\item barplot(table{\it x,y}, names={\it vector}): permite cambiar los nombres de los niveles que muestra debajo del eje horizontal
+		\item barplot(table{\it x}, horiz=TRUE): permite poner las barras en horizontal
+		\item pie(table({\it x})): produce un diagrama circular
+		\item plot ó mosaicplot(table({\it x,y,z})):produce un gráfico de mosaico
+		\item cotabplot(table({\it x,y,z}))(del paquete vcd): produce un diagrama de mosaico para cada nivel de la tercera variable
+		\item mosaic3d(table({\it x,y})) (del paquete vcdExtra): produce un mosaico tridimensional
+				
+	\end{itemize}
+
+
+
+
+	
+	\item {\bf Tema 9. Datos ordinales}
+		
+	\begin{itemize}
+		\item cumsum(table({\it x})): calcula la tabla de frecuencias absolutas acumuladas
+		\item cumsum(prop.table(table({\it x}))): calcula la tabla de frecuencias relativas acumuladas\\
+			\textasteriskcentered También se puede calcular de la forma: cumsum(table({\it x}))/length({\it x}) ó cumsum(table({\it x})/length({\it x}))
+		\item barplot(cumsum(table({\it x}))): para crear el gráfico de barras de las frecuencias absolutas acumuladas\\
+			\textasteriskcentered barplot(cumsum(prop.table(table({\it x})))): para crear el gráfico de barras de las frecuencias absolutas acumuladas
+		\item apply(table({\it x}), MARGIN=... , FUN=cumsum): para calcular frecuencias acumuladas en una tabla multidimensional, donde el valor de MARGIN es 1 si queremos calcular las frecuencias acumuladas por filas o 2 si las queremos calcular por columnas
+		\item cut(data frame,{\it variable}, breaks={\it vector extremos intervalos}, right=FALSE, labels={\it vector etiquetas}): para agrupar las entradas de una variable en niveles\\
+			\textasteriskcentered El parámetro right=FALSE sirve para indicar que los puntos de corte pertenecen al intervalo a su derecha
+				
+	\end{itemize}
+		
+		
+		
+		
+		
+	\item {\bf Tema 10. Datos cuantitativos}
+	
+	\begin{itemize}
+		\item as.numeric(names(which(table({\it x})==max(table({\it x}))))): muestra la moda
+		\item mean({\it x}): muestra la media aritmética
+		\item median({\it x}): muestra la mediana
+		\item length({\it x}): muestra el número de objetos de la muestra
+		\item {\it x}=sort({\it x}): ordena de menor a mayor la muestra
+		\item quantile({\it x}, p): calcula el cuantil de orden p del vector {\it x}
+		\item range({\it x}): nos da los valores máximo y mí­nimo de {\it x}
+		\item diff(range({\it x})): calcula el rango de {\it x}
+		\item IQR({\it x}): calcula el rango intercuantí­lico\\
+			\textasteriskcentered Con el parámetro type se pueden especificar los cuantiles
+		\item var({\it x}): calcula la varianza muestral
+		\item sd({\it x}): calcula la desviación tí­pica muestral
+		\item var({\it x})*(length({\it x})-1)/length({\it x}): calcula la varianza ``verdadera''
+		\item sd({\it x})*sqrt((length({\it x})-1)/length({\it x})): calcula la desviación tí­pica ``verdadera''\\
+			\textasteriskcentered sqrt(var({\it x})*(length({\it x})-1)/length({\it x})): otra forma de calcular la desviación tí­pica ``verdadera''
+		\item summary({\it vector}): muestra un resumen estadí­stico del vector
+		\item summary({\it data frame}): muestra un resumen estadí­stico de todas sus variables
+		\item by({\it columnas, factor}, FUN=summary): aplica la función summary a algunas columnas de un data frame segmentándolas según los niveles de un factor
+		\item boxplot({\it x}): realiza un diagrama de caja del vector {\it x}\\
+			\textasteriskcentered También se puede aplicar a un data frame	
+		\item boxplot({\it variable numérica} $\sim$ {\it variable factor}, data={\it data frame}):  para dibujar en un único gráfico los diagramas de caja de una variable numérica de un data frame segmentada por un factor del data frame\\
+			\textasteriskcentered El parámetro notch=TRUE añade una muesca en la medina de la caja. Si las de dos diagramas de caja no se solapan, se puede tomar como evidencia significativa de que las medianas de las poblaciones correspondientes son diferentes
+		\item str(boxplot({\it variable ó data frame})): muestra la estructura interna del boxplot\\
+			\textasteriskcentered stats: componente de la list que nos da, para cada diagrama del gráfico, los valores de sus 5 lí­neas horizontales\\
+			\textasteriskcentered out: nos da los valores atí­picos\\
+			\textasteriskcentered group: si hay más de un diagrama de caja, nos da los diagramas a los cuales pertenecen los valores atí­picos				
+		
+	\end{itemize}		
+	
+	
+	
+	
+	
+	\item {\bf Tema 11. Datos cuantitativos agrupados}
+	
+	\begin{itemize}
+		\item Para establecer el número de $k$ clases en que vamos a dividir los datos, podemos usar:
+		
+		\begin{itemize}
+			\item $\lceil k=\sqrt{n}\rceil$: Regla de la raí­z cuadrada, donde $n$ es el número total de muestras
+			\item nclass.Sturges($x$): Regla de Sturges
+			\item nclass.scott($x$): Regla de Scott
+			\item nclass.FD($x$): Regla de Freedman-Diaconis
+		\end{itemize}		
+		
+		\item Para calcular la amplitud, $A$, dividiremos el rango de los datos entre el número k de clases y redondearemos por exceso a un valor de la precisión de la medida. En el caso improbable de que el cociente del rango entre el número de clases dé un valor exacto en la precisión de la medida, tomaremos como $A$ este cociente más una unidad de precisión
+		\item $L_1=min(x)-\frac{1}{2}\cdot precision$: para calcular el extremo izquierdo del primer intérvalo
+		\item $L_i=L_1+(i-1)A, \forall i=2,...,k+1$: para calcular los extremos izquierdos del resto de intérvalos\\
+			\textasteriskcentered Los extremos nunca coincidirán con valores del conjunto
+		\item $X_i=\frac{L_i+L_{i+1}}{2}$: para la marca de la clase\\
+			\textasteriskcentered $X=(L[1:(length(L)-1)]+L[2:length(L)])/2$: otra forma de calcular la marca de la clase (formando un vector), siendo $L$ el vector de los lí­mites izquierdos de cada intérvalo
+		\item cut($x$, breaks=..., labels=..., right=...): función básica de R para agrupar un vector de datos numéricos y codificar sus valores con las clases a las que pertenecen\\
+			\textasteriskcentered $x$ es el vector\\
+			\textasteriskcentered breaks puede ser o bien un vector con los extremos de los intervalos, o bien un número $k$ que indica las clases\\
+			\textasteriskcentered labels es un vector con las etiquetas de los intervalos\\
+			\textasteriskcentered right permite indicar qué tipo de intervalos queremos. right=FALSE es cerrado por la izquierda y abierto por la derecha\\
+			\textasteriskcentered include.lowest=TRUE (combinado con right=FALSE) impone que el primer intervalo sea cerrado
+		\item hist($x$, breaks=..., right=FALSE, plot=FALSE)\$ count: para calcular frecuencias absolutas\\
+			\textasteriskcentered Es conveniente igualar el parámetro breaks al vector de los extremos de los intervalos\\
+			\textasteriskcentered plot=FALSE impide que se dibuje el histograma\\
+			\textasteriskcentered hist tiene el parámetro mids el cual está formado por los puntos medios
+		\item Tabla\_frec\_agrup=function($x$,$k$,$A$,$p$)\{Definir la función\}: para calcular la tabla de frecuencias si vamos a tomar todas las clases de la misma amplitud. $x$ vector, $k$ clases, $A$ amplitud y $p$ precisión
+		\item Tabla\_frec\_agrup\_L=function($x$,$L$,$V$)\{Definir la función\}: para calcular la tabla de frecuencias si conocemos los extremos de los intervalos. $x$ vector, $L$ vector de extremos de clases y $V$ valor lógico (= TRUE si queremos que el último intervalo sea cerrado)
+		\item $M=L_c+A_c\cdot\frac{\frac{n}{2}-N_{c-1}}{n_c}$: aproximación a la mediana de los datos ``reales''. Siendo $L_c$ el lí­mite izquierdo del intervalo crí­tico, $N_{c-1}$ la frecuencia absoluta acumulada del intervalo anterior al crí­tico, $n_c$ la frecuencia absoluta del intervalo crí­tico y $A_c$ su amplitud
+		\item $Q_p=L_c+A_c\cdot \frac{pn-N_{c-1}}{n_c}$: para aproximar cuantiles de los datos ``reales'' a partir de los datos agrupados, donde ahora el intervalo crí­tico es el primero que tiene frecuencia relativa acumulada mayor o igual que $p$ y el resto de valores se definen relativos a este intervalo crí­tico 
+		\item hist\_abs($x$,$L$): para hacer rápidamente un histograma de frecuencias absolutas
+		\item rug($x$): para indicar las frecuencias absolutas de las barras en el histograma\\
+			\textasteriskcentered rug(jitter($x$)): añade ruido a rug para distinguir mejor los empates
+		\item hist\_abs.cum($x$,$L$): para dibujar histogramas de frecuencias absolutas acumuladas
+		\item plot(density($x$)): para estimar la densidad de la distribución
+		\item hist\_rel($x$,$L$): para dibujar un histograma de frecuencias relativas con curva de densidad
+		\item hist\_rel.cum($x$,$L$): para dibujar histograma de frecuencias relativas acumuladas y la función de distribución estimada
+		\item dnorm(x, mu=media, sd=desviación tí­pica): para añadir al histograma la gráfica de la función densidad de una distribución normal
+	\end{itemize}
+	
+\end{itemize}
+
+
+
+
+
+\vspace{0.5cm}
+{\bf\item R.II}
+
+\begin{itemize}
+	
+	{\bf\item Tema 1. Conceptos básicos de muestreo estadí­stico}
+	
+	\begin{itemize}
+		\item sample($x$,$n$,replace=...): generador de muestras aleatorias de un vector
+			\begin{itemize}
+			\item $x$: vector o un número natural que representa el vector 1,2,...$x$
+			\item $n$: tamaño de la muestra que deseamos
+			\item replace=TRUE: muestra con reposición, es decir, simple (m.a.s para abreviar); replace=FALSE (por defecto): muestra aleatoria sin reposición
+			\end{itemize}
+		\item set.seed({\it valor}): se iguala la semilla al valor que le entramos y permite fijar el resultado de una función aleatoria 
+			\begin{itemize}
+			\item[$\circ$] También fija los resultados de todas las instrucciones siguientes que generen vectores aleatorios
+			\end{itemize}
+		\item set.seed(NULL): para volver a reiniciar la semilla de la aleatoriedad tras haber usado set.seed()
+		\item replicate($n$,{\it instrucción}): para tomar diversas muestras aleatorias de una misma población
+			\begin{itemize}
+			\item $n$: número de repeticiones
+			\end{itemize}					 			
+	\end{itemize}		
+	
+	
+	
+
+	
+	\vspace{0.5cm}
+	{\bf\item Tema 2. Intervalos de confianza}\\
+	En primer lugar, instalamos y cargamos el paquete IntervalosMatesII.tar.gz
+	
+	\begin{itemize}
+		\item ICZ.exact($x$,sigma,$n$,conf.level=...,na.rm=...): I.C para la media de una población normal con varianza poblacional conocida 
+			\begin{itemize}
+			\item $x$: puede ser o bien un vector numérico con la muestra aleatoria simple, o bien un número que representa su media muestral
+			\item sigma: desviación tí­pica poblacional $\sigma$
+			\item $n$: tamño de la muestra. Si como primer parámetro $x$ hemos entrado un vector, no hace falta especificar este tamaño
+			\item conf.level: nivel de confianza $1-\alpha$ expresado en tanto por uno. Valor por defecto $0.95$
+			\item na.rm: su valor por defecto es FALSE. Si como primer parámetro $x$ hemos entrado un vector, hay que especificar na.rm=TRUE
+			\item[$\circ$]El resultado es un data frame con las columnas siguientes:
+				\begin{itemize}
+				\item mean: media muestral
+				\item size: tamaño de la muestra
+				\item lower and upper: extremos inferior y superior del intervalo de confianza
+				\item conf.level: nivel de confianza
+				\end{itemize}
+			\item[$\circ$]{\it variable}[1,c(3,4)]: si queremos los extremos del intervalo como data frame, siendo {\it variable} la que tiene guardada la función ICZ.exact			
+			\item[$\circ$]c({\it variable}[1,3],{\it variable}[1,4]): si queremos solo el vector con los extremos del intervalo de confianza, siendo {\it variable} la que tiene guardada la función ICZ.exact
+			\end{itemize}
+		\item NMin.mu($A$,sigma,conf.level=...): Cálculo del tamaño muestral para la media fijados la amplitud, la desviación tí­pica poblacional y el nivel de confianza
+			\begin{itemize}
+			\item conf.level: valor por defecto $0.95$
+			\end{itemize}
+		\item ICT.exact($x$,sdm,$n$,conf.level=...,na.rm=...): I.C para la media de una población normal con varianza poblacional desconocida
+			\begin{itemize}
+			\item $x$: puede ser o bien un vector numérico con la muestra aleatoria simple, o bien un número que representa su media muestral
+			\item sdm: desviación tí­pica muestral. Si como primer parámetro hemos entrado un vector, no hace falta especificar este parámetro 
+			\item $n$: tamaño de la muestra. Si como primer parámetro $x$ hemos entrado un vector, no hace falta especificar este tamaño
+			\item conf.level y na.rm tienen el mismo significado y uso que en ICZ.exact
+			\end{itemize}
+		\item ICZ.approx($x$,sdm,$n$,conf.level=...,na.rm=...): I.C para la media cuando la muestra es grande
+		\item binom.exact($x$,$n$,conf.level): I.C para la proporción poblacional
+			\begin{itemize}
+			\item[$\circ$]Hay que cargar el paquete epitools para poder usar esta función
+			\item $x$: número de éxitos
+			\item $n$: tamaño de la muestra
+			\item conf.level=$1-\alpha$. Valor por defecto 0.95 
+			\item[$\circ$]Conviene redondear a 3 cifras decimales
+			\end{itemize}
+		\item binom.wilson($x$,$n$,conf.level): Método de Wilson para calcular el intervalo de confianza para la proporción poblacional de una muestra grande ($\ge 40$)
+			\begin{itemize}
+			\item[$\circ$]Hay que cargar el paquete epitools para poder usar esta función
+			\item[$\circ$]Conviene redondear a 3 cifras decimales
+			\end{itemize}
+
+		\item binom.approx($x$,$n$,conf.level): I.C para la proporción cuando $n$ es muy grande ($n\ge 100$, $np\ge10$, $nq\ge 10$)
+			\begin{itemize}
+			\item[$\circ$]Hay que cargar el paquete epitools para poder usar esta función
+			\end{itemize}
+		\item ICZ.p($x$,$n$,conf.level=...): calcula exactamente la función anterior
+			\begin{itemize}
+			\item $x$: puede ser un vector de 0 y 1, en cuyo caso no hay que especificar su tamaño $n$
+			\item[$\circ$]Genera un mensaje de advertencia si las condiciones explicadas más arriba para poder aplicar la fórmula de Laplace no se satisfacen
+			\end{itemize}
+		\item NMin.p($A$,conf.level=...): Cálculo del tamaño muestral para una proporción fijados la amplitud y el nivel de confianza
+		\item IC.var($x$,$n$,conf.level=...,na.rm=...): I.C para la varianza de una población normal
+			\begin{itemize}
+			\item $x$: puede ser o bien un vector numérico con la muestra aleatoria simple, o bien un número que representa su varianza muestral 
+			\item $n$: tamño de la muestra. Si como primer parámetro $x$ hemos entrado un vector, no hace falta especificar este tamaño
+			\item conf.level y na.rm tienen el mismo significado y uso que en ICZ.exact
+			\end{itemize}
+	\end{itemize}
+
+
+
+
+
+	\vspace{0.5cm}
+	{\bf\item Tema 3. Contrastes de hipótesis}\\
+	En primer lugar cargamos e instalamos los paquetes TeachingDemos y pwr.
+	
+	\begin{itemize}
+		\item z.test(x,mu=...,sd=...,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item x: vector de datos
+			\item mu=$\mu _0$
+			\item sd=$\sigma$
+			\item alternative: puede tomar 3 valores: ``two.sided''(representa $H_1$: $\mu\ne\mu _0$)' less'($\mu\le\mu _0$),``greater''($\mu\ge\mu _0$). Valor por defecto ``two.sided''
+			\item conf.level=$1-\alpha$. Valor por defecto 0.95
+			\end{itemize}
+		\item t.test(x,y,mu=...,alternative=...,conf.level=...,paired=...,var.equal=...,na.omit=...)
+			\begin{itemize}
+			\item x: vector de datos
+			\item y: vector opcional; si lo entramos, R entiende que estamos haciendo un contraste de las dos medias, con hipótesis nula la igualdad de estas medias
+				\begin{itemize}
+				\item[$\circ$]Podemos sustituir los vectores $x$ e $y$ por una fórmula $variable1~variable2$ que indique que separamos la variable numérica $variable1$ en dos vectores definidos por los niveles de un factor $variable2$ de dos niveles (o de otra variable asimilable a un factor de dos niveles, como por ejemplo una variable numérica que sólo tome dos valores diferentes) 
+				\end{itemize}
+			\item mu=$\mu _0$. Solo lo tenemos que especificar si hemos entrado una sola muestra
+			\item alternative. Valor por defecto ``two.sided''
+				\begin{itemize}
+				\item[$\circ$]Si es un contraste de una muestra, igual que en z.test
+				\item[$\circ$]Si es un contraste de dos muestras, ``two.sided''(representa $H_1$: $\mu _x\ne\mu _y$),'less'($\mu _x\le\mu _y$),``greater''($\mu _x\ge\mu _y$)
+				\end{itemize}				
+			\item conf.level=$1-\alpha$. Valor por defecto 0.95
+			\item paired: sólo lo tenemos que especificar si llevamos a cabo un contraste de dos medias. En este caso, si entramos paired=TRUE, estamos diciendo que las muestras son emparejadas, mientras que si entramos paired=FALSE, estamos diciendo que las muestras son independientes. Si se trata de muestras emparejadas, los vectores x e y tienen que tener la misma longitud, naturalmente. Valor por defecto, FALSE
+				\item var.equal: sólo lo tenemos que especificar si llevamos a cabo un contraste de dos medias de poblaciones independientes, y en este caso sirve para indicar si queremos considerar las dos varianzas iguales (igualándolo a TRUE) o diferentes (igualándolo a FALSE). Valor por defecto, FALSE  
+			\item na.omit=TRUE: elimina las entradas NA de los vectores	
+			\end{itemize}
+		\item sigma.test(x,sigma=...,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item x: vector de datos
+			\item sigma=$\sigma$
+			\item alternative y conf.level: igual que en casos anteriores
+			\end{itemize}			
+		\item var.test(x,y,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item[$\circ$]Nos da el I.C para el cociente de las varianzas $\frac{\sigma_x^2}{\sigma_y^2}$
+			\end{itemize}
+		\item binom.test(x,n,p=...,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item x: número de éxitos de la muestra
+			\item n: número de intentos de la muestra
+			\item p: probabilidad de éxito
+			\end{itemize}
+		\item prop.test(x,n,p=...,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item x: número de éxitos de la muestra o vector de dos números (para realizar contrastes de dos muestras, donde estos números son los éxitos de las muestras)
+			\item n: número de intentos de la muestra o vector con dos entradas (las longitudes de ambas muestras)
+			\item p: proporción poblacional. En caso de contraste de dos muestras no hay que especificarlo
+			\end{itemize}
+		\item fisher.test(x,alternative=...,conf.level=...)
+			\begin{itemize}
+			\item x: matriz$\in M_2(\mathbb{R})$
+			\end{itemize}
+		\item mcnemar.test(x)
+			\begin{itemize}
+			\item x: matriz$\in M_2(\mathbb{R})$
+			\end{itemize}
+		\item paquete pwr: Cálculo de la potencia de un contraste
+			\begin{itemize}
+			\item pwr.t.test(n,d,sig.level=...,power=...,type=...,alternative=...): para utilizar en t-tests de una media, de dos medias emparejadas o de dos medias independientes usando muestras del mismo tamaño
+			\item pwr.t2n.test(n1,n2,d,sig.level=...,power=...,alternative=...): para utilizar en t-tests de dos medias independientes usando muestras de distinto tamaño
+			\item pwr.p.test(n,h,sig.level=...,power=...,alternative=...): para utilizar en contrastes binomiales de una proporción
+			\item pwr.2p.test(n,h,sig.level=...,power=...,alternative=...): para utilizar en contrastes binomiales de dos proporciones independientes usando que usen muestras del mismo tamaño
+			\item pwr.2p2n.test(n1,n2,h,sig.level=...,power=...,alternative=...): para utilizar en contrastes binomiales de dos proporciones independientes que usen muestras de distinto tamaño
+			\item Los parámetros son:
+				\begin{itemize}
+				\item n: tamaño de la muestra
+				\item d o h: magnitud del efecto
+				\item sig.level: nivel de significación $\alpha$
+				\item power: potencia $1-\beta$
+				\item type: tipo de contraste (``one.sample'',``two.sample'',``paired'')
+				\end{itemize}						
+			\end{itemize}
+		\item cohen.ES(test=..., size=...)\$effect.size: para recordar los valores de magnitud del efecto
+		
+	\end{itemize}
+
+
+
+
+
+	\vspace{0.5cm}
+	{\bf\item Tema 4. Estadí­stica multidimensional}
+	
+	\begin{itemize}
+		\item scale(X,center=...,scale=...): transformación lineal a una tabla de datos,  en particular de centrarla o tipificarla
+			\begin{itemize}
+			\item X: tanto matriz como data frame
+			\item center: para restar a las columnas, TRUE (o no, FALSE), el vector de las medias de $X$ .Valor por defecto, center=TRUE
+			\item scale: para dividir las columnas, TRUE (o no, FALSE), por el vector de desviaciones tí­picas muestrales 
+			\item[$\circ$] Para tipificar, no podemos hacer simplemente scale($X$), sino que hay que multiplicar el resultado por $\sqrt{\frac{n}{n-1}}$
+			\end{itemize}
+		\item attr(..., ``scaled:center'')=NULL: para eliminar el atributo
+		\item attr(..., ``scaled:scale'')=NULL: para eliminar el atributo
+		\item cov($X,Y$): covarianza muestral
+			\begin{itemize}
+			\item[$\circ$]Si $X$ es un data frame, realizamos la matriz de covarianzas muestrales del data frame
+			\item use='complete.obs': para no tener en cuenta los valores NA
+			\item use=``pairwise.complete.obs'': para no tener en cuenta los valores NA. Se eliminan de cada una de ellas sus entradas NA y aquellas en cuya fila la otra tiene un NA 
+			\end{itemize}
+		\item {\it variable}=as.matrix({\it data frame}): para pasar un data frame a matriz
+		\item cor($X,Y$): correlación de Pearson de dos vectores
+			\begin{itemize}
+			\item[$\circ$]Si $X$ es un data frame, realizamos la matriz de covarianzas muestrales del data frame
+			\item use='complete.obs': para no tener en cuenta los valores NA
+			\item use=``pairwise.complete.obs'': para no tener en cuenta los valores NA. Se eliminan de cada una de ellas sus entradas NA y aquellas en cuya fila la otra tiene un NA		
+			\end{itemize}
+		\item cov2cor($X$): aplicada a la matriz de covarianzas (muestrales o no) da la matriz de correlaciones
+		\item upper.tri($X$): produce matriz triangular superior de valores lógicos de una matriz cuadradda $X$
+		\item lower.tri($X$): produce matriz triangular inferior de valores lógicos de una matriz cuadradda $X$
+		\item $M[L]$: Si $M$ es una matriz y $L$ es una matriz de valores lógicos del mismo orden, produce el vector construido de la manera siguiente: de cada columna, se queda sólo con las entradas de $M$ cuya entrada correspondiente en $L$ es TRUE, y a continuación concatena estas columnas, de izquierda a derecha, en un vector
+		\item scatterplot3d(): para hacer diagramas de dispersión tridimensionales
+		\item plot({\it data frame}, {\it vector columnas}): para obtener las matrices formadas por los diagramas de dispersión de todos sus pares de columnas
+		\item pairs({\it data frame}, {\it vector columnas}): produce exactamente lo mismo que la instrucción anterior. Ventaja: se puede aplicar a una matriz, plot no
+		\item spm({\it data frame}, {\it vector columnas}): permite dibujar matrices de diagramas de dispersión enriquecidos con información descriptiva extra de las variables de la tabla de datos
+			\begin{itemize}
+			\item[$\circ$]Hace falta descargar el paquete car
+			\end{itemize}
+		\item hist2d(x, y, nbins=..., col=...): para dibujar histogramas bidimensionales
+			\begin{itemize}
+			\item x, y: vectores
+			\item nbins: número de clases
+			\item col: colores
+			\item[$\circ$]Hace falta el paquete gplots 
+			\end{itemize}
+		\item brewer.pal(n,{\it paleta predefinida}): para elegir esquemas de colores bien disñados
+			\begin{itemize}
+			\item n: número de colores
+			\end{itemize}
+		\item display.brewer.all(): muestra nombre y contenido de todas las paletas predefinidas	
+		\item colorRampPalette(brewer.pal(...))($m$): produce una nueva paleta de $m$ colores a partir del resultado debrewer.pal, interpolando nuevos colores
+		\item rev(colorRampPalette(brewer.pal(...))($m$)): invierte el orden de los colores
+	\end{itemize}	
+	
+
+	
+	
+			 
+	\vspace{0.5cm}
+	{\bf\item Tema 5. Bondad de ajuste}
+	
+	\begin{itemize}
+		\item fitdistr($x$,densfun='distribución',start=...): para estimar un parámetro de una distribución a partir de una muestra y además obtener el error estándar de dicha estimación
+			\begin{itemize}
+			\item[$\circ$]Esta función es del paquete MASS
+			\item[$\circ$]Esta función calcula los estimadores máximo verosí­miles de los parámetros de la mayorí­a de las familias de distribuciones
+			\item $x$: muestra que usamos para estimar los parámetros
+			\item distribución: es el nombre de la familia de distribuciones; debe entrarse entre comillas
+			\item $m$: parámetro locacional $\mu$
+			\item $s$: parámetro locacional de escala $\sigma$
+			\item[$\circ$]Si fitdistr no dispone de fórmulas cerradas para los estimadores máximo verosí­miles de los parámetros, usa un algoritmo numérico para aproximarlos que requiere de un valor inicial para arrancar. Entonces, en start se ha de especificar una list con cada parámetro a estimar igualado a un valor inicial
+			\item[$\circ$]La desviación tí­pica que nos da esta función es la 'verdadera' y no la muestral
+			\item[$\circ$]El resultado de fitdistr es una list. Por tanto, para obtener el valor estimado, añadiremos \$estimate y  para el error estándar, \$sd
+			\end{itemize}
+		\item qqplot($x,y,...$)
+			\begin{itemize}
+			\item $x,y$: dos muestras cuyos cuantiles queremos comparar
+			\item[$\circ$]Si lo que queremos es comparar una muestra contra una distribución teórica, entramos como $x$ la muestra y, como $y$, la lista de los cuantiles $k/n$ de la distribución teórica
+			\item[$\circ$]Como nos interesa comparar los QQ-puntos con la diagonal $y=x$, es conveniente añadir esta última con abline(0,1)
+			\end{itemize}
+		\item qqPlot($x$, distribution='distribución', {\it parámetros},...): produce QQ-plots de muestras contra distribuciones teóricas más informativos
+			\begin{itemize}
+			\item[$\circ$]En el paquete car
+			\item $x$: la muestra
+			\item distribución: es el nombre de la familia de distribuciones; se ha de entrar entre comillas
+			\item col.lines: para especificar el color de las lí­neas. Por defecto: rojo
+			\item[$\circ$]La lí­nea recta es la que une los puntos definidos por los cuartiles primero y tercero: se llama recta cuartil-cuartil. Un ajuste de los QQ-puntos a esta recta significa que la muestra se ajusta a la distribución teórica, pero posiblemente con parámetros diferentes a los anteriores
+			\item[$\circ$]Las curvas discontinuas abrazan una región que representa un intervalo de confianza del 95\% para el QQ-plot: si todos los puntos caen dentro de esta franja, no hay evidencia para rechazar que la muestra provenga de la distribución teórica
+			\end{itemize}
+		\item chisq.test($x,p=$...,rescale.p=...,simulate.p.value=...): para realizar un test $\chi^2$
+			\begin{itemize}
+			\item $x$: tabla o vector de frecuencias absolutas observadas de las clases en la muestra
+			\item $p$: vector de probabilidades teóricas de las clases para la distribución que queremos contrastar. Valor por defecto: la probabilidad es la misma para todas las clases. Obviamente, estas probabilidades se tienen que especificar en el mismo orden que las frecuencias de $x$ y, han de sumar 1
+			\item rescale.p: parámetro lógico que si se iguala a TRUE, indica que los valores de $p$ no son probabilidades, sino solo proporcionales a las probabilidades; esto hace que R tome como probabilidades teóricas los valores de $p$ partidos por su suma para que sumen 1. Valor por defecto: FALSE
+			\item simulate.p.value: parámetro lógico que indica a la función si debe optar por una simulación para el cálculo del p-valor del contraste. Valor por defecto: FALSE
+			\item[$\circ$]Si se especifica simulate.p.value=TRUE, R realiza una serie de replicaciones aleatorias de la situación teórica (por defecto 2000, pero su número se puede especificar mediante el parámetro B). Cuando no se satisfacen las condiciones para que $X^2$ siga aproximadamente una distribución $\chi^2$, estimar el p-valor mediante simulaciones puede ser una buena alternativa
+			\item[$\circ$]Podemos obtener el valor del estadí­stico $X^2$ con el sufijo \$statistic
+			\item[$\circ$]Podemos obtener el valor de los grados de libertado con el sufijo \$parameter
+			\item[$\circ$]Podemos obtener el p-valor con el sufijo \$p.value
+			\item[$\circ$] Si estimamos valores, el p-valor es incorrecto ya que R no lo sabe. Tendremos que calcular el p-valor a mano
+			\item[$\circ$]Si queremos realizar este test para variables continuas debemos definir los intervalos de clase en primer lugar. Podemos seguir dos estrategias razonables: reutilizar los generados por la función hist o dividir el rango de la variable en un número prefijado $K$ de intervalos de amplitud fija
+			\end{itemize}
+		\item ks.test($x,y$,{\it parámetros}): para realizar el test K-S
+			\begin{itemize}
+			\item $x$: muestra de una variable continua
+			\item $y$: tanto puede ser un segundo vector (y entonces se contrasta si ambos vectores han sido generados por la misma distribución continua) o el nombre de la función de distribución que queremos contrastar, entre comillas
+			\item parámetros: de la función de distribución si se ha especificado una
+			\end{itemize}
+		\item unique($x$): esta función aplicada a un vector $x$ nos da la lista de sus elementos sin repeticiones
+		\item lillieTest($x$): para hacer el test K-S-L
+			\begin{itemize}
+			\item[$\circ$]Del paquete nortest
+			\item[$\circ$]Tiene un inconveniente: le cuesta detectar diferencias prominentes en un extremo u otro de la distribución. Este inconveniente lo resuelve el test A-D
+			\item[$\circ$]Se comporta mal con muestras grandes. Este otro inconveniente lo resuelve el test Shapiro-Wilk
+			\item[$\circ$]Sensible a las repeticiones
+			\end{itemize}
+			\item ad.test($x$): test Anderson-Darling
+			\begin{itemize}
+			\item[$\circ$]Del paquete nortest
+			\item[$\circ$]Se comporta mal con muestras grandes. Este inconveniente lo resuelve el test Shapiro-Wilk
+			\item[$\circ$]Sensible a las repeticiones
+			\end{itemize}
+		\item shapiro.test($x$): test Shapiro-Wilk
+			\begin{itemize}
+			\item[$\circ$]Sensible a las repeticiones
+			\end{itemize}
+		\item dagoTest($x$): cuantifica lo diferentes que son la simetrí­a y la curtosis de la muestra
+			\begin{itemize}
+			\item[$\circ$]El p-valor relevante es el de 'Omnibus test'
+			\item[$\circ$]Del paquete fBasics
+			\end{itemize}
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}
+	{\bf\item Tema 6. Independencia y homogeneidad}
+	
+	\begin{itemize}
+		\item addmargins({\it tabla},margin=...,FUN=...)
+			\begin{itemize}
+			\item tabla: es una table
+			\item margin: Valor por defecto c(1,2). Es un parámetro que puede tomar los valores siguientes: 
+				\begin{itemize}
+				\item 1: si queremos una nueva fila con las marginales de cada columna
+				\item 2: si queremos una nueva columna con las marginales de cada fila
+				\item c(1,2): si queremos las marginales por filas y columnas
+				\end{itemize}
+			\item FUN: es la función que se aplica a las filas o columnas para obtener el valor marginal. Valor por defecto: suma
+			\end{itemize}
+		\item colSums({\it tabla}): Si solo nos interesa la columna de marginales
+		\item rowSums({\it tabla}): Si solo nos interesa la fila de marginales
+		\item pwr.chisq.test(N=...,df=...,sig.level=...,w=...,power=...): para calcular la potencia de un contraste $\chi^2$
+			\begin{itemize}
+			\item N: tamaño de la muestra
+			\item df: grados de libertad
+			\item sig.level: nivel de significación $\alpha$
+			\item w: magnitud del efecto $\sqrt{\chi^2/N}$, donde $\chi^2$ es el estadí­stico de contraste
+			\item power: potencia $1-\beta$
+			\item[$\circ$]Si se especifican todos estos parámetros menos 1, la función da el valor del parámetro que falta
+			\item[$\circ$]Del paquete pwr
+			\end{itemize}	
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}
+	{\bf\item Tema 7. ANOVA}\\
+	Los modelos de ANOVA en R: Sea $X$ una variable numérica y $F1$ y $F2$ dos factores de una cierta tabla de datos
+	
+	\begin{itemize}
+		\item[$\bullet$] La fórmula $X$\textasciitilde{}$F1$ se usa para indicar el ANOVA de un factor $F1$ de la variable $X$
+		\item[$\bullet$] La fórmula $X$\textasciitilde{}$F1+F2$ se usa para indicar el ANOVA de dos factores de la variable $X$, sin tener en cuenta la interacción entre los factores. Es el tipo de fórmula que se usa en los ANOVA de bloques
+		\item[$\bullet$] La fórmula $X$\textasciitilde{}$F1$\textasteriskcentered$F2$ se usa para indicar el ANOVA de dos factores de la variable $X$ teniendo en cuenta además la interacción entre esos factores, es decir, ANOVA de dos ví­as
+		\item[$\bullet$] La fórmula $X$\textasciitilde{}$F1:F2$ se usa para indicar el ANOVA de un factor que tiene como niveles los pares de niveles de $F1$ y $F2$
+	\end{itemize}
+	
+	\vspace{0.25cm}		
+	
+	{\bf Condiciones del ANOVA:}
+	
+	\begin{itemize}
+		\item[$\bullet$]La normalidad
+		\item[$\bullet$]La igualdad de varianzas
+	\end{itemize}
+	
+	\vspace{0.25cm}	
+	
+	\begin{itemize}
+		\item aov(formula,data=...): función básica de R para realizar un ANOVA
+			\begin{itemize}
+			\item formula: una fórmula que especifique un modelo de ANOVA
+			\item data: opcional; sirve para especificar, si es necesario, el data frame al que pertenecen las variables utilizadas en la fórmula 
+			\item[$\circ$]El resultado no es la tabla del ANOVA. Para obtenerla hay que aplicar summary al resultado de aov:
+				\begin{itemize}
+				\item En la primera columna, dos etiquetas: el nombre del factor y Residuals, que representa los errores o residuos del ANOVA
+				\item La segunda columna nos da los grados de libertad correspondientes al factor y a los residuos
+				\item La tercera columna, nos muestra las sumas de los cuadrados del factor
+				\item La cuarta columna contiene las medias de los cuadrados del factor
+				\item La quinta columna nos da el valor del estadí­stico de contraste
+				\item La sexta columna muestra el p-valor del contraste
+				\item La séptima indica el nivel de significación del p-valor según el código usual. A mayor número de asteriscos, más significativo es el p-valor y por lo tanto hay más evidencia para rechazar la $H_0$ de que las medias comparadas son iguales
+				\end{itemize}
+			\item[$\circ$] options(show.signif.stars=FALSE): permite eliminar los sí­mbolos que marcan los niveles de significación de los p-valores
+			\item[$\circ$]Para extraer los datos de la tabla ANOVA obtenida con la función summary(...) hay que añadir el sufijo adecuado {\it variable}[[1]]\${\it etiqueta}
+			\item[$\circ$]Siempre se ha de usar un factor (o varios) para separar la variable numérica en subpoblaciones
+			\end{itemize}
+		\item anova(lm(formula,data=...)): Es una manera alternativa de realizar un ANOVA. Con esta construcción obtenemos directamente la tabla, sin necesidad de aplicar summary
+			\begin{itemize}
+			\item[$\circ$]El resultado de anova(lm(...)) es un data frame, por lo que para extraer los valores de la tabla ANOVA que produce, podemos usar la sintaxis usual de los data frames
+			\item[$\circ$]Siempre se ha de usar un factor (o varios) para separar la variable numérica en subpoblaciones
+			\end{itemize}
+		\item interaction.plot({\it factor 1, factor 2, variable}): Gráfico de interacción entre factores
+			\begin{itemize}
+			\item[$\circ$]Si queremos cambiar la etiqueta del factor en la leyenda usaremos trace.label
+			\item[$\circ$]Si queremos reordenar los factores en dicha leyenda usamos fixed=TRUE
+			\item[$\circ$]En estos gráficos se dibuja una lí­nea quebrada para cada nivel del primer factor. Esta lí­nea une, mediante segmentos, los valores medios que toma la variable $X$ para cada nivel del segundo factor en el nivel del primer factor correspondiente. Si no hay ninguna interacción entre estos factores, las lí­neas serán paralelas. Cuanto más se alejen de ser paralelas, más evidencia de interacción habrá entre estos dos factores
+			\end{itemize}
+		\item subset({\it data frame, condición}): Define un data frame con las filas del data frame introducido como parámetro que cumplen la condición
+		\item bartlett.test({\it variable \textasciitilde{} factor}, data=...): Test de Bartlett para el contraste de igualdad de varianzas
+			\begin{itemize}
+			\item[$\circ$]En los ANOVA de dos ví­as, se ha de comprobar la igualdad de varianzas para las combinaciones de niveles de los factores. Esto se hace mediante la instrucción bartlett.test({\it variable} \textasciitilde{} interaction({\it factor1,factor2}), data=...)
+			\end{itemize}
+		\item fligner.test(): Test de Fligner-Killeen, otro test de igualdad de varianzas
+		\item leveneTest(): Test de Levene, otro test de igualdad de varianzas
+			\begin{itemize}
+			\item[$\circ$]Del paquete car
+			\item[$\circ$]No requiere que las poblaciones sean normales. Además, cuando estas son normales, el test de Bartlett es más potente
+			\end{itemize}
+		\item pairwise.t.test({\it varianza, factor}, paired=...,p.adjust,method=``...''): t-tests por parejas
+			\begin{itemize}
+			\item p.adjust.method: método de ajuste de p-valores que deseamos usar. Unas de las posibles opciones son ``holm'', ``bonferroni'',``hochberg''. Valor por defecto es el de Holm
+			\item paired: sirve para indicar si las muestras son independientes (FALSE) o emparejadas(TRUE). Valor por defecto, FALSE. Cuando el ANOVA es de bloques, las muestras son emparejadas
+			\item[$\circ$]Hochberg es el más potente que Holm, que a su vez es más potente que Bonferroni
+			\item[$\circ$]Los p-valores ya están ajustados por lo que se deben comparar directamente con el nivel de significación global $\alpha$
+			\end{itemize}
+		\item duncan.test({\it anova, factor},alpha=...,group=...)\${\it sufijo}: Test de Duncan para comparar los pares de medias
+			\begin{itemize}
+			\item anova: resultado de la función aov (sin summary) con la que hemos calculado el ANOVA de partida
+			\item factor: es el factor del ANOVA y se ha de entrar entrecomillado y con el mismo nombre que se ha usado en la fórmula del aov
+			\item alpha: para entrar el nivel de significación $\alpha$. Valor por defecto, $\alpha=0.05$
+			\item group: puede valer TRUE o FALSE, y hace que el resultado se presente de forma diferente
+			\item sufijo: tiene que ser groups si group=TRUE y comparison si group=FALSE
+			\item[$\circ$]Del paquete agricolae
+			\end{itemize}
+		\item TukeyJSD({\it anova}): método HSD de Tukey. Es el método más preciso de comparación de parejas de medias para contrastes ANOVA de un factor en los que cada nivel tenga el mismo número de observaciones
+					
+	
+	\end{itemize}
+	
+	
+	
+	
+	
+	\vspace{0.5cm}
+	{\bf\item Tema 8. Regresión lineal simple y múltiple}
+	
+	\begin{itemize}
+		\item lm(formula,data=...,subset=...): Para realizar la regresión lineal
+			\begin{itemize}
+			\item formula: describe la variable dependiente y las variables independientes del modelo. En primer lugar se indica la variable dependiente que necesariamente tiene que ser una variable numérica. A continuación, tras \textasciitilde{} se escriben las variables independientes separadas por el sí­mbolo $+$. Es decir, formula=$y$\textasciitilde{}$x_1+...+x_k$
+			\item data: Opcional, sirve para especificar el {\it data frame} al que pertenecen las variables utilizadas
+			\item subset: Opcional, sirve para especificar que la regresión solo tenga en cuenta un subconjunto de observaciones
+			\item[$\circ$]Si disponemos de muchas variables independientes y se quiere obtener la recta de regresión considerándolas todas hay que introducir la instrucción lm($y$\textasciitilde{}.,data={\it data frame})
+			\end{itemize}
+		\item identify($x,y$): para obtener a qué observación corresponde un punto
+			\begin{itemize}
+			\item $x,y$: coordenadas del punto
+			\end{itemize}
+		\item summary(lm(...)): función que nos da más información sobre la recta de regresión calculada
+			\begin{itemize}
+			\item Residuals: se proporciona un resumen de los residuos o errores $e_i$ del modelo
+			\item Coefficients: en la columna Estimate se dan los coeficientes de cada variable de la recta de regresión, junto a sus respectivas desviaciones estándar en la columna Std. Error. Las columnas t value y Pr($>|t|$) proporcional el valor del estadí­stico y el p-valor del contraste $H_0: \beta_i=0$ y $H_1: \beta_i\ne0$
+			\item Residual standard error: corresponde a la raí­z del valor estimado de la varianza común de los residuos, junto con los grados de libertad $n-k-1$
+			\item Multiple R-squared: valor del coeficiente de determinación. Cuanto su valor sea más cercano a 1, mejor aproxima la ecuación de regresión el conjunto de puntos
+			\item Adjusted R-squared: valor del coeficiente de determinación ajustado. Cuanto su valor sea más cercano a 1, mejor aproxima la ecuación de regresión el conjunto de puntos
+			\item En la última fila se indican el valor del estadí­stico $F$, los grados de libertad $n-k-1$ y el p-valor en este orden del siguiente contraste ANOVA:
+			$$\begin{cases}
+			H_0: & \beta_1=...=\beta_k=0 $$\\$$
+			H_1:  & \text{Existe al menos un }\beta_i\ne 0
+			\end{cases}$$
+			\end{itemize}
+		\item update($x$,formula,subset=...): Permite recalcular la recta de regresión a partir de una recta de regresión anterior
+			\begin{itemize}
+			\item $x$: model generado por una función como lm
+			\item formula: indica un cambio en la fórmula especificada para obtener el nuevo modelo. Su estructura es . \textasciitilde{}.-$X_i$ donde se indica que se utilice la misma fórmula considerada en el modelo $x$ pero ahora sin tener en cuenta la variable independiente $X_i$
+			\item subset: opcional y con el mismo significado que la función lm 
+			\item[$\circ$]summary(update(...)): la salida es similar a la de lm
+			\end{itemize}
+		\item confint(object, parm, level=0.95): cálculo de I.C. para los coeficientes $\beta_i$
+			\begin{itemize}
+			\item object: modelo de regresión lineal, es decir, la salida de la función lm
+			\item parm: indica para qué parámetros se tienen que calcular los I.C. Tanto se puede introducir un vector de números como un vector de nombres de parámetros. Por defecto, se calculan los intervalos para todos los parámetros
+			\item level: nivel de confianza del intervalo. Valor por defecto: 95\%
+			\item[$\circ$]En la salida de la función, se indican el extremo inferior y superior del I.C mediante el nivel del cuantil utilizado para su cálculo para el parámetro correspondiente a cada variable independiente, indicada en la primera columna, más el término independiente
+			\item[$\circ$]Una de las utilidades básicas de los intervalos de confianza es determinar si la variable correspondiente aporta información al modelo o no. Este hecho se puede determinar comprobando si 0 pertenece al intervalo de confianza respectivo
+			\item[$\circ$]El hecho de que 0 pertenezca al I.C. de $\beta_0$ no afecta a la validez del modelo
+			\end{itemize}
+		\item predict(object, newdata, interval=c('none','confidence','prediction'), level=0.95): función que resultará útil para el cálculo de I.C. para $\mu_{Y|_{x_1,...,x_k}}$ y para $y_0=y(x_1,...,x_k)$
+			\begin{itemize}
+			\item object: modelo de regresión lineal, es decir, la salida de la función lm
+			\item newdata: corresponde a un {\it data frame} donde la función recaba los valores de las variables con las que se predice. Podemos indicar un único valor para una única variable $x$ como data.frame(x=x0), varios valores para una única variable $x$ como data.frame(x=seq(x0,x1,p)) o valorespara diversas variables $x_1,...,x_k$ como data.frame(x1=x10, x2=x20, ..., xk=xk0).
+			\item interval: es un parámetro con tres posibles valores. Si se indica 'none', simplemente se calcula el valor predicho por la recta de regresión para los valores indicados en newdata. Si se indica 'confidence' se determina el I.C. para el valor esperado $\mu_{Y|_{x_{10},...,x_{k0}}}$ donde $x_10,...,x_k0$ son los valores asignados a las variables independientes en newdata. Finalmente, si se indica 'prediction', se calcula el I.C. para el valor $y_0=y(x_1,...,x_k)$
+			\item level: vuelve a indicar el nivel de confianza del intervalo
+			\item[$\circ$]La salida de la finción predict es un vector con tres componentes. En fit encontramos el valor predicho por la recta de regresión para los valores establecidos en newdata y, en los otros dos, los lí­mites inferior y superior del I.C.
+			\end{itemize}
+		\item extractAIC($x,k$): calcula las medidas AIC y BIC para comparar modelos de regresión múltiple con un número distinto de variables
+			\begin{itemize}
+			\item $x$: modelo lineal obtenido mediante la función lm
+			\item $k$: peso que afecta al número de variables del modelo. Valor por defecto: $k=2$ (correspondiendo al criterio AIC)
+			\item[$\circ$]Si se indica $k$=log($n$) donde $n$ es el número de observaciones, extractAIC calcula la medida BIC.
+			\item[$\circ$]Como menor sea el valor de AIC o BIC, mejor es el modelo. Los valores de estas medidas se obtienen a partir de extractAIC($x,k$)[2]
+			\end{itemize}
+		\item step($x,k$): para comparar modelos de regresión múltiple con un número distinto de variables
+			\begin{itemize}
+			\item $x$: modelo lineal obtenido mediante la función lm
+			\item $k$: peso que afecta al número de variables del modelo. Valor por defecto: $k=2$ (correspondiendo al criterio AIC). 
+			\item[$\circ$]Si se indica $k$=log($n$) donde $n$ es el número de observaciones, step ejecuta en base a BIC.
+			\item[$\circ$]Esta función realiza un proceso secuencial de eliminación o adición de variables consiguiendo en cada paso del algoritmo un modelo con un valor de AIC (o BIC) menor al modelo obtenido en el paso anterior
+			\end{itemize}
+	\end{itemize}
+	
+	
+	
+	
+	
+\end{itemize}
+
+
+
+
+
+\vspace{0.5cm}
+{\bf\item Extra}
+
+\begin{itemize}
+	
+	{\bf\item Clustering}
+	
+	\begin{itemize}
+		\item kmeans($x$,centres,iter.max=...)
+			\begin{itemize}
+			\item x: matriz con los puntos $x_i$ como filas
+			\item centres: matriz con los centros $c_i$ de partida como filas, o el número $k$
+			\item iter.max: número máximo de iteraciones
+			\item[$\circ$]Si queremos que ejecute el algoritmo de Lloyd hemos de introducir como parámetro algorithm='Lloyd'
+			\item[$\circ$]Componentes de la list kmeans:
+				\begin{itemize}
+				\item cluster: asignaciones de elementos a clusters
+				\item centers: los centros de los clusters
+				\item totss: suma de los cuadrados de las distancias de los puntos al punto medio de todos estos puntos
+				\item withinss: vector de las sumas, para cada cluster, de los cuadrados de las distancias de sus puntos al punto medio de su cluster
+				\item tot.withinss: usma de withinss, $SS_c$
+				\item betweenss: diferencia totss-tot.withinss. Es la suma ponderada por el número de objetos del cluster correspondiente, de los cuadrados de las distancias de los centros de los clusters al punto medio de todos los puntos
+				\item[$\sim$]A nosotros nos interesa betweenss/totss que mide la fracción de la variabilidad de los datos que explican los clusters. Cuanto más grande mejor
+				\end{itemize}
+			\end{itemize}					
+	\item hclust($d$,method=`` ... ''): para calcular un clustering jerárquico aglomerativo
+		\begin{itemize}
+		\item d: matriz de distancias
+		\item method: sirve para especificar el método: 'single', 'complete', 'average', 'ward', 'median', 'centroid',...
+		\item[$\circ$]{\it variable}\$merge: muestra la formación de clusters
+		\item[$\circ$]{\it variable}\$height: muestra las distancias mí­nimas		
+		\end{itemize}
+	\item plot(clust,labels=...,hang=...,...): para representar un clustering por medio de un dendograma
+		\begin{itemize}
+		\item clust: es un hclust
+		\item labels: sirve para poner nombre a los objetos
+		\item hang: sirve para especificar la posición de las etiquetas
+		\item[$\circ$]Le podemos añadir otros parámetros usuales de los plots
+		\end{itemize}
+	\item dist($x$,method=`` ... ''): para calcular la distancia entre las filas de una matriz
+		\begin{itemize}
+		\item $x$: matriz de datos
+		\item method: sirve para especificar el método: 'euclidean', 'manhattan',...
+		\end{itemize}
+	
+	\end{itemize}
+	
+\end{itemize}
+
+
+\end{enumerate}
+\end{document}

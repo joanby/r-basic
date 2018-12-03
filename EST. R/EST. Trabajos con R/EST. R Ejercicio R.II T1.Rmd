@@ -1,0 +1,63 @@
+---
+title: "Ejercicio R.II Tema 1"
+author: "Maria Santos"
+date: "9 de marzo de 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Enunciado
+Consideremos la tabla de datos datacrab.txt, que encontraréis en el espacio virtual de la asignatura y que contiene información sobre una muestra de cangrejos. Cargadla en un data frame.
+
+(a) Definid una función de parámetros s, n, m que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las n muestras aleatorias simples de m (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número s. Tenéis que usar set.seed y replicate para definir la función. 
+
+(b) Aplicadla a n = 50, m = 30 y tomando como s el número formado por las 5 primeras cifras de vuestro NIF o pasaporte. 
+
+(c) ¿Qué valores predice el Teorema Central del Límite que se deberían obtener? ¿Habéis obtenido resultados similares a los predichos por dicho teorema?
+
+
+## Solución
+(a)
+
+```{r (a), echo=TRUE}
+
+F=function(s,n,m){
+  cangrejo=read.table("datacrab.txt", header=TRUE)
+  set.seed(s)
+  popete=replicate(n,sample(cangrejo$weight,m,replace=TRUE))
+  medias=mean(popete)
+  desvtip=sd(popete)
+  banana=data.frame(medias,desvtip)
+  banana
+}
+```
+\vspace{0.5cm}
+
+(b)
+```{r (b), echo=TRUE, results='hold'}
+b=F(43192,50,30)
+b
+```
+\vspace{0.5cm}
+
+
+(c)
+```{r (c), echo=FALSE, results='hide'}
+cangrejo=read.table("datacrab.txt", header=TRUE)
+mu=round(mean(cangrejo$weight),2)
+sigma=round(sd(cangrejo$weight),2)
+
+```
+Según el teorema central del límite:
+
+
+media=$`r mu`$
+
+
+desviación típica=$`r sigma`$
+
+\vspace{0.2cm}
+Por tanto, sí puedo decir que he obtenido resultados similares 

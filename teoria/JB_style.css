@@ -1,0 +1,27 @@
+.aligncenter {
+    text-align: center;
+}
+
+.exercise {
+  background-color: green;
+  color: white;
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+
+.example{
+  color: white;
+  background-color: blue;
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+
+.important{
+  color: red;
+  display:inline;
+}
+
+.definition{
+  color: blue;
+  display:inline;
+}
