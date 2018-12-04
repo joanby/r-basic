@@ -1,14 +1,13 @@
 ---
-title: Presentación R. Tema 4
-author: Juan Gabriel Gomila Salas
-date: Software y problemas I - Curso 18-19
+title: Tema 4 - Estadística Descriptiva
+author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
+    widescreen: true
     css: JB_style.css
+    logo: Imgs/LogoCurso.png
     fig_height: 4
     fig_width: 8
-    logo: Imgs/Pok.png
-    widescreen: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -147,6 +146,8 @@ En este caso $l_1 = \text{Hombre}$ y $l_2 = \text{Mujer}$,  $n = 20$ (el número
 </div>
 
 ## Estudio de Frecuencias{.example}
+
+**Ejemplo**
 
 La tabla siguiente resume las frecuencias absolutas y relativas de la variable cualitativa del ejemplo anterior, con las notaciones que acabamos de introducir.
 
@@ -524,21 +525,20 @@ La manera más sencilla de dibujar un diagrama de barras de las frecuencias abso
 
 ## Diagrama de barras
 
-<div class="aligncenter">
+
 ```{r}
 barplot(table(Sexo), col=c("lightblue","pink"), main="Diagrama de barras de 
 las frecuencias absolutas\n de la variable \"Sexo\"")
 ```
-</div>
+
 
 ## Diagrama de barras
-<div class="aligncenter">
 
 ```{r}
 barplot(prop.table(table(Respuestas)), main="Diagrama de barras de frecuencias 
         relativas\n de la variable \"Respuestas\"")
 ```
-</div>
+
 
 ## Diagrama de barras - Parámetros
 
@@ -579,9 +579,8 @@ barplot(table(Sexo,Respuestas), beside=TRUE, legend.text=TRUE)
 
 ```{r}
 
-barplot(table(Respuestas,Sexo), beside=TRUE, 
-        names=c("Men", "Women"), col=c("yellow","lightblue"), 
-        legend.text=c("No","Yes"))
+barplot(table(Respuestas,Sexo), beside=TRUE, names=c("Men", "Women"), 
+        col=c("yellow","lightblue"), legend.text=c("No","Yes"))
 ```
 
 ## El diagrama circular
@@ -639,8 +638,8 @@ Finalmente, cada sector rectangular se vuelve a dividir a lo ancho en regiones d
 ## Los gráficos de mosaico
 
 ```{r}
-plot(HairEyeColor, main="Gráfico de mosaico de la tabla
-HairEyeColor", col=c("pink","lightblue"))
+plot(HairEyeColor, main="Gráfico de mosaico de la tabla HairEyeColor", 
+     col=c("pink","lightblue"))
 ```
 
 ## Muchos más gráficos
@@ -771,7 +770,7 @@ par(mfrow = c(1,1))
 
 Vemos que entre las personas de ojos azules, los cabellos rubios son los más frecuentes, y que entre las personas castañas el color de ojos más frecuente es el pardo.
 
-## Un ejercicio para vosotros{.exercise}
+## Un ejercicio para vosotros{.important}
 
 Instalad y cargad el paquete MASS. Encontraréis una tabla de datos llamada birthwt sobre factores que pueden incidir en el peso de los niños al nacer. Con str y head, explorad la estructura, y con help, mirad el significado de cada variable.
 
