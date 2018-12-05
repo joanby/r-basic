@@ -1,5 +1,5 @@
 ---
-title: Tema 3 - Data frames
+title: Tema 3 - Estructuras de datos
 author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
@@ -12,218 +12,443 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-##Data frames
+# Vectores
 
-<l class="definition">Data frame.</l> Un data frame es una tabla de doble entrada, formada por variables en las columnas y observaciones de estas variables en las filas, de manera que cada fila contiene los valores de las variables para un mismo caso o un mismo individuo.
+## Tipos de datos en R
 
-- `data()`: para abrir una ventana con la lista de los objetos de datos a los que tenemos acceso en la sesión actual de R (los que lleva la instalación básica de R y los que aportan los paquetes que tengamos cargados.
+- `logical`: lógicos (```TRUE``` o ```FALSE```)
+- `integer`: números enteros, $\mathbb Z$
+- `numeric`: números reales, $\mathbb R$
+- `complex`: números complejos, $\mathbb C$
+- `character`: palabras
 
-    - Si entramos `data(package=.packages(all.available = TRUE))` obtendremos la lista de todos los objetos de datos a los que tenemos acceso, incluyendo los de los paquetes que tengamos instalados, pero que no estén cargados en la sesión actual.
-    
 
-## Obteniendo información del data frame
+## Vectores - Básico
 
-- `head(d.f,n)`: para mostrar las $n$ primeras filas del data frame. Por defecto se muestran las 6 primeras filas
-- `tail(d.f,n)`: para mostrar las $n$ últimas filas del data frame. Por defecto semuestran las 6 últimas
-- `str(d.f)`: para conocer la estructura global de un data frame
-- `names(d.f)`:  para producir un vector con los nombres de las columnas
+- ```c()```: para definir un vector
+- ```scan()```: para definir un vector
+- ```fix(x)```: para modificar visualmente el vector $x$
+- ```rep(a,b)```: para definir un vector constante que contiene el dato $a$ repetido $b$ veces
+
+```{r}
+c(1,2,3)
+rep("Mates",7)
+```
+
+
+## Vectores - Función scan() {.example}
+
+**Ejemplo**
+
+Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función scan:
+<div class = "aligncenter">
+![](Imgs/scan.png)
+</div>
+
+
+## Ejercicio - Vectores {.important}
+
+1. Repite tu año de nacimiento 10 veces
+<!--rep(miAño,10)-->
+2. Crea el vector que tenga como entradas $16, 0, 1, 20, 1, 7, 88, 5, 1, 9$, llámalo vec y modifica la cuarta entrada con la función fix()
+<!--vec = c(16,0,1,20,1,7,88,5,1,9), fix(vec)-->
+<!--vec = scan(), 16 0 1 20 1 7 88 5 1 9, fix(vec)-->
+
+EXTRA
+
+3. Cread una función que os devuelva la parte real, la imaginaria, el módulo, el argumento y el conjugado de un número, mostrando solo 2 cifras significativas
+<!--info = function(x){print(c(Re(x),Im(x),Mod(x),Arg(x),Conj(x)),2)}-->
+4. Cread una función que resuelva ecuaciones de segundo grado (de la forma $Ax^2+Bx+C=0$). No importa, por ahora, que tengáis en cuenta las que no tienen solución
+<!--solu2 = function(A,B,C){c((-B+sqrt(B^2-4*A*C)/2),(-B-sqrt(B^2-4*A*C)/2))}-->
+
+RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
+
+
+## Vectores - Secuencias
+
+- ``seq(a,b,by=d)``: para generar una [progresión aritmética](https://es.wikipedia.org/wiki/Progresión_aritmética) de diferencia $d$ que empieza en $a$ hasta llegar a $b$
+- ```seq(a,b, length.out=n)```: define progresión aritmética de longitud $n$ que va de $a$ a $b$ con diferencia $d$. Por tanto $d=(b-a)/(n-1)$
+- ```seq(a,by=d, length.out=n)```: define la progresión aritmética de longitud $n$ y diferencia $d$ que empieza en $a$
+- ```a:b```: define la secuencia de números **enteros** ($\mathbb{Z}$) consecutivos entre dos números $a$ y $b$
+
+
+## Ejercicio - Vectores {.important}
+
+1. Imprimid los números del 1 al 20
+<!--1:20 -->
+2. Imprimid los 20 primeros números pares
+<!--seq(2,by=2, length.out=20)-->
+3. Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
+<!--print(seq(17,98, length.out=30),4)-->
+
+
+## Vectores - Funciones
+
+- ```sapply(nombre_de_vector,FUN=nombre_de_función)```: para aplicar dicha función a todos los elementos del vector
+- ```sqrt(x)```: calcula un nuevo vector con las raíces cuadradas de cada uno de los elementos del vector $x$
+- ```length(x)```: calcula la longitud del vector $x$
+- ```max(x)```: calcula el máximo del vector $x$
+- ```min(x)```: calcula el mínimo del vector $x$
+- ```sum(x)```: calcula la suma de las entradas del vector $x$
+- ```prod(x)```: calcula el producto de las entradas del vector $x$
+
+
+## Vectores - Funciones
+
+- ```mean(x)```: calcula la media aritmética de las entradas del vector $x$
+- ```diff(x)```: calcula el vector formado por las diferencias sucesivas entre entradas del vector original $x$
+- ```cumsum(x)```: calcula el vector formado por las sumas acumuladas de las entradas del vector original $x$
+	- Permite definir sucesiones descritas mediante sumatorios
+	- Cada entrada de ``cumsum(x)`` es la suma de las entradas de $x$ hasta su posición
+	
+
+## Vectores - Funciones
+
+```{r}
+v = c(1,2,3,4,5,6)
+sapply(v, FUN = cuadrado)
+mean(v)
+cumsum(v)
+```
+
+
+## Vectores - Orden
+
+- ```sort(x)```: ordena el vector en orden natural de los objetos que lo forman: el orden numérico creciente, orden alfabético...
+- ```rev(x)```: invierte el orden de los elementos del vector $x$
+
+```{r}
+v = c(1,7,5,2,4,6,3)
+sort(v)
+rev(v)
+```
+
+
+## Subvectores
+
+- ```vector[i]```: da la $i$-ésima entrada del vector
+
+	- Los índices en R empiezan en 1
+	- ```vector[length(vector)]```: nos da la última entrada del vector
+	- ```vector[length(vector)-i]```: nos da la $(i+1)$-ésima entrada del vector
+	- ```vector[-i]```: si $i$ es un número, este subvector está formado por todas las entradas del vector original menos la entrada $i$-ésima. Si $i$ resulta ser un vector, entonces es un vector de índices y crea un nuevo vector con las entradas del vector original,cuyos índices pertenecen a $i$
+	- ```vector[-i]```: si $i$ es un vector (de índices), entonces este es el complementario de vector[$i$]
+	
+
+## Subvectores
+
+- También podemos utilizar operadores lógicos:
+	
+	- ```==```: =
+	- ```!=```: $\neq$
+	- ```>=```: $\ge$  
+	- ```<=```: $\le$
+	- ```<```: $<$
+	- ```>```: $>$
+	- ```!```: NO lógico
+	- ```&```: Y lógico
+	- ```|```: O lógico
+	
+	
+## Subvectores
+
+```{r}
+v = c(14,5,6,19,32,0,8)
+v[2]
+v[-c(3,5)]
+v[v != 19 & v>15]
+```
+	
+	
+## Condicionales
+
+- ```which(x cumple condición)```: para obtener los índices de las entradas del vector $x$ que satisfacen la condición dada
+- ```which.min(x)```: nos da la primera posición en la que el vector $x$ toma su valor mínimo
+- ```which(x==min(x))```: da todas las posiciones en las que el vector $x$ toma sus valores mínimos
+- ```which.max(x)```: nos da la primera posición en la que el vector $x$ toma su valor máximo
+- ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
+
+
+## Ejercicio - Subvectores {.important} 
+
+1. Tomando el vector vec = c(0,9,98,2,6,7,5,19,88,20,16,0), dad 3 opciones diferentes para calcular el subvector c(9,19,20,16)
+<!--vec[c(2,8,10,11)]-->
+<!--vec[vec == 9 | vec == 19 | vec == 20 | vec == 16]-->
+<!--vec[vec >= 9 & vec <= 20]-->
+2. Tomando el vector vec definido en el apartado anterior, buscad 
+    - qué entradas son pares
+<!--which(vec%%2==0)-->
+    - qué entradas no son pares y mayores que 20
+<!--which(vec%%2!=0 & vec>20)-->
+    - dónde toma vec su valor máximo
+<!--which.max(vec)-->
+    - dónde toma vec sus valores mínimos
+<!--which(vec==min(vec))-->
+
+
+
+# Factores
+
+## Factor
+
+<l class="definition">Factor</l>: es como un vector, pero con una estructura interna más rica que permite usarlo para clasificar observaciones
+
+- `levels`: atributo del factor. Cada elemento del factor es igual a un nivel. Los niveles clasifican las entradas del factor. Se ordenan por orden alfabético
+- Para definir un factor, primero hemos de definir un vector y trasformarlo por medio de una de las funciones `factor()` o `as.factor()`.
+
+## La función factor()
+
+- `factor(vector,levels=...)`: define un factor a partir del vector y dispone de algunos parámetros que permiten modificar el factor que se crea:
   
+    - `levels`: permite especificar los niveles e incluso añadir niveles que no aparecen en el vector
+    - `labels`: permite cambiar los nombres de los niveles
     
-## Obteniendo información del data frame 
+-  `levels(factor)`: para obtener los niveles del factor
+
+
+## Factor ordenado
+
+<l class="definition">Factor ordenado.</l> Es un factor donde los niveles siguen un orden
+
+- `ordered(vector,levels=...)`: función que define un factor ordenado y tiene los mismos parámetros que factor
+
+
+## Factores y facotres ordenados
 
 ```{r}
-str(Orange)
+fac = factor(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
+fac
+facOrd = ordered(c(1,1,1,2,2,3,2,4,1,3,3,4,2,3,4,4), 
+       levels = c(1,2,3,4), labels = c("Sus","Apr","Not","Exc"))
+facOrd
 ```
 
 
-## Obteniendo información del data frame 
+# Lists
+
+## List
+
+<l class="definition">List.</l> Lista formada por diferentes objetos, no necesariamente del mismo tipo, cada cual con un nombre interno
+
+- `list(...)`: función que crea una list
+    - Para obtener una componente concreta usamos la instrucción `list$componente`
+    - También podemos indicar el objeto por su posición usando dobles corchetes: `list[[i]]`. Lo que obtendremos es una list formada por esa única componente, no el objeto que forma la componente
+
+
+## Obtener información de una list
+
+- `str(list)`: para conocer la estructura interna de una list
+- `names(list)`: para saber los nombres de la list
+
+
+## Obtener información de una list
 
 ```{r}
-head(Orange,4)
-tail(Orange,4)
+x = c(1,-2,3,4,-5,6,7,-8,-9,0)
+miLista = list(nombre = "X", vector = x, media = mean(x), sumas = cumsum(x))
+miLista
 ```
 
 
-## Obteniendo información del data frame
-
-- `rownames(d.f)`: para producir un vector con los identificadores de las filas
-    - R entiende siempre que estos identificadores son palabras, aunque sean números, de ahí que los imprima entre comillas
-- `colnames(d.f)`: para producir un vector con los identificadores de las columnas
-- `dimnames(d.f)`: para producir una list formada por dos vectores (el de los identificadores de las filas y el de los nombres de las columnas)
-- `nrow(d.f)`: para consultar el número de filas de un data frame
-- `ncol(d.f)`: para consultar el número de columnas de un data frame
-- `dim(d.f)`: para producir un vector con el número de filas y el de columnas
-
-
-## Obteniendo información del data frame
-
-- `d.f$nombre_variable`: para obtener una columna concreta de un dataframe
-    - El resultado será un vector o un factor, según cómo esté definida la columna dentro del data frame
-    - Las variables de un data frame son internas, no están definidas en el entorno global de trabajo de R
-    
-
-## Sub-data frames
-
-- `d.f[n,m]`: para extraer “trozos” del data frame por filas y columnas (funciona exactamente igual que en matrices) donde $n$ y $m$ pueden definirse como:
-    - intervalos
-    - condiciones
-    - números naturales
-    - no poner nada
-    - Si sólo queremos definir la subtabla quedándonos con algunas variables, basta aplicar el nombre del data frame al vector de variables 
-    - Estas construcciones se pueden usar también para reordenar las filas o columnas
-    
-    
-## Sub-data frames
+## Obtener información de una list
 
 ```{r}
-dataOrange = Orange
-dataOrange[c(10:12),]
-dataOrange[c(2,17),c(1,3)]
-```
-    
-    
-## Sub-data frames
-
-```{r}
-dataOrange[2,3]
-dataOrange[dataOrange$circumference<=50,]
-```
-
-## Leyendo tablas de datos
-
-- `read.table()`: para definir un data frame a partir de una tabla de datos contenida en un fichero
-    - Este fichero puede estar guardado en nuestro ordenador o bien podemos conocer su url. Sea cual sea el caso, se aplica la función al nombre del fichero o a la dirección entre comillas
-    
-Aquí tenéis una [lista de data frames](http://www.public.iastate.edu/~maitra/stat501/datasets.html) para practicar
-    
-## Parámetros de read.table()
-
-- `header = TRUE`: para indicar si la tabla que importamos tiene una primera fila con los nombres de las columnas. El valor por defecto es FALSE
-- `col.names = c(...)`: para especificar el nombre de las columnas. No olvidéis que cada nombre debe ir entre comillas
-- `sep`: para especificar las separaciones entre columnas en el fichero (si no es un espacio en blanco). Si es así, hay que introducir el parámetro pertinente entre comillas
-- `dec`: para especificar el signo que separa la parte entera de la decimal (si no es un punto. Si es así, hay que introducir el parámetro pertinente entre comillas
-
-## Parámetros de read.table()
-
-```{r}
-students = read.table("http://www.public.iastate.edu/~maitra/stat501/datasets/morel.dat", 
-  col.names = c("technicalDisciplines","aptitude","maths", "language",
-                "generalKnowledge"))
-head(students,8)
+str(miLista)
+names(miLista)
 ```
 
 
-## Más parámetros de read.table()
-
-- `stringsAsFactors`: para prohibir la transformación de las columnas de palabras en factores debemos usar `stringsAsFactors=FALSE` (ya que por defecto, R realiza dicha transformación) 
-
-- Para importar un fichero de una página web segura (cuyo url empiece con https),
-no podemos entrar directamente la dirección en `read.table()`; una solución es instalar y cargar el paquete RCurl y entonces usar la instrucción `read.table (textConnection(getURL(“url ”)),...)`.
 
 
-## Leyendo diferentes tipos de fichero
+# Matrices
 
-- `read.csv()`: para importar ficheros en formato CSV
-- `read.xls()` o `read.xlsx()`: para importar hojas de cálculo tipo Excel u OpenOffice en formato XLS o XLSX, respectivamente. Se necesita el paquete xlsx
-- `read.mtb()`: para importar tablas de datos Minitab. Se necesita el paquete foreign
-- `read.spss()`: para importar tablas de datos SPSS. Se necesita el paquete foreign
+## Matrices - Cómo definirlas
 
-## Exportando datos a ficheros
+- `matrix(vector, nrow=n, byrow=valor_lógico)`: para definir una matriz de $n$ filas formada por las entradas del vector
+    - `nrow`: número de filas
+    - `byrow`: si se iguala a TRUE, la matriz se construye por filas; si se iguala a FALSE (valor por defecto), se construye por columnas.
+    -` ncol`: número de columnas (puede usarse en lugar de nrow)
+    - R muestra las matrices indicando como [$i,$] la fila $i$-ésima y [$,j$] la columna $j$-ésima
+	- Todas las entradas de una matriz han de ser del mismo tipo de datos
+	
 
-- `write.table(df, file = "")`: para exportar un data frame a un fichero
-    - `file = ""`: es donde indicaremos el nombre que queremos darle al fichero
-    - Podemos usar el parámetro `sep` para indicar el símbolo de separación de columnas. Siempre entre comillas
-    - También podemos utilizar el parámetro `dec` para indicar la separación entre la parte entera y decimal de los datos
+## Ejercicio - Matrices {.important}
+
+- ¿Cómo definirías una matriz constante? Es decir, ¿cómo definirías una matriz $A$ tal que $\forall\  i=1,...,n; j = 1,...,m$, $a_{i,j}=k$ siendo $k\in\mathbb{R}$? Como R no admite incógnitas, prueba para el caso específico $n = 3, m = 5, k = 0$
+<!-- matrix(0, nrow = 3, ncol = 5)-->
+
+- Con el vector vec = (1,2,3,4,5,6,7,8,9,10,11,12) crea la matriz 
+$$\begin{pmatrix}
+1 & 4 & 7 & 10\\
+2 & 5 & 8 & 11\\
+3 & 6 & 9 & 12
+\end{pmatrix}$$
+<!--matrix(vec, ncol = 4)-->
+
+
+## Matrices - Cómo construirlas
+
+- `rbind(vector1, vector2, ...)`: construye la matriz de filas vector1,  vector2,...
+- `cbind(vector1, vector2, ...)`: construye la matriz de columnas vector1,  vector2,...
+    - Los vectores han de tener la misma longitud
+    - También sirve para añadir columnas (filas) a una matriz o concatenar por columnas (filas) matrices con el mismo número de filas (columnas)
+- `diag(vector)`: para construir una matriz diagonal con un vector dado
+    - Si aplicamos diag a un número $n$, produce una matriz identidad de orden $n$
+
+
+
+## Submatrices
+
+- `matriz[i,j]`: indica la entrada ($i,j$) de la matriz, siendo $i,j\in\mathbb{N}$. Si $i$ y $j$ son vectores de índices, estaremos definiendo la submatriz con las filas pertenecientes al vector $i$ y columnas pertenecientes al vector $j$
+- `matriz[i,]`: indica la fila $i$-ésima de la matriz, siendo $i\in\mathbb{N}$
+- `matriz[,j]`: indica la columna $j$-ésima de la siendo $j\in\mathbb{N}$
+    - Si $i$ ($j$) es un vector de índices, estaremos definiendo la submatriz con las filas (columnas) pertenecientes al vector $i$ ($j$)
     
-## Exportando datos a ficheros
+    
+## Matrices - Funciones
+
+- `diag(matriz)`: para obtener la diagonal de la matriz
+- `nrow(matriz)`: nos devuelve el número de filas de la matriz
+- `ncol(matriz)`: nos devuelve el número de columnas de la matriz
+- `dim(matriz)`: nos devuelve las dimensiones de la matriz
+- `sum(matriz)`: obtenemos la suma de todas las entradas de la matriz
+- `prod(matriz)`: obtenemos el producto de todas las entradas de la matriz
+- `mean(matriz)`: obtenemos la media aritmética de todas las entradas de la matriz
+
+
+## Matrices - Funciones 
+
+- `colSums(matriz)`: obtenemos las sumas por columnas de la matriz
+- `rowSums(matriz)`: obtenemos las sumas por filas de la matriz
+- `colMeans(matriz)`: obtenemos las medias aritméticas por columnas de la matriz
+- `rowMeans(matriz)`: obtenemos las medias aritméticas por filas de la matriz
+
+
+## Matrices - Funciones
+
+<div class="example">
+Dada la matriz $$A = \begin{pmatrix}
+1 & 4 & 7\\
+2 & 5 & 8\\
+3 & 6 & 9
+\end{pmatrix}$$
+</div>
 
 ```{r}
-write.table(students, file = "StudentsData", dec = ".")
-students2 = read.table("studentsData", header = TRUE)
-str(students2)
+A = matrix(c(1,2,3,4,5,6,7,8,9), ncol = 3)
+dim(A)
+diag(A)
 ```
 
-## Construyendo data frames
 
-- `data.frame(vector_1,...,vector_n)`: para construir un data frame a partir de vectores introducidos en el orden en el que queremos disponer las columnas de la tabla
-    - R considera del mismo tipo de datos todas las entradas de una columna de un data frame
-    - Las variables tomarán los nombres de los vectores. Estos nombres se pueden especificar en el argumento de `data.frame` entrando una construcción de la forma `nombre_variable = vector`
-    - `rownames`: para especificar los identificadores de las filas
-    - También en esta función podemos hacer uso del parámetro `stringsAsFactors` para evitar la transformación de las columnas de tipo palabra en factores
+## Matrices - Función apply()
 
-
-## Construyendo data frames
+- `apply(matriz, MARGIN=..., FUN=función)`: para aplicar otras funciones a las filas o las columnas de una matriz
+    - `MARGIN`: ha de ser 1 si queremos aplicar la función por filas; 2 si queremos aplicarla por columnas; o c(1,2) si la queremos aplicar a cada entrada
+ 
+ 
+## Ejemplo - Función apply()
 
 ```{r}
-Algebra = c(1,2,0,5,4,6,7,5,5,8)
-Analysis = c(3,3,2,7,9,5,6,8,5,6)
-Statistics = c(4,5,4,8,8,9,6,7,9,10)
-grades = data.frame(Alg = Algebra, An = Analysis, Stat = Statistics)
-str(grades)
+apply(A, MARGIN = c(1,2), FUN = cuadrado)
+apply(A, MARGIN = 1, FUN = sum)
+apply(A, MARGIN = 2, FUN = sum)
 ```
 
-## Construyendo data frames
 
-- `fix(d.f)`: para crear / editar un data frame con el editor de datos
-- `names(d.f)`: para cambiar los nombres de las variables
-- `rownames(d.f)`: para modificar los identificadores de las filas. Han de ser todos diferentes
-- `dimnames(d.f)=list(vec_nom_fil, vec_nom_col)`: para modificar el nombre de las filas y de las columnas simultáneamente
+## Matrices - Operaciones
 
-## Construyendo data frames
+- `t(matriz)`: para obtener la transpuesta de la matriz
+- `+`: para sumar matrices
+- `*`: para el producto de un escalar por una matriz
+- `%*%`: para multiplicar matrices
+- `mtx.exp(matriz,n)`: para elevar la matriz a $n$
+    - Del paquete `Biodem`
+		- No calcula las potencias exactas, las aproxima
+- `%%`: para elevar matrices
+    - Del paquete `expm`
+		- No calcula las potencias exactas, las aproxima
 
-- `d.f[núm_fila,] = c(...)`: para añadir una fila a un data frame
-    - Las filas que añadimos de esta manera son vectores, y por tanto sus entradas han de ser todas del mismo tipo
-    - Si no añadimos las filas inmediatamente siguientes a la última fila del data frame, los valores entre su última fila y las que añadimos quedarán no definidos y aparecerán como NA
-    - Para evitar el problema anterior, vale más usar la función `rbind()` para concatenar el data frame con la nueva fila
+
+## Matrices - Operaciones {.exercise}
+
+**Ejercicio**
+
+Observad qué ocurre si, siendo $A = \begin{pmatrix}
+2 & 0 & 2\\
+1 & 2 & 3\\
+0 & 1 & 3
+\end{pmatrix}$ y $B = \begin{pmatrix}
+3 & 2 & 1\\
+1 & 0 & 0\\
+1 & 1 & 1
+\end{pmatrix}$, realizamos las operaciones $A*B$, $A^2$ y $B^3$
+
+
+## Matrices - Operaciones			
+			
+- `det(matriz)`: para calcular el determinante de la matriz
+- `qr(matriz)$rank`: para calcular el rango de la matriz
+- `solve(matriz)`: para calcular la inversa de una matriz invertible
+    - También sirve para resolver sistemas de ecuaciones lineales. Para ello introducimos `solve(matriz,b)`, donde $b$ es el vector de términos independientes
     
-## Construyendo data frames
+    
+## Matrices - Valores y vectores propios
+
+[Vector propio y valor propio](https://es.wikipedia.org/wiki/Vector_propio_y_valor_propio)
+
+- `eigen(matriz)`: para calcular los valores (vaps) y vectores propios (veps)
+    - `eigen(matriz)$values`: nos da el vector con los vaps de la matriz en orden decreciente de su valor absoluto y repetidos tantas veces como su multiplicidad algebraica.
+    - `eigen(matriz)$vectors`: nos da una matriz cuyas columnas son los veps de la matriz.
+    
+## Matrices - Valores y vectores propios
 
 ```{r}
-Calculus = c(5,4,6,2,1,0,7,8,9,6)
-grades2 = cbind(grades, Calculus)
-head(grades2)
+M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+eigen(M)
 ```
 
-## Construyendo data frames
 
-- `d.f$new_var`: para añadir una nueva variable al data frame
-    - Podemos concatenar columnas con un data frame existente mediante la función `cbind()`. De este modo se puede añadir la columna directamente sin necesidad de convertirla antes a data frame
-    - Esta nueva variable ha de tener la misma longitud que el resto de columnas del data frame original. Si no, se añadirán valores NA a las variables del data frame original o a la nueva variable hasta completar la misma longitud
+## Matrices - Valores y vectores propios {.exercise}
+
+**Ejercicio**
+
+Comprobad, con los datos del ejemplo anterior, que si $P$ es la matriz de vectores propios de $M$ en columna y $D$ la matriz diagonal cuyas entradas son los valores propios de $M$, entoces se cumple la siguiente igualdad llamada **descomposición canónica**: $$M = P\cdot D\cdot P^{-1}$$
+
+
+## Matrices - Valores y vectores propios
+
+Si hay algún vap con multiplicidad algebraica mayor que 1 (es decir, que aparece más de una vez), la función `eigen()` da tantos valores de este vap como su multiplicidad algebraica indica. Además, en este caso, R intenta que los veps asociados a cada uno de estos vaps sean [linealmente independientes](https://es.wikipedia.org/wiki/Dependencia_e_independencia_lineal). Por tanto, cuando como resultado obtenemos veps repetidos asociados a un vap de multiplicidad algebraica mayor que 1, es porque para este vap no existen tantos veps linealmente independientes como su multiplicidad algebraica y, por consiguiente, la matriz no es [diagonalizable](https://es.wikipedia.org/wiki/Matriz_diagonalizable).
+
+
+## Matrices - Valores y vectores propios
+
+```{r}
+M = matrix(c(0,1,0,-7,3,-1,16,-3,4), nrow=3, byrow=TRUE)
+eigen(M)
+```
     
-## Cambiando los tipos de datos
 
-- `as.character`: para transformar todos los datos de un objeto en palabras
-- `as.integer`: para transformar todos los datos de un objeto a números enteros
-- `as.numeric`: para transformar todos los datos de un objeto a números reales
+# Ejercicios de Repaso Tema 1
 
-## Más sobre sub-data frames
+## {.important}
 
-- `droplevels(d.f)`: para borrar los niveles sobrantes de todos los factores, ya que las columnas que son factores heredan en los sub-data frames todos los niveles del factor original, aunque no aparezcan en el trozo que hemos extraído
+- Crea un vector llamado "Harry" formado por la sucesión de números consecutivos entre el -10 y 27. Pedidle a R que os devuelva el elemento de índice 7. Escribid el resultado
+<!--Harry=-10:27; Harry[7]; -4-->
+- Dad el máximo de la sucesión $(100\cdot 2n -7\cdot 3n)_{0,...,200}$
+<!--n=0:200; max(100*2^n-7*3^n); 1499 -->
+- Cread la sucesión de números consecutivos entre 0 y 40. A continuación, cread la lista $(3\cdot 5n - 1)_{0,...,40}$. Ponedle como nombre `x`. Ahora, dad la sublista de los elementos que son estrictamente mayores que 3.5.
+<!--n=0:40; x=3*5^n-1; which(x>3.5) -->
 
-- `select(d.f, parámetros)`: para especificar que queremos extraer de un data frame
-    - `starts_with("x")`: extrae del data frame las variables cuyo nombre empieza con la palabra "x"
-    - `ends_with("x")`: extrae del data frame las variables cuyo nombre termina con la palabra "x"
-    - `contains("x")`: extrae del data frame las variables cuyo nombre contiene la palabra "x"
-    - Se necesita el paquete `dplyr` o mejor aún `tidyverse`
 
-## Más sobre sub-data frames
+## {.important}
 
-- `subset(d.f,condición,select = columnas)`: para extraer del data frame las filas que cumplen la condición y las columnas especificadas
-    - Si queremos todas las filas, no hay que especificar ninguna condición
-    - Si queremos todas las columnas, no hace especificar el parámetro `select`
-    - Las variables en la condición se especifican con su nombre, sin añadir antes el nombre del data frame
-    
-## Aplicando funciones a data frames
-
-- `sapply(d.f, función)`: para aplicar una función a todas las columnas de un data frame en un solo paso
-    - `na.rm=TRUE`: para evitar que el valor que devuelva la función para las columnas que contengan algún NA sea NA
-
-- `aggregate(variables~factors,data=d.f,FUN=función)`: para aplicar una función a variables de un data frame clasificadas por los niveles de un, o más de un, factor
-    - Si queremos aplicar la función a más de una variable, tenemos que agruparlas con un `cbind`
-    - Si queremos separar las variables mediante más de un factor, tenemos que agruparlos con signos $+$
-    
-## Variables globales
-
-- `attach(d.f)`: para hacer que R entienda sus variables como globales y que las podamos usar por su nombre, sin necesidad de añadir delante el nombre del data frame y el símbolo $
-    - Si ya hubiera existido una variable definida con el mismo nombre que una variable del data frame al que aplicamos `attach`, hubiéramos obtenido un mensaje de error al ejecutar esta función y no se hubiera reescrito la variable global original
-- `detach(d.f)`: para devolver la situación original, eliminando del entorno global las variables del data frame
+- Dad la entrada (2,2) de $A\cdot (A+A )\cdot A$, on $A = \begin{pmatrix} 1 & 3\\ 2 & 4\end{pmatrix}$
+<!-- 240 -->
+- Dad los valores propios de la matriz $B = \begin{pmatrix} 2 & 4 & -6\\ 0 & 0 & 3\\ 0 & -2 & 5\end{pmatrix}$
+<!-- 3 2 2-->
+- Dad, redondeando a 3 cifras decimales, los vectores propios de la matriz $C = \begin{pmatrix} -48 & 35 & -12\\ -134 & 95 & -32\\ -194 & 133 & -44\end{pmatrix}$
+<!-- 0.371 0.743 0.557-->
+- Dad el rango de la matriz $D = \begin{pmatrix} -2 & -8 & -2 & 3\\ -3 & -6 & -1 & 2\\ -9 & -22 & -3 & 7\\ -18 & -44 & -8 & 15\end{pmatrix}$
+<!-- 3-->
