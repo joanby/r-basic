@@ -1,0 +1,15 @@
+---
+title: Tema 2 - Documentación con Rmarkdown
+author: Juan Gabriel Gomila & María Santos
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: JB_style.css
+    logo: Imgs/LogoCurso.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+#Markdown

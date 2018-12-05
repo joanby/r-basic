@@ -72,13 +72,15 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 - ```a:b```: define la secuencia de números **enteros** ($\mathbb{Z}$) consecutivos entre dos números $a$ y $b$
 
 
-## Ejercicio - Vectores {.important}
+## Vectores - Secuencias {.exercise}
 
-1. Imprimid los números del 1 al 20
+**Ejercicio**
+
+- Imprimid los números del 1 al 20
 <!--1:20 -->
-2. Imprimid los 20 primeros números pares
+- Imprimid los 20 primeros números pares
 <!--seq(2,by=2, length.out=20)-->
-3. Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
+- Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
 <!--print(seq(17,98, length.out=30),4)-->
 
 
@@ -105,6 +107,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 ## Vectores - Funciones
 
 ```{r}
+cuadrado = function(x){x^2}
 v = c(1,2,3,4,5,6)
 sapply(v, FUN = cuadrado)
 mean(v)
@@ -430,16 +433,7 @@ eigen(M)
 ```
     
 
-# Ejercicios de Repaso Tema 1
 
-## {.important}
-
-- Crea un vector llamado "Harry" formado por la sucesión de números consecutivos entre el -10 y 27. Pedidle a R que os devuelva el elemento de índice 7. Escribid el resultado
-<!--Harry=-10:27; Harry[7]; -4-->
-- Dad el máximo de la sucesión $(100\cdot 2n -7\cdot 3n)_{0,...,200}$
-<!--n=0:200; max(100*2^n-7*3^n); 1499 -->
-- Cread la sucesión de números consecutivos entre 0 y 40. A continuación, cread la lista $(3\cdot 5n - 1)_{0,...,40}$. Ponedle como nombre `x`. Ahora, dad la sublista de los elementos que son estrictamente mayores que 3.5.
-<!--n=0:40; x=3*5^n-1; which(x>3.5) -->
 
 
 ## {.important}
