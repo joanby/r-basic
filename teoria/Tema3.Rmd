@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 - `character`: palabras
 
 
-## Vectores - Básico
+## Básico
 
 - ```c()```: para definir un vector
 - ```scan()```: para definir un vector
@@ -36,7 +36,7 @@ rep("Mates",7)
 ```
 
 
-## Vectores - Función scan() {.example}
+## Función scan() {.example}
 
 **Ejemplo**
 
@@ -46,7 +46,10 @@ Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función
 </div>
 
 
-## Ejercicio - Vectores {.important}
+## Básico {.exercise}
+
+
+**Ejercicio**
 
 1. Repite tu año de nacimiento 10 veces
 <!--rep(miAño,10)-->
@@ -54,17 +57,13 @@ Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función
 <!--vec = c(16,0,1,20,1,7,88,5,1,9), fix(vec)-->
 <!--vec = scan(), 16 0 1 20 1 7 88 5 1 9, fix(vec)-->
 
-EXTRA
-
-3. Cread una función que os devuelva la parte real, la imaginaria, el módulo, el argumento y el conjugado de un número, mostrando solo 2 cifras significativas
-<!--info = function(x){print(c(Re(x),Im(x),Mod(x),Arg(x),Conj(x)),2)}-->
-4. Cread una función que resuelva ecuaciones de segundo grado (de la forma $Ax^2+Bx+C=0$). No importa, por ahora, que tengáis en cuenta las que no tienen solución
-<!--solu2 = function(A,B,C){c((-B+sqrt(B^2-4*A*C)/2),(-B-sqrt(B^2-4*A*C)/2))}-->
-
-RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
 
 
-## Vectores - Secuencias
+
+## Secuencias
 
 - ``seq(a,b,by=d)``: para generar una [progresión aritmética](https://es.wikipedia.org/wiki/Progresión_aritmética) de diferencia $d$ que empieza en $a$ hasta llegar a $b$
 - ```seq(a,b, length.out=n)```: define progresión aritmética de longitud $n$ que va de $a$ a $b$ con diferencia $d$. Por tanto $d=(b-a)/(n-1)$
@@ -72,7 +71,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 - ```a:b```: define la secuencia de números **enteros** ($\mathbb{Z}$) consecutivos entre dos números $a$ y $b$
 
 
-## Vectores - Secuencias {.exercise}
+## Secuencias {.exercise}
 
 **Ejercicio**
 
@@ -83,8 +82,12 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 - Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
 <!--print(seq(17,98, length.out=30),4)-->
 
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
 
-## Vectores - Funciones
+
+## Funciones
 
 - ```sapply(nombre_de_vector,FUN=nombre_de_función)```: para aplicar dicha función a todos los elementos del vector
 - ```sqrt(x)```: calcula un nuevo vector con las raíces cuadradas de cada uno de los elementos del vector $x$
@@ -95,7 +98,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 - ```prod(x)```: calcula el producto de las entradas del vector $x$
 
 
-## Vectores - Funciones
+## Funciones
 
 - ```mean(x)```: calcula la media aritmética de las entradas del vector $x$
 - ```diff(x)```: calcula el vector formado por las diferencias sucesivas entre entradas del vector original $x$
@@ -104,7 +107,7 @@ RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
 	- Cada entrada de ``cumsum(x)`` es la suma de las entradas de $x$ hasta su posición
 	
 
-## Vectores - Funciones
+## Funciones
 
 ```{r}
 cuadrado = function(x){x^2}
@@ -115,7 +118,7 @@ cumsum(v)
 ```
 
 
-## Vectores - Orden
+## Orden
 
 - ```sort(x)```: ordena el vector en orden natural de los objetos que lo forman: el orden numérico creciente, orden alfabético...
 - ```rev(x)```: invierte el orden de los elementos del vector $x$
@@ -170,24 +173,6 @@ v[v != 19 & v>15]
 - ```which(x==min(x))```: da todas las posiciones en las que el vector $x$ toma sus valores mínimos
 - ```which.max(x)```: nos da la primera posición en la que el vector $x$ toma su valor máximo
 - ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
-
-
-## Ejercicio - Subvectores {.important} 
-
-1. Tomando el vector vec = c(0,9,98,2,6,7,5,19,88,20,16,0), dad 3 opciones diferentes para calcular el subvector c(9,19,20,16)
-<!--vec[c(2,8,10,11)]-->
-<!--vec[vec == 9 | vec == 19 | vec == 20 | vec == 16]-->
-<!--vec[vec >= 9 & vec <= 20]-->
-2. Tomando el vector vec definido en el apartado anterior, buscad 
-    - qué entradas son pares
-<!--which(vec%%2==0)-->
-    - qué entradas no son pares y mayores que 20
-<!--which(vec%%2!=0 & vec>20)-->
-    - dónde toma vec su valor máximo
-<!--which.max(vec)-->
-    - dónde toma vec sus valores mínimos
-<!--which(vec==min(vec))-->
-
 
 
 # Factores
@@ -266,7 +251,7 @@ names(miLista)
 
 # Matrices
 
-## Matrices - Cómo definirlas
+## Cómo definirlas
 
 - `matrix(vector, nrow=n, byrow=valor_lógico)`: para definir una matriz de $n$ filas formada por las entradas del vector
     - `nrow`: número de filas
@@ -276,7 +261,9 @@ names(miLista)
 	- Todas las entradas de una matriz han de ser del mismo tipo de datos
 	
 
-## Ejercicio - Matrices {.important}
+## Cómo definirlas{.exercise}
+
+**Ejercicio**
 
 - ¿Cómo definirías una matriz constante? Es decir, ¿cómo definirías una matriz $A$ tal que $\forall\  i=1,...,n; j = 1,...,m$, $a_{i,j}=k$ siendo $k\in\mathbb{R}$? Como R no admite incógnitas, prueba para el caso específico $n = 3, m = 5, k = 0$
 <!-- matrix(0, nrow = 3, ncol = 5)-->
@@ -290,7 +277,7 @@ $$\begin{pmatrix}
 <!--matrix(vec, ncol = 4)-->
 
 
-## Matrices - Cómo construirlas
+## Cómo construirlas
 
 - `rbind(vector1, vector2, ...)`: construye la matriz de filas vector1,  vector2,...
 - `cbind(vector1, vector2, ...)`: construye la matriz de columnas vector1,  vector2,...
@@ -309,7 +296,7 @@ $$\begin{pmatrix}
     - Si $i$ ($j$) es un vector de índices, estaremos definiendo la submatriz con las filas (columnas) pertenecientes al vector $i$ ($j$)
     
     
-## Matrices - Funciones
+## Funciones
 
 - `diag(matriz)`: para obtener la diagonal de la matriz
 - `nrow(matriz)`: nos devuelve el número de filas de la matriz
@@ -320,7 +307,7 @@ $$\begin{pmatrix}
 - `mean(matriz)`: obtenemos la media aritmética de todas las entradas de la matriz
 
 
-## Matrices - Funciones 
+## Funciones 
 
 - `colSums(matriz)`: obtenemos las sumas por columnas de la matriz
 - `rowSums(matriz)`: obtenemos las sumas por filas de la matriz
@@ -328,9 +315,11 @@ $$\begin{pmatrix}
 - `rowMeans(matriz)`: obtenemos las medias aritméticas por filas de la matriz
 
 
-## Matrices - Funciones
+## Funciones
 
 <div class="example">
+**Ejemplo**
+
 Dada la matriz $$A = \begin{pmatrix}
 1 & 4 & 7\\
 2 & 5 & 8\\
@@ -345,13 +334,13 @@ diag(A)
 ```
 
 
-## Matrices - Función apply()
+## Función apply()
 
 - `apply(matriz, MARGIN=..., FUN=función)`: para aplicar otras funciones a las filas o las columnas de una matriz
     - `MARGIN`: ha de ser 1 si queremos aplicar la función por filas; 2 si queremos aplicarla por columnas; o c(1,2) si la queremos aplicar a cada entrada
  
  
-## Ejemplo - Función apply()
+## Función apply()
 
 ```{r}
 apply(A, MARGIN = c(1,2), FUN = cuadrado)
@@ -360,7 +349,7 @@ apply(A, MARGIN = 2, FUN = sum)
 ```
 
 
-## Matrices - Operaciones
+## Operaciones
 
 - `t(matriz)`: para obtener la transpuesta de la matriz
 - `+`: para sumar matrices
@@ -374,7 +363,7 @@ apply(A, MARGIN = 2, FUN = sum)
 		- No calcula las potencias exactas, las aproxima
 
 
-## Matrices - Operaciones {.exercise}
+## Operaciones {.exercise}
 
 **Ejercicio**
 
@@ -388,8 +377,12 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
 1 & 1 & 1
 \end{pmatrix}$, realizamos las operaciones $A*B$, $A^2$ y $B^3$
 
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
 
-## Matrices - Operaciones			
+
+## Operaciones			
 			
 - `det(matriz)`: para calcular el determinante de la matriz
 - `qr(matriz)$rank`: para calcular el rango de la matriz
@@ -397,7 +390,7 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
     - También sirve para resolver sistemas de ecuaciones lineales. Para ello introducimos `solve(matriz,b)`, donde $b$ es el vector de términos independientes
     
     
-## Matrices - Valores y vectores propios
+## Valores y vectores propios
 
 [Vector propio y valor propio](https://es.wikipedia.org/wiki/Vector_propio_y_valor_propio)
 
@@ -405,7 +398,7 @@ Observad qué ocurre si, siendo $A = \begin{pmatrix}
     - `eigen(matriz)$values`: nos da el vector con los vaps de la matriz en orden decreciente de su valor absoluto y repetidos tantas veces como su multiplicidad algebraica.
     - `eigen(matriz)$vectors`: nos da una matriz cuyas columnas son los veps de la matriz.
     
-## Matrices - Valores y vectores propios
+## Valores y vectores propios
 
 ```{r}
 M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
@@ -413,19 +406,23 @@ eigen(M)
 ```
 
 
-## Matrices - Valores y vectores propios {.exercise}
+## Valores y vectores propios {.exercise}
 
 **Ejercicio**
 
 Comprobad, con los datos del ejemplo anterior, que si $P$ es la matriz de vectores propios de $M$ en columna y $D$ la matriz diagonal cuyas entradas son los valores propios de $M$, entoces se cumple la siguiente igualdad llamada **descomposición canónica**: $$M = P\cdot D\cdot P^{-1}$$
 
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
 
-## Matrices - Valores y vectores propios
+
+## Valores y vectores propios
 
 Si hay algún vap con multiplicidad algebraica mayor que 1 (es decir, que aparece más de una vez), la función `eigen()` da tantos valores de este vap como su multiplicidad algebraica indica. Además, en este caso, R intenta que los veps asociados a cada uno de estos vaps sean [linealmente independientes](https://es.wikipedia.org/wiki/Dependencia_e_independencia_lineal). Por tanto, cuando como resultado obtenemos veps repetidos asociados a un vap de multiplicidad algebraica mayor que 1, es porque para este vap no existen tantos veps linealmente independientes como su multiplicidad algebraica y, por consiguiente, la matriz no es [diagonalizable](https://es.wikipedia.org/wiki/Matriz_diagonalizable).
 
 
-## Matrices - Valores y vectores propios
+## Valores y vectores propios
 
 ```{r}
 M = matrix(c(0,1,0,-7,3,-1,16,-3,4), nrow=3, byrow=TRUE)
