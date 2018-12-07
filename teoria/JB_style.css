@@ -41,3 +41,13 @@
   font-size: 0.75em;
 }
 
+
+
+.r-code{
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 2px solid gray;
+  background-color: #F2F2F2;
+  font-size: 0.7em
+}

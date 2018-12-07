@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = NA)
+knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 ```
 
@@ -376,10 +376,238 @@ La función `text{}` nos permite introducir texto en fórmulas matemáticas.
 
 Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente
 
+<div class = "r-code">
+`r ''` ```{r}
 
-```{r}
+` x = 1+1`
+
+` x`
+
+`r ''` ```</div>
+
+que resulta en
+
+```{r, eval = FALSE, comment = NA}
 x = 1+1
 x
 ```
 
+## Chunks de R
 
+Hay diversas opciones de crear un bloque de código de R:
+
+- Ir al menú desplegable de "Chunks" y seleccionar el de R
+- Introducir manualmente
+- Alt + Command + I (para Mac) o Alt + Command + I (para Windows)
+
+## Chunks de R
+
+A los chunks se les puede poner etiqueta, para así localizarlos de manera más fácil. Por ejemplo
+
+<div class = "r-code">
+`r ''` ```{r PrimerChunk}
+
+` x = 1+2+3`
+
+`r ''` ```</div>
+
+\n
+
+
+<div class = "r-code">
+`r ''` ```{r SegundoChunk}
+
+` y = 1*2*3`
+
+`r ''` ```</div>
+
+
+
+
+## Parámetros de los chunks
+
+La parte entre llaves también puede contener diversos parámetros, separados por comas entre ellos y separados de la etiqueta (o de r, si hemos decidido no poner ninguna).
+
+Estos parámetros determinan el comportamiento del bloque al compilar el documento pulsando el botón `Knit` situado en la barra superior del área de trabajo.
+
+## Parámetros de los chunks
+
+Código |  Significado                                  
+--------------------|--------------------
+`echo` | Si lo igualamos a `TRUE`, que es el valor por defecto, estaremos diciendo que queremos que se muestre el código fuente del chunk. En cambio, igualado a `FALSE`, no se mostrará
+`eval` | Si lo igualamos a `TRUE`, que es el valor por defecto, estaremos diciendo que queremos que se evalúe el código. En cambio, igualado a `FALSE`, no se evaluará
+`message` | Nos permite indicar si queremos que se muestren los mensajes que R produce al ejecutar código. Igualado a `TRUE` se muestran, igualado a `FALSE` no
+`warning` | Nos permite indicar si queremos que se muestren los mensajes de advertencia que producen algunas funciones al ejecutarse. Igualado a `TRUE` se muestran, igualado a `FALSE` no
+
+## Parámetros de los chunks
+
+<div class = "r-code">
+`r ''` ```{r, echo=FALSE}
+
+` sec = 10:20`
+
+`sec`
+
+`cumsum(sec)`
+
+`r ''` ```</div>
+
+\n
+
+No aparece
+
+## Parámetros de los chunks
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, message = TRUE}
+
+`library(car)`
+
+`head(cars,3)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo = TRUE, message = TRUE}
+library(car)
+head(cars,3)
+```
+
+## Parámetros de los chunks
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, message = FALSE, comment = NA}
+
+`library(car)`
+
+`head(cars,3)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+library(car)
+head(cars,3)
+```
+
+Fijaos que `comment=NA` evita que aparezcan los `##`
+
+## Parámetros de los chunks
+
+Significado |  Código  |  Resultado                                
+--------------------|--------------------|--------------------
+`results` | `markup` | Valor por defecto. Nos muestra los resultados en el documento final línea a línea, encabezados por `##`
+`results` | `hide` | No se nos muestra el resultado en el documento final
+`results` | `asis` | Nos devuelve los resultados línea a línea de manera literal en el documento final y el programa con el que se abre el documento final los interpreta como texto y formatea adecuadamente
+`results` | `hold` | Miestra todos los resultados al final del bloque de código
+ 
+## Parámetros de los chunks
+
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, results = "markup"}
+
+` sec = 10:20`
+
+`sec`
+
+`cumsum(sec)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo=TRUE, results='markup'}
+sec = 10:20
+sec
+cumsum(sec)
+```
+
+## Parámetros de los chunks
+
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, results = "hide"}
+
+` sec = 10:20`
+
+`sec`
+
+`cumsum(sec)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo=TRUE, results='hide'}
+sec = 10:20
+sec
+cumsum(sec)
+```
+
+## Parámetros de los chunks
+
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, results = "asis"}
+
+` sec = 10:20`
+
+`sec`
+
+`cumsum(sec)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo=TRUE, results='asis'}
+sec = 10:20
+sec
+cumsum(sec)
+```
+
+## Parámetros de los chunks
+
+
+<div class = "r-code">
+`r ''` ```{r, echo=TRUE, results = "hold"}
+
+` sec = 10:20`
+
+`sec`
+
+`cumsum(sec)`
+
+`r ''` ```</div>
+
+\n
+
+```{r, echo=TRUE, results='hold'}
+sec = 10:20
+sec
+cumsum(sec)
+```
+
+# Los chunks en modo línea
+
+## Los chunks en modo línea
+
+Con lo explicado hasta ahora, solamente hemos generado resultados en la línea aparte
+
+Para introducir una parte de código dentro de un párrafo y que se ejecute al comilarse el documento mostrando así el resultado final, hay que hacerlo utilizando `` `r "\u0060r ...\u0060"` ``
+
+<div class = "example">
+**Ejemplo**
+
+La raíz cuadrada de 64 es `` `r "\u0060r sqrt(64)\u0060"` `` o, lo que viene siendo lo mismo, $\sqrt{64}=$`` `r "\u0060r sqrt(64)\u0060"` ``
+
+La raíz quinta de 32 es `r sqrt(64)` o, lo que viene siendo lo mismo, $\sqrt{64}=$`r sqrt(32)`
+</div>
+
+
+
+
+ 

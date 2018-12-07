@@ -96,7 +96,7 @@
     }
   </style>
 
-  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
+  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A%2Er%2Dcode%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20gray%3B%0Abackground%2Dcolor%3A%20%23F2F2F2%3B%0Afont%2Dsize%3A%200%2E7em%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -1026,10 +1026,283 @@ x &amp; \text{si }x\ge 0
 
 <p>Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente</p>
 
+<div class="r-code">
+<p>```{r}</p>
+
+<p><code>x = 1+1</code></p>
+
+<p><code>x</code></p>
+
+```</div>
+
+<p>que resulta en</p>
+
 <pre class = 'prettyprint lang-r'>x = 1+1
 x</pre>
 
-<pre >[1] 2</pre></article></slide>
+</article></slide><slide class=""><hgroup><h2>Chunks de R</h2></hgroup><article  id="chunks-de-r-1">
+
+<p>Hay diversas opciones de crear un bloque de código de R:</p>
+
+<ul>
+<li>Ir al menú desplegable de &quot;Chunks&quot; y seleccionar el de R</li>
+<li>Introducir manualmente</li>
+<li>Alt + Command + I (para Mac) o Alt + Command + I (para Windows)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Chunks de R</h2></hgroup><article  id="chunks-de-r-2">
+
+<p>A los chunks se les puede poner etiqueta, para así localizarlos de manera más fácil. Por ejemplo</p>
+
+<div class="r-code">
+<p>```{r PrimerChunk}</p>
+
+<p><code>x = 1+2+3</code></p>
+
+```</div>
+
+<p></p>
+
+<div class="r-code">
+<p>```{r SegundoChunk}</p>
+
+<p><code>y = 1*2*3</code></p>
+
+```</div>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks">
+
+<p>La parte entre llaves también puede contener diversos parámetros, separados por comas entre ellos y separados de la etiqueta (o de r, si hemos decidido no poner ninguna).</p>
+
+<p>Estos parámetros determinan el comportamiento del bloque al compilar el documento pulsando el botón <code>Knit</code> situado en la barra superior del área de trabajo.</p>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-1">
+
+<table class = 'rmdtable'>
+<col width="29%" />
+<col width="29%" />
+<tr class="header">
+<th align="left">Código</th>
+<th align="left">Significado</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>echo</code></td>
+<td align="left">Si lo igualamos a <code>TRUE</code>, que es el valor por defecto, estaremos diciendo que queremos que se muestre el código fuente del chunk. En cambio, igualado a <code>FALSE</code>, no se mostrará</td>
+</tr>
+<tr class="even">
+<td align="left"><code>eval</code></td>
+<td align="left">Si lo igualamos a <code>TRUE</code>, que es el valor por defecto, estaremos diciendo que queremos que se evalúe el código. En cambio, igualado a <code>FALSE</code>, no se evaluará</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>message</code></td>
+<td align="left">Nos permite indicar si queremos que se muestren los mensajes que R produce al ejecutar código. Igualado a <code>TRUE</code> se muestran, igualado a <code>FALSE</code> no</td>
+</tr>
+<tr class="even">
+<td align="left"><code>warning</code></td>
+<td align="left">Nos permite indicar si queremos que se muestren los mensajes de advertencia que producen algunas funciones al ejecutarse. Igualado a <code>TRUE</code> se muestran, igualado a <code>FALSE</code> no</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-2">
+
+<div class="r-code">
+<p>```{r, echo=FALSE}</p>
+
+<p><code>sec = 10:20</code></p>
+
+<p><code>sec</code></p>
+
+<p><code>cumsum(sec)</code></p>
+
+```</div>
+
+<p></p>
+
+<p>No aparece</p>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-3">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, message = TRUE}</p>
+
+<p><code>library(car)</code></p>
+
+<p><code>head(cars,3)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>library(car)</pre>
+
+<pre >## Loading required package: carData</pre>
+
+<pre class = 'prettyprint lang-r'>head(cars,3)</pre>
+
+<pre >##   speed dist
+## 1     4    2
+## 2     4   10
+## 3     7    4</pre>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-4">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, message = FALSE, comment = NA}</p>
+
+<p><code>library(car)</code></p>
+
+<p><code>head(cars,3)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>library(car)
+head(cars,3)</pre>
+
+<pre >  speed dist
+1     4    2
+2     4   10
+3     7    4</pre>
+
+<p>Fijaos que <code>comment=NA</code> evita que aparezcan los <code>##</code></p>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-5">
+
+<table class = 'rmdtable'>
+<col width="29%" />
+<col width="29%" />
+<col width="29%" />
+<tr class="header">
+<th align="left">Significado</th>
+<th align="left">Código</th>
+<th align="left">Resultado</th>
+</tr>
+<tr class="odd">
+<td align="left"><code>results</code></td>
+<td align="left"><code>markup</code></td>
+<td align="left">Valor por defecto. Nos muestra los resultados en el documento final línea a línea, encabezados por <code>##</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>results</code></td>
+<td align="left"><code>hide</code></td>
+<td align="left">No se nos muestra el resultado en el documento final</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>results</code></td>
+<td align="left"><code>asis</code></td>
+<td align="left">Nos devuelve los resultados línea a línea de manera literal en el documento final y el programa con el que se abre el documento final los interpreta como texto y formatea adecuadamente</td>
+</tr>
+<tr class="even">
+<td align="left"><code>results</code></td>
+<td align="left"><code>hold</code></td>
+<td align="left">Miestra todos los resultados al final del bloque de código</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-6">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, results = &quot;markup&quot;}</p>
+
+<p><code>sec = 10:20</code></p>
+
+<p><code>sec</code></p>
+
+<p><code>cumsum(sec)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>sec = 10:20
+sec</pre>
+
+<pre >##  [1] 10 11 12 13 14 15 16 17 18 19 20</pre>
+
+<pre class = 'prettyprint lang-r'>cumsum(sec)</pre>
+
+<pre >##  [1]  10  21  33  46  60  75  91 108 126 145 165</pre>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-7">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, results = &quot;hide&quot;}</p>
+
+<p><code>sec = 10:20</code></p>
+
+<p><code>sec</code></p>
+
+<p><code>cumsum(sec)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>sec = 10:20
+sec
+cumsum(sec)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-8">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, results = &quot;asis&quot;}</p>
+
+<p><code>sec = 10:20</code></p>
+
+<p><code>sec</code></p>
+
+<p><code>cumsum(sec)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>sec = 10:20
+sec</pre>
+
+<p>[1] 10 11 12 13 14 15 16 17 18 19 20</p>
+
+<pre class = 'prettyprint lang-r'>cumsum(sec)</pre>
+
+<p>[1] 10 21 33 46 60 75 91 108 126 145 165</p>
+
+</article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-9">
+
+<div class="r-code">
+<p>```{r, echo=TRUE, results = &quot;hold&quot;}</p>
+
+<p><code>sec = 10:20</code></p>
+
+<p><code>sec</code></p>
+
+<p><code>cumsum(sec)</code></p>
+
+```</div>
+
+<p></p>
+
+<pre class = 'prettyprint lang-r'>sec = 10:20
+sec
+cumsum(sec)</pre>
+
+<pre >##  [1] 10 11 12 13 14 15 16 17 18 19 20
+##  [1]  10  21  33  46  60  75  91 108 126 145 165</pre>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Los chunks en modo línea</h2></hgroup><article  id="los-chunks-en-modo-linea">
+
+</article></slide><slide class=""><hgroup><h2>Los chunks en modo línea</h2></hgroup><article  id="los-chunks-en-modo-linea-1">
+
+<p>Con lo explicado hasta ahora, solamente hemos generado resultados en la línea aparte</p>
+
+<p>Para introducir una parte de código dentro de un párrafo y que se ejecute al comilarse el documento mostrando así el resultado final, hay que hacerlo utilizando <code>`r ...`</code></p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>La raíz cuadrada de 64 es <code>`r sqrt(64)`</code> o, lo que viene siendo lo mismo, \(\sqrt{64}=\)<code>`r sqrt(64)`</code></p>
+
+<p>La raíz quinta de 32 es 8 o, lo que viene siendo lo mismo, $=$5.6568542</p></div></article></slide>
 
 
   <slide class="backdrop"></slide>
