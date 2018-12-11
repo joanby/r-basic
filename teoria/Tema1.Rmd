@@ -28,6 +28,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 - ¿Aún tenéis dudas de por qué usarlo? [Haz click aquí](https://www.r-bloggers.com/why-use-r-five-reasons/)
 
 
+
 ## ¿Qué es RStudio?
 
 En este curso usaremos RStudio como interfaz gráfica de usuario de R para todos los sistemas operativos
