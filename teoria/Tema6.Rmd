@@ -1,5 +1,5 @@
 ---
-title: Tema 6 - Estadística descriptiva: datos cualitativos
+title: Tema 6 - Estadística descriptiva`:` datos cualitativos
 author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
@@ -29,7 +29,11 @@ Cuando tenemos una serie de datos que describen algunos aspectos de un conjunto 
 
 Existe relación entre ambos. Cualquier análisis inferencial se suele empezar explorando los datos que se usarán así cómo también muchas técnicas descriptivas permiten estimar propiedades de la población de la que se ha extraído la muestra. 
 
-Por ejemplo, la media aritmética de las alturas de una muestra de individuos nos da un valor representativo de esta muestra, pero también estima la media de las alturas del total de la población.
+<div class="example">
+**Ejemplo**
+
+La media aritmética de las alturas de una muestra de individuos nos da un valor representativo de esta muestra, pero también estima la media de las alturas del total de la población
+</div>
 
 ## Análisis estadístico de los datos
 
@@ -37,7 +41,7 @@ Nos centraremos en entender algunas técnicas básicas de la estadística descri
 
 Estas consistirán en una serie de medidas, gráficos y modelos descriptivos que nos permitirán resumir y explorar un conjunto de datos.
 
-Objetivo final: entender los datos lo mejor posible.
+**Objetivo final**: entender los datos lo mejor posible.
 
 ## Tipos de datos
 
@@ -47,7 +51,7 @@ Se registran en un archivo de ordenador con un formato preestablecido. Por ejemp
 
 ## Tipos de datos
 
-Una de las maneras básicas de almacenar datos es en forma de tablas de datos. En *R*, data frames.
+Una de las maneras básicas de almacenar datos es en forma de tablas de datos. En R hacemos uso de data frames.
 
 En una tabla de datos cada columna expresa una variable, mientras que cada fila corresponde a las observaciones de estas variables para un individuo concreto. 
 
@@ -59,11 +63,11 @@ En una tabla de datos cada columna expresa una variable, mientras que cada fila 
 
 Los tipos de datos que consideramos son los siguientes:
 
-- <l class="definition">Datos de tipo atributo</l>, o <l class="definition">cualitativos:</l> Expresan una cualidad del individuo. En *R*, guardaremos las listas de datos cualitativos en *vectores* (habitualmente, de palabras), o en *factores* si vamos a usarlos para clasificar individuos.
+- <l class="definition">Datos de tipo atributo</l>, o <l class="definition">cualitativos:</l> Expresan una cualidad del individuo. En R guardaremos las listas de datos cualitativos en vectores (habitualmente, de palabras), o en factores si vamos a usarlos para clasificar individuos.
 
-- <l class="definition">Datos ordinales:</l> Similares a los cualitativos, con la única diferencia de que se pueden ordenar de manera natural. Por ejemplo, las calificaciones en un control (suspenso, aprobado, notable, sobresaliente). En *R*, guardaremos las listas de datos ordinales en *factores ordenados*.
+- <l class="definition">Datos ordinales:</l> Similares a los cualitativos, con la única diferencia de que se pueden ordenar de manera natural. Por ejemplo, las calificaciones en un control (suspenso, aprobado, notable, sobresaliente). En R guardaremos las listas de datos ordinales en factores ordenados.
 
-- <l class="definition">Datos cuantitativos:</l> Se refieren a medidas, tales como edades, longitudes, etc. En *R*, guardaremos las listas de datos cuantitativos en *vectores de números*.
+- <l class="definition">Datos cuantitativos:</l> Se refieren a medidas, tales como edades, longitudes, etc. En R guardaremos las listas de datos cuantitativos en vectores numéricos.
 
 ## Tipos de datos
 
@@ -79,27 +83,37 @@ str(iris)
 
 Los <l class="definition">datos cualitativos</l> corresponden a observaciones sobre cualidades de un objeto o individuo. 
 
-Suelen codificarse por medio de palabras, pero también se pueden usar números que jueguen el papel de etiquetas: a modo de ejemplo, es habitual representar *No* (o *Falso*, *Fracaso*, *Ausente*...) con un 0, y *Sí* (o *Verdadero*, *Éxito*, *Presente*...) con un 1.
+Suelen codificarse por medio de palabras, pero también se pueden usar números que jueguen el papel de etiquetas.
+
+<div class="example">
+**Ejemplo**
+
+Es habitual representar No (o Falso, Fracaso, Ausente...) con un 0, y Sí (o Verdadero, Éxito, Presente...) con un 1
+</div>
 
 ## ¿Qué son los datos cualitativos?
 
 Los datos cualitativos son aquellos que pueden ser iguales o diferentes, pero que no admiten ningún otro tipo de comparación significativa.
 
-Por ejemplo, que no tenga ningún sentido preguntarse si uno es más grande que otro, ni efectuar operaciones aritméticas con ellos, aunque estén representados por números. 
+Es decir, que no tenga ningún sentido preguntarse si uno es más grande que otro, ni efectuar operaciones aritméticas con ellos, aunque estén representados por números. 
 
 ## ¿Qué son los datos cualitativos?
 
 Por lo tanto, un mismo conjunto de datos puede ser cualitativo o de otro tipo, según el análisis que vayamos a hacer de él. 
 
-Por ejemplo, si hemos anotado durante unos años los días de la semana en los que ha llovido y queremos contar cuántas veces ha ocurrido en lunes, cuántas en martes, etc., esta lista de nombres (o números) serán datos cualitativos. Si, en cambio, queremos estudiar cómo se comportan los días de lluvia según avanza la semana, y por lo tanto el orden de los días es relevante, serán datos ordinales.
+<div class = "example">
+**Ejemplo**
+
+Si hemos anotado durante unos años los días de la semana en los que ha llovido y queremos contar cuántas veces ha ocurrido en lunes, cuántas en martes, etc., esta lista de nombres (o números) serán datos cualitativos. Si, en cambio, queremos estudiar cómo se comportan los días de lluvia según avanza la semana, y por lo tanto el orden de los días es relevante, serán datos ordinales
+</div>
 
 ## ¿Qué son los datos cualitativos?
 
 <l class="definition">Variable cualitativa:</l> lista de observaciones de un tipo de datos cualitativos sobre un conjunto concreto de objetos. 
 
-<l class="definition">Niveles:</l> diferentes valores que pueden tomar estos datos. Por ejemplo, los dos niveles de una variable Sexo serían *Macho* y *Hembra*, o sinónimos.
+<l class="definition">Niveles:</l> diferentes valores que pueden tomar estos datos. Por ejemplo, los dos niveles de una variable Sexo serían `M` (Macho) y `H` (Hembra), o sinónimos.
 
-Con *R*, usaremos vectores y factores para representar variables cualitativas. Los factores nos servirán para agrupar las observaciones según los niveles de la variable. De esta manera podremos segmentar la población que representa la variable en grupos o subpoblaciones, asignando un grupo a cada nivel, y podremos comparar el comportamiento de otras variables sobre estos grupos.
+Con R, usaremos vectores y factores para representar variables cualitativas. Los factores nos servirán para agrupar las observaciones según los niveles de la variable. De esta manera podremos segmentar la población que representa la variable en grupos o subpoblaciones, asignando un grupo a cada nivel, y podremos comparar el comportamiento de otras variables sobre estos grupos.
 
 ## Estudio de Frecuencias
 
@@ -115,7 +129,7 @@ Efectuamos $n$ observaciones de este tipo de datos, y denotamos por
 $$x_1,x_2,\cdots,x_n$$
 los resultados que obtenemos con 
 $$x_j\in\{l_1, l_2,\cdots, l_k\}$$
-Estas observaciones forman una **variable cualitativa**.
+Estas observaciones forman una variable cualitativa
 
 ## Estudio de Frecuencias
 
@@ -134,15 +148,15 @@ La <l class="definition">moda</l> de esta variable cualitativa es su nivel, o ni
 
 **Ejemplo**
 
-Supongamos que se ha realizado un seguimiento a 20 personas ingresadas en un geriátrico. Uno de los datos que se han recogido sobre estas personas ha sido su sexo. El resultado ha sido una variable cualitativa formada por las 20 observaciones siguientes:
+Supongamos que se ha realizado un seguimiento a 20 personas asistentes a un congreso. Uno de los datos que se han recogido sobre estas personas ha sido su sexo. El resultado ha sido una variable cualitativa formada por las 20 observaciones siguientes:
 
-*Mujer, Mujer, Hombre, Mujer, Mujer, Mujer, Mujer, Mujer, Hombre, Mujer, Hombre, Hombre, Mujer, Mujer, Hombre, Mujer, Mujer, Mujer, Mujer, Hombre.*
+`Mujer, Mujer, Hombre, Mujer, Mujer, Mujer, Mujer, Mujer, Hombre, Mujer, Hombre, Hombre, Mujer, Mujer, Hombre, Mujer, Mujer, Mujer, Mujer, Hombre`
 
-Sus dos niveles son «Hombre» y «Mujer». En esta variable hay 14 mujeres y 6 hombres. Éstas son las frecuencias absolutas de estos niveles. 
+Sus dos niveles son `Hombre` y `Mujer`. En esta variable hay 14 mujeres y 6 hombres. Éstas son las frecuencias absolutas de estos niveles. 
 
 Puesto que en total hay 20 individuos, sus frecuencias relativas son
 $$\text{Hombre} = \frac{6}{20} = 0.3,\qquad \text{Mujer} = \frac{14}{20} = 0.7$$
-En este caso $l_1 = \text{Hombre}$ y $l_2 = \text{Mujer}$,  $n = 20$ (el número de observaciones efectuadas), y $x_1,\cdots, x_{20}$ formarían la muestra de sexos.
+En este caso $l_1 = \text{Hombre}$ y $l_2 = \text{Mujer}$,  $n = 20$ (el número de observaciones efectuadas), y $x_1,\cdots, x_{20}$ formarían la muestra de sexos
 </div>
 
 ## Estudio de Frecuencias{.example}
@@ -161,7 +175,7 @@ Sexo   & n_i & f_i & \%     \\
 \hline
 \end{array}$$
 
-Su moda es el nivel Mujer.
+Su moda es el nivel `Mujer`
 
 
 ## Tablas de frecuencias unidimensionales
@@ -178,7 +192,7 @@ Respuestas
 
 ## Tablas de frecuencias unidimensionales
 
-Con *R*, la tabla de frecuencias absolutas de un vector que representa una variable cualitativa se calcula con la función `table()`.
+Con R, la tabla de frecuencias absolutas de un vector que representa una variable cualitativa se calcula con la función `table()`.
 
 ```{r}
 table(x)
@@ -188,7 +202,7 @@ table(Respuestas)
 
 ## Tablas de frecuencias unidimensionales
 
-El resultado de una función `table()` es un objeto de datos de un tipo nuevo: una <l class="definition">tabla de contingencia</l>, una `table` en el argot de *R*. 
+El resultado de una función `table()` es un objeto de datos de un tipo nuevo: una <l class="definition">tabla de contingencia</l>, una `table` en el argot de R. 
 
 Al aplicar `table()` a un vector obtenemos una tabla unidimensional formada por una fila con los niveles de la variable y una segunda fila donde, debajo de cada nivel, aparece su frecuencia absoluta en el vector.
 
@@ -266,7 +280,7 @@ prop.table(X)
 
 ## Tablas de frecuencias unidimensionales
 
-También podemos calcular la tabla de frecuencias relativas de un vector dividiendo el resultado de table por el número de observaciones.
+También podemos calcular la tabla de frecuencias relativas de un vector dividiendo el resultado de `table` por el número de observaciones.
 
 
 ```{r}
@@ -306,7 +320,7 @@ names(which(table(Respuestas)==max(table(Respuestas))))
 
 **Ejercicio**
 
-Recuperad el ejemplo de los 6 hombres y las 14 mujeres anterior y utilizando *R*, calculad su tabla de frecuencias absolutas, su tabla de frecuencias relativas y la moda.
+Recuperad el ejemplo de los 6 hombres y las 14 mujeres anterior y utilizando R, calculad su tabla de frecuencias absolutas, su tabla de frecuencias relativas y la moda.
 
 Pista: usad la función `rep()` para no tener que escribir los datos a mano.
 
@@ -321,14 +335,18 @@ Hombre Mujer
 > names(which(t0==max(t0))) [1] "Mujer"
 -->
 
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
+
 ## Tablas de frecuencias bidimensionales
 
 La función `table()` también permite construir tablas de frecuencias conjuntas de dos o más variables. 
 
-Supongamos que el vector *Respuestas* anterior contiene las respuestas a una pregunta dadas por unos individuos cuyos sexos tenemos almacenados en un vector *Sexo*, en el mismo orden que sus respuestas. En este caso, podemos construir una tabla que nos diga cuántas personas de cada sexo han dado cada respuesta.
+Supongamos que el vector `Respuestas` anterior contiene las respuestas a una pregunta dadas por unos individuos cuyos sexos tenemos almacenados en un vector `Sexo`, en el mismo orden que sus respuestas. En este caso, podemos construir una tabla que nos diga cuántas personas de cada sexo han dado cada respuesta.
 
 ```{r}
-Sexo= sample(c("H", "M"), size = length(Respuestas), replace = T) #H es hombre, M es mujer
+Sexo= sample(c("H", "M"), size = length(Respuestas), replace = T) #H = hombre, M = mujer
 table(Respuestas ,Sexo)
 ```
 
@@ -336,8 +354,12 @@ table(Respuestas ,Sexo)
 
 **Ejercicio**
 
-- Comprobad qué ocurre si cambiamos el orden de las columnas en la función `table()`.
-- Usad la función `t()` para transponer ambas tablas y comprobad el resultado.
+- Comprobad qué ocurre si cambiamos el orden de las columnas en la función `table()`
+- Usad la función `t()` para transponer ambas tablas y comprobad el resultado
+
+<div class = "aligncenter">
+![](Imgs/studytime.png)
+</div>
 
 
 ## Tablas de frecuencias bidimensionales
@@ -404,7 +426,7 @@ CrossTable(Sexo,Respuestas,prop.chisq=FALSE)
 
 ## Tablas de frecuencias bidimensionales
 
-Una tabla de contingencia bidimensional es, básicamente, una matriz con algunos atributos extra. En particular, podemos usar sobre estas tablas la mayoría de las funciones para matrices que tengan sentido para tablas:
+Una <l class="definition">tabla de contingencia bidimensional</l> es, básicamente, una matriz con algunos atributos extra. En particular, podemos usar sobre estas tablas la mayoría de las funciones para matrices que tengan sentido para tablas:
 
 - `rowSums()` y `colSums()` se pueden aplicar a una tabla y suman sus filas y sus columnas, respectivamente.
 
@@ -432,7 +454,7 @@ rowSums(prop.table(table(Sexo,Respuestas)))
 
 ## Tablas a partir de data frames de variables cualitativas
 
-Como ya hemos comentado en varias ocasiones, la manera natural de organizar datos multidimensionales en *R* es en forma de data frame. 
+Como ya hemos comentado en varias ocasiones, la manera natural de organizar datos multidimensionales en R es en forma de data frame. 
 
 En esta sección explicaremos algunas instrucciones para calcular tablas de frecuencias absolutas a partir de un data frame de variables cualitativas. 
 
@@ -444,10 +466,25 @@ Para ilustrarla, usaremos el fichero que se encuentra en el url
 `http://bioinfo.uib.es/~recerca/RMOOC/bebenerg.txt`
 </div>
 
-Este fichero consiste en una tabla de datos con la siguiente información sobre 122 estudiantes de la Escuela Politécnica Superior de la UIB: su sexo (variable sexo), el grado en el que están matriculados (variable estudio) y si consumen habitualmente bebidas energéticas (variable bebe).
+Este fichero consiste en una tabla de datos con la siguiente información sobre 122 estudiantes de la Escuela Politécnica Superior de la UIB: su sexo (variable `sexo`), el grado en el que están matriculados (variable `estudio`) y si consumen habitualmente bebidas energéticas (variable `bebe`).
 
 ```{r}
 Beb_Energ=read.table("http://bioinfo.uib.es/~recerca/RMOOC/bebenerg.txt",header=TRUE)
+```
+
+```{r, echo = FALSE}
+levels(Beb_Energ$estudio) = c("Informatica", "Industriales","Mates","Telematica")
+info = which(Beb_Energ$estudio=="Inform\303\241tica")
+mat = which(Beb_Energ$estudio=="Matem\303\241ticas")
+tel = which(Beb_Energ$estudio=="Telem\303\241tica")
+ind = which(Beb_Energ$estudio=="Ing.Industrial")
+Beb_Energ[info,1] = "Informatica"
+Beb_Energ[mat,1] = "Mates"
+Beb_Energ[tel,1] = "Telematica"
+Beb_Energ[ind,1] = "Industriales"
+levels(Beb_Energ$bebe) = c("No","Si")
+yes = which(Beb_Energ$bebe=="S\303\255")
+Beb_Energ[yes,2] = "Si"
 ```
 
 ## Tablas a partir de data frames de variables cualitativas
@@ -583,50 +620,50 @@ barplot(table(Respuestas,Sexo), beside=TRUE, names=c("Men", "Women"),
         col=c("yellow","lightblue"), legend.text=c("No","Yes"))
 ```
 
-## El diagrama circular
+## Diagrama circular
 
 Un tipo muy popular de representación gráfica de variables cualitativas son los <l class="definition">diagramas circulares</l>. En un diagrama circular (`pie chart`) se representan los niveles de una variable cualitativa como sectores circulares de un círculo, de manera que el ángulo (o equivalentemente, el área) de cada sector sea proporcional a la frecuencia del nivel al que corresponde. 
 
-Con *R*, este tipo de diagramas se producen con la instrucción `pie`, de nuevo aplicada a una tabla de frecuencias y no al vector original. 
+Con R, este tipo de diagramas se producen con la instrucción `pie`, de nuevo aplicada a una tabla de frecuencias y no al vector original. 
 
-## El diagrama circular - Parámetros
+## Diagrama circular - Parámetros
 
 La función `pie` admite muchos parámetros para modificar el resultado: se pueden cambiar los colores con `col`, se pueden cambiar los nombres de los niveles con `names`, se puede poner un título con `main`, etc.; podéis consultar la lista completa de parámetros en `help(pie)`.
 
-## El diagrama circular
+## Diagrama circular
 
 ```{r}
 x
 pie(table(x), main="Diagrama circular de la variable x")
 ```
 
-## El diagrama circular
+## Diagrama circular
 
 ```{r}
 Respuestas
 pie(table(Respuestas), main="Diagrama circular de la variable Respuestas")
 ```
 
-## El diagrama circular
+## Diagrama circular
 
 Pese a su popularidad, es poco recomendable usar diagramas circulares porque a veces es difícil, a simple vista, comprender las relaciones entre las frecuencias que representan. 
 
 
-## Los gráficos de mosaico
+## Gráficos de mosaico
 
-Otra representación de las tablas multidimensionales de frecuencias son los <l class="definition">gráficos de mosaico</l>. Estos gráficos se obtienen substituyendo cada entrada de la tabla de frecuencias por una región rectangular de área proporcional a su valor. 
+Otra representación de las tablas multidimensionales de frecuencias son los <l class="definition">gráficos de mosaico</l>. Estos gráficos se obtienen sustituyendo cada entrada de la tabla de frecuencias por una región rectangular de área proporcional a su valor. 
 
 En concreto, para obtener el gráfico de mosaico de una tabla bidimensional, se parte de un cuadrado de lado 1, primero se divide en barras verticales de amplitudes iguales a las frecuencias relativas de una variable, y luego cada barra se divide, a lo alto, en regiones de alturas proporcionales a las frecuencias relativas marginales de cada nivel de la otra variable, dentro del nivel correspondiente de la primera variable.
 
-Un gráfico de mosaico de una tabla se obtiene con *R* aplicando la función `plot` a la tabla, o también la función `mosaicplot`. Esta última también se puede aplicar a matrices. 
+Un gráfico de mosaico de una tabla se obtiene con R aplicando la función `plot` a la tabla, o también la función `mosaicplot`. Esta última también se puede aplicar a matrices. 
 
-## Los gráficos de mosaico
+## Gráficos de mosaico
 ```{r}
 plot(table(Sexo,Respuestas), main="Gráfico de mosaico de las variables
      \"Sexo\" y \"Respuestas\"")
 ```
 
-## Los gráficos de mosaico
+## Gráficos de mosaico
 
 En el gráfico de mosaico de una tabla tridimensional, primero se divide el cuadrado en barras verticales de amplitudes iguales a las frecuencias relativas de una variable. 
 
@@ -635,7 +672,7 @@ Luego cada barra se divide, a lo alto, en regiones de alturas proporcionales a l
 Finalmente, cada sector rectangular se vuelve a dividir a lo ancho en regiones de amplitudes proporcionales a las frecuencias relativas marginales de cada nivel de la tercera variable dentro de la combinación correspondiente de niveles de las otras dos. 
 
 
-## Los gráficos de mosaico
+## Gráficos de mosaico
 
 ```{r}
 plot(HairEyeColor, main="Gráfico de mosaico de la tabla HairEyeColor", 
@@ -669,14 +706,15 @@ Muchos más gráficos
 ```
 -->
 
+# Ejemplo final
 
 ## Un ejemplo final
 
 Vamos a llevar a cabo un análisis completo de un ejemplo con lo que hemos aprendido en esta lección y aprovecharemos para aprender algo nuevo.
 
-El objeto de datos `HairEyeColor` que lleva predefinido *R* es una tabla de frecuencias absolutas de tres variables cualitativas: color de cabello (Hair), color de los ojos (Eye) y sexo (Sex). 
+El objeto de datos `HairEyeColor` que lleva predefinido R es una tabla de frecuencias absolutas de tres variables cualitativas: color de cabello (`Hair`), color de los ojos (`Eye`) y sexo (`Sex`). 
 
-Vamos a extraer de esta tabla una tabla bidimensional de frecuencias absolutas de las variables `Eye` y `Hair`, sin distinguir según el sexo. La manera más sencilla de obtener esta tabla es sumando las subtablas de frecuencias para hombres y mujeres, y aplicando `as.table` al resultado para transformarlo en una `table` por si no lo es.
+Vamos a extraer de esta tabla una tabla bidimensional de frecuencias absolutas de las variables `Eye` y `Hair`, sin distinguir según el sexo. La manera más sencilla de obtener esta tabla es sumando las subtablas de frecuencias para hombres y mujeres, y aplicando `as.table()` al resultado para transformarlo en una `table` por si no lo es.
 
 ```{r, echo=FALSE}
 HEC=as.table(HairEyeColor[ , , 1]+ HairEyeColor[ , , 2])
@@ -686,7 +724,7 @@ HEC=as.table(HairEyeColor[ , , 1]+ HairEyeColor[ , , 2])
 
 ## Un ejemplo final
 
-Vamos a traducir al castellano los nombres de las variables de esta tabla y de sus niveles. Esto lo podemos llevar a cabo en un solo paso con la función `dimnames()` que ya usamos sobre data frames. El resultado de aplicar esta función a una table es una `list cuyas componentes son los niveles de cada variable.
+Vamos a traducir al castellano los nombres de las variables de esta tabla y de sus niveles. Esto lo podemos llevar a cabo en un solo paso con la función `dimnames()` que ya usamos sobre data frames. El resultado de aplicar esta función a una table es una `list` cuyas componentes son los niveles de cada variable.
 
 ```{r}
 dimnames(HEC)
@@ -695,7 +733,7 @@ dimnames(HEC)
 <div class="exercise">**Ejercicio.** Redefinid dicha `list` para tener los niveles de los factores en castellano</div>
 
 ```{r, echo = FALSE}
-dimnames(HEC)=list(Cabello=c("Negro","Castaño","Rojo","Rubio"), Ojos=c("Marrones","Azules","Pardos","Verdes"))
+dimnames(HEC)=list(Cabello=c("Negro","Marron","Rojo","Rubio"), Ojos=c("Marrones","Azules","Pardos","Verdes"))
 ```
 
 ## Un ejemplo final
@@ -735,7 +773,7 @@ Representaremos estas últimas en sendos diagramas de barras.
 par(mfrow=c(1,2))
 barplot(prop.table(colSums(HEC)), ylim=c(0,0.4), col=c("burlywood4","lightblue","orange3","lightgreen"), main="Frecuencias relativas \nde colores de ojos")
 barplot(prop.table(rowSums(HEC)),
-        col=c("black","brown","red","gold"), ylim=c(0,0.5), main="Frecuencias relativas \nde colores de cabello")
+        col=c("black","chocolate4","red","gold"), ylim=c(0,0.5), main="Frecuencias relativas \nde colores de cabello")
 par(mfrow=c(1,1))
 ```
 
@@ -770,9 +808,11 @@ par(mfrow = c(1,1))
 
 Vemos que entre las personas de ojos azules, los cabellos rubios son los más frecuentes, y que entre las personas castañas el color de ojos más frecuente es el pardo.
 
-## Un ejercicio para vosotros{.important}
+## Un ejercicio para vosotros{.exercise}
 
-Instalad y cargad el paquete MASS. Encontraréis una tabla de datos llamada birthwt sobre factores que pueden incidir en el peso de los niños al nacer. Con str y head, explorad la estructura, y con help, mirad el significado de cada variable.
+**Ejercicio**
+
+Instalad y cargad el paquete `MASS`. Encontraréis una tabla de datos llamada `birthwt` sobre factores que pueden incidir en el peso de los niños al nacer. Con `str()` y `head()`, explorad la estructura, y con `help()`, mirad el significado de cada variable.
 
 - Calculad una tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre influye en el peso del bebé. Dibujad un diagrama de mosaico de esta tabla.
 
