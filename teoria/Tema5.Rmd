@@ -1,5 +1,5 @@
 ---
-title: Tema 3 - Data frames
+title: Tema 5 - Data frames
 author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
