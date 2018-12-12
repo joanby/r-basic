@@ -58,6 +58,9 @@ log(pi)
 
 log(32, 2)
 
+log(32, base = 2)
+log(base=2, 32)
+
 abs(-pi)
 
 factorial(7)
@@ -93,3 +96,33 @@ asin(0.8660254) * 180 /pi #arc sin en grados
 asin(5) #arc sin x in [-1,1]
 
 acos(-8)
+
+print(sqrt(2),10)
+round(sqrt(2), 3)
+floor(sqrt(2))
+ceiling(sqrt(2))
+trunc(sqrt(2))
+
+sqrt(2)^2-2
+
+round(sqrt(2), 4)^2
+
+2^50
+print(2^50, 15)
+print(2^50, 2)
+print(pi, 22)
+#3.141592653589793115998
+#3.141592653589793238462
+
+round(1.25,1)
+round(1.35,1)
+round(sqrt(2),0)
+round(sqrt(2))
+
+round(digits = 5, sqrt(2))
+round(5, sqrt(2))
+
+
+floor(-3.45)
+ceiling(-3.45)
+trunc(-3.45)
