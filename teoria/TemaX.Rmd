@@ -114,6 +114,7 @@ El proceso de obtener una muestra aleatoria en algunos casos es caro o difícil.
 
 Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lista completa de dichas personas puede ser muy costoso. 
 
+
 ## Muestreo por conglomerados{.example}
 
 **Ejemplo**
@@ -126,24 +127,66 @@ A continuación, dentro de cada colegio (conglomerado), elegiríamos al azar un 
 
 Pensemos que es mucho más sencillo poseer la lista completa de estudiantes de unos pocos colegios que conseguir la lista completa de todos los estudiantes de todos los colegios, y que es más barato ir a unos pocos colegios concretos que ir a todos los colegios de las Islas a entrevistar a unos pocos estudiantes en cada centro. 
 
-# Muestreos no aleatorios. 
+# Muestreos no aleatorios 
 
-## Muestreos no aleatorios. 
+## Muestreos no aleatorios 
 
-Cuando la selección de la muestra no es aleatoria, se habla de muestreo no aleatorio. Es el tipo más frecuente de muestreo porque, en muchos casos, nos tenemos que conformar con la información disponible o la obtenida voluntariamente. Por ejemplo, en la UIB, para estudiar la opinión que de un profesor tienen los alumnos de una clase, se considera sólo la muestra de los estudiantes que voluntariamente han rellenado la encuesta de opinión, una muestra que de ninguna manera es aleatoria: el perfil del estudiante que contesta voluntariamente una encuesta de este tipo está muy definido. En este caso se trataría de una muestra autoseleccionada.
+Cuando la selección de la muestra no es aleatoria, se habla de <l class="definition">muestreo no aleatorio</l>. 
+
+Es el tipo más frecuente de muestreo porque, en muchos casos, nos tenemos que conformar con la información disponible o la obtenida voluntariamente. 
+
+<div class="example">
+
+**Ejemplo**
+
+En la UIB, para estudiar la opinión que  tienen los alumnos de una clase sobre un profesor, se considera sólo la muestra de los estudiantes que voluntariamente han rellenado la encuesta de opinión. Una muestra que de ninguna manera es aleatoria: el perfil del estudiante que contesta voluntariamente una encuesta de este tipo está muy definido. 
+
+En este caso se trataría de una muestra autoseleccionada.
+
+</div>
 
 ## Muestreo oportunista
 
-Otro tipo de muestreos no aleatorios son los oportunistas. Se da este caso, por ejemplo, cuando se realiza una encuesta telefónica: las personas que disponen de teléfono fijo no tienen por qué ser representativas de la sociedad para el tema concreto de la encuesta. O por ejemplo, supongamos que queremos estudiar una característica de los animales de una determinada especie en un hábitat, y la medimos en los animales que capturamos u observamos. Estos ejemplares no tienen por qué ser representativos de la población: por ejemplo, a lo mejor son los menos espabilados. O imaginad que tenéis una bolsa con bolas de diferentes tamaños. Si las removéis bien, las pequeñas tenderán a ir a parar al fondo y las grandes a quedar en la parte superior. Por lo tanto, si tomáis una muestra de la capa superior (que será lo más cómodo), no será representativa del total de la bolsa.
+Otro tipo de muestreos no aleatorios son los <l class="definition">oportunistas</l>. 
+
+
+<div class="example">
+
+**Ejemplo**
+
+Cuando se realiza una encuesta telefónica: las personas que disponen de teléfono fijo no tienen por qué ser representativas de la sociedad para el tema concreto de la encuesta. 
+
+</div>
+
+<div class="example">
+
+**Ejemplo**
+
+Supongamos que queremos estudiar una característica de los animales de una determinada especie en un hábitat, y la medimos en los animales que capturamos u observamos. Estos ejemplares no tienen por qué ser representativos de la población: por ejemplo, a lo mejor son los menos espabilados. 
+
+</div>
+
+
+<div class="example">
+
+**Ejemplo**
+
+
+O imaginad que tenéis una bolsa con bolas de diferentes tamaños. Si las removéis bien, las pequeñas tenderán a ir a parar al fondo y las grandes a quedar en la parte superior. Por lo tanto, si tomáis una muestra de la capa superior (que será lo más cómodo), no será representativa del total de la bolsa.
+
+</div>
 
 ## Otros tipos de muestreo
 
 Existen otros tipos de muestreo que suelen ser combinaciones de las técnicas anteriores u otros tipos de técnicas. En cualquier caso, lo importante es recordar que el estudio estadístico que se realice a posteriori deberá ser diferente según el muestreo realizado.
 
 
+
 ## Raw Data
 
-Una vez realizado el muestreo y obtenidos los datos (los llamados datos brutos, raw data, de los que hablábamos en la lección sobre datos cuantitativos agrupados en el primer volumen), el siguiente paso es inferir información a partir de dichos datos. Como ya hemos indicado anteriormente, esto significa intentar obtener información de la población a partir de dichos datos.
+Una vez realizado el muestreo y obtenidos los datos (los llamados <l class="definition">datos brutos</l>, <l class="definition">raw data</l>, de los que hablábamos en la lección sobre datos cuantitativos agrupados en el primer volumen), el siguiente paso es inferir información a partir de dichos datos. 
+
+Como ya hemos indicado anteriormente, esto significa intentar obtener información de la población a partir de dichos datos.
 
 ## Raw Data
 

@@ -228,15 +228,39 @@
 
 <p>Pensemos que es mucho más sencillo poseer la lista completa de estudiantes de unos pocos colegios que conseguir la lista completa de todos los estudiantes de todos los colegios, y que es más barato ir a unos pocos colegios concretos que ir a todos los colegios de las Islas a entrevistar a unos pocos estudiantes en cada centro.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Muestreos no aleatorios.</h2></hgroup><article  id="muestreos-no-aleatorios.">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Muestreos no aleatorios</h2></hgroup><article  id="muestreos-no-aleatorios">
 
-</article></slide><slide class=""><hgroup><h2>Muestreos no aleatorios.</h2></hgroup><article  id="muestreos-no-aleatorios.-1">
+</article></slide><slide class=""><hgroup><h2>Muestreos no aleatorios</h2></hgroup><article  id="muestreos-no-aleatorios-1">
 
-<p>Cuando la selección de la muestra no es aleatoria, se habla de muestreo no aleatorio. Es el tipo más frecuente de muestreo porque, en muchos casos, nos tenemos que conformar con la información disponible o la obtenida voluntariamente. Por ejemplo, en la UIB, para estudiar la opinión que de un profesor tienen los alumnos de una clase, se considera sólo la muestra de los estudiantes que voluntariamente han rellenado la encuesta de opinión, una muestra que de ninguna manera es aleatoria: el perfil del estudiante que contesta voluntariamente una encuesta de este tipo está muy definido. En este caso se trataría de una muestra autoseleccionada.</p>
+<p>Cuando la selección de la muestra no es aleatoria, se habla de <l class="definition">muestreo no aleatorio</l>.</p>
+
+<p>Es el tipo más frecuente de muestreo porque, en muchos casos, nos tenemos que conformar con la información disponible o la obtenida voluntariamente.</p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>En la UIB, para estudiar la opinión que tienen los alumnos de una clase sobre un profesor, se considera sólo la muestra de los estudiantes que voluntariamente han rellenado la encuesta de opinión. Una muestra que de ninguna manera es aleatoria: el perfil del estudiante que contesta voluntariamente una encuesta de este tipo está muy definido.</p>
+
+<p>En este caso se trataría de una muestra autoseleccionada.</p></div>
 
 </article></slide><slide class=""><hgroup><h2>Muestreo oportunista</h2></hgroup><article  id="muestreo-oportunista">
 
-<p>Otro tipo de muestreos no aleatorios son los oportunistas. Se da este caso, por ejemplo, cuando se realiza una encuesta telefónica: las personas que disponen de teléfono fijo no tienen por qué ser representativas de la sociedad para el tema concreto de la encuesta. O por ejemplo, supongamos que queremos estudiar una característica de los animales de una determinada especie en un hábitat, y la medimos en los animales que capturamos u observamos. Estos ejemplares no tienen por qué ser representativos de la población: por ejemplo, a lo mejor son los menos espabilados. O imaginad que tenéis una bolsa con bolas de diferentes tamaños. Si las removéis bien, las pequeñas tenderán a ir a parar al fondo y las grandes a quedar en la parte superior. Por lo tanto, si tomáis una muestra de la capa superior (que será lo más cómodo), no será representativa del total de la bolsa.</p>
+<p>Otro tipo de muestreos no aleatorios son los <l class="definition">oportunistas</l>.</p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>Cuando se realiza una encuesta telefónica: las personas que disponen de teléfono fijo no tienen por qué ser representativas de la sociedad para el tema concreto de la encuesta.</p></div>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>Supongamos que queremos estudiar una característica de los animales de una determinada especie en un hábitat, y la medimos en los animales que capturamos u observamos. Estos ejemplares no tienen por qué ser representativos de la población: por ejemplo, a lo mejor son los menos espabilados.</p></div>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>O imaginad que tenéis una bolsa con bolas de diferentes tamaños. Si las removéis bien, las pequeñas tenderán a ir a parar al fondo y las grandes a quedar en la parte superior. Por lo tanto, si tomáis una muestra de la capa superior (que será lo más cómodo), no será representativa del total de la bolsa.</p></div>
 
 </article></slide><slide class=""><hgroup><h2>Otros tipos de muestreo</h2></hgroup><article  id="otros-tipos-de-muestreo">
 
@@ -244,7 +268,9 @@
 
 </article></slide><slide class=""><hgroup><h2>Raw Data</h2></hgroup><article  id="raw-data">
 
-<p>Una vez realizado el muestreo y obtenidos los datos (los llamados datos brutos, raw data, de los que hablábamos en la lección sobre datos cuantitativos agrupados en el primer volumen), el siguiente paso es inferir información a partir de dichos datos. Como ya hemos indicado anteriormente, esto significa intentar obtener información de la población a partir de dichos datos.</p>
+<p>Una vez realizado el muestreo y obtenidos los datos (los llamados <l class="definition">datos brutos</l>, <l class="definition">raw data</l>, de los que hablábamos en la lección sobre datos cuantitativos agrupados en el primer volumen), el siguiente paso es inferir información a partir de dichos datos.</p>
+
+<p>Como ya hemos indicado anteriormente, esto significa intentar obtener información de la población a partir de dichos datos.</p>
 
 </article></slide><slide class=""><hgroup><h2>Raw Data</h2></hgroup><article  id="raw-data-1">
 
@@ -290,7 +316,7 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 78 63 64 94  9 53 34 94 72 42 39 61 96  3 51</pre>
+<pre > [1]  23  63  52  42  93  94  37  14  74  31  65 100  99  55  49</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-2">
 
@@ -298,15 +324,15 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE) </pre>
 
-<pre > [1]  4 26 42 38  9 57 94 89 62  4 79 31 20  5 97</pre>
+<pre > [1] 95 78 56 87 72 73 51 72 62 71 42 89 49 49 68</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 45 85 36 96 58 39 53 36 92 11 66  8 70 97 88</pre>
+<pre > [1] 20 91 30 76 49 28 88 68 13 92  1 65 32 45 38</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 43 69 10 83 97 86 40 63 48 92 72 10 90 50 53</pre>
+<pre > [1] 22 88  6  7 71 86 88  5 33 54 78 91 91 74 48</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-3">
 
@@ -329,15 +355,15 @@
 muestra_iris=iris[x,] #La m.a.s. de la tabla iris
 muestra_iris</pre>
 
-<pre >    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-27           5.0         3.4          1.6         0.4     setosa
-42           4.5         2.3          1.3         0.3     setosa
-72           6.1         2.8          4.0         1.3 versicolor
-120          6.0         2.2          5.0         1.5  virginica
-43           4.4         3.2          1.3         0.2     setosa
-116          6.4         3.2          5.3         2.3  virginica
-105          6.5         3.0          5.8         2.2  virginica
-24           5.1         3.3          1.7         0.5     setosa</pre>
+<pre >     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+27            5.0         3.4          1.6         0.4     setosa
+12            4.8         3.4          1.6         0.2     setosa
+21            5.4         3.4          1.7         0.2     setosa
+94            5.0         2.3          3.3         1.0 versicolor
+12.1          4.8         3.4          1.6         0.2     setosa
+39            4.4         3.0          1.3         0.2     setosa
+89            5.6         3.0          4.1         1.3 versicolor
+150           5.9         3.0          5.1         1.8  virginica</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-5">
 
@@ -346,7 +372,7 @@ muestra_iris</pre>
 <pre class = 'prettyprint lang-r'>muestra_long_pet=sample(iris$Petal.Length ,15,replace=TRUE) 
 muestra_long_pet</pre>
 
-<pre > [1] 3.3 4.5 5.6 5.0 4.2 1.6 4.7 3.3 4.8 5.5 1.4 5.7 4.8 5.0 4.6</pre>
+<pre > [1] 3.5 4.2 1.2 4.5 1.9 1.5 5.4 4.7 4.3 5.2 6.6 1.4 1.4 3.7 1.0</pre>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-6">
 
@@ -358,7 +384,7 @@ muestra_long_pet</pre>
 
 <pre class = 'prettyprint lang-r'>rnorm (5)</pre>
 
-<pre >[1] -0.7370340  0.5330879 -0.3789301 -0.3634916  1.3064890</pre>
+<pre >[1]  0.7795478 -0.3226321  0.6761702 -1.1226144  1.0195582</pre>
 
 <pre class = 'prettyprint lang-r'>set.seed(2018)
 rnorm (5)</pre>
@@ -434,7 +460,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL) 
 sample (10 ,3)</pre>
 
-<pre >[1] 9 4 7</pre>
+<pre >[1] 7 4 5</pre>
 
 </article></slide><slide class=""><hgroup><h2>Set Seed</h2></hgroup><article  id="set-seed-1">
 
@@ -446,7 +472,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL)
 sample (10 ,3)</pre>
 
-<pre >[1] 8 9 4</pre>
+<pre >[1] 8 3 4</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate">
 
@@ -462,18 +488,18 @@ sample (10 ,3)</pre>
 muestras</pre>
 
 <pre >      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]  1.5  5.6  4.3  4.5  1.6  1.7  1.7  1.6  4.8   1.6
- [2,]  4.9  1.5  5.6  1.5  4.6  1.5  4.1  5.6  1.9   4.7
- [3,]  4.5  1.2  6.1  4.1  4.6  5.9  5.2  4.0  4.7   3.9
- [4,]  1.7  1.3  5.1  1.7  3.5  1.5  4.0  1.1  5.7   4.9
- [5,]  4.5  6.7  1.3  5.9  4.0  4.1  5.7  1.5  1.7   1.5
- [6,]  5.7  1.4  1.5  3.0  1.9  1.5  1.5  1.4  4.2   5.9
- [7,]  5.6  1.5  6.3  4.5  1.3  5.6  5.6  6.3  1.0   4.9
- [8,]  5.1  1.3  5.1  5.6  4.5  5.0  6.7  4.0  1.4   5.0
- [9,]  5.1  4.5  1.5  4.5  1.7  5.4  1.3  5.0  4.6   4.4
-[10,]  3.8  4.6  4.3  4.9  4.0  1.3  5.1  1.5  4.2   5.1
-[11,]  4.3  1.7  4.2  1.6  1.3  6.6  1.4  5.4  1.5   3.5
-[12,]  4.4  5.1  3.6  3.5  4.0  4.3  4.6  1.6  5.0   5.4</pre>
+ [1,]  1.5  5.4  4.9  4.5  5.6  1.5  4.7  4.5  5.0   4.7
+ [2,]  1.4  5.1  5.9  4.4  5.1  3.6  1.6  3.3  1.6   1.5
+ [3,]  6.7  1.6  1.4  5.2  5.9  5.4  3.5  1.4  1.2   4.3
+ [4,]  1.7  5.0  6.9  5.0  5.8  4.8  5.6  3.9  4.1   3.9
+ [5,]  1.3  6.3  1.3  1.4  1.3  5.9  1.6  5.9  5.6   3.3
+ [6,]  1.5  5.0  6.0  6.4  1.7  3.5  1.7  5.5  5.2   5.1
+ [7,]  1.5  4.8  3.5  4.3  1.2  5.6  3.7  5.5  5.6   1.4
+ [8,]  6.1  6.0  1.5  4.2  5.1  3.0  5.0  4.7  6.6   4.5
+ [9,]  1.5  1.2  1.3  6.1  4.7  1.4  1.6  1.6  1.4   4.5
+[10,]  1.4  1.4  4.7  1.4  4.2  5.9  5.1  1.6  4.5   4.7
+[11,]  1.4  4.5  3.9  4.9  1.4  1.3  4.0  4.6  5.1   4.9
+[12,]  1.6  4.4  4.5  4.5  4.8  1.4  6.0  3.8  4.1   4.5</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-2">
 
@@ -482,7 +508,7 @@ muestras</pre>
 <pre class = 'prettyprint lang-r'>medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 medias</pre>
 
-<pre > [1] 4.46 3.99 4.05 3.33 4.08 3.83 4.65 3.72 3.91 3.68</pre>
+<pre > [1] 3.37 3.39 3.33 3.72 3.25 3.85 3.47 4.11 3.55 3.79</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-3">
 
