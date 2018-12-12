@@ -207,28 +207,6 @@ factorial(6)
 factorial(5)*6
 ```
 
-
-## Números en coma flotante
-
-Código |  Función                                 
---------------------|--------------------
-```print(x,n)``` | Muestra las $n$ cifras significativa del número $x$
-```round(x,n)``` | Redondea a $n$ cifras significativas un resultado o vector numérico $x$
-```floor(x)``` | $\lfloor x\rfloor$, parte entera por defecto de $x$
-```ceiling(x)``` | $\lceil x\rceil$, parte entera por exceso de $x$
-```trunc(x)``` | Parte entera de $x$, eliminando la parte decimal
-
-
-## Números en coma flotante
-
-```{r}
-print(pi,5)
-round(pi,5)
-floor(pi)
-ceiling(pi)
-```
-
-
 ## Trigonometría en radianes
 
 Código |  Función                                 
@@ -265,6 +243,27 @@ legend("bottomleft",col=c("blue","green","purple"),
      legend=c("Seno","Coseno", "Tangente"), lwd=3, bty="l")
 ```
 
+
+
+## Números en coma flotante
+
+Código |  Función                                 
+--------------------|--------------------
+```print(x,n)``` | Muestra las $n$ cifras significativa del número $x$
+```round(x,n)``` | Redondea a $n$ cifras significativas un resultado o vector numérico $x$
+```floor(x)``` | $\lfloor x\rfloor$, parte entera por defecto de $x$
+```ceiling(x)``` | $\lceil x\rceil$, parte entera por exceso de $x$
+```trunc(x)``` | Parte entera de $x$, eliminando la parte decimal
+
+
+## Números en coma flotante
+
+```{r}
+print(pi,5)
+round(pi,5)
+floor(pi)
+ceiling(pi)
+```
 
 
 ## Variables y funciones
