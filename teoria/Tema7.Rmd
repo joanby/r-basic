@@ -14,27 +14,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-## R Markdown
+# Descripción de datos ordinales
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Datos ordinales
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+Los <l class="definition">datos ordinales</l> son parecidos a los cualitativos, en el sentido de que son cualidades de los individuos u objetos.
 
-## Slide with Bullets
+La diferencia existente entre los datos cualitativos y los ordinales reside  en las características que expresan. En el caso de los ordinales, éstas tienen un orden natural que permite "acumular" observaciones.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
+## Frecuencias para datos ordinales
 
