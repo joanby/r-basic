@@ -1,6 +1,6 @@
 ---
 title: Tema X - Muestreo Estadístico
-author: Juan Gabriel Gomila & María Santos
+author: Juan Gabriel Gomila 
 output: 
   ioslides_presentation:
     widescreen: true
@@ -16,42 +16,65 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 ## Población vs muestra
 
-En todo estudio estadístico hemos de distinguir entre población, que es un conjunto de individuos con una característica observable, y muestra, un subconjunto de una población del que se espera que la represente. 
+En todo estudio estadístico hemos de distinguir entre <l class="definition">población</l>, que es un conjunto de individuos con una característica observable, y <l class="definition">muestra</l>, un subconjunto de una población del que se espera que la represente. 
 
-*Por ejemplo, los estudiantes de grado de la UIB serían una población, y si escogiéramos al azar un estudiante de cada grado, obtendríamos una muestra. Pero también podríamos considerar los estudiantes de grado de la UIB como una muestra de la población de los estudiantes universitarios españoles: depende del estudio que queramos realizar.*
+
+<div class="example">
+
+**Ejemplo**
+
+Los estudiantes de grado de la UIB podrían ser considerados una población y, si escogiéramos al azar un estudiante de cada grado, obtendríamos una muestra.
+
+Pero la cosa podría cambiar si considerásemos a los estudiantes de grado de la UIB como una muestra de la población de los estudiantes universitarios españoles. 
+
+En conclusión, todo depende del estudio que queramos realizar.
+
+</div>
 
 
 ## Población vs muestra
 
-Anteriormente distinguíamos dos tipos de análisis de un conjunto de datos sobre un determinado fenómeno. En aquel momento nos centrábamos en el **análisis exploratorio**, en el que describimos, resumimos e intentamos interpretar los datos usando técnicas de estadística descriptiva. Pero en otro tipo de estudios, nuestro objetivo es contrastar una hipótesis sobre el comportamiento de dicho fenómeno. Para hacerlo, tendremos que llevar a cabo un estudio estadístico que, al menos en principio, nos permita confirmar o refutar dicha hipótesis. Este tipo de estudio estadístico pertenece al ámbito del análisis de datos confirmatorio, ya que persigue reforzar y aportar evidencias sobre la veracidad de nuestra hipótesis. En el análisis de datos de tipo confirmatorio, se usan técnicas de estadística inferencial, cuyo objetivo es **inferir información** sobre el conjunto de una población, es decir, contestar preguntas sobre el total de la población, a partir del estudio de una muestra representativa.
+Anteriormente distinguíamos dos tipos de análisis de un conjunto de datos sobre un determinado fenómeno. 
+
+En aquel momento nos centrábamos en el <l class="definition">análisis exploratorio</l>, en el que describimos, resumimos e intentamos interpretar los datos usando técnicas de estadística descriptiva. 
+
+Pero en otro tipo de estudios, nuestro objetivo es contrastar una hipótesis sobre el comportamiento de dicho fenómeno. Para hacerlo, tendremos que llevar a cabo un estudio estadístico que, al menos en principio, nos permita confirmar o refutar dicha hipótesis. Este tipo de estudio estadístico pertenece al ámbito del análisis de datos confirmatorio, ya que persigue reforzar y aportar evidencias sobre la veracidad de nuestra hipótesis. En el análisis de datos de tipo confirmatorio, se usan técnicas de <l class = "definition">estadística inferencial</l>, cuyo objetivo es inferir información sobre el conjunto de una población, es decir, contestar preguntas sobre el total de la población, a partir del estudio de una muestra representativa.
 
 ## Pasos para hacer un estudio estadístico
 
 1. Establecer la hipótesis que se desea contrastar.
 2. Determinar la información que se necesita para hacerlo.
-3. Diseñar un experimento; este paso incluye:
+3. Diseñar un experimento. Este paso incluye:
     - Seleccionar los individuos de la muestra. 
     - Elegir las técnicas inferenciales adecuadas.
 4. Obtener la información de los individuos de la muestra.
 5. Aplicar las técnicas de inferencia elegidas con el software adecuado.
 6. Obtener conclusiones.
-7. Si las conclusiones son fiables y suficientes, redactar un informe; en caso contrario, volver a empezar.
+7. Si las conclusiones son fiables y suficientes, redactar un informe. En caso contrario, volver a empezar.
 
 ## Pasos para hacer un estudio estadístico
 
-En esta lección nos concentramos en los diferentes tipos de técnicas de muestreo: los métodos generales que permiten seleccionar muestras representativas de la población y de esta manera llevar a cabo el tercer paso de la lista anterior. Existen muchas técnicas de muestreo, cada una de las cuales proporciona una muestra representativa de la población. A continuación describimos de forma breve algunos tipos.
+En esta lección nos concentramos en los diferentes tipos de técnicas de muestreo: los métodos generales que permiten seleccionar muestras representativas de la población y de esta manera llevar a cabo el tercer paso de la lista anterior. 
+
+Existen muchas técnicas de muestreo, cada una de las cuales proporciona una muestra representativa de la población. 
+
+A continuación, describimos de forma breve algunos tipos.
 
 # Muestreo aleatorio con y sin reposición
 
 ## Muestreo aleatorio con y sin reposición
 
-Un muestreo aleatorio consiste en seleccionar una muestra de la población de manera que todas las muestras del mismo tamaño tengan la misma probabilidad; es decir, que si fijamos el número de individuos de la muestra, cualquier conjunto de ese número de individuos ha de tener la misma probabilidad de ser seleccionado. Hay dos tipos básicos de muestreos aleatorios que vale la pena distinguir.
+Un <l class="definition">muestreo aleatorio</l> consiste en seleccionar una muestra de la población de manera que todas las muestras del mismo tamaño tengan la misma probabilidad. 
 
-## Ejemplo 
+Es decir, si fijamos el número de individuos de la muestra, cualquier conjunto de ese número de individuos ha de tener la misma probabilidad de ser seleccionado. Hay dos tipos básicos de muestreos aleatorios que vale la pena distinguir.
 
-Pensemos en una urna con 100 bolas de colores. Una manera de obtener una muestra de 10 bolas sería repetir 10 veces el proceso de sacar una bola de la urna, observar su color y devolverla a la urna. Este tipo de muestreo recibe el nombre de muestreo con reposición o muestreo aleatorio simple. Observad que en este tipo de muestreo un mismo individuo puede aparecer varias veces en una muestra, y que todas las muestras de 10 individuos “con posibles repeticiones” tienen la misma probabilidad.
+## Muestreo aleatorio con y sin reposición{.example} 
 
-Otra manera de obtener una muestra de nuestra urna sería repetir 10 veces el proceso de sacar una bola de la urna pero ahora no devolverla. Esto es equivalente a extraer de golpe 10 bolas de la urna. Estas muestras no tienen individuos repetidos, y cualquier selección de 10 bolas diferentes se puede obtener con la misma probabilidad. En este caso se habla de muestreo aleatorio sin reposición.
+**Ejemplo**
+
+Pensemos en una urna con 100 bolas de colores. Una manera de obtener una muestra de 10 bolas sería repetir 10 veces el proceso de sacar una bola de la urna, observar su color y devolverla a la urna. Este tipo de muestreo recibe el nombre de **muestreo con reposición** o **muestreo aleatorio simple**. Observad que en este tipo de muestreo un mismo individuo puede aparecer varias veces en una muestra, y que todas las muestras de 10 individuos “con posibles repeticiones” tienen la misma probabilidad.
+
+Otra manera de obtener una muestra de nuestra urna sería repetir 10 veces el proceso de sacar una bola de la urna, pero ahora no devolverla. Esto es equivalente a extraer de golpe 10 bolas de la urna. Estas muestras no tienen individuos repetidos, y cualquier selección de 10 bolas diferentes se puede obtener con la misma probabilidad. En este caso se habla de **muestreo aleatorio sin reposición**.
 
 ## El tamaño de la muestra vs el de la población
 Cuando el tamaño de la población es muy grande en relación a la muestra y por lo tanto la probabilidad de que un individuo se repita en la muestra es muy pequeña, el mues- treo aleatorio con reposición y el muestreo aleatorio sin reposición son aproximadamente equivalentes. Por lo tanto, la mayoría de fórmulas que daremos en este curso suponiendo que trabajamos con una muestra aleatoria simple las consideraremos igualmente válidas para muestras aleatorias sin reposición, siempre y cuando el tamaño de la población sea muy grande en relación al de la muestra. Si el tamaño de la población es relativamente pequeño, algunas de estas fórmulas se pueden salvar aplicando correcciones adecuadas para compensar el efecto del tamaño de la población.
