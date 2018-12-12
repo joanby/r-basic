@@ -286,8 +286,8 @@ cuadrado(miVariable)
 Código |  Función                                 
 --------------------|--------------------
  ```a+bi``` | [Número complejo](https://es.wikipedia.org/wiki/Número_complejo)
-```complex(real=...,imaginary=...)``` | Número complejo
-```complex(modulus=...,argument=...)``` | Número complejo
+```complex(real=...,imaginary=...)``` | Número complejo en forma binómica
+```complex(modulus=...,argument=...)``` | Número complejo en forma polar
 
 ## Números complejos
 
