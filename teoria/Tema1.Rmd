@@ -88,6 +88,7 @@ Es un entorno integrado para utilizar y programar con R
 - ```help()```: obtener ayuda por consola
 - ```??...```: obtener ayuda por consola
 - Pestaña ```Help``` de Rstudio
+- [Cheat Sheet de RStudio](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 - Buscar en San Google (stackoverflow, R project...)
 - Foro del curso
 
