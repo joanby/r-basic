@@ -230,7 +230,7 @@ tan(0)
 ## Trigonometría en radianes
 
 <div class = "aligncenter">
-![](Imgs/trigon.png)
+![Circunferencia Goniométrica](Imgs/trigon.png)
 </div>
 
 ## Un pequeño adelanto
@@ -249,7 +249,7 @@ legend("bottomleft",col=c("blue","green","purple"),
 ## Números en coma flotante
 
 Código |  Función                                 
---------------------|--------------------
+-------|--------------------
 ```print(x,n)``` | Muestra las $n$ cifras significativa del número $x$
 ```round(x,n)``` | Redondea a $n$ cifras significativas un resultado o vector numérico $x$
 ```floor(x)``` | $\lfloor x\rfloor$, parte entera por defecto de $x$
