@@ -77,19 +77,36 @@ Pensemos en una urna con 100 bolas de colores. Una manera de obtener una muestra
 Otra manera de obtener una muestra de nuestra urna sería repetir 10 veces el proceso de sacar una bola de la urna, pero ahora no devolverla. Esto es equivalente a extraer de golpe 10 bolas de la urna. Estas muestras no tienen individuos repetidos, y cualquier selección de 10 bolas diferentes se puede obtener con la misma probabilidad. En este caso se habla de **muestreo aleatorio sin reposición**.
 
 ## El tamaño de la muestra vs el de la población
-Cuando el tamaño de la población es muy grande en relación a la muestra y por lo tanto la probabilidad de que un individuo se repita en la muestra es muy pequeña, el mues- treo aleatorio con reposición y el muestreo aleatorio sin reposición son aproximadamente equivalentes. Por lo tanto, la mayoría de fórmulas que daremos en este curso suponiendo que trabajamos con una muestra aleatoria simple las consideraremos igualmente válidas para muestras aleatorias sin reposición, siempre y cuando el tamaño de la población sea muy grande en relación al de la muestra. Si el tamaño de la población es relativamente pequeño, algunas de estas fórmulas se pueden salvar aplicando correcciones adecuadas para compensar el efecto del tamaño de la población.
+
+Cuando el tamaño de la población es muy grande en relación a la muestra y por lo tanto la probabilidad de que un individuo se repita en la muestra es muy pequeña, el muestreo aleatorio con reposición y el muestreo aleatorio sin reposición son aproximadamente equivalentes. 
+
+Por lo tanto, la mayoría de fórmulas que daremos en este curso suponiendo que trabajamos con una muestra aleatoria simple las consideraremos igualmente válidas para muestras aleatorias sin reposición, siempre y cuando el tamaño de la población sea muy grande en relación al de la muestra. 
+
+Si el tamaño de la población es relativamente pequeño, algunas de estas fórmulas se pueden salvar aplicando correcciones adecuadas para compensar el efecto del tamaño de la población.
 
 # Muestreo aleatorio estratificado
 
 ## Muestreo aleatorio estratificado
 
-Este tipo de muestreos se utiliza cuando la población está dividida en grupos o estratos y estos son de interés para la variable estudiada. En este caso, se toman muestras cuya composición por estratos mantenga las proporciones de la población original; es decir, el tamaño de la muestra de cada estrato ha de representar el mismo porcentaje del total de la muestra que el estrato correspondiente en la población completa. Una vez determinados de esta manera los tamaños de las muestras de los dife- rentes estratos de la población, se obtiene una muestra de cada uno de ellos mediante un muestreo aleatorio con o sin reposición.
+Este tipo de muestreos se utiliza cuando la población está dividida en grupos o estratos y estos son de interés para la variable estudiada. 
 
-## Ejemplo
+En este caso, se toman muestras cuya composición por estratos mantenga las proporciones de la población original. Es decir, el tamaño de la muestra de cada estrato ha de representar el mismo porcentaje del total de la muestra que el estrato correspondiente en la población completa. 
 
-Por ejemplo los estratos podrían ser los grupos de edad, y entonces la muestra en cada grupo de edad se tomaría proporcional a la fracción que representa dicho grupo de edad en la población total. O, en las Islas Baleares, los estratos podrían ser las islas, y la muestra tomada en cada isla sería proporcional a la población relativa de la misma dentro del conjunto total de la comunidad autónoma. O, en una provincia, los estratos podrían ser los municipios, o podrían distinguir el nivel educativo de sus habitantes, etc. Depende de la propiedad a estudiar y de qué estratos se consideran relevantes para dicha propiedad.
+Una vez determinados de esta manera los tamaños de las muestras de los diferentes estratos de la población, se obtiene una muestra de cada uno de ellos mediante un muestreo aleatorio con o sin reposición.
 
-# Muestreo por conglomerados.
+## Muestreo aleatorio estratificado{.example}
+
+**Ejemplo** 
+
+Los estratos podrían ser los grupos de edad. Entonces, la muestra en cada grupo de edad se tomaría proporcional a la fracción que representa dicho grupo de edad en la población total. 
+
+O, en las Islas Baleares, los estratos podrían ser las islas y la muestra tomada en cada isla sería proporcional a la población relativa de la misma dentro del conjunto total de la comunidad autónoma. 
+
+O, en una provincia, los estratos podrían ser los municipios, o podrían distinguir el nivel educativo de sus habitantes, etc. 
+
+Depende de la propiedad a estudiar y de qué estratos se consideran relevantes para dicha propiedad.
+
+# Muestreo por conglomerados
 
 ## Muestreo por conglomerados.
 
