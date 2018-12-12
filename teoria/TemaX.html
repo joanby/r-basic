@@ -276,10 +276,18 @@
 
 <p>Dicha información puede obtenerse de dos formas:</p>
 
-<ol>
-<li><p>Suponiendo que conocemos el modelo al que se ajusta la población: es decir, suponiendo que conocemos el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución. Por ejemplo, podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro \(\mu\) (media) o su parámetro \(\sigma\) (desviación típica), o ambos. Si estamos en este caso, hablaremos de estimación paramétrica.</p></li>
-<li><p>Suponiendo que desconocemos el modelo o la variable aleatoria que modela el objeto de estudio de la población. En este caso, hablaremos de estimación no paramétrica.</p></li>
-</ol>
+<ul>
+<li>Suponiendo que conocemos el modelo al que se ajusta la población: es decir, suponiendo que conocemos el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución.</li>
+</ul>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>Podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro \(\mu\) (media) o su parámetro \(\sigma\) (desviación típica), o ambos. Si estamos en este caso, hablaremos de estimación paramétrica.</p></div>
+
+<ul>
+<li>Suponiendo que desconocemos el modelo o la variable aleatoria que modela el objeto de estudio de la población. En este caso, hablaremos de <l class="definition">estimación no paramétrica</l>.</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Estimación paramétrica</h2></hgroup><article  id="estimacion-parametrica">
 
@@ -316,7 +324,7 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1]  23  63  52  42  93  94  37  14  74  31  65 100  99  55  49</pre>
+<pre > [1] 37 57  1 43 79 90 51  1 95 87 65 22 77 80 56</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-2">
 
@@ -324,15 +332,15 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE) </pre>
 
-<pre > [1] 95 78 56 87 72 73 51 72 62 71 42 89 49 49 68</pre>
+<pre > [1] 52 98 42 87 28 47 25 60  9 58  2 72 46 79 34</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 20 91 30 76 49 28 88 68 13 92  1 65 32 45 38</pre>
+<pre > [1] 46 43 96 98 17 26 45 76 98 60 40  5 83 89 42</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 22 88  6  7 71 86 88  5 33 54 78 91 91 74 48</pre>
+<pre > [1] 75 23 18 97 62 60 89 92 85 11 44 94 92 28  6</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-3">
 
@@ -355,15 +363,15 @@
 muestra_iris=iris[x,] #La m.a.s. de la tabla iris
 muestra_iris</pre>
 
-<pre >     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-27            5.0         3.4          1.6         0.4     setosa
-12            4.8         3.4          1.6         0.2     setosa
-21            5.4         3.4          1.7         0.2     setosa
-94            5.0         2.3          3.3         1.0 versicolor
-12.1          4.8         3.4          1.6         0.2     setosa
-39            4.4         3.0          1.3         0.2     setosa
-89            5.6         3.0          4.1         1.3 versicolor
-150           5.9         3.0          5.1         1.8  virginica</pre>
+<pre >    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+32           5.4         3.4          1.5         0.4     setosa
+116          6.4         3.2          5.3         2.3  virginica
+47           5.1         3.8          1.6         0.2     setosa
+100          5.7         2.8          4.1         1.3 versicolor
+146          6.7         3.0          5.2         2.3  virginica
+140          6.9         3.1          5.4         2.1  virginica
+41           5.0         3.5          1.3         0.3     setosa
+27           5.0         3.4          1.6         0.4     setosa</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-5">
 
@@ -372,7 +380,7 @@ muestra_iris</pre>
 <pre class = 'prettyprint lang-r'>muestra_long_pet=sample(iris$Petal.Length ,15,replace=TRUE) 
 muestra_long_pet</pre>
 
-<pre > [1] 3.5 4.2 1.2 4.5 1.9 1.5 5.4 4.7 4.3 5.2 6.6 1.4 1.4 3.7 1.0</pre>
+<pre > [1] 1.6 4.5 1.5 4.9 1.5 5.1 1.3 1.7 4.2 5.1 4.2 4.8 6.0 1.9 4.5</pre>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-6">
 
@@ -384,7 +392,7 @@ muestra_long_pet</pre>
 
 <pre class = 'prettyprint lang-r'>rnorm (5)</pre>
 
-<pre >[1]  0.7795478 -0.3226321  0.6761702 -1.1226144  1.0195582</pre>
+<pre >[1]  1.8215045  0.2825235 -0.3255716  0.4144758  1.3337579</pre>
 
 <pre class = 'prettyprint lang-r'>set.seed(2018)
 rnorm (5)</pre>
@@ -460,7 +468,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL) 
 sample (10 ,3)</pre>
 
-<pre >[1] 7 4 5</pre>
+<pre >[1] 3 4 1</pre>
 
 </article></slide><slide class=""><hgroup><h2>Set Seed</h2></hgroup><article  id="set-seed-1">
 
@@ -472,7 +480,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL)
 sample (10 ,3)</pre>
 
-<pre >[1] 8 3 4</pre>
+<pre >[1]  3  7 10</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate">
 
@@ -488,18 +496,18 @@ sample (10 ,3)</pre>
 muestras</pre>
 
 <pre >      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]  1.5  5.4  4.9  4.5  5.6  1.5  4.7  4.5  5.0   4.7
- [2,]  1.4  5.1  5.9  4.4  5.1  3.6  1.6  3.3  1.6   1.5
- [3,]  6.7  1.6  1.4  5.2  5.9  5.4  3.5  1.4  1.2   4.3
- [4,]  1.7  5.0  6.9  5.0  5.8  4.8  5.6  3.9  4.1   3.9
- [5,]  1.3  6.3  1.3  1.4  1.3  5.9  1.6  5.9  5.6   3.3
- [6,]  1.5  5.0  6.0  6.4  1.7  3.5  1.7  5.5  5.2   5.1
- [7,]  1.5  4.8  3.5  4.3  1.2  5.6  3.7  5.5  5.6   1.4
- [8,]  6.1  6.0  1.5  4.2  5.1  3.0  5.0  4.7  6.6   4.5
- [9,]  1.5  1.2  1.3  6.1  4.7  1.4  1.6  1.6  1.4   4.5
-[10,]  1.4  1.4  4.7  1.4  4.2  5.9  5.1  1.6  4.5   4.7
-[11,]  1.4  4.5  3.9  4.9  1.4  1.3  4.0  4.6  5.1   4.9
-[12,]  1.6  4.4  4.5  4.5  4.8  1.4  6.0  3.8  4.1   4.5</pre>
+ [1,]  1.4  4.5  4.1  1.5  1.4  1.7  3.9  3.3  1.4   5.1
+ [2,]  5.9  1.4  5.6  4.0  4.4  4.7  4.8  5.6  1.1   1.6
+ [3,]  4.2  4.0  6.3  4.5  4.3  3.5  1.4  5.3  1.7   3.5
+ [4,]  1.5  1.4  4.2  4.8  5.2  5.1  4.7  5.9  3.9   5.5
+ [5,]  1.3  1.4  1.5  4.0  4.4  1.3  1.5  5.0  6.1   6.1
+ [6,]  4.2  5.9  1.4  1.3  5.1  1.7  4.0  1.6  3.5   1.6
+ [7,]  5.5  1.7  5.5  5.1  5.2  1.4  5.8  4.4  4.5   4.8
+ [8,]  5.5  4.1  5.6  1.5  5.4  5.5  1.4  4.8  4.5   4.9
+ [9,]  5.0  1.2  1.6  6.0  5.4  1.2  1.7  5.5  1.3   5.0
+[10,]  1.3  1.5  4.4  4.0  5.5  5.2  4.9  5.1  4.7   4.4
+[11,]  5.0  5.9  5.6  4.8  4.7  1.5  5.5  6.1  4.9   1.6
+[12,]  4.6  4.0  3.0  4.5  4.9  1.6  4.8  4.5  1.7   4.8</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-2">
 
@@ -508,7 +516,7 @@ muestras</pre>
 <pre class = 'prettyprint lang-r'>medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 medias</pre>
 
-<pre > [1] 3.37 3.39 3.33 3.72 3.25 3.85 3.47 4.11 3.55 3.79</pre>
+<pre > [1] 4.05 3.53 3.59 3.47 4.61 4.38 3.71 4.09 3.73 4.15</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-3">
 

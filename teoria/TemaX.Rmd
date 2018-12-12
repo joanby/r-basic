@@ -192,9 +192,15 @@ Como ya hemos indicado anteriormente, esto significa intentar obtener informaci�
 
 Dicha información puede obtenerse de dos formas:
 
-1. Suponiendo que conocemos el modelo al que se ajusta la población: es decir, suponiendo que conocemos el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución. Por ejemplo, podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro $\mu$ (media) o su parámetro $\sigma$ (desviación típica), o ambos. Si estamos en este caso, hablaremos de estimación paramétrica.
+- Suponiendo que conocemos el modelo al que se ajusta la población: es decir, suponiendo que conocemos el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución. 
 
-2. Suponiendo que desconocemos el modelo o la variable aleatoria que modela el objeto de estudio de la población. En este caso, hablaremos de estimación no paramétrica.
+<div class = "example">
+**Ejemplo**
+
+Podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro $\mu$ (media) o su parámetro $\sigma$ (desviación típica), o ambos. Si estamos en este caso, hablaremos de estimación paramétrica.
+</div>
+
+- Suponiendo que desconocemos el modelo o la variable aleatoria que modela el objeto de estudio de la población. En este caso, hablaremos de <l class="definition">estimación no paramétrica</l>.
 
 ## Estimación paramétrica
 
