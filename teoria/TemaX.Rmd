@@ -108,9 +108,23 @@ Depende de la propiedad a estudiar y de qué estratos se consideran relevantes p
 
 # Muestreo por conglomerados
 
-## Muestreo por conglomerados.
+## Muestreo por conglomerados
 
-El proceso de obtener una muestra aleatoria en algunos casos es caro o difícil. Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lista completa de dichas personas puede ser muy costoso. Imaginemos que queremos estudiar los hábitos de alimentación que tienen los estudiantes de Primaria de Baleares. Pa- ra ello, previo permiso de la autoridad competente, tendremos que seleccionar una muestra representativa de los escolares de Baleares. Pero, en vez de extraer una muestra represen- tativa de todos los estudiantes de Primaria, lo que haríamos sería primero escoger al azar un conjunto de colegios, a los que llamamos en este contexto conglomerados, y a continua- ción, dentro de cada colegio (conglomerado) elegiríamos al azar un conjunto de estudiantes. Pensemos que es mucho más sencillo poseer la lista completa de estudiantes de unos pocos colegios que conseguir la lista completa de todos los estudiantes de todos los colegios, y que es más barato ir a unos pocos colegios concretos que ir a todos los colegios de las Islas a entrevistar a unos pocos estudiantes en cada centro. De manera similar, algunos estudios poblacionales a nivel estatal se realizan solamente en algunas provincias escogidas aleatoriamente.
+El proceso de obtener una muestra aleatoria en algunos casos es caro o difícil. 
+
+Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lista completa de dichas personas puede ser muy costoso. 
+
+## Muestreo por conglomerados{.example}
+
+**Ejemplo**
+
+Imaginemos que queremos estudiar los hábitos de alimentación que tienen los estudiantes de Primaria de Baleares. 
+
+Para ello, previo permiso de la autoridad competente, tendremos que seleccionar una muestra representativa de los escolares de Baleares. Pero, en vez de extraer una muestra representativa de todos los estudiantes de Primaria, lo que haríamos sería primero escoger al azar un conjunto de colegios, a los que llamamos en este contexto conglomerados
+
+A continuación, dentro de cada colegio (conglomerado), elegiríamos al azar un conjunto de estudiantes. 
+
+Pensemos que es mucho más sencillo poseer la lista completa de estudiantes de unos pocos colegios que conseguir la lista completa de todos los estudiantes de todos los colegios, y que es más barato ir a unos pocos colegios concretos que ir a todos los colegios de las Islas a entrevistar a unos pocos estudiantes en cada centro. 
 
 # Muestreos no aleatorios. 
 
