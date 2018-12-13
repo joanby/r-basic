@@ -18,6 +18,11 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 En todo estudio estadístico hemos de distinguir entre <l class="definition">población</l>, que es un conjunto de individuos con una característica observable, y <l class="definition">muestra</l>, un subconjunto de una población del que se espera que la represente. 
 
+<div class="aligncenter">
+![](Imgs/muestra.png)
+</div>
+
+## Población vs muestra
 
 <div class="example">
 
@@ -37,6 +42,8 @@ En conclusión, todo depende del estudio que queramos realizar.
 Anteriormente distinguíamos dos tipos de análisis de un conjunto de datos sobre un determinado fenómeno. 
 
 En aquel momento nos centrábamos en el <l class="definition">análisis exploratorio</l>, en el que describimos, resumimos e intentamos interpretar los datos usando técnicas de estadística descriptiva. 
+
+## Población vs muestra
 
 Pero en otro tipo de estudios, nuestro objetivo es contrastar una hipótesis sobre el comportamiento de dicho fenómeno. Para hacerlo, tendremos que llevar a cabo un estudio estadístico que, al menos en principio, nos permita confirmar o refutar dicha hipótesis. Este tipo de estudio estadístico pertenece al ámbito del análisis de datos confirmatorio, ya que persigue reforzar y aportar evidencias sobre la veracidad de nuestra hipótesis. En el análisis de datos de tipo confirmatorio, se usan técnicas de <l class = "definition">estadística inferencial</l>, cuyo objetivo es inferir información sobre el conjunto de una población, es decir, contestar preguntas sobre el total de la población, a partir del estudio de una muestra representativa.
 
@@ -60,13 +67,13 @@ Existen muchas técnicas de muestreo, cada una de las cuales proporciona una mue
 
 A continuación, describimos de forma breve algunos tipos.
 
-# Muestreo aleatorio con y sin reposición
+# Cómo tomar una muestra de individuos
 
 ## Muestreo aleatorio con y sin reposición
 
 Un <l class="definition">muestreo aleatorio</l> consiste en seleccionar una muestra de la población de manera que todas las muestras del mismo tamaño tengan la misma probabilidad. 
 
-Es decir, si fijamos el número de individuos de la muestra, cualquier conjunto de ese número de individuos ha de tener la misma probabilidad de ser seleccionado. Hay dos tipos básicos de muestreos aleatorios que vale la pena distinguir.
+Es decir, si fijamos el número de individuos de la muestra, cualquier conjunto de ese número de individuos ha de tener la misma probabilidad de ser seleccionado. Hay dos tipos básicos de muestreos aleatorios que vale la pena distinguir: <l class="definition">muestreos aleatorios con reposición y sin reposición</l>.
 
 ## Muestreo aleatorio con y sin reposición{.example} 
 
@@ -83,8 +90,6 @@ Cuando el tamaño de la población es muy grande en relación a la muestra y por
 Por lo tanto, la mayoría de fórmulas que daremos en este curso suponiendo que trabajamos con una muestra aleatoria simple las consideraremos igualmente válidas para muestras aleatorias sin reposición, siempre y cuando el tamaño de la población sea muy grande en relación al de la muestra. 
 
 Si el tamaño de la población es relativamente pequeño, algunas de estas fórmulas se pueden salvar aplicando correcciones adecuadas para compensar el efecto del tamaño de la población.
-
-# Muestreo aleatorio estratificado
 
 ## Muestreo aleatorio estratificado
 
@@ -106,13 +111,13 @@ O, en una provincia, los estratos podrían ser los municipios, o podrían distin
 
 Depende de la propiedad a estudiar y de qué estratos se consideran relevantes para dicha propiedad.
 
-# Muestreo por conglomerados
-
 ## Muestreo por conglomerados
 
 El proceso de obtener una muestra aleatoria en algunos casos es caro o difícil. 
 
-Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lista completa de dichas personas puede ser muy costoso. 
+Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lista completa de dichas personas puede ser muy costoso. Este es el caso de tener la población dividida en diferentes classes llamados <l class="definition">conglomerados</l> y queremos obtener una muestra de los mismos. 
+
+Veámoslo con un ejemplo:
 
 
 ## Muestreo por conglomerados{.example}
@@ -121,13 +126,11 @@ Por ejemplo, si el estudio se realiza sobre conjuntos de personas, tener una lis
 
 Imaginemos que queremos estudiar los hábitos de alimentación que tienen los estudiantes de Primaria de Baleares. 
 
-Para ello, previo permiso de la autoridad competente, tendremos que seleccionar una muestra representativa de los escolares de Baleares. Pero, en vez de extraer una muestra representativa de todos los estudiantes de Primaria, lo que haríamos sería primero escoger al azar un conjunto de colegios, a los que llamamos en este contexto conglomerados
+Para ello, previo permiso de la autoridad competente, tendremos que seleccionar una muestra representativa de los escolares de Baleares. Pero, en vez de extraer una muestra representativa de todos los estudiantes de Primaria, lo que haríamos sería primero escoger al azar un conjunto de colegios, a los que llamamos en este contexto **conglomerados**.
 
 A continuación, dentro de cada colegio (conglomerado), elegiríamos al azar un conjunto de estudiantes. 
 
 Pensemos que es mucho más sencillo poseer la lista completa de estudiantes de unos pocos colegios que conseguir la lista completa de todos los estudiantes de todos los colegios, y que es más barato ir a unos pocos colegios concretos que ir a todos los colegios de las Islas a entrevistar a unos pocos estudiantes en cada centro. 
-
-# Muestreos no aleatorios 
 
 ## Muestreos no aleatorios 
 
@@ -181,10 +184,11 @@ O imaginad que tenéis una bolsa con bolas de diferentes tamaños. Si las remov�
 Existen otros tipos de muestreo que suelen ser combinaciones de las técnicas anteriores u otros tipos de técnicas. En cualquier caso, lo importante es recordar que el estudio estadístico que se realice a posteriori deberá ser diferente según el muestreo realizado.
 
 
+# La toma de datos
 
-## Raw Data
+## Los datos brutos sin procesar
 
-Una vez realizado el muestreo y obtenidos los datos (los llamados <l class="definition">datos brutos</l>, <l class="definition">raw data</l>, de los que hablábamos en la lección sobre datos cuantitativos agrupados en el primer volumen), el siguiente paso es inferir información a partir de dichos datos. 
+Una vez realizado el muestreo y obtenidos los datos (los llamados <l class="definition">datos brutos</l>, <l class="definition">raw data</l>), el siguiente paso es **inferir información** a partir de dichos datos. 
 
 Como ya hemos indicado anteriormente, esto significa intentar obtener información de la población a partir de dichos datos.
 
@@ -192,12 +196,12 @@ Como ya hemos indicado anteriormente, esto significa intentar obtener informaci�
 
 Dicha información puede obtenerse de dos formas:
 
-- Suponiendo que conocemos el modelo al que se ajusta la población: es decir, suponiendo que conocemos el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución. 
+- Suponiendo que conocemos el modelo al que se ajusta la población: se conoce el tipo de distribución de la variable aleatoria que modela el objeto de estudio de la población pero desconocemos uno o varios parámetros de los que depende dicha distribución. 
 
 <div class = "example">
 **Ejemplo**
 
-Podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro $\mu$ (media) o su parámetro $\sigma$ (desviación típica), o ambos. Si estamos en este caso, hablaremos de estimación paramétrica.
+Podemos saber que la altura de los habitantes de un municipio es una variable aleatoria normal, pero desconocer su parámetro $\mu$ (media) o su parámetro $\sigma$ (desviación típica), o ambos. Si estamos en este caso, hablaremos de **estimación paramétrica.**
 </div>
 
 - Suponiendo que desconocemos el modelo o la variable aleatoria que modela el objeto de estudio de la población. En este caso, hablaremos de <l class="definition">estimación no paramétrica</l>.
@@ -206,7 +210,7 @@ Podemos saber que la altura de los habitantes de un municipio es una variable al
 
 En el caso de la estadística paramétrica, existen tres vías para obtener información sobre los parámetros:
 
-- **Estimación puntual**. Se trata de obtener fórmulas, llamadas <l class="definition">estadísticos</l> o <l class="definition">estimadores</l>, que se aplican a los datos de la muestra para obtener una aproximación (el término exacto es una estimación) del valor de dicho parámetro para la población.
+- **Estimación puntual**. Se trata de obtener fórmulas, llamadas <l class="definition">estadísticos</l> o <l class="definition">estimadores</l>, que se aplican a los datos de la muestra para obtener una aproximación (o estimación) del valor de dicho parámetro para la población.
 
 Naturalmente, tendremos que demostrar algunos teoremas que nos digan cuándo y hasta qué punto esta estimación es fiable.
 
@@ -242,10 +246,10 @@ La manera más sencilla de llevar a cabo un muestreo aleatorio simple es numerar
 
 ## Función sample()
 
-R dispone de un generador de muestras aleatorias de un vector. La función básica es `sample(x, n, replace=\cdots)`
+`R` dispone de un generador de muestras aleatorias de un vector. La función básica es `sample(x, n, replace=\cdots)`
 donde:
 
-- $x$ es un vector o un número natural $x$, en cuyo caso R entiende que representa el vector $1,2,\cdots,x$
+- $x$ es un vector o un número natural $x$, en cuyo caso `R` entiende que representa el vector $1,2,\cdots,x$
 - $n$ es el tamaño de la muestra que deseamos extraer
 - el parámetro `replace` puede igualarse a `TRUE`, y será una muestra aleatoria con reposición, es decir, simple, o a `FALSE`, y será una muestra aleatoria sin reposición. Este último es su valor por defecto, por lo que no es necesario especificarlo.
 
@@ -296,83 +300,83 @@ Recordad que `dim` aplicado a un dataframe nos da un vector con sus dimensiones:
 Si quisiéramos una muestra aleatoria de longitudes de pétalos, podríamos aplicar directamente `sample` al vector correspondiente:
 
 ```{r}
-muestra_long_pet=sample(iris$Petal.Length ,15,replace=TRUE) 
+muestra_long_pet=sample(iris$Petal.Length ,10,replace=TRUE) 
 muestra_long_pet
 ```
 
 ## Función set.seed()
 
-El hecho de que funciones como `sample` o los generadores de vectores numéricos con una cierta distribución de probabilidad fijada, como `rnorm` o r`binom`, vectores aleatorios, puede tener inconvenientes a la hora de reproducir una simulación.
+El hecho de que funciones como `sample` o los generadores de vectores numéricos con una cierta distribución de probabilidad fijada, como `rnorm` o rbinom` (vectores que son aleatorios), puede tener inconvenientes a la hora de reproducir una simulación.
 
 
-R permite "fijar" el resultado de una función aleatoria con la instrucción `set.seed`. Sin entrar en detalles sobre cómo funcionan, los diferentes algoritmos que usa R para generar números aleatorios usan una semilla, que se modifica después de la ejecución del algoritmo, y por eso cada vez dan un resultado distinto. 
+`R` permite "fijar" el resultado de una función aleatoria con la instrucción `set.seed`. Sin entrar en detalles sobre cómo funcionan, los diferentes algoritmos que usa `R` para generar números aleatorios usan una **semilla**, que se modifica después de la ejecución del algoritmo, y por eso cada vez dan un resultado distinto. 
 
 Pero, para una semilla fija, el algoritmo da el mismo resultado siempre. Lo que hace la función `set.seed` es igualar esta semilla al valor que le entramos. Si tras aplicar esta función a un número concreto ejecutamos una instrucción que genere un vector aleatorio de una longitud fija con una distribución fija, el resultado será siempre el mismo. 
 
 ## Función set.seed()
 
 ```{r}
-rnorm (5)
+rnorm (6)
 set.seed(2018)
-rnorm (5)
+rnorm (6)
 set.seed(2018)
-rnorm (5)
+rnorm (6)
 ```
 
 ## Función set.seed()
 
 ```{r}
 
-rnorm (5)
-set.seed(2018)
-rnorm (5)
-set.seed(2018)
-rnorm (5)
+rnorm (6)
+set.seed(2019)
+rnorm (6)
+set.seed(2019)
+rnorm (6)
 ```
 
 ## Función set.seed()
 
-Ejecutado inmediatamente después de `set.seed(20)`, `rnorm(5)` siempre da lo mismo. Y ejecutado después de `set.seed(10)`, rnorm(5) vuelve a dar siempre da lo mismo, pero diferente de `set.seed(20)`.
+Ejecutado inmediatamente después de `set.seed(2018)`, `rnorm(6)` siempre da lo mismo. Y ejecutado después de `set.seed(2019)`, `rnorm(5)` vuelve a dar siempre da lo mismo, pero diferente de `set.seed(2018)`.
 
 La función `set.seed` no sólo fija el resultado de la siguiente instrucción que genere un vector aleatorio, sino que, como fija la semilla de aleatoriedad y las funciones siguientes la modifican de manera determinista, también fija los resultados de todas las instrucciones siguientes que generen vectores aleatorios.
 
-## Función set.seed()
+## Función set.seed() (I)
 
 ```{r}
-set.seed(100)
-sample (10 ,3)
-sample (10 ,3)
-sample (10 ,3) 
+set.seed(2018)
+sample (10 ,5)
+sample (10 ,5)
+sample (10 ,5) 
 ```
 
-## Función set.seed()
+## Función set.seed() (II)
 
 ```{r}
-set.seed(100)
-sample (10 ,3)
-sample (10 ,3)
-sample (10 ,3)
+set.seed(2018)
+sample (10 ,5)
+sample (10 ,5)
+sample (10 ,5)
 ```
 
 
 ## Función set.seed()
 
-Si queréis volver a "reiniciar" la semilla de la aleatoriedad tras haber usado un `set.seed`, podéis usar `set.seed(NULL)`.
+Si queréis volver a "reiniciar" la semilla de aleatoriedad tras haber usado un `set.seed`, podéis usar `set.seed(NULL)`.
 
 ```{r}
-set.seed(100) 
-sample (10 ,3)
+set.seed(2018) 
+sample (10 ,5)
 set.seed(NULL) 
-sample (10 ,3)
+sample (10 ,5)
 ```
 
 ## Función set.seed()
 
 ```{r}
-set.seed(100)
-sample (10 ,3)
+set.seed(2018)
+sample (10 ,5)
 set.seed(NULL)
-sample (10 ,3)
+sample (10 ,5)
 ```
 
 ## Función replicate()
@@ -380,38 +384,38 @@ sample (10 ,3)
 A veces querremos tomar diversas muestras aleatorias de una misma población y calcular algo sobre ellas. Para hacerlo podemos usar la función `replicate`. La sintaxis básica es `replicate(n,instrucción )` donde $n$ es el número de repeticiones de la instrucción. 
 
 Por ejemplo, para tomar 10 muestras
-aleatorias simples de 15 longitudes de pétalos de flores iris, podemos hacer:
+aleatorias simples de 12 anchuras de sépalos de flores iris, podemos hacer:
 
 ## Función replicate()
 
 ```{r}
-muestras=replicate(10, sample(iris$Petal.Length ,12, replace=TRUE))
+muestras=replicate(10, sample(iris$Sepal.Length ,12, replace=TRUE))
 muestras
 ```
 
 ## Función replicate()
 
-Observad que R ha organizado los diferentes resultados obtenidos con el replicate como columnas de una matriz.
+Observad que `R` ha organizado los diferentes resultados obtenidos con el replicate como columnas de una matriz.
 
-Si, por ejemplo, sólo nos hubiera interesado calcular las medias, redondeadas a 2 cifras decimales, de 10 muestras aleatorias simples de 15 longitudes de pétalos de flores iris, podríamos haber hecho
+Si, por ejemplo, sólo nos hubiera interesado calcular las medias, redondeadas a 2 cifras decimales, de 10 muestras aleatorias simples de 12 anchuras de sétalos de flores iris, podríamos haber hecho
 
 ```{r}
-medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
+medias=replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
 medias
 ```
 
 
 ## Función replicate()
 
-¿Y si quisiéramos la media y la desviación típica muestral de 10 muestras de estas? No podemos usar sin más dos replicate, porque las muestras serían diferentes. Pero tene- mos dos opciones posibles. Una sería fijar la misma semilla de aleatoriedad antes de cada replicate.
+¿Y si quisiéramos la media y la desviación típica muestral de 10 muestras de estas? No podemos usar sin más dos replicate, porque las muestras serían diferentes. Pero tenemos dos opciones posibles. Una sería fijar la misma semilla de aleatoriedad antes de cada replicate.
 
 ## Función replicate()
 
 ```{r}
-set.seed(1000)
-medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
-set.seed(1000)
-desv_tip=replicate(10,round(sd(sample(iris$Petal.Length ,15, replace=TRUE)),2))
+set.seed(2018)
+medias=replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
+set.seed(2018)
+desv_tip=replicate(10,round(sd(sample(iris$Petal.Length ,12, replace=TRUE)),2))
 rbind(medias ,desv_tip)
 ```
 
@@ -421,22 +425,32 @@ Otra posibilidad es definir una función que calcule un vector con estos dos val
 
 ```{r}
 info=function(x){round(c(mean(x),sd(x)),2)}
-set.seed(1000)
-info_lp=replicate(10,info(sample(iris$Petal.Length ,15, replace=TRUE)))
+set.seed(2018)
+info_lp=replicate(10,info(sample(iris$Petal.Length ,12, replace=TRUE)))
 info_lp
 ```
 
 ## Función replicate()
 
-En este último caso, R ha organizado por defecto la información obtenida como columnas de una matriz: la primera fila son las medias y la segunda las desviaciones típicas.
+En este último caso, `R` ha organizado por defecto la información obtenida como columnas de una matriz: la primera fila son las medias y la segunda las desviaciones típicas.
 Como vemos, la función `set.seed` permite "fijar" el resultado de un `replicate` que incluya la generación de números aleatorios:
 
 ```{r}
-set.seed(1000)
-replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
-set.seed(1000)
-replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
+set.seed(2018)
+replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
+set.seed(2018)
+replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
 ```
+
+## Teorema del Límite Central
+
+<l class="prop">Teorema del Límite Central</l> 
+Sea $X_1, X_2, \cdots X_n$ un conjunto de variables aleatorias, independientes e idénticamente distribuidas con media $\mu$ y varianza $\sigma^2\neq 0$ entonces para $n$ suficientente grande se cumple que la variable aleatoria
+\[\bar X = \frac{1}{n}\sum_{i=1}^n X_i\]
+tiene aproximadamente una distribución normal (también llamada **distribución gaussiana, curva de Gauss o campana de Gauss**) con $\mu_{\bar X} = \mu$ y $\sigma^2_{\bar X} = \frac{\sigma^2}{n}$
+
+Para más información, ver [en la Wikipedia](https://es.wikipedia.org/wiki/Teorema_del_l%C3%ADmite_central).
+
 
 # Ejercicios
 
@@ -446,4 +460,4 @@ Consideremos la tabla de datos `crabs` del paquete `MASS` que contiene informaci
 
 - Definid una función de parámetros $s$, $n$, $m$ que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las $n$ muestras aleatorias simples de $m$ (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número $s$. Tenéis que usar `set.seed` y `replicate` para definir la función.
 - Aplicadla a $n = 50$, $m = 30$ y tomando como $s$ el número formado por las $5$ primeras cifras de vuestro NIF o pasaporte.
-- ¿Qué valores predice el Teorema Central del Límite que se deberían obtener? ¿Habéis obtenido resultados similares a los predichos por dicho teorema?
+- ¿Qué valores predice el *Teorema del Límite Central* que se deberían obtener? ¿Habéis obtenido resultados similares a los predichos por dicho teorema?
