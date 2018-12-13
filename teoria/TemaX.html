@@ -63,10 +63,6 @@
       font-style: italic;
     }
 
-    summary {
-      display: list-item;
-    }
-
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -100,7 +96,7 @@
     }
   </style>
 
-  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A%2Er%2Dcode%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20gray%3B%0Abackground%2Dcolor%3A%20%23F2F2F2%3B%0Afont%2Dsize%3A%200%2E7em%0A%7D%0A" rel="stylesheet" type="text/css" />
+  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eprop%7B%0Acolor%3A%20lightgreen%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A%2Er%2Dcode%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20gray%3B%0Abackground%2Dcolor%3A%20%23F2F2F2%3B%0Afont%2Dsize%3A%200%2E7em%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -352,7 +348,7 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1]  72  27  11  68  36  38  21   3  81  36 100  45  94  44  54</pre>
+<pre > [1] 44 44 54 52 46 59  9 57 30 87 60 40 49 62 89</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-2">
 
@@ -360,15 +356,15 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE) </pre>
 
-<pre > [1] 76 73 86 55 72 88 10 79 73  9 97 13 22  9 41</pre>
+<pre > [1] 11 81 94 92 84 34 79 73 67 78 33  2 82 34 68</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 46 18  8 80 82 54 34  7 21 62 18 52 88 85  6</pre>
+<pre > [1] 64 35  2 46  2 58 49 26 69 21 63 58 87 20 10</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 26 33 73 22 34 33 36 98 62 57 45 43 78 15 79</pre>
+<pre > [1] 52 16 23 24 63 97 45 66 31 79 59 66 40 49 86</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-3">
 
@@ -392,14 +388,14 @@ muestra_iris=iris[x,] #La m.a.s. de la tabla iris
 muestra_iris</pre>
 
 <pre >    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-113          6.8         3.0          5.5         2.1  virginica
-56           5.7         2.8          4.5         1.3 versicolor
-1            5.1         3.5          1.4         0.2     setosa
-50           5.0         3.3          1.4         0.2     setosa
-28           5.2         3.5          1.5         0.2     setosa
-133          6.4         2.8          5.6         2.2  virginica
-18           5.1         3.5          1.4         0.3     setosa
-81           5.5         2.4          3.8         1.1 versicolor</pre>
+68           5.8         2.7          4.1         1.0 versicolor
+51           7.0         3.2          4.7         1.4 versicolor
+111          6.5         3.2          5.1         2.0  virginica
+5            5.0         3.6          1.4         0.2     setosa
+97           5.7         2.9          4.2         1.3 versicolor
+53           6.9         3.1          4.9         1.5 versicolor
+114          5.7         2.5          5.0         2.0  virginica
+25           4.8         3.4          1.9         0.2     setosa</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-5">
 
@@ -410,7 +406,7 @@ muestra_iris</pre>
 <pre class = 'prettyprint lang-r'>muestra_long_pet=sample(iris$Petal.Length ,10,replace=TRUE) 
 muestra_long_pet</pre>
 
-<pre > [1] 1.6 5.8 1.6 1.9 3.9 1.4 1.5 4.3 5.8 4.5</pre>
+<pre > [1] 1.4 1.3 1.3 4.5 6.0 1.5 4.2 4.4 4.7 4.5</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed">
 
@@ -424,7 +420,7 @@ muestra_long_pet</pre>
 
 <pre class = 'prettyprint lang-r'>rnorm (6)</pre>
 
-<pre >[1]  1.1304337 -0.6078742  0.3641382  1.5779860 -1.0345704  1.0747423</pre>
+<pre >[1]  0.61794201 -1.71323122 -0.59085331  0.96282532  0.03779252  0.61007386</pre>
 
 <pre class = 'prettyprint lang-r'>set.seed(2018)
 rnorm (6)</pre>
@@ -500,7 +496,7 @@ sample (10 ,5)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL) 
 sample (10 ,5)</pre>
 
-<pre >[1] 4 5 2 9 6</pre>
+<pre >[1] 5 6 1 9 3</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-5">
 
@@ -512,7 +508,7 @@ sample (10 ,5)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL)
 sample (10 ,5)</pre>
 
-<pre >[1]  2  5 10  6  9</pre>
+<pre >[1]  1  2  4  7 10</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate">
 
@@ -526,18 +522,18 @@ sample (10 ,5)</pre>
 muestras</pre>
 
 <pre >      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]  5.5  6.9  4.3  5.4  4.6  5.7  5.1  5.0  5.1   5.8
- [2,]  4.6  5.4  7.7  5.2  7.6  5.8  5.1  6.3  6.9   7.9
- [3,]  6.0  6.7  4.9  6.7  5.7  5.1  4.7  5.0  5.4   5.0
- [4,]  5.2  6.5  5.6  6.3  7.7  5.7  6.4  6.3  5.1   4.4
- [5,]  5.0  6.3  7.2  6.4  5.5  4.9  5.1  6.7  5.8   4.8
- [6,]  5.5  6.0  6.2  6.2  6.7  5.6  6.4  6.3  7.3   4.8
- [7,]  7.0  4.9  5.8  4.8  4.7  4.9  7.7  6.8  5.8   5.0
- [8,]  5.8  4.9  6.2  6.7  6.0  4.9  5.0  7.9  5.0   7.2
- [9,]  5.8  5.2  4.9  5.8  6.2  5.0  5.7  5.6  6.1   5.1
-[10,]  5.0  7.7  6.1  7.9  5.4  5.5  5.8  5.6  5.0   5.4
-[11,]  6.7  5.2  6.4  5.4  5.6  6.3  6.1  7.2  6.0   6.4
-[12,]  6.5  5.0  6.1  5.7  4.6  6.4  6.0  6.4  5.8   6.4</pre>
+ [1,]  4.7  5.0  6.3  5.5  5.1  6.5  6.3  6.0  7.3   4.5
+ [2,]  5.5  6.1  6.2  4.6  4.9  5.7  5.9  7.2  6.5   5.1
+ [3,]  5.2  6.7  4.9  4.5  6.9  6.7  5.0  5.1  5.6   6.3
+ [4,]  5.0  5.0  6.1  6.3  5.0  5.3  6.4  5.0  4.6   7.2
+ [5,]  6.5  4.4  5.7  5.7  5.7  6.4  5.5  5.9  5.0   6.7
+ [6,]  6.6  6.4  5.7  4.8  6.3  4.9  5.1  4.4  6.2   5.9
+ [7,]  6.8  5.1  6.5  5.4  5.8  4.9  4.6  5.1  5.4   7.4
+ [8,]  6.0  4.7  6.1  5.6  7.9  5.0  5.1  6.5  5.6   6.3
+ [9,]  6.0  6.8  5.5  5.8  6.0  5.6  4.7  5.6  6.3   6.9
+[10,]  7.6  5.9  5.1  5.4  4.9  5.2  4.9  6.3  6.7   5.0
+[11,]  4.9  4.9  5.4  5.7  4.9  4.9  6.7  6.4  6.4   7.2
+[12,]  4.8  7.7  7.7  7.2  5.4  4.4  4.6  5.1  6.7   4.9</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-2">
 
@@ -548,7 +544,7 @@ muestras</pre>
 <pre class = 'prettyprint lang-r'>medias=replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
 medias</pre>
 
-<pre > [1] 4.67 4.01 3.76 3.26 4.28 3.53 3.76 4.23 3.49 4.51</pre>
+<pre > [1] 3.77 4.22 3.39 3.42 3.56 3.71 3.62 3.84 3.27 4.75</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-3">
 

@@ -9,6 +9,11 @@
   font-size: 0.8em;
 }
 
+.prop{
+  color: lightgreen;
+  display:inline;
+}
+
 .example{
   color: white;
   background-color: blue;
