@@ -442,8 +442,8 @@ replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 
 ## Ejercicio{.exercise}
 
-Consideremos la tabla de datos `datacrab.txt` (link al dataset) que contiene información sobre una muestra de cangrejos. Cargadla en un data frame.
+Consideremos la tabla de datos `crabs` del paquete `MASS` que contiene información sobre una muestra de cangrejos. Cargadla en un data frame llamado `datacrab`.
 
-- Definid una función de parámetros $s$, $n$, $m$ que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las n muestras aleatorias simples de m (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número $s$. Tenéis que usar set.seed y replicate para definir la función.
-- Aplicadla a $n = 50$, $m = 30$ y tomando como s el número formado por las $5$ primeras cifras de vuestro NIF o pasaporte.
+- Definid una función de parámetros $s$, $n$, $m$ que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las $n$ muestras aleatorias simples de $m$ (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número $s$. Tenéis que usar `set.seed` y `replicate` para definir la función.
+- Aplicadla a $n = 50$, $m = 30$ y tomando como $s$ el número formado por las $5$ primeras cifras de vuestro NIF o pasaporte.
 - ¿Qué valores predice el Teorema Central del Límite que se deberían obtener? ¿Habéis obtenido resultados similares a los predichos por dicho teorema?

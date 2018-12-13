@@ -343,7 +343,7 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 40 86 63 96 38 79 76 30 94 84 79 13 78  5 99</pre>
+<pre > [1]  75  72  66  11  60  28  39   8   1  30 100   7  23  44  30</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-2">
 
@@ -351,15 +351,15 @@
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE) </pre>
 
-<pre > [1] 52 26 14 51 75 78 38 53 50 33 60 52 92 37 71</pre>
+<pre > [1] 11 17 45 90 66  7 76 48 55 77 24 56 85 55 95</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 100  22  42  33  15  71   9  47  30  94  64  31  96  27  90</pre>
+<pre > [1]  7 10 49 24 39  5 29 21 72 12 30 43 85 51 69</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 30 50 49 68 58 28 95 13 88 19  7 96 97 81 34</pre>
+<pre > [1]  77  74  60  43  69  90  71  20   5  78 100  68  61  85  28</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-3">
 
@@ -382,15 +382,15 @@
 muestra_iris=iris[x,] #La m.a.s. de la tabla iris
 muestra_iris</pre>
 
-<pre >   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-33          5.2         4.1          1.5         0.1     setosa
-72          6.1         2.8          4.0         1.3 versicolor
-80          5.7         2.6          3.5         1.0 versicolor
-91          5.5         2.6          4.4         1.2 versicolor
-41          5.0         3.5          1.3         0.3     setosa
-29          5.2         3.4          1.4         0.2     setosa
-56          5.7         2.8          4.5         1.3 versicolor
-17          5.4         3.9          1.3         0.4     setosa</pre>
+<pre >    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+141          6.7         3.1          5.6         2.4  virginica
+76           6.6         3.0          4.4         1.4 versicolor
+146          6.7         3.0          5.2         2.3  virginica
+45           5.1         3.8          1.9         0.4     setosa
+41           5.0         3.5          1.3         0.3     setosa
+39           4.4         3.0          1.3         0.2     setosa
+4            4.6         3.1          1.5         0.2     setosa
+139          6.0         3.0          4.8         1.8  virginica</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-5">
 
@@ -401,7 +401,7 @@ muestra_iris</pre>
 <pre class = 'prettyprint lang-r'>muestra_long_pet=sample(iris$Petal.Length ,15,replace=TRUE) 
 muestra_long_pet</pre>
 
-<pre > [1] 1.4 1.4 1.4 4.9 1.4 1.4 1.5 4.9 4.6 1.5 6.1 5.4 4.2 5.5 5.6</pre>
+<pre > [1] 5.7 1.9 4.3 1.4 1.5 4.4 3.7 4.8 4.7 4.7 5.5 5.2 3.3 1.5 6.0</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed">
 
@@ -415,7 +415,7 @@ muestra_long_pet</pre>
 
 <pre class = 'prettyprint lang-r'>rnorm (5)</pre>
 
-<pre >[1]  0.72605976  0.05422344  1.13798869 -0.11765843 -0.13421879</pre>
+<pre >[1] -0.9642624 -1.3065391 -0.4547211 -0.9496712 -0.6637647</pre>
 
 <pre class = 'prettyprint lang-r'>set.seed(2018)
 rnorm (5)</pre>
@@ -491,7 +491,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL) 
 sample (10 ,3)</pre>
 
-<pre >[1] 2 6 8</pre>
+<pre >[1] 8 6 4</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-7">
 
@@ -503,7 +503,7 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL)
 sample (10 ,3)</pre>
 
-<pre >[1] 1 2 4</pre>
+<pre >[1] 2 8 4</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate">
 
@@ -517,18 +517,18 @@ sample (10 ,3)</pre>
 muestras</pre>
 
 <pre >      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]  6.1  4.8  4.6  4.8  1.9  1.5  1.3  3.6  4.5   4.5
- [2,]  1.4  1.6  5.5  4.0  6.1  1.9  4.1  1.4  4.6   4.9
- [3,]  4.8  1.9  5.8  4.7  4.5  5.1  5.6  1.5  1.4   1.5
- [4,]  5.6  1.5  4.8  5.8  1.5  5.6  4.8  5.6  4.8   1.5
- [5,]  3.9  5.7  4.9  4.0  1.3  1.4  5.1  4.5  5.0   4.6
- [6,]  1.4  1.5  1.5  1.3  5.6  6.9  1.7  4.1  4.9   1.6
- [7,]  1.5  5.7  1.5  1.5  4.5  5.5  5.1  1.3  1.3   1.7
- [8,]  5.6  4.1  4.5  5.1  1.5  6.3  4.7  1.4  3.5   5.1
- [9,]  1.9  3.3  3.9  4.5  4.5  4.6  3.5  1.2  3.8   4.5
-[10,]  5.6  4.9  1.6  4.1  1.5  4.1  4.7  4.5  4.7   1.4
-[11,]  1.5  1.5  4.8  3.8  1.3  1.5  4.2  1.6  1.2   1.6
-[12,]  4.7  4.7  5.5  6.0  1.5  4.5  1.5  4.2  1.2   5.6</pre>
+ [1,]  1.4  1.5  3.9  5.6  5.1  4.7  4.6  1.5  1.4   1.4
+ [2,]  1.4  5.8  5.6  4.4  4.5  5.1  4.5  4.3  4.9   1.4
+ [3,]  4.1  4.3  6.1  4.5  1.5  1.6  5.6  5.1  1.5   4.0
+ [4,]  3.6  5.6  4.5  1.4  1.4  5.7  4.5  4.4  5.5   1.4
+ [5,]  1.4  4.0  5.1  6.7  1.4  5.7  1.6  4.7  4.7   4.6
+ [6,]  3.3  1.7  5.0  1.5  5.1  5.2  1.7  4.7  5.6   6.4
+ [7,]  3.0  1.7  5.1  5.3  5.4  6.1  5.9  1.3  6.1   6.1
+ [8,]  4.5  6.0  6.0  5.0  1.4  1.7  6.7  1.6  5.5   4.6
+ [9,]  4.2  5.8  1.1  1.4  1.4  4.6  1.4  5.4  1.6   5.5
+[10,]  4.4  4.9  6.1  4.2  5.0  1.3  6.1  1.5  5.4   6.7
+[11,]  1.6  4.9  1.1  6.4  4.4  5.3  3.8  5.0  1.5   1.0
+[12,]  5.5  4.5  3.8  1.4  1.4  1.4  1.6  1.4  4.0   1.4</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-2">
 
@@ -539,7 +539,7 @@ muestras</pre>
 <pre class = 'prettyprint lang-r'>medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 medias</pre>
 
-<pre > [1] 2.87 3.82 3.51 3.17 3.71 3.30 3.07 3.15 3.86 3.11</pre>
+<pre > [1] 3.89 3.74 4.02 4.70 3.09 4.01 3.92 3.91 4.08 3.80</pre>
 
 </article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-3">
 
@@ -588,11 +588,11 @@ replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))</pre>
 
 </article></slide><slide class=""><hgroup><h2>Ejercicio</h2></hgroup><article  id="ejercicio" class="exercise">
 
-<p>Consideremos la tabla de datos <code>datacrab.txt</code> (link al dataset) que contiene información sobre una muestra de cangrejos. Cargadla en un data frame.</p>
+<p>Consideremos la tabla de datos <code>crabs</code> del paquete <code>MASS</code> que contiene información sobre una muestra de cangrejos. Cargadla en un data frame llamado <code>datacrab</code>.</p>
 
 <ul>
-<li>Definid una función de parámetros \(s\), \(n\), \(m\) que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las n muestras aleatorias simples de m (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número \(s\). Tenéis que usar set.seed y replicate para definir la función.</li>
-<li>Aplicadla a \(n = 50\), \(m = 30\) y tomando como s el número formado por las \(5\) primeras cifras de vuestro NIF o pasaporte.</li>
+<li>Definid una función de parámetros \(s\), \(n\), \(m\) que calcule la media y la desviación típica del vector formado por las medias de los pesos de los individuos de cada una de las \(n\) muestras aleatorias simples de \(m\) (índices de) filas de dicha tabla obtenidas usando como semilla de aleatoriedad el número \(s\). Tenéis que usar <code>set.seed</code> y <code>replicate</code> para definir la función.</li>
+<li>Aplicadla a \(n = 50\), \(m = 30\) y tomando como \(s\) el número formado por las \(5\) primeras cifras de vuestro NIF o pasaporte.</li>
 <li>¿Qué valores predice el Teorema Central del Límite que se deberían obtener? ¿Habéis obtenido resultados similares a los predichos por dicho teorema?</li>
 </ul></article></slide>
 
