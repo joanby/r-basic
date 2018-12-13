@@ -294,55 +294,74 @@
 <p>En el caso de la estadística paramétrica, existen tres vías para obtener información sobre los parámetros:</p>
 
 <ul>
-<li>Estimación puntual. Se trata de obtener fórmulas, llamadas estadísticos o estima- dores, que se aplican a los datos de la muestra para obtener una aproximación (el término exacto es una estimación) del valor de dicho parámetro para la población. Por ejemplo, la media aritmética de los datos \(x_1 , \cdots , x_n\) de una muestra,</li>
+<li><strong>Estimación puntual</strong>. Se trata de obtener fórmulas, llamadas <l class="definition">estadísticos</l> o <l class="definition">estimadores</l>, que se aplican a los datos de la muestra para obtener una aproximación (el término exacto es una estimación) del valor de dicho parámetro para la población.</li>
 </ul>
+
+<p>Naturalmente, tendremos que demostrar algunos teoremas que nos digan cuándo y hasta qué punto esta estimación es fiable.</p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>La media aritmética de los datos \(x_1 , \cdots , x_n\) de una muestra,</p>
 
 <p>\[\bar{x} = \frac{x_1+\cdots + x_n}{n}\]</p>
 
-<p>es un estimador del valor medio, o esperanza, de una variable aleatoria. Naturalmente, tendremos que demostrar algunos teoremas que nos digan cuándo y hasta qué punto esta estimación es fiable.</p>
+<p>es un estimador del valor medio, o esperanza, de una variable aleatoria.</p></div>
 
 </article></slide><slide class=""><hgroup><h2>Estimación paramétrica</h2></hgroup><article  id="estimacion-parametrica-1">
 
 <ul>
-<li><p>Intervalos de confianza. Se trata de obtener intervalos que contengan con probabilidad alta el parámetro objeto de estudio. Trataremos esta parte en la próxima lección.</p></li>
-<li><p>Contraste de hipótesis. Se establecen dos hipótesis sobre el parámetro y se contrastan. Los estudiaremos en próximas lecciones.</p></li>
+<li><p><strong>Intervalos de confianza</strong>. Se trata de obtener intervalos que contengan con probabilidad alta el parámetro objeto de estudio. Trataremos esta parte en la próxima lección.</p></li>
+<li><p><strong>Contraste de hipótesis</strong>. Se establecen dos hipótesis sobre el parámetro y se contrastan. Los estudiaremos en próximas lecciones.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>¿Qué veremos nosotros?</h2></hgroup><article  id="que-veremos-nosotros">
 
-<p>En este curso estudiaremos técnicas de estimación solamente para el caso de muestreo aleatorio simple, es decir, al azar y con reposición, o al azar sin reposición si la población es muy grande. Recordemos que un método de selección al azar de muestras de tamaño n (es decir, formadas por n individuos) de una población de tamaño N produce muestras aleatorias simples (m.a.s., para abreviar) cuando, siempre que lo aplicamos a una misma población, todas las muestras posibles de n individuos (con posibles repeticiones) tienen la misma probabilidad de ser elegidas. El tener una m.a.s. de una población junto con un tamaño muestral adecuado n nos asegurará que la muestra sea representativa.</p>
+<p>En este curso estudiaremos técnicas de estimación solamente para el caso de muestreo aleatorio simple, es decir, al azar y con reposición, o al azar sin reposición si la población es muy grande.</p>
 
-<p>La manera más sencilla de llevar a cabo un muestreo aleatorio simple es numerar todos los individuos de una población y sortearlos eligiendo números de uno en uno como si se tratase de una lotería, por ejemplo con algún generador de números aleatorios. Esto se puede llevar a cabo fácilmente con R.</p>
+<p>Recordemos que un método de selección al azar de muestras de tamaño \(n\) de una población de tamaño \(N\) produce muestras aleatorias simples (m.a.s.) cuando, siempre que lo aplicamos a una misma población, todas las muestras posibles de \(n\) individuos (con posibles repeticiones) tienen la misma probabilidad de ser elegidas.</p>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample">
+<p>El tener una m.a.s. de una población junto con un tamaño muestral adecuado \(n\) nos asegurará que la muestra sea representativa.</p>
 
-<p>R dispone de un generador de muestras aleatorias de un vector. La función básica es <code>sample(x, n, replace=\cdots)</code> donde: - \(x\) es un vector o un número natural \(x\), en cuyo caso <code>R entiende que representa el vector $1,2,\cdots,x$; - $n$ es el tamaño de la muestra que deseamos extraer; - el parámetro replace puede igualarse a</code>TRUE<code>, y será una muestra aleatoria con reposición, es decir, simple, o a</code>FALSE`, y será una muestra aleatoria sin reposición. Este último es su valor por defecto, por lo que no es necesario especificarlo.</p>
+</article></slide><slide class=""><hgroup><h2>¿Qué veremos nosotros?</h2></hgroup><article  id="que-veremos-nosotros-1">
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-1">
+<p>La manera más sencilla de llevar a cabo un muestreo aleatorio simple es numerar todos los individuos de una población y sortearlos eligiendo números de uno en uno como si se tratase de una lotería. Por ejemplo, con algún generador de números aleatorios. Esto se puede llevar a cabo fácilmente con R.</p>
+
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample">
+
+<p>R dispone de un generador de muestras aleatorias de un vector. La función básica es <code>sample(x, n, replace=\cdots)</code> donde:</p>
+
+<ul>
+<li>\(x\) es un vector o un número natural \(x\), en cuyo caso R entiende que representa el vector \(1,2,\cdots,x\)</li>
+<li>\(n\) es el tamaño de la muestra que deseamos extraer</li>
+<li>el parámetro <code>replace</code> puede igualarse a <code>TRUE</code>, y será una muestra aleatoria con reposición, es decir, simple, o a <code>FALSE</code>, y será una muestra aleatoria sin reposición. Este último es su valor por defecto, por lo que no es necesario especificarlo.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-1">
 
 <p>Los dos primeros parámetros han de entrarse en este orden. Por lo tanto, por ejemplo, para obtener una m.a.s. de 15 números entre 1 y 100, podemos ejecutar:</p>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 37 57  1 43 79 90 51  1 95 87 65 22 77 80 56</pre>
+<pre > [1] 40 86 63 96 38 79 76 30 94 84 79 13 78  5 99</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-2">
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-2">
 
 <p>Naturalmente, cada ejecución de sample con los mismos parámetros puede dar lugar a muestras diferentes, y todas ellas tienen la misma probabilidad de aparecer:</p>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE) </pre>
 
-<pre > [1] 52 98 42 87 28 47 25 60  9 58  2 72 46 79 34</pre>
+<pre > [1] 52 26 14 51 75 78 38 53 50 33 60 52 92 37 71</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 46 43 96 98 17 26 45 76 98 60 40  5 83 89 42</pre>
+<pre > [1] 100  22  42  33  15  71   9  47  30  94  64  31  96  27  90</pre>
 
 <pre class = 'prettyprint lang-r'>sample(100,15,replace=TRUE)</pre>
 
-<pre > [1] 75 23 18 97 62 60 89 92 85 11 44 94 92 28  6</pre>
+<pre > [1] 30 50 49 68 58 28 95 13 88 19  7 96 97 81 34</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-3">
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-3">
 
 <p>A modo de ejemplo, recordemos el data frame iris, que recoge medidas de pétalos y sépalos de 150 flores de tres especies de iris.</p>
 
@@ -355,7 +374,7 @@
  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-4">
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-4">
 
 <p>Si queremos extraer una m.a.s. de 8 ejemplares (filas) de esta tabla de datos, podemos hacer lo siguiente:</p>
 
@@ -363,36 +382,40 @@
 muestra_iris=iris[x,] #La m.a.s. de la tabla iris
 muestra_iris</pre>
 
-<pre >    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-32           5.4         3.4          1.5         0.4     setosa
-116          6.4         3.2          5.3         2.3  virginica
-47           5.1         3.8          1.6         0.2     setosa
-100          5.7         2.8          4.1         1.3 versicolor
-146          6.7         3.0          5.2         2.3  virginica
-140          6.9         3.1          5.4         2.1  virginica
-41           5.0         3.5          1.3         0.3     setosa
-27           5.0         3.4          1.6         0.4     setosa</pre>
+<pre >   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+33          5.2         4.1          1.5         0.1     setosa
+72          6.1         2.8          4.0         1.3 versicolor
+80          5.7         2.6          3.5         1.0 versicolor
+91          5.5         2.6          4.4         1.2 versicolor
+41          5.0         3.5          1.3         0.3     setosa
+29          5.2         3.4          1.4         0.2     setosa
+56          5.7         2.8          4.5         1.3 versicolor
+17          5.4         3.9          1.3         0.4     setosa</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-5">
+</article></slide><slide class=""><hgroup><h2>Función sample()</h2></hgroup><article  id="funcion-sample-5">
 
-<p>Recordad que dim aplicado a un dataframe nos da un vector con sus dimensiones: su número de filas y su número de columnas, en este orden. Por lo tanto, <code>dim(iris)[1] es el número de filas de</code>iris. Si quisiéramos una muestra aleatoria de longitudes de pétalos, podríamos aplicar directamente sample al vector correspondiente:</p>
+<p>Recordad que <code>dim</code> aplicado a un dataframe nos da un vector con sus dimensiones: su número de filas y su número de columnas, en este orden. Por lo tanto, <code>dim(iris)[1]</code> es el número de filas de <code>iris</code>.</p>
+
+<p>Si quisiéramos una muestra aleatoria de longitudes de pétalos, podríamos aplicar directamente <code>sample</code> al vector correspondiente:</p>
 
 <pre class = 'prettyprint lang-r'>muestra_long_pet=sample(iris$Petal.Length ,15,replace=TRUE) 
 muestra_long_pet</pre>
 
-<pre > [1] 1.6 4.5 1.5 4.9 1.5 5.1 1.3 1.7 4.2 5.1 4.2 4.8 6.0 1.9 4.5</pre>
+<pre > [1] 1.4 1.4 1.4 4.9 1.4 1.4 1.5 4.9 4.6 1.5 6.1 5.4 4.2 5.5 5.6</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-6">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed">
 
-<p>El hecho de que funciones como sample o los generadores de vectores numéricos con una cierta distribución de probabilidad fijada, como rnorm o rbinom, produzcan&#8230; pues eso, vectores aleatorios, puede tener inconvenientes a la hora de reproducir una simulación. <code>R</code> permite «fijar» el resultado de una función aleatoria con la instrucción set.seed. Sin entrar en detalles sobre cómo funcionan, los diferentes algoritmos que usa `R para generar números aleatorios usan una semilla, que se modifica después de la ejecución del algoritmo, y por eso cada vez dan un resultado distinto. Pero, para una semilla fija, el algoritmo da el mismo resultado siempre. Lo que hace la función set.seed es igualar esta semilla al valor que le entramos. Si tras aplicar esta función a un número concreto ejecutamos una instrucción que genere un vector aleatorio de una longitud fija con una distribución fija, el resultado será siempre el mismo.</p>
+<p>El hecho de que funciones como <code>sample</code> o los generadores de vectores numéricos con una cierta distribución de probabilidad fijada, como <code>rnorm</code> o r<code>binom</code>, vectores aleatorios, puede tener inconvenientes a la hora de reproducir una simulación.</p>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-7">
+<p>R permite &quot;fijar&quot; el resultado de una función aleatoria con la instrucción <code>set.seed</code>. Sin entrar en detalles sobre cómo funcionan, los diferentes algoritmos que usa R para generar números aleatorios usan una semilla, que se modifica después de la ejecución del algoritmo, y por eso cada vez dan un resultado distinto.</p>
 
-<p>Veamos un ejemplo:</p>
+<p>Pero, para una semilla fija, el algoritmo da el mismo resultado siempre. Lo que hace la función <code>set.seed</code> es igualar esta semilla al valor que le entramos. Si tras aplicar esta función a un número concreto ejecutamos una instrucción que genere un vector aleatorio de una longitud fija con una distribución fija, el resultado será siempre el mismo.</p>
+
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-1">
 
 <pre class = 'prettyprint lang-r'>rnorm (5)</pre>
 
-<pre >[1]  1.8215045  0.2825235 -0.3255716  0.4144758  1.3337579</pre>
+<pre >[1]  0.72605976  0.05422344  1.13798869 -0.11765843 -0.13421879</pre>
 
 <pre class = 'prettyprint lang-r'>set.seed(2018)
 rnorm (5)</pre>
@@ -404,7 +427,7 @@ rnorm (5)</pre>
 
 <pre >[1] -0.42298398 -1.54987816 -0.06442932  0.27088135  1.73528367</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-8">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-2">
 
 <pre class = 'prettyprint lang-r'>rnorm (5)</pre>
 
@@ -420,13 +443,13 @@ rnorm (5)</pre>
 
 <pre >[1] -0.42298398 -1.54987816 -0.06442932  0.27088135  1.73528367</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-9">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-3">
 
-<p>Ejecutado inmediatamente después de set.seed(20), rnorm(5) siempre da lo mismo. Y ejecutado después de set.seed(10), rnorm(5) vuelve a dar siempre da lo mismo, pero diferente de con set.seed(20).</p>
+<p>Ejecutado inmediatamente después de <code>set.seed(20)</code>, <code>rnorm(5)</code> siempre da lo mismo. Y ejecutado después de <code>set.seed(10)</code>, rnorm(5) vuelve a dar siempre da lo mismo, pero diferente de <code>set.seed(20)</code>.</p>
 
-<p>La función set.seed no sólo fija el resultado de la siguiente instrucción que genere un vector aleatorio, sino que, como fija la semilla de aleatoriedad y las funciones siguientes la modifican de manera determinista, también fija los resultados de todas las instrucciones siguientes que generen vectores aleatorios.</p>
+<p>La función <code>set.seed</code> no sólo fija el resultado de la siguiente instrucción que genere un vector aleatorio, sino que, como fija la semilla de aleatoriedad y las funciones siguientes la modifican de manera determinista, también fija los resultados de todas las instrucciones siguientes que generen vectores aleatorios.</p>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-10">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-4">
 
 <pre class = 'prettyprint lang-r'>set.seed(100)
 sample (10 ,3)</pre>
@@ -441,7 +464,7 @@ sample (10 ,3)</pre>
 
 <pre >[1] 9 4 5</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>sample</code></h2></hgroup><article  id="funcion-sample-11">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-5">
 
 <pre class = 'prettyprint lang-r'>set.seed(100)
 sample (10 ,3)</pre>
@@ -456,9 +479,9 @@ sample (10 ,3)</pre>
 
 <pre >[1] 9 4 5</pre>
 
-</article></slide><slide class=""><hgroup><h2>Set Seed</h2></hgroup><article  id="set-seed">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-6">
 
-<p>Si queréis volver a «reiniciar» la semilla de la aleatoriedad tras haber usado un set.seed, podéis usar set.seed(NULL).</p>
+<p>Si queréis volver a &quot;reiniciar&quot; la semilla de la aleatoriedad tras haber usado un <code>set.seed</code>, podéis usar <code>set.seed(NULL)</code>.</p>
 
 <pre class = 'prettyprint lang-r'>set.seed(100) 
 sample (10 ,3)</pre>
@@ -468,9 +491,9 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL) 
 sample (10 ,3)</pre>
 
-<pre >[1] 3 4 1</pre>
+<pre >[1] 2 6 8</pre>
 
-</article></slide><slide class=""><hgroup><h2>Set Seed</h2></hgroup><article  id="set-seed-1">
+</article></slide><slide class=""><hgroup><h2>Función set.seed()</h2></hgroup><article  id="funcion-set.seed-7">
 
 <pre class = 'prettyprint lang-r'>set.seed(100)
 sample (10 ,3)</pre>
@@ -480,79 +503,76 @@ sample (10 ,3)</pre>
 <pre class = 'prettyprint lang-r'>set.seed(NULL)
 sample (10 ,3)</pre>
 
-<pre >[1]  3  7 10</pre>
+<pre >[1] 1 2 4</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate">
 
-<p>A veces querremos tomar diversas muestras aleatorias de una misma población y calcular algo sobre ellas. Para hacerlo podemos usar la función <code>replicate</code>. La sintaxis básica es</p>
+<p>A veces querremos tomar diversas muestras aleatorias de una misma población y calcular algo sobre ellas. Para hacerlo podemos usar la función <code>replicate</code>. La sintaxis básica es <code>replicate(n,instrucción )</code> donde \(n\) es el número de repeticiones de la instrucción.</p>
 
-<p><code>replicate(n,instrucción )</code></p>
+<p>Por ejemplo, para tomar 10 muestras aleatorias simples de 15 longitudes de pétalos de flores iris, podemos hacer:</p>
 
-<p>donde n es el número de repeticiones de la instrucción. Por ejemplo, para tomar 10 muestras aleatorias simples de 15 longitudes de pétalos de flores iris, podemos hacer:</p>
-
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-1">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-1">
 
 <pre class = 'prettyprint lang-r'>muestras=replicate(10, sample(iris$Petal.Length ,12, replace=TRUE))
 muestras</pre>
 
 <pre >      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
- [1,]  1.4  4.5  4.1  1.5  1.4  1.7  3.9  3.3  1.4   5.1
- [2,]  5.9  1.4  5.6  4.0  4.4  4.7  4.8  5.6  1.1   1.6
- [3,]  4.2  4.0  6.3  4.5  4.3  3.5  1.4  5.3  1.7   3.5
- [4,]  1.5  1.4  4.2  4.8  5.2  5.1  4.7  5.9  3.9   5.5
- [5,]  1.3  1.4  1.5  4.0  4.4  1.3  1.5  5.0  6.1   6.1
- [6,]  4.2  5.9  1.4  1.3  5.1  1.7  4.0  1.6  3.5   1.6
- [7,]  5.5  1.7  5.5  5.1  5.2  1.4  5.8  4.4  4.5   4.8
- [8,]  5.5  4.1  5.6  1.5  5.4  5.5  1.4  4.8  4.5   4.9
- [9,]  5.0  1.2  1.6  6.0  5.4  1.2  1.7  5.5  1.3   5.0
-[10,]  1.3  1.5  4.4  4.0  5.5  5.2  4.9  5.1  4.7   4.4
-[11,]  5.0  5.9  5.6  4.8  4.7  1.5  5.5  6.1  4.9   1.6
-[12,]  4.6  4.0  3.0  4.5  4.9  1.6  4.8  4.5  1.7   4.8</pre>
+ [1,]  6.1  4.8  4.6  4.8  1.9  1.5  1.3  3.6  4.5   4.5
+ [2,]  1.4  1.6  5.5  4.0  6.1  1.9  4.1  1.4  4.6   4.9
+ [3,]  4.8  1.9  5.8  4.7  4.5  5.1  5.6  1.5  1.4   1.5
+ [4,]  5.6  1.5  4.8  5.8  1.5  5.6  4.8  5.6  4.8   1.5
+ [5,]  3.9  5.7  4.9  4.0  1.3  1.4  5.1  4.5  5.0   4.6
+ [6,]  1.4  1.5  1.5  1.3  5.6  6.9  1.7  4.1  4.9   1.6
+ [7,]  1.5  5.7  1.5  1.5  4.5  5.5  5.1  1.3  1.3   1.7
+ [8,]  5.6  4.1  4.5  5.1  1.5  6.3  4.7  1.4  3.5   5.1
+ [9,]  1.9  3.3  3.9  4.5  4.5  4.6  3.5  1.2  3.8   4.5
+[10,]  5.6  4.9  1.6  4.1  1.5  4.1  4.7  4.5  4.7   1.4
+[11,]  1.5  1.5  4.8  3.8  1.3  1.5  4.2  1.6  1.2   1.6
+[12,]  4.7  4.7  5.5  6.0  1.5  4.5  1.5  4.2  1.2   5.6</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-2">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-2">
 
-<p>Observad que R ha organizado los diferentes resultados obtenidos con el replicate como columnas de una matriz. Si, por ejemplo, sólo nos hubiera interesado calcular las medias, redondeadas a 2 cifras decimales, de 10 muestras aleatorias simples de 15 longitudes de pétalos de flores iris, podríamos haber hecho</p>
+<p>Observad que R ha organizado los diferentes resultados obtenidos con el replicate como columnas de una matriz.</p>
+
+<p>Si, por ejemplo, sólo nos hubiera interesado calcular las medias, redondeadas a 2 cifras decimales, de 10 muestras aleatorias simples de 15 longitudes de pétalos de flores iris, podríamos haber hecho</p>
 
 <pre class = 'prettyprint lang-r'>medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 medias</pre>
 
-<pre > [1] 4.05 3.53 3.59 3.47 4.61 4.38 3.71 4.09 3.73 4.15</pre>
+<pre > [1] 2.87 3.82 3.51 3.17 3.71 3.30 3.07 3.15 3.86 3.11</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-3">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-3">
 
 <p>¿Y si quisiéramos la media y la desviación típica muestral de 10 muestras de estas? No podemos usar sin más dos replicate, porque las muestras serían diferentes. Pero tene- mos dos opciones posibles. Una sería fijar la misma semilla de aleatoriedad antes de cada replicate.</p>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-4">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-4">
 
 <pre class = 'prettyprint lang-r'>set.seed(1000)
-medias=replicate(10,round(mean(sample(iris$Petal.Length ,15,
-replace=TRUE)),2))
+medias=replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 set.seed(1000)
-desv_tip=replicate(10,round(sd(sample(iris$Petal.Length ,15,
-replace=TRUE)),2))
+desv_tip=replicate(10,round(sd(sample(iris$Petal.Length ,15, replace=TRUE)),2))
 rbind(medias ,desv_tip)</pre>
 
 <pre >         [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 medias   3.63 3.18 4.05 4.59 4.13 2.51 3.61 3.31 3.63  3.96
 desv_tip 1.89 1.66 1.84 1.47 1.82 1.52 1.45 2.00 1.75  1.65</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-5">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-5">
 
-<p>Otra posibilidad es definir una función que calcule un vector con estos dos valores, y luego usarla dentro del replicate. Veamos cómo, fijando la misma semilla de antes, nos da el mismo resultado.</p>
+<p>Otra posibilidad es definir una función que calcule un vector con estos dos valores, y luego usarla dentro del <code>replicate</code>. Veamos cómo, fijando la misma semilla de antes, nos da el mismo resultado.</p>
 
 <pre class = 'prettyprint lang-r'>info=function(x){round(c(mean(x),sd(x)),2)}
 set.seed(1000)
-info_lp=replicate(10,info(sample(iris$Petal.Length ,15,
-replace=TRUE)))
+info_lp=replicate(10,info(sample(iris$Petal.Length ,15, replace=TRUE)))
 info_lp</pre>
 
 <pre >     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
 [1,] 3.63 3.18 4.05 4.59 4.13 2.51 3.61 3.31 3.63  3.96
 [2,] 1.89 1.66 1.84 1.47 1.82 1.52 1.45 2.00 1.75  1.65</pre>
 
-</article></slide><slide class=""><hgroup><h2>Función <code>replicate</code></h2></hgroup><article  id="funcion-replicate-6">
+</article></slide><slide class=""><hgroup><h2>Función replicate()</h2></hgroup><article  id="funcion-replicate-6">
 
-<p>En este último caso, R ha organizado por defecto la información obtenida como columnas de una matriz: la primera fila son las medias y la segunda las desviaciones típicas. Como vemos, la función set.seed permite «fijar» el resultado de un replicate que incluya la generación de números aleatorios:</p>
+<p>En este último caso, R ha organizado por defecto la información obtenida como columnas de una matriz: la primera fila son las medias y la segunda las desviaciones típicas. Como vemos, la función <code>set.seed</code> permite &quot;fijar&quot; el resultado de un <code>replicate</code> que incluya la generación de números aleatorios:</p>
 
 <pre class = 'prettyprint lang-r'>set.seed(1000)
 replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))</pre>
@@ -566,7 +586,7 @@ replicate(10,round(mean(sample(iris$Petal.Length ,15, replace=TRUE)),2))</pre>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Ejercicios</h2></hgroup><article  id="ejercicios">
 
-</article></slide><slide class=""><hgroup><h2>Ejercicio</h2></hgroup><article  id="ejercicio">
+</article></slide><slide class=""><hgroup><h2>Ejercicio</h2></hgroup><article  id="ejercicio" class="exercise">
 
 <p>Consideremos la tabla de datos <code>datacrab.txt</code> (link al dataset) que contiene información sobre una muestra de cangrejos. Cargadla en un data frame.</p>
 
