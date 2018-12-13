@@ -1,5 +1,5 @@
 ---
-title: Tema X - Muestreo Estadístico
+title: Tema 5 - Muestreo Estadístico
 author: Juan Gabriel Gomila 
 output: 
   ioslides_presentation:
@@ -444,7 +444,7 @@ replicate(10,round(mean(sample(iris$Petal.Length ,12, replace=TRUE)),2))
 
 ## Teorema del Límite Central
 
-<l class="prop">Teorema del Límite Central</l> 
+<l class="prop">Teorema del Límite Central</l>. 
 Sea $X_1, X_2, \cdots X_n$ un conjunto de variables aleatorias, independientes e idénticamente distribuidas con media $\mu$ y varianza $\sigma^2\neq 0$ entonces para $n$ suficientente grande se cumple que la variable aleatoria
 \[\bar X = \frac{1}{n}\sum_{i=1}^n X_i\]
 tiene aproximadamente una distribución normal (también llamada **distribución gaussiana, curva de Gauss o campana de Gauss**) con $\mu_{\bar X} = \mu$ y $\sigma^2_{\bar X} = \frac{\sigma^2}{n}$
