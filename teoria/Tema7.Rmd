@@ -22,5 +22,147 @@ Los <l class="definition">datos ordinales</l> son parecidos a los cualitativos, 
 
 La diferencia existente entre los datos cualitativos y los ordinales reside  en las características que expresan. En el caso de los ordinales, éstas tienen un orden natural que permite "acumular" observaciones.
 
-## Frecuencias para datos ordinales
 
+# Frecuencias para datos ordinales
+
+## Frecuencia acumulada
+
+Al trabajar con datos ordinales, el orden de los niveles de los datos nos permite calcular no solo frecuencias absolutas y relativas, sino también <l class="definition">frecuencias acumuladas</l>.
+
+Es decir, podemos contar cuantas veces hemos observado un dato menor o igual a este.
+
+## Frecuencia acumulada
+
+<div class = "example">
+**Ejemplo**
+
+Suponed que tenemos una muestra de 15 estudiantes de los cuales sabemos su nota en el examen de Estadística. Clasificamos estos resultados en Suspenso ($S$), Aprobado ($A$), Notable ($N$) y Excelente ($Ex$) y consideramos su orden natural $S<A<N<Ex$.
+
+Las notas obtenidas han sido las siguientes
+$$S,\ A,\ N,\ Ex,\ S,\ S,\ Ex,\ Ex,\ N,\ A,\ A,\ A,\ A,\ N,\ S$$
+
+Como recordaréis, para saber cuantas hay de cada una (su frecuencia absoluta), utilizamos la función `table()`
+
+</div>
+
+## Frecuencia acumulada
+
+```{r}
+notas = ordered(c("S","A", "N", "Ex", "S", "S", "Ex", "Ex", "N", "A", "A", "A",
+                  "A", "N", "S"), levels = c("S", "A", "N", "Ex"))
+table(notas)
+```
+
+
+<div class = "example">
+**Ejemplo**
+
+Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
+
+</div>
+
+## Frecuencia acumulada
+
+<div class = "example">
+**Ejemplo**
+
+En lo referente a **frecuencias absolutas acumuladas**, hay
+
+- 5 estudiantes con $S$ o menos. Ello implica que la frecuencia acumulada de $S$ es 5
+- 8 estudiantes que han obtenido $A$ o menos. Entonces, la frecuencia acumulada de $A$ es 8
+- 11 estudiantes los cuales han obtenido $N$ o menos. Así, la frecuencia acumulada de $N$ es 11
+- 15 estudiantes (todos) que han obtenido $Ex$ o menos. De este modo, la frecuencia acumulada de $Ex$ es 15, o sea, el total.
+</div>
+
+## Frecuencia relativa acumulada
+
+<l class = "definition">
+Frecuencia relativa acumulada.
+</l> Es la fracción del total de las observaciones en tanto por 1 que representa su frecuencia absoluta acumulada 
+
+<div class = "example">
+**Ejemplo**
+
+Así, las recuencias relativas acumuladas respectivas son
+
+- $S:\ \frac{5}{15} \approx$ `r round(5/15,2)`
+- $A:\ \frac{8}{15}\approx$ `r round(8/15,2)`
+- $N:\ \frac{11}{15}\approx$ `r round(11/15,2)`
+- $Ex:\ \frac{15}{15}=1$
+</div>
+
+## Frecuencia relativa acumulada
+
+En general, supongamos que realizamos $n$ observaciones
+
+$$x_1,\dots,x_n$$
+
+de un cierto tipo de datos ordinales, cuyos posibles niveles ordenados son
+
+$$l_1,\dots,l_k$$
+
+Por tanto, cada una de las observaciones $x_j$ es igual a algún $l_i$. Diremos que todas estas observaciones forman una <l class="definition">variable ordinal</l>. En nuestro ejemplo anterior, los 4 niveles eran $$S<A<N<Ex$$
+
+## Frecuencia relativa acumulada
+
+Además, nuestro $n = 15$ y nuestros $x_1,\dots,x_15$ son las calificaciones obtenidas por los alumnos.
+
+De este modo, con estas notaciones
+
+- Las definiciones de frecuencias absolutas $n_j$ y las relativas $f_j$, para cada nivel $l_j$ son las mismas que en una variable cualitativa.
+- Las frecuencia absoluta acumulada del nivel $l_j$  en esta variable ordinal es el número $N_j$ de observaciones $x_i$ tales que $x_i\le l_j$. Es decir, $$N_j=\sum_{i=1}^jn_i$$
+
+## Frecuencia relativa acumulada
+
+- La frecuencia relativa acumulada del nivel $l_j$ en esta variable ordinal es la fracción en tanto por 1 $F_j$ de observaciones $x_i$ tales que $x_i\le l_j$. Es decir,
+$$F_j=\frac{N_j}{n}=\sum_{i=1}^jf_i$$
+
+## Frecuencia relativa acumulada{.example}
+
+**Ejemplo**
+
+En un estudio sobre el comportamiento ético
+
+# Descripción de datos ordinales con R
+
+## Función cumsum()
+
+¿Recordáis la función `cumsum()`? Pues esta puede ser utilizada a la hora de calcular frecuencias acumuladas.
+
+Retomemos el ejemplo anterior y calculemos y representemos en un diagrama de barras las frecuencias acumuladas de la muestra de notas.
+
+```{r}
+notas
+fAbs = table(notas) #Frec. abs.
+cumsum(fAbs) #Frec. abs. acumuladas
+```
+
+## Función cumsum()
+
+```{r, fig.height=3.75}
+cumsum(prop.table(fAbs)) #Frec. relativas acumuladas
+barplot(fAbs, main = "Diagrama de barras de frecuencias absolutas")
+```
+
+## Función cumsum()
+
+```{r}
+barplot(cumsum(fAbs), main = "Diagrama de barras de frecuencias relativas acumuladas")
+```
+
+## Función cumsum()
+
+Podríamos haber calculado las frecuencias relativas acumuladas de la forma
+
+```{r}
+cumsum(table(notas))/length(notas)
+cumsum(table(notas)/length(notas))
+```
+
+## Función cumsum()
+
+Pero no podemos hacer `cumsum(prop.table(table(notas)))`.
+
+<div class = "exercise">
+**Ejercicio.** Pensad qué ha entendido R que queríamos hacer con esta última instrucción.
+</div>
