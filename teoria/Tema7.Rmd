@@ -1,5 +1,5 @@
 ---
-title: Tema 7 - Estadística descriptiva`:` datos ordinales
+title: Tema 7 - Estadística descriptiva con datos ordinales
 author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:

@@ -1,5 +1,5 @@
 ---
-title: Tema 5 - Muestreo Estadístico
+title: Tema X - Muestreo Estadístico
 author: Juan Gabriel Gomila 
 output: 
   ioslides_presentation:
@@ -246,11 +246,11 @@ La manera más sencilla de llevar a cabo un muestreo aleatorio simple es numerar
 
 ## Función sample()
 
-`R` dispone de un generador de muestras aleatorias de un vector. La función básica es `sample(x, n, replace=\cdots)`
+`R` dispone de un generador de muestras aleatorias de un vector. La función básica es `sample(x, size = n, replace=FALSE, ...)`
 donde:
 
 - $x$ es un vector o un número natural $x$, en cuyo caso `R` entiende que representa el vector $1,2,\cdots,x$
-- $n$ es el tamaño de la muestra que deseamos extraer
+- $size = n$ es el tamaño de la muestra que deseamos extraer
 - el parámetro `replace` puede igualarse a `TRUE`, y será una muestra aleatoria con reposición, es decir, simple, o a `FALSE`, y será una muestra aleatoria sin reposición. Este último es su valor por defecto, por lo que no es necesario especificarlo.
 
 

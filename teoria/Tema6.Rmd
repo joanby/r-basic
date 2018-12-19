@@ -1,5 +1,5 @@
 ---
-title: Tema 6 - Estadística descriptiva`:` datos cualitativos
+title: Tema 6 - Estadística descriptiva con datos cualitativos
 author: Juan Gabriel Gomila & María Santos
 output: 
   ioslides_presentation:
