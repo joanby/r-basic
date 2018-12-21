@@ -1,0 +1,82 @@
+---
+title: "Documentación de Texto"
+author: "Curso de Estadística Descriptiva"
+date: "21/12/2018"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Título 1
+
+## Título 2
+
+### Título 3
+
+#### Título 4
+
+##### Título 5
+
+###### Título 6
+
+Esto es un texto llano. Podemos escribir sin ningún problema todo el texto que queramos para acompañar a tanto el código en `R` como las fórmulas en \LaTeX. 
+
+Esto sería una nueva línea de texto. Fijaros que para que separe los párrafos necesitamos siempre almenos un doble intro.
+
+Para colocar *cursiva* podemos usar un asterisco: *esto sería un texto en cursiva* o bien usar una sola barra baja _esto tambien es cursiva_.
+
+Para colocar **negrita** podemos usar un doble asterisco: **esto es negrita** o bien una doble barra baja __esto también es negrita__.
+
+Los superíndices van con el *sombrerito*: este curso vale por mi nota^2^. Juan Gabriel^profeonline^ ... 
+
+Para tachar una palabra usamos una doble tilde ~~Las matemáticas son un rollo~~.
+
+Para conocer más sobre los cursos de Juan Gabriel, podemos visitar su [perfil de Udemy](https://udemy.com/u/juangabriel2)
+
+endash: -- Y entonces Juan Gabriel dijo: ....
+
+emdash: ... --- como Juan Gabriel quería explicar.
+
+elipsis: ... 
+
+ecuaciones en línea $S = \pi\cdot r^2$.
+
+imagen ![](../../teoria/Imgs/logo.png)
+
+*** 
+
+Aquí empezamos otra cosa
+
+> Esto es una cita en bloque
+
+### Listas no ordenadas
+
+* Item primero
+* Item segundo 
+    + Sub ítem 2.1
+    + Sub ítem 2.2
+    + Sub ítem 2.3
+* Item tercero
+* ...
+
+### Listas ordenadas
+
+1. Primer ítem
+2. Segundo ítem
+    + Sub ítem de 2
+    + Nuevo sub ítem
+3. Tercer ítem
+1. Cuarto ítem
+1. Último ítem
+
+
+Alumno        |   Nota    |  Edad
+--------------|-----------|--------
+Juan Gabriel  |  3.5      | 30
+Ricardo       |  5.6      | 55
+María         |  7.3      | 20
+Antonio       |  9.5      | 18

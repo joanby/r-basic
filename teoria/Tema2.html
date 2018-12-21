@@ -63,6 +63,10 @@
       font-style: italic;
     }
 
+    summary {
+      display: list-item;
+    }
+
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -96,7 +100,7 @@
     }
   </style>
 
-  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A%2Er%2Dcode%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20gray%3B%0Abackground%2Dcolor%3A%20%23F2F2F2%3B%0Afont%2Dsize%3A%200%2E7em%0A%7D%0A" rel="stylesheet" type="text/css" />
+  <link href="data:text/css;charset=utf-8,%2Ealigncenter%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%2Eexercise%20%7B%0Abackground%2Dcolor%3A%20green%3B%0Acolor%3A%20white%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eprop%7B%0Acolor%3A%20lightgreen%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Eexample%7B%0Acolor%3A%20white%3B%0Abackground%2Dcolor%3A%20blue%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E8em%3B%0A%7D%0A%2Eimportant%7B%0Acolor%3A%20red%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Edefinition%7B%0Acolor%3A%20blue%3B%0Adisplay%3Ainline%3B%0A%7D%0A%2Ebox%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20blue%3B%0Aopacity%3A%200%2E5%3B%0A%7D%0A%2Edem%20%7B%0Abackground%2Dcolor%3A%20gray%3B%0Acolor%3Awhite%3B%0Aopacity%3A%200%2E5%3B%0Afont%2Dsize%3A%200%2E75em%3B%0A%7D%0A%2Er%2Dcode%7B%0Aborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dmoz%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0A%2Dwebkit%2Dborder%2Dradius%3A%2010px%2010px%2010px%2010px%3B%0Aborder%3A%202px%20solid%20gray%3B%0Abackground%2Dcolor%3A%20%23F2F2F2%3B%0Afont%2Dsize%3A%200%2E7em%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -120,7 +124,7 @@
 
 <p><l class="definition">R Markdown. </l> Es un tipo de fichero en el cual podemos intercalar sin problema alguno texto, código y fórmulas matemáticas.</p>
 
-<p>Para la mayor parte de las necesidades de este curso, en lo referente a la creación y composición de este tipo de ficheros, el documento <em><a href='https://en.support.wordpress.com/markdown-quick-reference/' title=''>Markdown Quick Reference</a></em> y la <a href='http://shiny.rstudio.com/images/rm-cheatsheet.pdf.zip.' title=''>chuleta</a> de R Markdown deberían ser suficientes.</p>
+<p>Para la mayor parte de las necesidades de este curso, en lo referente a la creación y composición de este tipo de ficheros, el documento <em><a href='https://en.support.wordpress.com/markdown-quick-reference/' title=''>Markdown Quick Reference</a></em> y la <a href='https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf' title=''>chuleta</a> de R Markdown deberían ser suficientes.</p>
 
 <p>Sin embargo, a lo largo de este curso iremos ampliando estos contenidos en algunos temas cuando lo creamos necesario.</p>
 
@@ -145,9 +149,9 @@
 
 <p>Para que veáis que RStudio ignora el exceso de espacios en blanco, aquí os damos un ejemplo en el que hemos introducido espacios innecesarios:</p>
 
-<p>Código: <code>En en insitituto</code>\(\ \ \ \ \ \) <code>nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,</code>\(\ \ \ \ \ \ \ \ \ \) <code>las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2</code>\(\ \ \ \ \ \ \ \ \ \ \ \ \)<code>-4\alpha\gamma}}{2\alpha}$$.</code></p>
+<p>Código: <code>En en instituto</code>\(\ \ \ \ \ \) <code>nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,</code>\(\ \ \ \ \ \ \ \ \ \) <code>las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2</code>\(\ \ \ \ \ \ \ \ \ \ \ \ \)<code>-4\alpha\gamma}}{2\alpha}$$.</code></p>
 
-<p>Resultado: En en insitituto nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma \(Ax^3+Bx^2+Cx+D=0\), se encuentran mediante <em>la Regla de Ruffini</em>. Por su parte, las raíces de las ecuaciones de segundo grado de la forma \(\alpha x^2+\beta x+\gamma=0\) se encuentran siguiendo la fórmula \[x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}\].</p>
+<p>Resultado: En en instituto nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma \(Ax^3+Bx^2+Cx+D=0\), se encuentran mediante <em>la Regla de Ruffini</em>. Por su parte, las raíces de las ecuaciones de segundo grado de la forma \(\alpha x^2+\beta x+\gamma=0\) se encuentran siguiendo la fórmula \[x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}\].</p>
 
 </article></slide><slide class=""><hgroup><h2>Símbolos</h2></hgroup><article  id="simbolos">
 
@@ -225,7 +229,7 @@
 </tr>
 <tr class="even">
 <td align="left">Unión</td>
-<td align="left"><code>cup</code></td>
+<td align="left"><code>\cup</code></td>
 <td align="left">\(\cup\)</td>
 </tr>
 <tr class="odd">
@@ -633,9 +637,9 @@
 </article></slide><slide class=""><hgroup><h2>Símbolos matemáticos - Flechas</h2></hgroup><article  id="simbolos-matematicos---flechas">
 
 <table class = 'rmdtable'>
-<col width="29%" />
-<col width="29%" />
-<col width="29%" />
+<col width="29.166667%" />
+<col width="29.166667%" />
+<col width="29.166667%" />
 <tr class="header">
 <th align="left">Significado</th>
 <th align="left">Código</th>
@@ -1009,9 +1013,9 @@ ax+by=c\\
 ex-fy=g
 \end{array}\right\}\]</p>
 
-<p><code>$$|x|=\left\{\begin{array}{l} -x &amp; \text{si }x\le 0\\ x &amp; \text{si }x\ge 0 \end{array}\right.$$</code></p>
+<p><code>$$|x|=\left\{\begin{array}{rr} -x &amp; \text{si }x\le 0\\ x &amp; \text{si }x\ge 0 \end{array}\right.$$</code></p>
 
-<p>\[|x|=\left\{\begin{array}{l}
+<p>\[|x|=\left\{\begin{array}{rr}
 -x &amp; \text{si }x\le 0\\
 x &amp; \text{si }x\ge 0
 \end{array}\right.\]</p>
@@ -1079,8 +1083,8 @@ x</pre>
 </article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-1">
 
 <table class = 'rmdtable'>
-<col width="29%" />
-<col width="29%" />
+<col width="29.166667%" />
+<col width="29.166667%" />
 <tr class="header">
 <th align="left">Código</th>
 <th align="left">Significado</th>
@@ -1170,9 +1174,9 @@ head(cars,3)</pre>
 </article></slide><slide class=""><hgroup><h2>Parámetros de los chunks</h2></hgroup><article  id="parametros-de-los-chunks-5">
 
 <table class = 'rmdtable'>
-<col width="29%" />
-<col width="29%" />
-<col width="29%" />
+<col width="29.166667%" />
+<col width="29.166667%" />
+<col width="29.166667%" />
 <tr class="header">
 <th align="left">Significado</th>
 <th align="left">Código</th>
@@ -1302,7 +1306,7 @@ cumsum(sec)</pre>
 
 <p>La raíz cuadrada de 64 es <code>`r sqrt(64)`</code> o, lo que viene siendo lo mismo, \(\sqrt{64}=\)<code>`r sqrt(64)`</code></p>
 
-<p>La raíz quinta de 32 es 8 o, lo que viene siendo lo mismo, $=$5.6568542</p></div></article></slide>
+<p>La raíz quinta de 32 es 2 o, lo que viene siendo lo mismo, \(\sqrt[5]{64}=\) 2.</p></div></article></slide>
 
 
   <slide class="backdrop"></slide>
