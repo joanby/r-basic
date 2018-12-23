@@ -98,6 +98,11 @@ points(-3:3, f(-3:3), pch = 19)
 lines(-3:3, f(-3:3), lwd = 2, lty = "dotted", col = "red")
 curve(x^3, lty = "dashed", col = "blue", add = TRUE)
 curve(x^4, lty = "dashed", col = "orangered", add=TRUE)
-legend("bottomright", legend = c(expression(x^2), expression(x^3), expression(x^4)), lwd = 2, col = c("red", "blue", "orangered"), lty = c("dotted", "dashed", "dashed"))
+legend("bottomright", 
+       legend = c(expression(x^2), expression(x^3), expression(x^4)), 
+       lwd = 2, 
+       col = c("red", "blue", "orangered"), 
+       lty = c("dotted", "dashed", "dashed")
+       )
 ```
 

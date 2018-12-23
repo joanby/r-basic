@@ -1,0 +1,35 @@
+---
+title: "R Notebook"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+# Data frame de Iris
+
+```{r}
+df = iris
+head(df, 5)
+tail(df, 5)
+
+str(df)
+names(df) #colnames
+rownames(df)
+dimnames(df)
+
+dim(df)
+
+df$Petal.Length[1:10]
+df$Species[1:10]
+```
+
+## Acceso al DF
+
+```{r}
+df[1:10, ]
+df[1:10, 2:4]
+df[df$Species == "setosa" & df$Sepal.Width> 4, ]
+df[df$Species == "setosa" & df$Sepal.Width> 4, ][c(1,3), c(2,5)]
+```
+
