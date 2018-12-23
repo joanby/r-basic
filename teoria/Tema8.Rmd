@@ -1,0 +1,17 @@
+---
+title: Tema 8 - Estadística descriptiva con datos cuantitativos
+author: Juan Gabriel Gomila & María Santos
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: JB_style.css
+    logo: Imgs/LogoCurso.png
+    fig_height: 4
+    fig_width: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+# Descripción de datos cuantitativos
