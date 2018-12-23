@@ -421,3 +421,38 @@ intervalos = cut(crabs$width, breaks = c(21,25,29,33,Inf), right = FALSE,
                  labels = c("21-25", "25-29", "29-33", "33-..."))
 ```
 
+## Función cumsum()
+
+<div class = "example">
+**Ejemplo 5**
+
+El resultado de la instrucción es un factor que tiene como niveles estos intervalos, identificados con las etiquetas especificadas en el parámetro `labels`. Como nostros vamos a usar estos intervalos como niveles de una variable ordinal, además convertiremos este factor en ordenado.
+</div>
+
+```{r}
+crabs$width.rank = ordered(intervalos)
+str(crabs)
+```
+
+## Función cumsum()
+
+<div class = "example">
+**Ejemplo 5**
+
+Nos interesa estudiar la distribución de las anchuras de los cangrejos según el número de colores. Por lo tanto, vamos a calcular las tablas bidimensionales de frecuencais relativas y relativas acumuladas de los intervalos de las anchuras en cada nivel de `color` y las representaremos por medio de diagramas de barras.
+
+La tabla de frecuencias absolutas de los pares se puede obtener aplicando `table` al data frame formado por la primera y última columnas.
+
+</div>
+
+```{r}
+Tabla = table(crabs[,c(1,6)])
+Tabla
+```
+
+## Función cumsum()
+
+```{r}
+Fr.rel = round(prop.table(Tabla,margin = 1),3)
+Fr.rel
+```
