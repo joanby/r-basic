@@ -377,3 +377,47 @@ barplot(Diagrama, beside = TRUE, legend = TRUE, main = "Diagrama de barras de
         frecuencias relativas acumuladas de longitudes por zonas",
 args.legend=list(x="topleft", cex=0.55))
 ```
+
+## Función cumsum()
+
+<div class = "example">
+**Ejemplo 5**
+
+Consideremos el data frame `datacrab` y arreglemos los datos.
+</div>
+
+```{r}
+crabs = read.table("../data/datacrab.txt", header = TRUE)
+crabs = crabs[,-1] #Omitimos la primera columna
+str(crabs)
+```
+
+<div class = "example">
+La variable numérica `width` contiene la anchura de cada cangrejo
+</div>
+
+
+## Función cumsum()
+
+```{r}
+table(crabs$width)
+```
+
+
+## Función cumsum()
+
+<div class = "example">
+**Ejemplo 5**
+
+Vamos a convertir a la variable `width` en una variable ordinal que agrupe las entradas de la variable original en niveles. 
+
+La manera más sencilla de llevarlo a cabo es utilizando la función `cut`, que estudiaremos en detalle en lecciones posteriores. Por ahora, basta con saber que la instrucción dividirá el vector numérico `crabs$width` en intervalos de extremos los puntos especificados en el argumento `breaks`. El parámetro `right = FALSE` sirve para indicar que los puntos de corte pertenecen la intervalo de su derecha, e `Inf` indica $\infty$.
+
+Por lo tanto, nosotros llevaremos a cabo la siguiente instrucción
+</div>
+
+```{r}
+intervalos = cut(crabs$width, breaks = c(21,25,29,33,Inf), right = FALSE, 
+                 labels = c("21-25", "25-29", "29-33", "33-..."))
+```
+
