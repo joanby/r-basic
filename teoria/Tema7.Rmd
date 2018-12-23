@@ -34,9 +34,9 @@ Es decir, podemos contar cuantas veces hemos observado un dato menor o igual a e
 ## Frecuencia acumulada
 
 <div class = "example">
-**Ejemplo**
+**Ejemplo 1**
 
-Suponed que tenemos una muestra de 15 estudiantes de los cuales sabemos su nota en el examen de Estadística. Clasificamos estos resultados en Suspenso ($S$), Aprobado ($A$), Notable ($N$) y Excelente ($Ex$) y consideramos su orden natural $S<A<N<Ex$.
+Suponed que tenemos una muestra de 15 estudiantes de los cuales sabemos su nota en el examen de Estadística. Clasificamos todos estos resultados en Suspenso ($S$), Aprobado ($A$), Notable ($N$) y Excelente ($Ex$) y consideramos su orden natural $S<A<N<Ex$.
 
 Las notas obtenidas han sido las siguientes
 $$S,\ A,\ N,\ Ex,\ S,\ S,\ Ex,\ Ex,\ N,\ A,\ A,\ A,\ A,\ N,\ S$$
@@ -55,7 +55,7 @@ table(notas)
 
 
 <div class = "example">
-**Ejemplo**
+**Ejemplo 1**
 
 Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
 
@@ -64,7 +64,7 @@ Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
 ## Frecuencia acumulada
 
 <div class = "example">
-**Ejemplo**
+**Ejemplo 1**
 
 En lo referente a **frecuencias absolutas acumuladas**, hay
 
@@ -81,7 +81,7 @@ Frecuencia relativa acumulada.
 </l> Es la fracción del total de las observaciones en tanto por 1 que representa su frecuencia absoluta acumulada 
 
 <div class = "example">
-**Ejemplo**
+**Ejemplo 1**
 
 Así, las recuencias relativas acumuladas respectivas son
 
@@ -105,7 +105,7 @@ Por tanto, cada una de las observaciones $x_j$ es igual a algún $l_i$. Diremos 
 
 ## Frecuencia relativa acumulada
 
-Además, nuestro $n = 15$ y nuestros $x_1,\dots,x_15$ son las calificaciones obtenidas por los alumnos.
+Además, nuestro $n = 15$ y nuestros $x_1,\dots,x_{15}$ son las calificaciones obtenidas por los alumnos.
 
 De este modo, con estas notaciones
 
@@ -117,11 +117,62 @@ De este modo, con estas notaciones
 - La frecuencia relativa acumulada del nivel $l_j$ en esta variable ordinal es la fracción en tanto por 1 $F_j$ de observaciones $x_i$ tales que $x_i\le l_j$. Es decir,
 $$F_j=\frac{N_j}{n}=\sum_{i=1}^jf_i$$
 
-## Frecuencia relativa acumulada{.example}
+## Frecuencia relativa acumulada
 
-**Ejemplo**
+<div class = "example">
 
-En un estudio sobre el comportamiento ético
+**Ejemplo 2**
+
+En un estudio, a un grupo de clientes de un restaurante se les hizo la siguiente pregunta:
+
+"¿Estás contento con el trato ofrecido por los trabajadores del establecimiento?"
+
+Las posibles respuestas forman una escala ordinal con $1<2<3<4<5$.
+
+Supongamos que se recogieron las siguientes respuestas de 50 técnicos:
+
+</div>
+
+```{r}
+set.seed(2018)
+clientes = sample(1:5, 50, replace = TRUE)
+clientes
+set.seed(NULL)
+```
+
+## Frecuencia relativa acumulada
+
+<div class = "example">
+
+**Ejemplo 2**
+
+En este caso tenemos 5 niveles ($k=5$) y 50 observaciones ($n=50$) que forman una variable ordinal a la que hemos llamado `clientes`.
+
+Hemos calculado todas sus frecuencias (absoluta, relativa, acumulada y relativa acumulada) y las hemos representado en la siguiente talbla.
+
+
+</div>
+
+```{r, echo = FALSE}
+absolut = table(clientes)
+relative = prop.table(absolut)
+acumul = cumsum(absolut)
+rel.acumul = cumsum(relative)
+absolut = (as.matrix(absolut))
+relative = (as.matrix(relative))
+acumul = (as.matrix(acumul))
+rel.acumul = (as.matrix(rel.acumul))
+
+clientela = data.frame(absolut,relative,acumul,rel.acumul)
+colnames(clientela) = c("Absoluta", "Relativa", "Acumulada", "Rel. Acumulada")
+clientela
+
+```
+
+<div class = "exercise">
+**Ejercicio.** Calculad todas las frecuencias y comprobad que son exactamente estas.
+</div>
+
 
 # Descripción de datos ordinales con R
 
