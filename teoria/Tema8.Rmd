@@ -15,3 +15,14 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
 # Descripción de datos cuantitativos
+
+# Frecuencias
+
+# Medidas de tendencia central
+
+# Medidas de posición
+
+# Medidas de dispersión
+
+# Diagramas de caja
+
