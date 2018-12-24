@@ -114,7 +114,324 @@
           </hgroup>
   </slide>
 
-<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Descripción de datos cuantitativos</h2></hgroup><article  id="descripcion-de-datos-cuantitativos"></article></slide>
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Descripción de datos cuantitativos</h2></hgroup><article  id="descripcion-de-datos-cuantitativos">
+
+</article></slide><slide class=""><hgroup><h2>Datos cuantitativos</h2></hgroup><article  id="datos-cuantitativos">
+
+<p>Los <l class = "definition">datos cuantitativos</l> son los que expresan cantidades que se representan mediante números. Éstos se suelen clasificar en continuos y discretos.</p>
+
+<ul>
+<li><p>Los <l class = "definition">datos continuos</l> son los que, si existiese la posibilidad de medirlos con precisión infinita, en principio podrían tomar todos los valores de un intervalo de la recta real. A modo de ejemplo, el peso, la altura, el tiempo&#8230; son datos de este tipo.</p></li>
+<li><p>Por su parte, los <l class = "definition">datos discretos</l> son los que pueden tomar un solo conjunto contable de valores. El número de colores de un gato, el número de individuos que conforman una población son algunos ejemplos de este tipo de datos.</p></li>
+</ul>
+
+<p>Conviene tener en cuenta que esta división es solo teórica. Es decir, en la práctica, todos estos datos son discretos puesto que la precisión infinita no existe. Sin embargo, es necesario de vez en cuando suponer los datos de tipo continuo para así poder utilizar técnicas específicas en su análisis.</p>
+
+</article></slide><slide class=""><hgroup><h2>Datos cuantitativos</h2></hgroup><article  id="datos-cuantitativos-1">
+
+<p>A la hora de estudiar <l class = "definition">variables cuantitativas</l>, podemos utilizar las frecuencias que hemos visto hasta el momento: absoluta, relativa, acumulada y relativa acumulada. Esto se debe a que podemos ordenar los datos cuantitativos en el orden natural de los números reales.</p>
+
+<p>En este caso, disponemos de muchas otras técnicas descriptivas aparte de las frecuencias, puesto que estamos trabajando con números reales y podemos operar con ellos.</p>
+
+<p>Los datos cuantitativos admiten dos tipos de tratamiento según trabajemos con los <l class = "definition">raw data</l> (datos brutos u originales) o bien los agrupemos en clases o intervalos.</p>
+
+<p>En esta lección trabajaremos sobre la primera situación. En la siguiente, estudiaremos la descripción de datos cuantitativos agrupados.</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Frecuencias</h2></hgroup><article  id="frecuencias">
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias de datos cuantitativos</h2></hgroup><article  id="frecuencias-de-datos-cuantitativos">
+
+<p>El tratamiento de las frecuencias de datos cuantitativos es similar al de los datos ordinales. La cosa cambia ligeramente debido a que no se tienen en cuenta todos los niveles posibles, sino únicamente los observados.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1">
+
+<div class="example">
+<p><strong>Ejemplo 1</strong></p>
+
+<p>Se han pedido las edades a 20 clientes de un museo. Las respuestas obtenidas han sido las siguientes:</p></div>
+
+<pre class = 'prettyprint lang-r'>edad = c(15,18,25,40,30,29,56,40,13,27,42,23,11,26,25,32,30,40,33,29)</pre>
+
+<div class="example">
+<p>Recordemos que solamente nos interesan las frecuencias de las edades observadas. Es decir, solamente nos interesan</p></div>
+
+<pre class = 'prettyprint lang-r'>table(edad)</pre>
+
+<pre >edad
+11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  1  1  1  1  2  1  1  2  2  1  1  3  1  1 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1-1">
+
+<div class="example">
+<p>Calculemos el resto de frecuencias como ya sabemos</p></div>
+
+<pre class = 'prettyprint lang-r'>round(prop.table(table(edad)),3)</pre>
+
+<pre >edad
+  11   13   15   18   23   25   26   27   29   30   32   33   40   42   56 
+0.05 0.05 0.05 0.05 0.05 0.10 0.05 0.05 0.10 0.10 0.05 0.05 0.15 0.05 0.05 </pre>
+
+<pre class = 'prettyprint lang-r'>cumsum(table(edad))</pre>
+
+<pre >11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  2  3  4  5  7  8  9 11 13 14 15 18 19 20 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1-2">
+
+<pre class = 'prettyprint lang-r'>round(cumsum(table(edad)),3)</pre>
+
+<pre >11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  2  3  4  5  7  8  9 11 13 14 15 18 19 20 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias de datos cuantitativos</h2></hgroup><article  id="frecuencias-de-datos-cuantitativos-1">
+
+<p>En general, supongamos que tenemos \(n\) observaciones de una propiedad que se mide con un número real y obtenemos la variable cuantitativa formada por los datos \[x_1,\dots, x_n\]</p>
+
+<p>Sean ahora \(X_1,\dots,X_k\) los valores distintos que aparecen en esta lista de datos y considerémoslos ordenados \[X_1&lt;X_2&lt;\cdots&lt;X_k\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias de datos cuantitativos</h2></hgroup><article  id="frecuencias-de-datos-cuantitativos-2">
+
+<p>Entonces, en esta variable cuantitativa</p>
+
+<ul>
+<li>La frecuencia absoluta de \(X_i\) es el número \(n_i\) de elementos que son iguales a \(X_i\)</li>
+<li>La frecuencia relativa de \(X_i\) es \(f_i=\frac{n_i}{n}\)</li>
+<li>La frecuencia absoluta acumulada de \(X_i\) es \(N_i=\sum_{j=1}^in_j\)</li>
+<li>La frecuencia relativa acumulada de \(X_i\) es \(F_i=\frac{N_i}{n}\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2">
+
+<div class="example">
+<p><strong>Ejemplo 2</strong></p>
+
+<p>Lanzamos 25 veces un dado de 6 caras y anotamos las puntuaciones obtenidas en cada tirada.</p>
+
+<p>En este caso, \(n=25\) y, los distintos valores observados son</p>
+
+<p>\[X_1 = 1,\ X_2 = 2,\ X_3 = 3,\ X_4 = 4,\ X_5 = 5,\ X_6 = 6\]</p>
+
+<p>Nos interesa ahora calcular las frecuencias de este experimento. Además, las organizaremos en un data frame para observarlas de forma más clara y sencilla en una tabla.</p></div>
+
+<pre class = 'prettyprint lang-r'>set.seed(162017)
+dados = sample(1:6,25,replace = TRUE)
+dados</pre>
+
+<pre > [1] 6 6 6 1 2 3 2 5 1 3 2 4 1 2 2 6 3 6 3 5 3 1 3 2 4</pre>
+
+<pre class = 'prettyprint lang-r'>set.seed(NULL)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-1">
+
+<pre class = 'prettyprint lang-r'>table(dados)</pre>
+
+<pre >dados
+1 2 3 4 5 6 
+4 6 6 2 2 5 </pre>
+
+<pre class = 'prettyprint lang-r'>round(prop.table(table(dados)),2)</pre>
+
+<pre >dados
+   1    2    3    4    5    6 
+0.16 0.24 0.24 0.08 0.08 0.20 </pre>
+
+<pre class = 'prettyprint lang-r'>cumsum(table(dados))</pre>
+
+<pre > 1  2  3  4  5  6 
+ 4 10 16 18 20 25 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-2">
+
+<pre class = 'prettyprint lang-r'>round(cumsum(prop.table(table(dados))),2)</pre>
+
+<pre >   1    2    3    4    5    6 
+0.16 0.40 0.64 0.72 0.80 1.00 </pre>
+
+<pre class = 'prettyprint lang-r'>dados.df = data.frame(Puntuacion = 1:6,
+                      Fr.abs = as.vector(table(dados)),
+                      Fr.rel = as.vector(round(prop.table(table(dados)),2)),
+                      Fr.acu = as.vector(cumsum(table(dados))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dados))),2)))</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-3">
+
+<pre class = 'prettyprint lang-r'>dados.df</pre>
+
+<pre >  Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1      4   0.16      4    0.16
+2          2      6   0.24     10    0.40
+3          3      6   0.24     16    0.64
+4          4      2   0.08     18    0.72
+5          5      2   0.08     20    0.80
+6          6      5   0.20     25    1.00</pre>
+
+<p><l class="important">¡OJO!</l> Para entrar una tabla unidimensional como una variable en un data frame, es conveniente transformarla en vector con <code>as.vector</code>. Si no, cada <code>table</code> y cada <code>prop.table</code> añadirían una columna extra con los nombres de los niveles.</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de tendencia central</h2></hgroup><article  id="medidas-de-tendencia-central">
+
+</article></slide><slide class=""><hgroup><h2>Medidas de tendencia central</h2></hgroup><article  id="medidas-de-tendencia-central-1">
+
+<p>Las <l class="definition">medidas de tendencia central</l> son las que dan un valor representativo a todas las observaciones. Algunas de las más importantes son:</p>
+
+<ul>
+<li>La <l class="definition">media aritmética</l> o <l class="definition">valor medio</l> \[\bar{x} = \frac{\sum_{i=1}^nx_i}{n}=\frac{\sum_{j=1}^kn_jX_j}{n}=\sum_{j=1}^kf_jX_j\]</li>
+<li>La <l class="definition">mediana</l>, que representa el valor central en la lista ordenada de observaciones.</li>
+<li>La <l class="definition">moda</l> es el valor (o valores) de máxima frecuencia (absoluta o relativa, el resultado será el mismo).</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>La mediana</h2></hgroup><article  id="la-mediana">
+
+<p>La definición formal de la mediana es la siguiente. Denotando por \[x_{(1)}\le x_{(2)}\le\dots\le x_{(n)}\] los datos de la variable cuantitativa ordenados de menor a mayor, la mediana es</p>
+
+<ul>
+<li>Si \(n\) par, la medio de los dos datos centrales \[\frac{x_{(\frac{n}{2})}+x_{(\frac{n}{2}+1)}}{2}\]</li>
+<li>Si \(n\) impar, el dato central \(x_{(\frac{n+1}{2})}\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1-3">
+
+<div class="example">
+<p>Recordemos el ejemplo de las edades.</p></div>
+
+<pre class = 'prettyprint lang-r'>sort(edad) #Ordenamos los datos por su orden natural</pre>
+
+<pre > [1] 11 13 15 18 23 25 25 26 27 29 29 30 30 32 33 40 40 40 42 56</pre>
+
+<pre class = 'prettyprint lang-r'>table(edad)</pre>
+
+<pre >edad
+11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  1  1  1  1  2  1  1  2  2  1  1  3  1  1 </pre>
+
+<div class="example">
+<p>En este caso, la moda es 40, la mediana es \(\frac{29+29}{2}=29\) y la media aritmética es</p>
+
+<div class="aligncenter">
+<p>\(\frac{11+13+15+18+23+25+25+26+27+29+29+30+30+32+33+40+40+40+42+56}{20}=29.2\)</p></div></div>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-4">
+
+<div class="example">
+<p>Recordemos el ejemplo de los dados.</p></div>
+
+<pre class = 'prettyprint lang-r'>dados.df</pre>
+
+<pre >  Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1      4   0.16      4    0.16
+2          2      6   0.24     10    0.40
+3          3      6   0.24     16    0.64
+4          4      2   0.08     18    0.72
+5          5      2   0.08     20    0.80
+6          6      5   0.20     25    1.00</pre>
+
+<div class="example">
+<p>En este caso, la moda son dos valores: el 2 y el 3. La mediana es $x_{(13)}=$3 y la media aritmética es `r sum(dados)/length(dados)</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Medidas de tendencia central en R</h2></hgroup><article  id="medidas-de-tendencia-central-en-r">
+
+<p>Vamos a calcular la media aritmética, mediana y moda de los dos ejemplos anteriores con instrucciones de R.</p>
+
+<pre class = 'prettyprint lang-r'>mean(edad) #La media aritmética</pre>
+
+<pre >[1] 29.2</pre>
+
+<pre class = 'prettyprint lang-r'>mean(dados)</pre>
+
+<pre >[1] 3.28</pre>
+
+<pre class = 'prettyprint lang-r'>median(edad) #La mediana</pre>
+
+<pre >[1] 29</pre>
+
+</article></slide><slide class=""><hgroup><h2>Medidas de tendencia central en R</h2></hgroup><article  id="medidas-de-tendencia-central-en-r-1">
+
+<pre class = 'prettyprint lang-r'>median(dados)</pre>
+
+<pre >[1] 3</pre>
+
+<pre class = 'prettyprint lang-r'>as.numeric(names(which(table(edad)==max(table(edad))))) #La moda</pre>
+
+<pre >[1] 40</pre>
+
+<pre class = 'prettyprint lang-r'>as.numeric(names(which(table(dados)==max(table(dados)))))</pre>
+
+<pre >[1] 2 3</pre>
+
+<p>Cuando trabajamos con datos cuantitativos, es conveniente que el resultado lo demos como un número. De ahí que hayamos aplicado la función <code>as.numeric</code>.</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion">
+
+</article></slide><slide class=""><hgroup><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion-1">
+
+<p>Las <l class = "definition">medidas de posición</l> estiman qué valores dividen las observaciones en unas determinadas proporciones.</p>
+
+<p>Los valores que determinan estas posiciones son conocidos como los <l class = "definition">cuantiles</l>.</p>
+
+<p>Pensándolo de este modo, la mediana puede interpretarse como una medida de posición, debido a que divide la variable cuantitativa en dos mitades.</p>
+
+</article></slide><slide class=""><hgroup><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion-2">
+
+<p>Dada una proporción \(p\in(0,1)\), el &quot;definition&quot;&gt;cuantil de orden \(p\)</l> de una variable cuantitativa, \(Q_p\), es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a \(p\).</p>
+
+<p>Dicho de otro modo, si tenemos un conjunto de observaciones \(x_1,\dots,x_n\) y los ordenamos de menor a mayor, entonces \(Q_p\) será el número más pequeño que deja a su izquierda (incluyéndose a sí mismo) como mínimo a la fracción \(p\) de los datos. Es decir, \(p\cdot n\).</p>
+
+<p>Así, ahora es más claro ver que la mediana vendría a ser \(Q_{0.5}\), el cuantil de orden 0.5.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3">
+
+<div class="example">
+<p><strong>Ejemplo 3</strong></p>
+
+<p>Consideremos un experimento en el que lanzamos 50 veces un dado de 4 caras y obtenemos los siguientes resultados</p></div>
+
+<pre class = 'prettyprint lang-r'>set.seed(260798)
+dado = sample(1:4, 50, replace = TRUE)
+set.seed(NULL)
+length(dado)</pre>
+
+<pre >[1] 50</pre>
+
+<pre class = 'prettyprint lang-r'>dado = sort(dado) #Los ordenamos de menor a mayor
+dado</pre>
+
+<pre > [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3
+[36] 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3-1">
+
+<pre class = 'prettyprint lang-r'>df.dado = data.frame(Puntuacion = 1:4,
+                      Fr.abs = as.vector(table(dado)),
+                      Fr.rel = as.vector(round(prop.table(table(dado)),2)),
+                      Fr.acu = as.vector(cumsum(table(dado))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dado))),2)))
+df.dado</pre>
+
+<pre >  Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1     19   0.38     19    0.38
+2          2     14   0.28     33    0.66
+3          3      9   0.18     42    0.84
+4          4      8   0.16     50    1.00</pre>
+
+<div class="example">
+<p>Si nos piden el cuantil \(Q_{0.3}\), sabemos que este es el primer elemento de la lista cuya frecuencia relativa absoluta es mayor o igual a 0.3. Este se corresponde con la puntuación 1.</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3-2">
+
+<div class="example">
+<p>También podríamos hallarlo de otro modo: fijándonos en la lista ordenada de puntuaciones, el cuantil \(Q_{0.3}\) sería el primer elemento de dicha lista tal que fuera mayor o igual que, como mínimo, el 30% de los datos. Si calculamos el 30% de 50, obtenemos que es 15. Esto lo que nos dice es que el cuantil que buscamos es el número que se encuentrae en la quinceava posición de la lista ordenada.</p></div>
+
+<pre class = 'prettyprint lang-r'>dado[15]</pre>
+
+<pre >[1] 1</pre>
+
+</article></slide><slide class=""><hgroup><h2>Cuantiles</h2></hgroup><article  id="cuantiles">
+
+<p>Algunos cuantiles tienen nombre propio:</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de dispersión</h2></hgroup><article  id="medidas-de-dispersion">
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Diagramas de caja</h2></hgroup><article  id="diagramas-de-caja"></article></slide>
 
 
   <slide class="backdrop"></slide>
