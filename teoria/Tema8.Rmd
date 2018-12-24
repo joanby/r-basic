@@ -67,6 +67,89 @@ Recordemos que solamente nos interesan las frecuencias de las edades observadas.
 table(edad)
 ```
 
+## Ejemplo 1
+
+<div class = example>
+Calculemos el resto de frecuencias como ya sabemos
+</div>
+
+```{r}
+round(prop.table(table(edad)),3)
+cumsum(table(edad))
+```
+
+## Ejemplo 1
+
+```{r}
+round(cumsum(table(edad)),3)
+```
+
+## Frecuencias de datos cuantitativos
+
+En general, supongamos que tenemos $n$ observaciones de una propiedad que se mide con un número real y obtenemos la variable cuantitativa formada por los datos 
+$$x_1,\dots, x_n$$
+
+Sean ahora $X_1,\dots,X_k$ los valores distintos que aparecen en esta lista de datos y considerémoslos ordenados
+$$X_1<X_2<\cdots<X_k$$
+
+## Frecuencias de datos cuantitativos
+
+Entonces, en esta variable cuantitativa
+
+- La frecuencia absoluta de $X_i$ es el número $n_i$ de elementos que son iguales a $X_i$
+- La frecuencia relativa de $X_i$ es $f_i=\frac{n_i}{n}$
+- La frecuencia absoluta acumulada de $X_i$ es $N_i=\sum_{j=1}^in_j$
+- La frecuencia relativa acumulada de $X_i$ es $F_i=\frac{N_i}{n}$
+
+## Ejemplo 2
+
+<div class = "example">
+**Ejemplo 2**
+
+Lanzamos 25 veces un dado de 6 caras y anotamos las puntuaciones obtenidas en cada tirada.
+
+En este caso, $n=25$ y, los distintos valores observados son 
+
+$$X_1 = 1,\ X_2 = 2,\ X_3 = 3,\ X_4 = 4,\ X_5 = 5,\ X_6 = 6$$
+
+Nos interesa ahora calcular las frecuencias de este experimento. Además, las organizaremos en un data frame para observarlas de forma más clara y sencilla en una tabla.
+</div>
+
+```{r}
+set.seed(162017)
+dados = sample(1:6,25,replace = TRUE)
+dados
+set.seed(NULL)
+```
+
+## Ejemplo 2
+
+```{r}
+table(dados)
+round(prop.table(table(dados)),2)
+cumsum(table(dados))
+```
+
+## Ejemplo 2
+
+```{r}
+round(cumsum(prop.table(table(dados))),2)
+dados.df = data.frame(Puntuacion = 1:6,
+                      Fr.abs = as.vector(table(dados)),
+                      Fr.rel = as.vector(round(prop.table(table(dados)),2)),
+                      Fr.acu = as.vector(cumsum(table(dados))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dados))),2)))
+```
+
+
+## Ejemplo 2
+
+```{r}
+dados.df
+``` 
+
+<l class="important">¡OJO!</l> Para entrar una tabla unidimensional como una variable en un data frame, es conveniente transformarla en vector con `as.vector`. Si no, cada `table` y cada `prop.table` añadirían una columna extra con los nombres de los niveles.
+
 # Medidas de tendencia central
 
 # Medidas de posición

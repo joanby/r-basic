@@ -161,6 +161,115 @@
 11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 57 
  1  1  1  1  1  2  1  1  2  2  1  1  2  1  1  1 </pre>
 
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1-1">
+
+<div class="example">
+<p>Calculemos el resto de frecuencias como ya sabemos</p></div>
+
+<pre class = 'prettyprint lang-r'>round(prop.table(table(edad)),3)</pre>
+
+<pre >edad
+  11   13   15   18   23   25   26   27   29   30   32   33   40   42   56 
+0.05 0.05 0.05 0.05 0.05 0.10 0.05 0.05 0.10 0.10 0.05 0.05 0.10 0.05 0.05 
+  57 
+0.05 </pre>
+
+<pre class = 'prettyprint lang-r'>cumsum(table(edad))</pre>
+
+<pre >11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 57 
+ 1  2  3  4  5  7  8  9 11 13 14 15 17 18 19 20 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 1</h2></hgroup><article  id="ejemplo-1-2">
+
+<pre class = 'prettyprint lang-r'>round(cumsum(table(edad)),3)</pre>
+
+<pre >11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 57 
+ 1  2  3  4  5  7  8  9 11 13 14 15 17 18 19 20 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias de datos cuantitativos</h2></hgroup><article  id="frecuencias-de-datos-cuantitativos-1">
+
+<p>En general, supongamos que tenemos \(n\) observaciones de una propiedad que se mide con un número real y obtenemos la variable cuantitativa formada por los datos \[x_1,\dots, x_n\]</p>
+
+<p>Sean ahora \(X_1,\dots,X_k\) los valores distintos que aparecen en esta lista de datos y considerémoslos ordenados \[X_1&lt;X_2&lt;\cdots&lt;X_k\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias de datos cuantitativos</h2></hgroup><article  id="frecuencias-de-datos-cuantitativos-2">
+
+<p>Entonces, en esta variable cuantitativa</p>
+
+<ul>
+<li>La frecuencia absoluta de \(X_i\) es el número \(n_i\) de elementos que son iguales a \(X_i\)</li>
+<li>La frecuencia relativa de \(X_i\) es \(f_i=\frac{n_i}{n}\)</li>
+<li>La frecuencia absoluta acumulada de \(X_i\) es \(N_i=\sum_{j=1}^in_j\)</li>
+<li>La frecuencia relativa acumulada de \(X_i\) es \(F_i=\frac{N_i}{n}\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2">
+
+<div class="example">
+<p><strong>Ejemplo 2</strong></p>
+
+<p>Lanzamos 25 veces un dado de 6 caras y anotamos las puntuaciones obtenidas en cada tirada.</p>
+
+<p>En este caso, \(n=25\) y, los distintos valores observados son</p>
+
+<p>\[X_1 = 1,\ X_2 = 2,\ X_3 = 3,\ X_4 = 4,\ X_5 = 5,\ X_6 = 6\]</p>
+
+<p>Nos interesa ahora calcular las frecuencias de este experimento. Además, las organizaremos en un data frame para observarlas de forma más clara y sencilla en una tabla.</p></div>
+
+<pre class = 'prettyprint lang-r'>set.seed(162017)
+dados = sample(1:6,25,replace = TRUE)
+dados</pre>
+
+<pre > [1] 6 6 6 1 2 3 2 5 1 3 2 4 1 2 2 6 3 6 3 5 3 1 3 2 4</pre>
+
+<pre class = 'prettyprint lang-r'>set.seed(NULL)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-1">
+
+<pre class = 'prettyprint lang-r'>table(dados)</pre>
+
+<pre >dados
+1 2 3 4 5 6 
+4 6 6 2 2 5 </pre>
+
+<pre class = 'prettyprint lang-r'>round(prop.table(table(dados)),2)</pre>
+
+<pre >dados
+   1    2    3    4    5    6 
+0.16 0.24 0.24 0.08 0.08 0.20 </pre>
+
+<pre class = 'prettyprint lang-r'>cumsum(table(dados))</pre>
+
+<pre > 1  2  3  4  5  6 
+ 4 10 16 18 20 25 </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-2">
+
+<pre class = 'prettyprint lang-r'>round(cumsum(prop.table(table(dados))),2)</pre>
+
+<pre >   1    2    3    4    5    6 
+0.16 0.40 0.64 0.72 0.80 1.00 </pre>
+
+<pre class = 'prettyprint lang-r'>dados.df = data.frame(Puntuacion = 1:6,
+                      Fr.abs = as.vector(table(dados)),
+                      Fr.rel = as.vector(round(prop.table(table(dados)),2)),
+                      Fr.acu = as.vector(cumsum(table(dados))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dados))),2)))</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 2</h2></hgroup><article  id="ejemplo-2-3">
+
+<pre class = 'prettyprint lang-r'>dados.df</pre>
+
+<pre >  Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1      4   0.16      4    0.16
+2          2      6   0.24     10    0.40
+3          3      6   0.24     16    0.64
+4          4      2   0.08     18    0.72
+5          5      2   0.08     20    0.80
+6          6      5   0.20     25    1.00</pre>
+
+<p><l class="important">¡OJO!</l> Para entrar una tabla unidimensional como una variable en un data frame, es conveniente transformarla en vector con <code>as.vector</code>. Si no, cada <code>table</code> y cada <code>prop.table</code> añadirían una columna extra con los nombres de los niveles.</p>
+
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de tendencia central</h2></hgroup><article  id="medidas-de-tendencia-central">
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion">
