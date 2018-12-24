@@ -1,0 +1,73 @@
+---
+title: "Ejemplo Final"
+author: "Curso de Estadística Descriptiva"
+date: "24/12/2018"
+output: html_document
+---
+
+# Ejemplo final
+
+## Juntar color de ojos y pelo sin distinguir por sexo
+
+```{r}
+ftable(HairEyeColor)
+male <- HairEyeColor[, ,"Male"]
+female <- HairEyeColor[, ,"Female"]
+data <- as.table(male+female)
+data
+```
+
+## Manipulación de datos
+
+```{r}
+dimnames(data) = list(
+  Pelo = c("Negro", "Marron", "Pelirrojo", "Rubio"),
+  Ojos = c("Marrones", "Azules", "Pardos", "Verdes")
+)
+data
+```
+
+## Diagrama de Mosaico
+
+```{r}
+plot(data, col = c("lightblue"), main = "Diagrama de Mosaico")
+```
+
+## Datos numéricos
+```{r}
+sum(data)
+colSums(data)
+rowSums(data)
+round(prop.table(colSums(data)), 3)
+round(prop.table(rowSums(data)), 3)
+```
+
+## Diagramas de barras
+
+```{r}
+barplot(prop.table(colSums(data)), ylim = c(0, 0.4),
+        main = "Frecuencias relativas del color de ojos",
+        col = c("burlywood4", "lightblue", "orange3", "lightgreen")
+        )
+```
+
+## Frecuencias relativas globales y marginales
+
+```{r}
+round(prop.table(data), 3)
+round(prop.table(data, margin = 1), 3)
+round(prop.table(data, margin = 2), 3)
+
+barplot(prop.table(data, margin = 1), beside = TRUE,
+        legend.text = TRUE, ylim = c(0, 0.8),
+        col = c("black", "burlywood4", "red", "gold"), 
+        main = "Frecuencias relativas del color de pelo\n para cada color de ojo.")
+
+
+
+barplot(t(prop.table(data, margin = 2)), beside = TRUE,
+        legend.text = TRUE, ylim = c(0, 0.6),
+        col = c("burlywood4", "lightblue", "orange3", "lightgreen"), 
+        main = "Frecuencias relativas del color de ojos\n para cada color de pelo")
+```
+

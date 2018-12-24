@@ -1,0 +1,18 @@
+BORRADO DEL TEMA 6
+```{r, echo = FALSE}
+levels(Beb_Energ$estudio) = c("Informatica", "Industriales","Mates","Telematica")
+info = which(Beb_Energ$estudio=="Inform\303\241tica")
+mat = which(Beb_Energ$estudio=="Matem\303\241ticas")
+tel = which(Beb_Energ$estudio=="Telem\303\241tica")
+ind = which(Beb_Energ$estudio=="Ing.Industrial")
+Beb_Energ[info,1] = "Informatica"
+Beb_Energ[mat,1] = "Mates"
+Beb_Energ[tel,1] = "Telematica"
+Beb_Energ[ind,1] = "Industriales"
+levels(Beb_Energ$bebe) = c("No","Si")
+yes = which(Beb_Energ$bebe=="S\303\255")
+Beb_Energ[yes,2] = "Si"
+Beb_Energ[order("estudio", "bebe")]
+write.table(Beb_Energ, "../data/EnergyDrink")
+read.table("../data/EnergyDrink")
+```

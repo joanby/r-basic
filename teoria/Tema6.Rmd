@@ -460,31 +460,16 @@ En esta sección explicaremos algunas instrucciones para calcular tablas de frec
 
 ## Tablas a partir de data frames de variables cualitativas
 
-Para ilustrarla, usaremos el fichero que se encuentra en el url
+Para ilustrarla, usaremos el fichero que se encuentra en el la carpeta de datos:
 
 <div class="aligncenter">
-`http://bioinfo.uib.es/~recerca/RMOOC/bebenerg.txt`
+`"data/EnergyDrink"`
 </div>
 
-Este fichero consiste en una tabla de datos con la siguiente información sobre 122 estudiantes de la Escuela Politécnica Superior de la UIB: su sexo (variable `sexo`), el grado en el que están matriculados (variable `estudio`) y si consumen habitualmente bebidas energéticas (variable `bebe`).
+Este fichero consiste en una tabla de datos con la siguiente información sobre 122 estudiantes de una Universidad de España: su sexo (variable `sexo`), el estudio en el que están matriculados (variable `estudio`) y si consumen habitualmente bebidas energéticas para estudiar (variable `bebe`).
 
 ```{r}
-Beb_Energ=read.table("http://bioinfo.uib.es/~recerca/RMOOC/bebenerg.txt",header=TRUE)
-```
-
-```{r, echo = FALSE}
-levels(Beb_Energ$estudio) = c("Informatica", "Industriales","Mates","Telematica")
-info = which(Beb_Energ$estudio=="Inform\303\241tica")
-mat = which(Beb_Energ$estudio=="Matem\303\241ticas")
-tel = which(Beb_Energ$estudio=="Telem\303\241tica")
-ind = which(Beb_Energ$estudio=="Ing.Industrial")
-Beb_Energ[info,1] = "Informatica"
-Beb_Energ[mat,1] = "Mates"
-Beb_Energ[tel,1] = "Telematica"
-Beb_Energ[ind,1] = "Industriales"
-levels(Beb_Energ$bebe) = c("No","Si")
-yes = which(Beb_Energ$bebe=="S\303\255")
-Beb_Energ[yes,2] = "Si"
+Beb_Energ=read.table("../data/EnergyDrink",header=TRUE)
 ```
 
 ## Tablas a partir de data frames de variables cualitativas

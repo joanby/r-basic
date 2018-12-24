@@ -1,0 +1,60 @@
+---
+title: "Tablas de Contingencia"
+author: "Curso de Estadística Descriptiva"
+date: "24/12/2018"
+output: html_document
+---
+
+# Tablas de contingencia
+
+```{r}
+datos = factor(c("H", "M", "M", "M", "H", "H", "M", "M"))
+table(datos)
+table(datos)["M"]
+sum(table(datos))
+```
+
+# Frecuencias relativas
+
+$$f_i = \frac{n_i}{n}$$
+
+```{r}
+prop.table(table(datos))
+100*prop.table(table(datos))
+table(datos)/length(datos)
+names(which(table(datos)==3))
+
+moda <- function(d){
+  names(which(table(d)==max(table(d))))
+}
+
+m_t = moda(datos)
+```
+
+La moda del data frame es: `r m_t`.
+
+# Paquete `gmodels`
+```{r}
+library(gmodels)
+sex = factor(c("H", "M", "M", "M", "H", "H", "M", "M"))
+ans = factor(c("S", "N", "S", "S", "S", "N", "N", "S"))
+CrossTable(sex, ans, prop.chisq = FALSE)
+```
+
+# Sumas por filas y columnas
+```{r}
+tt <- table(sex, ans)
+tt# Frec. absolutas
+prop.table(tt)#Frec. Rel. Global
+prop.table(tt, margin = 1)#Frec. Rel. Por sexo
+prop.table(tt, margin = 2)#Frec. Rel. Por respuesta
+
+colSums(tt)
+rowSums(tt)
+colSums(prop.table(tt))
+rowSums(prop.table(tt))
+
+apply(tt, FUN = sum, MARGIN = 1)
+apply(tt, FUN = sqrt, MARGIN = c(1,2))
+```
+
