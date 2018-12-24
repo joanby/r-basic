@@ -56,7 +56,7 @@ table(notas)
 
 <div class = "example">
 
-Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
+Como podréis observar, hay 4 $S$, 5 $A$, 3 $N$ y 3 $Ex$.
 
 </div>
 
@@ -66,9 +66,9 @@ Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
 
 En lo referente a **frecuencias absolutas acumuladas**, hay
 
-- 5 estudiantes con $S$ o menos. Ello implica que la frecuencia acumulada de $S$ es 5
-- 8 estudiantes que han obtenido $A$ o menos. Entonces, la frecuencia acumulada de $A$ es 8
-- 11 estudiantes los cuales han obtenido $N$ o menos. Así, la frecuencia acumulada de $N$ es 11
+- 4 estudiantes con $S$ o menos. Ello implica que la frecuencia acumulada de $S$ es 4
+- 9 estudiantes que han obtenido $A$ o menos. Entonces, la frecuencia acumulada de $A$ es 9
+- 12 estudiantes los cuales han obtenido $N$ o menos. Así, la frecuencia acumulada de $N$ es 12
 - 15 estudiantes (todos) que han obtenido $Ex$ o menos. De este modo, la frecuencia acumulada de $Ex$ es 15, o sea, el total.
 </div>
 
@@ -82,9 +82,9 @@ Frecuencia relativa acumulada.
 
 Así, las recuencias relativas acumuladas respectivas son
 
-- $S:\ \frac{5}{15} \approx$ `r round(5/15,2)`
-- $A:\ \frac{8}{15}\approx$ `r round(8/15,2)`
-- $N:\ \frac{11}{15}\approx$ `r round(11/15,2)`
+- $S:\ \frac{4}{15} \approx$ `r round(4/15,2)`
+- $A:\ \frac{9}{15}\approx$ `r round(9/15,2)`
+- $N:\ \frac{12}{15}\approx$ `r round(12/15,2)`
 - $Ex:\ \frac{15}{15}=1$
 </div>
 
@@ -96,7 +96,7 @@ $$x_1,\dots,x_n$$
 
 de un cierto tipo de datos ordinales, cuyos posibles niveles ordenados son
 
-$$l_1,\dots,l_k$$
+$$l_1<l_2<\dots<l_k$$
 
 Por tanto, cada una de las observaciones $x_j$ es igual a algún $l_i$. Diremos que todas estas observaciones forman una <l class="definition">variable ordinal</l>. En nuestro ejemplo anterior, los 4 niveles eran $$S<A<N<Ex$$
 
@@ -201,7 +201,7 @@ barplot(fAbs, main = "Diagrama de barras de frecuencias absolutas")
 ## Función cumsum()
 
 ```{r}
-barplot(cumsum(fAbs), main = "Diagrama de barras de frecuencias relativas acumuladas")
+barplot(cumsum(fAbs), main = "Diagrama de barras de frecuencias absolutas acumuladas")
 ```
 
 ## Función cumsum()
@@ -215,7 +215,7 @@ cumsum(table(notas)/length(notas))
 
 ## Función cumsum()
 
-Pero no podemos hacer `cumsum(prop.table(table(notas)))`.
+Pero no podemos hacer `prop.table(cumsum(table(notas)))`.
 
 <div class = "exercise">
 **Ejercicio.** Pensad qué ha entendido R que queríamos hacer con esta última instrucción.
@@ -453,7 +453,7 @@ t(Fr.rel.acu)
 ## Ejemplo 5
 
 ```{r}
-azul = c("cyan", "cyan4", "cyan1", "cyan3", "cyan2")
+azul = c("cyan", "cyan4", "cyan1", "cyan3")
 
 barplot(t(Fr.rel), beside = TRUE, legend = TRUE, ylim = c(0,1), col = azul, 
         main = "Diagrama de barras de frecuencias relativas", 
