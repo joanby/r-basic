@@ -54,7 +54,7 @@ Se han pedido las edades a 20 clientes de un museo. Las respuestas obtenidas han
 </div>
 
 ```{r}
-edad = c(15,18,25,40,30,29,56,57,13,27,42,23,11,26,25,32,30,40,33,29)
+edad = c(15,18,25,40,30,29,56,40,13,27,42,23,11,26,25,32,30,40,33,29)
 ```
 
 <div class= "example">
@@ -151,6 +151,78 @@ dados.df
 <l class="important">¡OJO!</l> Para entrar una tabla unidimensional como una variable en un data frame, es conveniente transformarla en vector con `as.vector`. Si no, cada `table` y cada `prop.table` añadirían una columna extra con los nombres de los niveles.
 
 # Medidas de tendencia central
+
+## Medidas de tendencia central
+
+Las <l class="definition">medidas de tendencia central</l> son las que dan un valor representativo a todas las observaciones. Algunas de las más importantes son:
+
+- La <l class="definition">media aritmética</l> o <l class="definition">valor medio</l>
+$$\bar{x} = \frac{\sum_{i=1}^nx_i}{n}=\frac{\sum_{j=1}^kn_jX_j}{n}=\sum_{j=1}^kf_jX_j$$
+- La <l class="definition">mediana</l>, que representa el valor central en la lista ordenada de observaciones.
+- La <l class="definition">moda</l> es el valor (o valores) de máxima frecuencia (absoluta o relativa, el resultado será el mismo).
+
+## La mediana
+
+La definición formal de la mediana es la siguiente. Denotando por $$x_{(1)}\le x_{(2)}\le\dots\le x_{(n)}$$ los datos de la variable cuantitativa ordenados de menor a mayor, la mediana es
+
+- Si $n$ par, la medio de los dos datos centrales $$\frac{x_{(\frac{n}{2})}+x_{(\frac{n}{2}+1)}}{2}$$
+- Si $n$ impar, el dato central $x_{(\frac{n+1}{2})}$
+
+## Ejemplo 1
+
+<div class = "example">
+Recordemos el ejemplo de las edades.
+</div>
+
+```{r}
+sort(edad) #Ordenamos los datos por su orden natural
+table(edad)
+```
+
+<div class = "example">
+En este caso, la moda es 40, la mediana es $\frac{29+29}{2}=29$ y la media aritmética es
+
+<div class = "aligncenter">
+$\frac{11+13+15+18+23+25+25+26+27+29+29+30+30+32+33+40+40+40+42+56}{20}=29.2$
+</div>
+</div>
+
+## Ejemplo 2
+
+<div class = "example">
+Recordemos el ejemplo de los dados.
+</div>
+
+```{r}
+dados.df
+```
+
+<div class = "example">
+En este caso, la moda son dos valores: el 2 y el 3. La mediana es $x_{(13)}=$3 y la media aritmética es `r sum(dados)/length(dados)
+</div>
+
+## Medidas de tendencia central en R
+
+Vamos a calcular la media aritmética, mediana y moda de los dos ejemplos anteriores con instrucciones de R.
+
+```{r}
+mean(edad) #La media aritmética
+mean(dados)
+median(edad) #La mediana
+```
+
+## Medidas de tendencia central en R
+
+```{r}
+median(dados)
+as.numeric(names(which(table(edad)==max(table(edad))))) #La moda
+as.numeric(names(which(table(dados)==max(table(dados)))))
+```
+
+Cuando trabajamos con datos cuantitativos, es conveniente que el resultado lo demos como un número. De ahí que hayamos aplicado la función `as.numeric`.
+
+```{r}
+```
 
 # Medidas de posición
 
