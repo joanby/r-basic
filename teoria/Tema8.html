@@ -362,6 +362,73 @@ dados</pre>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion">
 
+</article></slide><slide class=""><hgroup><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion-1">
+
+<p>Las <l class = "definition">medidas de posición</l> estiman qué valores dividen las observaciones en unas determinadas proporciones.</p>
+
+<p>Los valores que determinan estas posiciones son conocidos como los <l class = "definition">cuantiles</l>.</p>
+
+<p>Pensándolo de este modo, la mediana puede interpretarse como una medida de posición, debido a que divide la variable cuantitativa en dos mitades.</p>
+
+</article></slide><slide class=""><hgroup><h2>Medidas de posición</h2></hgroup><article  id="medidas-de-posicion-2">
+
+<p>Dada una proporción \(p\in(0,1)\), el &quot;definition&quot;&gt;cuantil de orden \(p\)</l> de una variable cuantitativa, \(Q_p\), es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a \(p\).</p>
+
+<p>Dicho de otro modo, si tenemos un conjunto de observaciones \(x_1,\dots,x_n\) y los ordenamos de menor a mayor, entonces \(Q_p\) será el número más pequeño que deja a su izquierda (incluyéndose a sí mismo) como mínimo a la fracción \(p\) de los datos. Es decir, \(p\cdot n\).</p>
+
+<p>Así, ahora es más claro ver que la mediana vendría a ser \(Q_{0.5}\), el cuantil de orden 0.5.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3">
+
+<div class="example">
+<p><strong>Ejemplo 3</strong></p>
+
+<p>Consideremos un experimento en el que lanzamos 50 veces un dado de 4 caras y obtenemos los siguientes resultados</p></div>
+
+<pre class = 'prettyprint lang-r'>set.seed(260798)
+dado = sample(1:4, 50, replace = TRUE)
+set.seed(NULL)
+length(dado)</pre>
+
+<pre >[1] 50</pre>
+
+<pre class = 'prettyprint lang-r'>dado = sort(dado) #Los ordenamos de menor a mayor
+dado</pre>
+
+<pre > [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3
+[36] 3 3 3 3 3 3 3 4 4 4 4 4 4 4 4</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3-1">
+
+<pre class = 'prettyprint lang-r'>df.dado = data.frame(Puntuacion = 1:4,
+                      Fr.abs = as.vector(table(dado)),
+                      Fr.rel = as.vector(round(prop.table(table(dado)),2)),
+                      Fr.acu = as.vector(cumsum(table(dado))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dado))),2)))
+df.dado</pre>
+
+<pre >  Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1     19   0.38     19    0.38
+2          2     14   0.28     33    0.66
+3          3      9   0.18     42    0.84
+4          4      8   0.16     50    1.00</pre>
+
+<div class="example">
+<p>Si nos piden el cuantil \(Q_{0.3}\), sabemos que este es el primer elemento de la lista cuya frecuencia relativa absoluta es mayor o igual a 0.3. Este se corresponde con la puntuación 1.</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 3</h2></hgroup><article  id="ejemplo-3-2">
+
+<div class="example">
+<p>También podríamos hallarlo de otro modo: fijándonos en la lista ordenada de puntuaciones, el cuantil \(Q_{0.3}\) sería el primer elemento de dicha lista tal que fuera mayor o igual que, como mínimo, el 30% de los datos. Si calculamos el 30% de 50, obtenemos que es 15. Esto lo que nos dice es que el cuantil que buscamos es el número que se encuentrae en la quinceava posición de la lista ordenada.</p></div>
+
+<pre class = 'prettyprint lang-r'>dado[15]</pre>
+
+<pre >[1] 1</pre>
+
+</article></slide><slide class=""><hgroup><h2>Cuantiles</h2></hgroup><article  id="cuantiles">
+
+<p>Algunos cuantiles tienen nombre propio:</p>
+
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de dispersión</h2></hgroup><article  id="medidas-de-dispersion">
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Diagramas de caja</h2></hgroup><article  id="diagramas-de-caja"></article></slide>

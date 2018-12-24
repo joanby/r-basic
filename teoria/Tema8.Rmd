@@ -221,10 +221,71 @@ as.numeric(names(which(table(dados)==max(table(dados)))))
 
 Cuando trabajamos con datos cuantitativos, es conveniente que el resultado lo demos como un número. De ahí que hayamos aplicado la función `as.numeric`.
 
+# Medidas de posición
+
+## Medidas de posición
+
+Las <l class = "definition">medidas de posición</l> estiman qué valores dividen las observaciones en unas determinadas proporciones.
+
+Los valores que determinan estas posiciones son conocidos como los <l class = "definition">cuantiles</l>.
+
+Pensándolo de este modo, la mediana puede interpretarse como una medida de posición, debido a que divide la variable cuantitativa en dos mitades.
+
+## Medidas de posición
+
+Dada una proporción $p\in(0,1)$, el "definition">cuantil de orden $p$</l> de una variable cuantitativa, $Q_p$, es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a $p$.
+
+Dicho de otro modo, si tenemos un conjunto de observaciones $x_1,\dots,x_n$ y los ordenamos de menor a mayor, entonces $Q_p$ será el número más pequeño que deja a su izquierda (incluyéndose a sí mismo) como mínimo a la fracción $p$ de los datos. Es decir, $p\cdot n$.
+
+Así, ahora es más claro ver que la mediana vendría a ser $Q_{0.5}$, el cuantil de orden 0.5.
+
+## Ejemplo 3
+
+<div class = "example">
+**Ejemplo 3**
+
+Consideremos un experimento en el que lanzamos 50 veces un dado de 4 caras y obtenemos los siguientes resultados
+</div>
+
 ```{r}
+set.seed(260798)
+dado = sample(1:4, 50, replace = TRUE)
+set.seed(NULL)
+length(dado)
+dado = sort(dado) #Los ordenamos de menor a mayor
+dado
 ```
 
-# Medidas de posición
+## Ejemplo 3
+
+```{r}
+df.dado = data.frame(Puntuacion = 1:4,
+                      Fr.abs = as.vector(table(dado)),
+                      Fr.rel = as.vector(round(prop.table(table(dado)),2)),
+                      Fr.acu = as.vector(cumsum(table(dado))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dado))),2)))
+df.dado
+```
+
+<div class = "example">
+Si nos piden el cuantil $Q_{0.3}$, sabemos que este es el primer elemento de la lista cuya frecuencia relativa absoluta es mayor o igual a 0.3. Este se corresponde con la puntuación 1.
+</div>
+
+## Ejemplo 3
+
+<div class = "example">
+También podríamos hallarlo de otro modo: fijándonos en la lista ordenada de puntuaciones, el cuantil $Q_{0.3}$ sería el primer elemento de dicha lista tal que fuera mayor o igual que, como mínimo, el 30% de los datos. Si calculamos el 30% de 50, obtenemos que es 15. Esto lo que nos dice es que el cuantil que buscamos es el número que se encuentrae en la quinceava posición de la lista ordenada.
+</div>
+
+```{r}
+dado[15]
+```
+
+## Cuantiles
+
+Algunos cuantiles tienen nombre propio:
+
+
 
 # Medidas de dispersión
 
