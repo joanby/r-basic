@@ -138,8 +138,8 @@ no podemos entrar directamente la dirección en `read.table()`; una solución es
 ## Exportando datos a ficheros
 
 ```{r}
-write.table(students, file = "StudentsData", dec = ".")
-students2 = read.table("studentsData", header = TRUE)
+write.table(students, file = "../data/StudentsData", dec = ".")
+students2 = read.table("../data/StudentsData", header = TRUE)
 str(students2)
 ```
 
