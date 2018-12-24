@@ -429,6 +429,40 @@ df.dado</pre>
 
 <p>Algunos cuantiles tienen nombre propio:</p>
 
+<ul>
+<li>Los <l class="definition">cuartiles</l> son los cuantiles \(Q_{0.25},Q_{0.5}\) y \(Q_{0.75}\). Respectivamente, son llamados primer, segundo y tercer cuartil. El primer cuartil, \(Q_{0.25}\), será el menor valor que es mayor o igual a una cuarta parte de las observaciones y \(Q_{0.75}\), el menor valor que es mayor o igual a tres cuartas partes de los datos observados.</li>
+<li>El cuantil \(Q_{0.5}\) es la mediana</li>
+<li>Los <l class="definition">deciles</l> son los cuantiles \(Q_p\) con \(p\) un múltiplo de 0.1.</li>
+<li>Los <l class="definition">percentiles</l> son son los cuantiles \(Q_p\) con \(p\) un múltiplo de 0.01.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Cuantiles</h2></hgroup><article  id="cuantiles-1">
+
+<p>La definición de cuantil anteriormente dada es orientativa. La realidad es que, exceptuando el caso de la mediana, no hay consenso sobre cómo deben calcularse los cuantiles. En verdad, existen diferentes métodos que pueden dar lugar a soluciones distintas.</p>
+
+<p>Al fin y al cabo, nuestro objetivo no es el de encontrar el primer valor de una muestra cuya frecuencia relativa acumulada en la variable sea mayor o igual a \(p\), sino estimar el valor de esta cantidad para el total de la población.</p>
+
+<p>Para calcular los cuantiles de orden \(p\) de una variable cualitativa \(x\) con R, se utiliza la instrucción <code>quantile(x,p)</code>, la cual dispone de 9 métodos diferentes que se especifican con el parámetro <code>type</code>. El valor por defecto es <code>type = 7</code> y no hace falta especificarlo, como veremos en el siguiente ejemplo. Para más información sobre todos los valores posibles de este parámetro, haced click en el enlace a <a href='https://es.wikipedia.org/wiki/Cuantil' title=''>Wikipedia</a></p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 4</h2></hgroup><article  id="ejemplo-4">
+
+<pre class = 'prettyprint lang-r'>set.seed(0)
+dados2 = sample(1:6,15, replace = TRUE)
+dados2</pre>
+
+<pre > [1] 6 2 3 4 6 2 6 6 4 4 1 2 2 5 3</pre>
+
+<pre class = 'prettyprint lang-r'>set.seed(NULL)
+quantile(dados2,0.25) #Primer cuartil</pre>
+
+<pre >25% 
+  2 </pre>
+
+<pre class = 'prettyprint lang-r'>quantile(dados2,0.8)</pre>
+
+<pre >80% 
+  6 </pre>
+
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Medidas de dispersión</h2></hgroup><article  id="medidas-de-dispersion">
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Diagramas de caja</h2></hgroup><article  id="diagramas-de-caja"></article></slide>
