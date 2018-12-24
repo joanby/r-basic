@@ -31,7 +31,7 @@ Al trabajar con datos ordinales, el orden de los niveles de los datos nos permit
 
 Es decir, podemos contar cuantas veces hemos observado un dato menor o igual a este.
 
-## Frecuencia acumulada
+## Ejemplo 1
 
 <div class = "example">
 **Ejemplo 1**
@@ -45,7 +45,7 @@ Como recordaréis, para saber cuantas hay de cada una (su frecuencia absoluta), 
 
 </div>
 
-## Frecuencia acumulada
+## Ejemplo 1
 
 ```{r}
 notas = ordered(c("S","A", "N", "Ex", "S", "S", "Ex", "Ex", "N", "A", "A", "A",
@@ -55,16 +55,14 @@ table(notas)
 
 
 <div class = "example">
-**Ejemplo 1**
 
 Como podréis observar, hay 5 $S$, 3 $A$, 3 $N$ y 4 $Ex$.
 
 </div>
 
-## Frecuencia acumulada
+## Ejemplo 1
 
 <div class = "example">
-**Ejemplo 1**
 
 En lo referente a **frecuencias absolutas acumuladas**, hay
 
@@ -74,14 +72,13 @@ En lo referente a **frecuencias absolutas acumuladas**, hay
 - 15 estudiantes (todos) que han obtenido $Ex$ o menos. De este modo, la frecuencia acumulada de $Ex$ es 15, o sea, el total.
 </div>
 
-## Frecuencia relativa acumulada
+## Ejemplo 1
 
 <l class = "definition">
 Frecuencia relativa acumulada.
 </l> Es la fracción del total de las observaciones en tanto por 1 que representa su frecuencia absoluta acumulada 
 
 <div class = "example">
-**Ejemplo 1**
 
 Así, las recuencias relativas acumuladas respectivas son
 
@@ -117,7 +114,7 @@ De este modo, con estas notaciones
 - La frecuencia relativa acumulada del nivel $l_j$ en esta variable ordinal es la fracción en tanto por 1 $F_j$ de observaciones $x_i$ tales que $x_i\le l_j$. Es decir,
 $$F_j=\frac{N_j}{n}=\sum_{i=1}^jf_i$$
 
-## Frecuencia relativa acumulada
+## Ejemplo 2
 
 <div class = "example">
 
@@ -140,11 +137,9 @@ clientes
 set.seed(NULL)
 ```
 
-## Frecuencia relativa acumulada
+## Ejemplo 2
 
 <div class = "example">
-
-**Ejemplo 2**
 
 En este caso tenemos 5 niveles ($k=5$) y 50 observaciones ($n=50$) que forman una variable ordinal a la que hemos llamado `clientes`.
 
@@ -226,7 +221,7 @@ Pero no podemos hacer `cumsum(prop.table(table(notas)))`.
 **Ejercicio.** Pensad qué ha entendido R que queríamos hacer con esta última instrucción.
 </div>
 
-## Función cumsum()
+## Ejemplo 3
 
 <div class = "example">
 
@@ -240,7 +235,7 @@ Los valores obtenidos en dicho estudio han sido los siguientes
 
 </div>
 
-## Función cumsum()
+## Ejemplo 3
 
 ```{r, echo = FALSE}
 set.seed(2018)
@@ -251,14 +246,14 @@ levels(longitud) = c("Muy.corto","Corto","Normal","Largo","Muy.largo")
 
 ```{r}
 longitud
+```
+```{r, echo = FALSE}
 set.seed(NULL)
 ```
 
-## Función cumsum()
+## Ejemplo 3
 
 <div class = "example">
-
-**Ejemplo 3**
 
 Estudiemos sus frecuencias
 
@@ -271,7 +266,7 @@ Fr.Rel = prop.table(Fr.Abs)
 Fr.Rel
 ```
 
-## Función cumsum()
+## Ejemplo 3
 
 ```{r}
 Fr.Acum = cumsum(Fr.Abs)
@@ -280,11 +275,9 @@ Fr.RAcum = cumsum(Fr.Rel)
 Fr.RAcum
 ```
 
-## Función cumsum()
+## Ejemplo 3
 
 <div class = "example">
-
-**Ejemplo 3**
 
 La instrucción `barplot` produce el siguiente diagrama de barras de frecuencias relativas acumuladas
 
@@ -303,7 +296,7 @@ Para calcular frecuencias acumuladas en una tabla multidimensional, hay que apli
 donde el valor `MARGIN` ha de ser el de la dimensión en la que queremos acumular las frecuencias: 1 si queremos hacerlo por filas, 2 para hacerlo por columnas, etc. Lo veremos todo más claro con un ejemplo
 
 
-## Función cumsum(){.example}
+## Ejemplo 4{.example}
 
 **Ejemplo 4**
 
@@ -311,7 +304,7 @@ Supongamos que en el ejemplo anterior, el de las jirafas, estas provienen de 4 z
 
 Vamos a organizar todos estos datos en un data frame llamado `jirafas`. Para que nos sea más fácil visualizar la información, es conveniente que las filas de las tablas de frecuencias correspondan a las zonas. Por lo tanto, al definir el data frame, entraremos como primera variable la de la muestra las zonas. Así, conseguiremos que éstas aparezcan en las filas al aplicarle la función table.
 
-## Función cumsum()
+## Ejemplo 4
 
 ```{r}
 zonas = rep(c("A","B","C","D"), c(30,25,35,10))
@@ -320,10 +313,9 @@ str(jirafas)
 head(jirafas)
 ```
 
-## Función cumsum()
+## Ejemplo 4
 
 <div class = "example">
-**Ejemplo 4**
 
 Para calcular la tabla de frecuencias absolutas acumuladas de las longitudes por zonas y como las zonas definen las filas de la tabla anterior, debemos utilizar la función `apply` con `MARGIN = 1`.
 </div>
@@ -332,10 +324,9 @@ Para calcular la tabla de frecuencias absolutas acumuladas de las longitudes por
 apply(table(jirafas), MARGIN = 1, FUN = cumsum)
 ```
 
-## Función cumsum()
+## Ejemplo 4
 
 <div class = "example">
-**Ejemplo 4**
 
 Fijaos que la tabla se ha traspuesto. Resulta que cuando se aplica `apply` a una `table` bidimensional, R intercambia, en caso de ser necesario, filas por columnas en el resultado para que la dimensión de la tabla resultante en la que se haya aplicado la función sea la de las columnas.
 
@@ -346,10 +337,9 @@ Con lo cual, para volver a tener las zonas en las filas, hay que trasponer el re
 t(apply(table(jirafas), MARGIN = 1, FUN = cumsum))
 ```
 
-## Función cumsum()
+## Ejemplo 4
 
 <div class = "example">
-**Ejemplo 4**
 
 Vamos ahora a calcular la tabla de frecuencias relativas acumuladas de las longitudes de cuello por zonas. Para conseguirlo, y en una única instrucción, primero calculamos la tabla de frecuencias relativas por filas, a continuación, con las funciones `apply` y `cumsum` las acumulamos y, finalmente, trasponemos el resultado.
 </div>
@@ -358,10 +348,9 @@ Vamos ahora a calcular la tabla de frecuencias relativas acumuladas de las longi
 t(apply(prop.table(table(jirafas), margin = 1), MARGIN = 1, FUN = cumsum))
 ```
 
-## Función cumsum()
+## Ejemplo 4
 
 <div class = "example">
-**Ejemplo 4**
 
 Vamos ahora a dibujar el diagrama de barras por bloques de esta tabla. Nos interesa que las barras de este diagrama se agrupen por zonas. Entonces, tendremos que aplicar `barplot` a la tabla sin trasponer.
 
@@ -369,7 +358,7 @@ Además, vamos a colocar la leyenda en la esquina superior izquierda para que no
 
 </div>
 
-## Función cumsum()
+## Ejemplo 4
 
 ```{r}
 Diagrama = apply(prop.table(table(jirafas), margin = 1), MARGIN = 1, FUN = cumsum)
@@ -378,7 +367,7 @@ barplot(Diagrama, beside = TRUE, legend = TRUE, main = "Diagrama de barras de
 args.legend=list(x="topleft", cex=0.55))
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 <div class = "example">
 **Ejemplo 5**
@@ -397,17 +386,16 @@ La variable numérica `width` contiene la anchura de cada cangrejo
 </div>
 
 
-## Función cumsum()
+## Ejemplo 5
 
 ```{r}
 table(crabs$width)
 ```
 
 
-## Función cumsum()
+## Ejemplo 5
 
 <div class = "example">
-**Ejemplo 5**
 
 Vamos a convertir a la variable `width` en una variable ordinal que agrupe las entradas de la variable original en niveles. 
 
@@ -421,10 +409,9 @@ intervalos = cut(crabs$width, breaks = c(21,25,29,33,Inf), right = FALSE,
                  labels = c("21-25", "25-29", "29-33", "33-..."))
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 <div class = "example">
-**Ejemplo 5**
 
 El resultado de la instrucción es un factor que tiene como niveles estos intervalos, identificados con las etiquetas especificadas en el parámetro `labels`. Como nostros vamos a usar estos intervalos como niveles de una variable ordinal, además convertiremos este factor en ordenado.
 </div>
@@ -434,10 +421,9 @@ crabs$width.rank = ordered(intervalos)
 str(crabs)
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 <div class = "example">
-**Ejemplo 5**
 
 Nos interesa estudiar la distribución de las anchuras de los cangrejos según el número de colores. Por lo tanto, vamos a calcular las tablas bidimensionales de frecuencais relativas y relativas acumuladas de los intervalos de las anchuras en cada nivel de `color` y las representaremos por medio de diagramas de barras.
 
@@ -450,21 +436,21 @@ Tabla = table(crabs[,c(1,6)])
 Tabla
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 ```{r}
 Fr.rel = round(prop.table(Tabla,margin = 1),3)
 Fr.rel
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 ```{r}
 Fr.rel.acu = round(apply(prop.table(Tabla, margin = 1), MARGIN = 1, FUN = cumsum), 3)
 t(Fr.rel.acu)
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 ```{r}
 azul = c("cyan", "cyan4", "cyan1", "cyan3", "cyan2")
@@ -474,7 +460,7 @@ barplot(t(Fr.rel), beside = TRUE, legend = TRUE, ylim = c(0,1), col = azul,
         args.legend=list(x = "topright", cex=0.55))
 ```
 
-## Función cumsum()
+## Ejemplo 5
 
 ```{r}
 barplot(Fr.rel.acu, beside = TRUE, legend = TRUE, col = azul, 
