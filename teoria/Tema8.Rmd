@@ -198,7 +198,7 @@ dados.df
 ```
 
 <div class = "example">
-En este caso, la moda son dos valores: el 2 y el 3. La mediana es $x_{(13)}=$3 y la media aritmética es `r sum(dados)/length(dados)
+En este caso, la moda son dos valores: el 2 y el 3. La mediana es $x_{(13)}=$ 3 y la media aritmética es `r sum(dados)/length(dados)`
 </div>
 
 ## Medidas de tendencia central en R
@@ -310,6 +310,68 @@ quantile(dados2,0.8)
 ```
 
 # Medidas de dispersión
+
+## Medidas de dispersión
+
+Las <l class = "definition">medidas de dispersión</l> evalúan lo dispersos que están los datos. Algunas de las más importantes son:
+
+- El <l class = "definition">rango</l> o <l class = "definition">recorrido</l>, que es la diferencia entre el máximo y el mínimo de las observaciones.
+
+- El <l class = "definition">rango intercuantílico</l>, que es la diferencia entre el tercer y primer cuartil, $Q_{0.75}-Q_{0.25}$.
+
+- La <l class = "definition">varianza</l>, a la que denotaremos por $s^2$, es la media aritmética de las diferencias al cuadrado entre los datos $x_i$ y la media aritmética de las observaciones, $\bar{x}$. $$s^2 = \frac{\sum_{j=1}^n(x_j-\bar{x})^2}{n}=\frac{\sum_{j=1}^kn_j(X_j-\bar{x})^2}{n}=\sum_{j=1}^kf_j(X_j-\bar{x})^2$$.
+
+## Medidas de dispersión
+
+- La <l class = "definition">desviación típica</l> es la raíz cuadrada positiva de la varianza, $s=\sqrt{s^2}$.
+
+- La <l class = "definition">varianza muestral</l> es la corrección de la varianza. La denotamos por $\tilde{s}^2$ y se corresponde con
+$$\tilde{s}^2 = \frac{n}{n-1}s^2 = \frac{\sum_{j=1}^n(x_i-\bar{x})^2}{n-1}$$
+- La <l class = "definition">desviación típica muestral</l>, que es la raíz cuadrada positiva de la varianza muestral, $\tilde{s} = \sqrt{\tilde{s}^2}$
+
+## Propiedades de la varianza
+
+<l class = "prop"> Propiedades de la varianza.</l>
+
+- $s^2\ge 0$. Esto se debe a que, por definición, es una suma de cuadrados de números reales.
+- $s^2 = 0\Rightarrow(x_j-\bar{x})=0\ \forall j=,\dots,n$. En consecuencia, si $s^2=0$, entonces todos los datos son iguales.
+- $s^2 = \sum_{j=1}^nx_j^2-n\bar{x}^2=\frac{\sum_{j=1}^nx_j^2}{n}-\bar{x}^2$. Es decir, la varianza es la media de los cuadrados de los datos menos el cuadrado de la media aritmética de estos.
+
+## Varianza y varianza muestral
+
+La diferencia entre ambas definiciones viene por la interrelación entre la estadística descriptiva y la inferencial.
+
+Por un lado, es normal medir cómo varían los datos  cuantitativos mediante su varianza definida como la media aritmética de las distancias al cuadrado de los datos a su valor medio. No obstante, por otro lado, el conjunto de nuestras observaciones, por lo normal, será una muestra de una población mucho mayor y nos interesará estimar entre otras muchas cosas su variabilidad.
+
+La varianza de una muestra suele dar valores más pequños que la varianza de la población, mientras que la varianza muestral tiende a dar valores alrededor de la varianza de la población.
+
+## Varianza y varianza muestral
+
+Esta corrección, para el caso de una muestra grande no es notable. Dividir $n$ entre $n-1$ en el caso de $n$ ser grande no significa una gran diferencia y aún menos si tenemos en cuenta que lo que tratamos es de estimar la varianza de la población, no de calcularla de forma exacta.
+
+En cambio, si la muestra es relativamente pequeña (digamos $n<30$), entonces la varianza muestral de la muestra aproxima significativamente mejor la varianza de la población que la varianza.
+
+La diferencia entre desviación típica y desviación típica muestral es análoga.
+
+Con R, calcularemos la varianza y la desviación típica muestrales. Con lo cual, si queremos calcular las que no son muestrales, tendremos que multiplicarlas por $\frac{n-1}{n}$, donde $n$ es el tamaño de la muestra. Lo veremos a continuación.
+
+## Varianza y desviación típica
+
+Nótese que tanto la varianza como la desviación típica dan una información equivalente. Entonces, es comprensible preguntarse por qué se definen ambas medidas si con una basta. Pues bien, las unidades de la varianza (metros, litros, años...), ya sea muestral o no, están al cuadrado, mientras que las de la desviación típica no.
+
+## Medidas de dispersión con R
+
+Medida de dispersión |  Instrucción                                
+--------------------|--------------------
+Valores mínimo y máximo | `range(x)` 
+Rango | `diff(range(x))` 
+Rango intercuantílico | `IQR(x, type = ...)`
+Varianza muestral | `var(x)` 
+Desviación típica muestral | `sd(x)` 
+Varianza | `var(x)*(length(x)-1)/length(x)` 
+Desviación típica | `sd(x)*(length(x)-1)/length(x)` 
+
+## Ejemplo 4
 
 # Diagramas de caja
 
