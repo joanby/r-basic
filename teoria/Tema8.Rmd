@@ -16,6 +16,27 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 # Descripción de datos cuantitativos
 
+## Datos cuantitativos
+
+Los <l class = "definition">datos cuantitativos</l> son los que expresan cantidades que se representan mediante números. Éstos se suelen clasificar en continuos y discretos.
+
+- Los <l class = "definition">datos continuos</l> son los que, si existiese la posibilidad de medirlos con precisión infinita, en principio podrían tomar todos los valores de un intervalo de la recta real. A modo de ejemplo, el peso, la altura, el tiempo... son datos de este tipo.
+
+- Por su parte, los <l class = "definition">datos discretos</l> son los que pueden tomar un solo conjunto contable de valores. El número de colores de un gato, el número de individuos que conforman una población son algunos ejemplos de este tipo de datos.
+
+Conviene tener en cuenta que esta división es solo teórica. Es decir, en la práctica, todos estos datos son discretos puesto que la precisión infinita no existe. Sin embargo, es necesario de vez en cuando suponer los datos de tipo continuo para así poder utilizar técnicas específicas en su análisis.
+
+
+## Datos cuantitativos
+
+A la hora de estudiar <l class = "definition">variables cuantitativas</l>, podemos utilizar las frecuencias que hemos visto hasta el momento: absoluta, relativa, acumulada y relativa acumulada. Esto se debe a que podemos ordenar los datos cuantitativos en el orden natural de los números reales.
+
+En este caso, disponemos de muchas otras técnicas descriptivas aparte de las frecuencias, puesto que estamos trabajando con números reales y podemos operar con ellos. 
+
+Los datos cuantitativos admiten dos tipos de tratamiento según trabajemos con los <l class = "definition">raw data</l> (datos brutos u originales) o bien los agrupemos en clases o intervalos. 
+
+En esta lección trabajaremos sobre la primera situación. En la siguiente, estudiaremos la descripción de datos cuantitativos agrupados. 
+
 # Frecuencias
 
 # Medidas de tendencia central
