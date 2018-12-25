@@ -233,7 +233,7 @@ Pensándolo de este modo, la mediana puede interpretarse como una medida de posi
 
 ## Medidas de posición
 
-Dada una proporción $p\in(0,1)$, el "definition">cuantil de orden $p$</l> de una variable cuantitativa, $Q_p$, es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a $p$.
+Dada una proporción $p\in(0,1)$, el <l class = "definition">cuantil de orden $p$</l> de una variable cuantitativa, $Q_p$, es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a $p$.
 
 Dicho de otro modo, si tenemos un conjunto de observaciones $x_1,\dots,x_n$ y los ordenamos de menor a mayor, entonces $Q_p$ será el número más pequeño que deja a su izquierda (incluyéndose a sí mismo) como mínimo a la fracción $p$ de los datos. Es decir, $p\cdot n$.
 
@@ -479,7 +479,7 @@ mean(dadosNA, na.rm = TRUE)
 
 ## Diagramas de caja
 
-El conocido <l class = "definition">diagrama de caja</l> o <l class = "definition">box plot</l> es un tipo de gráfico quebásicamente, remarca 5 valores estadísticos:
+El conocido <l class = "definition">diagrama de caja</l> o <l class = "definition">box plot</l> es un tipo de gráfico que básicamente, remarca 5 valores estadísticos:
 
 - La mediana, representada por la línea gruesa que divide la caja
 - El primer y tercer cuartil, que son los lados inferior y superior, respectivamente. De este modo, la altura de la caja es el rango intercuantílico
@@ -584,7 +584,7 @@ La primera instrucción del chunk anterior genera el diagrama de cajas de las an
 
 Como ya sabemos, podemos estudiar la función interna de algunos objetos con la función `str`.
 
-Dicha función aplicada a un boxplot, nos produce una list. Podéis ver esta list si introducí por consola la siguiente instrucción: `str(boxplot(circumference~Tree, data = Orange))` Destacaremos dos de sus componenetes aquí:
+Dicha función aplicada a un boxplot, nos produce una list. Podéis ver esta list si introducís por consola la siguiente instrucción: `str(boxplot(circumference~Tree, data = Orange))` Destacaremos dos de sus componenetes aquí:
 
 - `stats` nos devuelve los valores $b_{inf},\ Q_{0.25},\ Q_{0.5},\ Q_{0.75},\ b_{sup}$
 - `out` nos retorna los valores atípicos. En caso de haber diversos diagramas en un plot, la componente `group` nos indica a qué diagramas pertenecen estos ouliers.
