@@ -373,5 +373,107 @@ Desviación típica | `sd(x)*(length(x)-1)/length(x)`
 
 ## Ejemplo 4
 
+```{r}
+dados2
+diff(range(dados2))
+IQR(dados2)
+var(dados2)
+```
+
+## Ejemplo 4
+
+```{r}
+sd(dados2)
+n = length(dados2)
+var(dados2)*(n-1)/n
+sd(dados2)*(n-1)/n
+```
+
+## Función summary()
+
+La función `summary` aplicada a un vector numérico o a una variable cuantitativa nos devuelve un resumen estadístico con los valores mínimo y máximo del vector, sus tres cuartiles y su media.
+
+Al aplicar esta función a un data frame, esta se aplica a todas sus variables de forma simultánea. De este modo, podemos observar rápidamente si hay diferencias notables entre sus variables numéricas.
+
+## Ejemplo 5
+
+```{r}
+cangrejos = read.table("../data/datacrab.txt", header = TRUE) #Cargamos el data frame
+cangrejos = cangrejos[-1] 
+summary(cangrejos) #Aplicamos la función summary
+```
+
+## Ejemplo 5
+
+<div class = "example">
+Si nos interesase comparar numéricamente los pesos y las anchuras de los cangrejos con 3 colores con los que tienen 5 colores, utilizaríamos las siguientes instrucciones:
+</div>
+
+```{r}
+summary(subset(cangrejos, color == 3,c("weight","width")))
+
+```
+
+## Ejemplo 5
+
+```{r}
+summary(subset(cangrejos, color == 5,c("weight","width")))
+```
+
+<div class = "example">
+Y deducimos así que los cangrejos con 5 colores pesan ligeramente menos y tienen menos anchura que los que tienen 3 colores. 
+</div>
+
+## La función by()
+
+La función `by()` se utiliza para aplicar una determinada función a algunas columnas de un data frame segmentándolas según los niveles de un factor.
+
+La sintaxis de esta función es `by(columnas, factor, FUN = función)`.
+
+Con lo cual, haciendo uso de la función `by` y especificando `FUN = summary`, podremos calcular el resumen estadístico anteriormente comentado a subpoblaciones definidas por los niveles de un factor.
+
+## Ejemplo 6
+
+<div class = "example">
+**Ejemplo 6**
+
+Para este ejemplo, haremos uso del famoso dataset iris.
+
+Si nos interesase calcular de forma rápida y sencilla las longitudes de sépalos y petalos en función de la especie, necesitaríamos hacer uso de la instrucción mostrada a continuación. 
+
+Por motivos de espacio, no se muestran los resultados proporcionados por R.
+</div>
+
+```{r, results="hide"}
+by(iris[,c(1,3)], iris$Species, FUN = summary)
+```
+
+## Función aggregate()
+
+Tanto la función `by` como la función `aggregate` son equivalentes. No obstante, los resultados se muestran de forma diferente en función de cual utilicemos.
+
+En el caso del ejemplo anterior, convenía más hacer uso de la función `by`.
+
+Podéis comprobarlo introduciendo por consola la siguiente instrucción:
+
+```{r, results="hide"}
+aggregate(cbind(Sepal.Length,Petal.Length)~Species, data=iris, FUN=summary)
+```
+
+## NA
+
+La mayoría de las funciones vistas a lo largo de este tema no funcionan bien con valores `NA`.
+
+Para no tenerlos en cuenta a la hora de aplicar estas funciones, hay que especificar el parámetro `na.rm = TRUE` en el argumento de la función.
+
+## Ejemplo 7
+
+```{r}
+dadosNA = c(dados2,NA)
+dadosNA
+mean(dadosNA)
+mean(dadosNA, na.rm = TRUE)
+```
+
 # Diagramas de caja
 

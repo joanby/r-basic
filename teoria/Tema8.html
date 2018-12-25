@@ -554,6 +554,146 @@ quantile(dados2,0.25) #Primer cuartil</pre>
 
 </article></slide><slide class=""><hgroup><h2>Ejemplo 4</h2></hgroup><article  id="ejemplo-4-1">
 
+<pre class = 'prettyprint lang-r'>dados2</pre>
+
+<pre > [1] 6 2 3 4 6 2 6 6 4 4 1 2 2 5 3</pre>
+
+<pre class = 'prettyprint lang-r'>diff(range(dados2))</pre>
+
+<pre >[1] 5</pre>
+
+<pre class = 'prettyprint lang-r'>IQR(dados2)</pre>
+
+<pre >[1] 3.5</pre>
+
+<pre class = 'prettyprint lang-r'>var(dados2)</pre>
+
+<pre >[1] 3.066667</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 4</h2></hgroup><article  id="ejemplo-4-2">
+
+<pre class = 'prettyprint lang-r'>sd(dados2)</pre>
+
+<pre >[1] 1.75119</pre>
+
+<pre class = 'prettyprint lang-r'>n = length(dados2)
+var(dados2)*(n-1)/n</pre>
+
+<pre >[1] 2.862222</pre>
+
+<pre class = 'prettyprint lang-r'>sd(dados2)*(n-1)/n</pre>
+
+<pre >[1] 1.634444</pre>
+
+</article></slide><slide class=""><hgroup><h2>Función summary()</h2></hgroup><article  id="funcion-summary">
+
+<p>La función <code>summary</code> aplicada a un vector numérico o a una variable cuantitativa nos devuelve un resumen estadístico con los valores mínimo y máximo del vector, sus tres cuartiles y su media.</p>
+
+<p>Al aplicar esta función a un data frame, esta se aplica a todas sus variables de forma simultánea. De este modo, podemos observar rápidamente si hay diferencias notables entre sus variables numéricas.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 5</h2></hgroup><article  id="ejemplo-5">
+
+<pre class = 'prettyprint lang-r'>cangrejos = read.table(&quot;../data/datacrab.txt&quot;, header = TRUE) #Cargamos el data frame
+cangrejos = cangrejos[-1] 
+summary(cangrejos) #Aplicamos la función summary</pre>
+
+<pre >     color           spine           width          satell      
+ Min.   :2.000   Min.   :1.000   Min.   :21.0   Min.   : 0.000  
+ 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:24.9   1st Qu.: 0.000  
+ Median :3.000   Median :3.000   Median :26.1   Median : 2.000  
+ Mean   :3.439   Mean   :2.486   Mean   :26.3   Mean   : 2.919  
+ 3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:27.7   3rd Qu.: 5.000  
+ Max.   :5.000   Max.   :3.000   Max.   :33.5   Max.   :15.000  
+     weight    
+ Min.   :1200  
+ 1st Qu.:2000  
+ Median :2350  
+ Mean   :2437  
+ 3rd Qu.:2850  
+ Max.   :5200  </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 5</h2></hgroup><article  id="ejemplo-5-1">
+
+<div class="example">
+<p>Si nos interesase comparar numéricamente los pesos y las anchuras de los cangrejos con 3 colores con los que tienen 5 colores, utilizaríamos las siguientes instrucciones:</p></div>
+
+<pre class = 'prettyprint lang-r'>summary(subset(cangrejos, color == 3,c(&quot;weight&quot;,&quot;width&quot;)))</pre>
+
+<pre >     weight         width     
+ Min.   :1300   Min.   :22.5  
+ 1st Qu.:2100   1st Qu.:25.1  
+ Median :2500   Median :26.5  
+ Mean   :2538   Mean   :26.7  
+ 3rd Qu.:3000   3rd Qu.:28.2  
+ Max.   :5200   Max.   :33.5  </pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 5</h2></hgroup><article  id="ejemplo-5-2">
+
+<pre class = 'prettyprint lang-r'>summary(subset(cangrejos, color == 5,c(&quot;weight&quot;,&quot;width&quot;)))</pre>
+
+<pre >     weight         width      
+ Min.   :1300   Min.   :21.00  
+ 1st Qu.:1900   1st Qu.:23.90  
+ Median :2125   Median :25.50  
+ Mean   :2174   Mean   :25.28  
+ 3rd Qu.:2400   3rd Qu.:26.57  
+ Max.   :3225   Max.   :29.30  </pre>
+
+<div class="example">
+<p>Y deducimos así que los cangrejos con 5 colores pesan ligeramente menos y tienen menos anchura que los que tienen 3 colores.</p></div>
+
+</article></slide><slide class=""><hgroup><h2>La función by()</h2></hgroup><article  id="la-funcion-by">
+
+<p>La función <code>by()</code> se utiliza para aplicar una determinada función a algunas columnas de un data frame segmentándolas según los niveles de un factor.</p>
+
+<p>La sintaxis de esta función es <code>by(columnas, factor, FUN = función)</code>.</p>
+
+<p>Con lo cual, haciendo uso de la función <code>by</code> y especificando <code>FUN = summary</code>, podremos calcular el resumen estadístico anteriormente comentado a subpoblaciones definidas por los niveles de un factor.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 6</h2></hgroup><article  id="ejemplo-6">
+
+<div class="example">
+<p><strong>Ejemplo 6</strong></p>
+
+<p>Para este ejemplo, haremos uso del famoso dataset iris.</p>
+
+<p>Si nos interesase calcular de forma rápida y sencilla las longitudes de sépalos y petalos en función de la especie, necesitaríamos hacer uso de la instrucción mostrada a continuación.</p>
+
+<p>Por motivos de espacio, no se muestran los resultados proporcionados por R.</p></div>
+
+<pre class = 'prettyprint lang-r'>by(iris[,c(1,3)], iris$Species, FUN = summary)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Función aggregate()</h2></hgroup><article  id="funcion-aggregate">
+
+<p>Tanto la función <code>by</code> como la función <code>aggregate</code> son equivalentes. No obstante, los resultados se muestran de forma diferente en función de cual utilicemos.</p>
+
+<p>En el caso del ejemplo anterior, convenía más hacer uso de la función <code>by</code>.</p>
+
+<p>Podéis comprobarlo introduciendo por consola la siguiente instrucción:</p>
+
+<pre class = 'prettyprint lang-r'>aggregate(cbind(Sepal.Length,Petal.Length)~Species, data=iris, FUN=summary)</pre>
+
+</article></slide><slide class=""><hgroup><h2>NA</h2></hgroup><article  id="na">
+
+<p>La mayoría de las funciones vistas a lo largo de este tema no funcionan bien con valores <code>NA</code>.</p>
+
+<p>Para no tenerlos en cuenta a la hora de aplicar estas funciones, hay que especificar el parámetro <code>na.rm = TRUE</code> en el argumento de la función.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejemplo 7</h2></hgroup><article  id="ejemplo-7">
+
+<pre class = 'prettyprint lang-r'>dadosNA = c(dados2,NA)
+dadosNA</pre>
+
+<pre > [1]  6  2  3  4  6  2  6  6  4  4  1  2  2  5  3 NA</pre>
+
+<pre class = 'prettyprint lang-r'>mean(dadosNA)</pre>
+
+<pre >[1] NA</pre>
+
+<pre class = 'prettyprint lang-r'>mean(dadosNA, na.rm = TRUE)</pre>
+
+<pre >[1] 3.733333</pre>
+
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Diagramas de caja</h2></hgroup><article  id="diagramas-de-caja"></article></slide>
 
 
