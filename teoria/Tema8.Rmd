@@ -477,3 +477,116 @@ mean(dadosNA, na.rm = TRUE)
 
 # Diagramas de caja
 
+## Diagramas de caja
+
+El conocido <l class = "definition">diagrama de caja</l> o <l class = "definition">box plot</l> es un tipo de gráfico quebásicamente, remarca 5 valores estadísticos:
+
+- La mediana, representada por la línea gruesa que divide la caja
+- El primer y tercer cuartil, que son los lados inferior y superior, respectivamente. De este modo, la altura de la caja es el rango intercuantílico
+- Los extremos, los valores $b_{inf},b_{sup}$, son los <l class = "definition">bigotes</l> (<l class = "definition">whiskers</l>) del gráfico. Si $m$ y $M$ son el mínimo y máximo de la variable cuantitativa, entonces los extremos se calculan del siguiente modo:
+$$b_{inf}=\max\{m,Q_{0.25}-1.5(Q_{0.75}-Q_{0.25})\}$$
+$$b_{sup}=\min\{M,Q_{0.75}+1.5(Q_{0.75}-Q_{0.25})\}$$
+- <l class = "definition">Valores atípicos</l> o <l class = "definition">outliers</l>, que son los que están más allá de los bigotes. Se marcan como puntos aislados.
+
+## Más sobre los bigotes
+
+Por su definición, concluimos que los bigotes marcan el mínimo y máximo de la variable cuantitativa, a no ser que haya datos muy alejados de la caja intercuantílica. 
+
+En tal caso, el bigote inferior marca el valor 1.5 veces el rango intercuantílico por debajo de $Q_{0.25}$, mientras que el superior marca el valor 1.5 veces el rango intercuantílico por encima de $Q_{0.75}$
+
+## La función boxplot
+
+La instrucción `boxplot()` dibuja diagramas de caja en R.
+
+```{r}
+boxplot(dados2, main = "Un diagrama de caja")
+```
+
+## La función boxplot
+
+También podemos dibujar diversos diagramas de caja en un mismo gráfico. De este modo, se pueden comparar con mayor facilidad:
+
+```{r}
+boxplot(dado,dados,dados2)
+```
+
+## La función boxplot
+
+Además, podemos dibujar el diagrama de caja de todas las variables de un data frame en un solo paso aplicando la instrucción `boxplot(data.frame)`.
+
+La mayoría de veces, dicho gráfico no será del todo satisfactorio. Dibujar diagramas de factores no tiene sentido alguno. Estos gráficos se pueden manipular incluyendo solo las variables de interés, cambiando los nombres...
+
+Veamos un ejemplo:
+
+## Ejemplo 8
+
+```{r, fig.width=10, fig.height=5}
+body = read.table("../data/bodyfat.txt", header = TRUE)
+boxplot(body)
+```
+
+## Ejemplo 8
+
+```{r}
+boxplot(body[,7:9], names = c("Pecho", "Abdomen", "Cadera"))
+```
+
+## La función boxplot
+
+Agrupar varios diagramas de caja en un solo gráfico tiene por objetivo poder compararlos visualmente, lo cual tiene sentido cuando las variables tienen significados parecidos o cuando comparamos una misma variable de poblaciones distintas.
+
+La mayoría de las veces, querremos comparar diagramas de cajas de una misma variable cuantitativa segmentada por los niveles de un factor.
+
+La sintaxis de la instrucción para dibujar en un único gráfico los diagramas de caja de una variable numérica de un data frame en función de los niveles de un factor del mismo data frame es `boxplot(var.numérica~factor, data = data frame)`
+
+## Ejemplo 9
+
+```{r}
+boxplot(circumference~Tree, data = Orange, ylab = "Circunferencia del tronco (mm)", 
+        main = "Boxplot de los naranjos en funciónd el tipo de árbol")
+```
+
+## Parámetros de la función boxplot
+
+Todos los parámetros de la función `plot()` que tengan sentido pueden ser utilizados en los argumentos de la función `boxplot()`.
+
+Aparte, la función `boxplot()` dispone de algunos parámetros específicos, de los cuales mencionaremos:
+
+- `notch` igualado a `TRUE` añade una muesca en la mediana de la caja. Si se da el caso en que las muescas de dos diagramas de cajas no se solapan, entonces con alto grado de confianza, concluimos que las medianas de las poblaciones correspondientes son diferentes.
+
+## Ejemplo 10
+
+```{r}
+boxplot(Sepal.Width~Species, data = iris, ylab = "Anchura del sétalo (cm)",
+        notch = TRUE, col = c("cyan","cyan2","cyan4"),
+        main = "Boxplot de iris")
+```
+
+## Ejemplo 10
+
+<div class = "example">
+Si quisiéramos marcar de alguna forma en un diagrama de caja, cosa que puede ser muy útil en ocasiones, la media aritmética de la variable correspondiente, podríamos hacerlo mediante la función `points`:
+</div>
+
+```{r, fig.height=3.5}
+boxplot(Sepal.Width~Species, data = iris, ylab = "Anchura del sétalo (cm)")
+medias = aggregate(Sepal.Width~Species, data = iris, FUN = mean)
+points(medias, col = "pink", pch = 15)
+```
+
+## Ejemplo 10
+
+<div class = "example">
+La primera instrucción del chunk anterior genera el diagrama de cajas de las anchuras de los sépalos en función de la especie. Por su parte, la segunda instrucción lo que hace es calcular las medias aritméticas de las anchuras según la especie. Finalmente, la tercera instrucción lo que hace es añadir al diagrama un punto cuadrado a cada caja en la ordenada correspondiente a su media aritmética.
+</div>
+
+## La estructura interna de boxplot
+
+Como ya sabemos, podemos estudiar la función interna de algunos objetos con la función `str`.
+
+Dicha función aplicada a un boxplot, nos produce una list. Podéis ver esta list si introducí por consola la siguiente instrucción: `str(boxplot(circumference~Tree, data = Orange))` Destacaremos dos de sus componenetes aquí:
+
+- `stats` nos devuelve los valores $b_{inf},\ Q_{0.25},\ Q_{0.5},\ Q_{0.75},\ b_{sup}$
+- `out` nos retorna los valores atípicos. En caso de haber diversos diagramas en un plot, la componente `group` nos indica a qué diagramas pertenecen estos ouliers.
+
+
