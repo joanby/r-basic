@@ -1,0 +1,30 @@
+---
+title: "Summary"
+author: "Curso de Estadística Descriptiva"
+date: "26/12/2018"
+output: html_document
+---
+## Summary
+
+```{r}
+by(iris[,c(1,3)], iris$Species, FUN = summary)
+```
+
+
+```{r}
+aggregate(cbind(Sepal.Length,Petal.Length)~Species, 
+          data=iris, FUN=summary)
+```
+
+```{r}
+x = c(1,2,3,NA)
+sum(x)
+sum(x, na.rm = TRUE)
+mean(x)
+mean(x, na.rm = TRUE)
+var(x)
+var(x, na.rm = TRUE)
+sd(x)
+sd(x, na.rm = TRUE)
+```
+
