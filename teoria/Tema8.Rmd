@@ -81,7 +81,7 @@ cumsum(table(edad))
 ## Ejemplo 1
 
 ```{r}
-round(cumsum(table(edad)),3)
+round(cumsum(prop.table(table(edad))),3)
 ```
 
 ## Frecuencias de datos cuantitativos
@@ -335,7 +335,7 @@ $$\tilde{s}^2 = \frac{n}{n-1}s^2 = \frac{\sum_{j=1}^n(x_i-\bar{x})^2}{n-1}$$
 
 - $s^2\ge 0$. Esto se debe a que, por definición, es una suma de cuadrados de números reales.
 - $s^2 = 0\Longrightarrow x_j-\bar{x}=0\ \forall j= 1,\dots,n$. En consecuencia, si $s^2=0$, entonces todos los datos son iguales.
-- $s^2 = \sum_{j=1}^nx_j^2-n\bar{x}^2=\frac{\sum_{j=1}^nx_j^2}{n}-\bar{x}^2$. Es decir, la varianza es la media de los cuadrados de los datos menos el cuadrado de la media aritmética de estos.
+- $s^2 =\frac{\sum_{j=1}^nx_j^2}{n}-\bar{x}^2$. Es decir, la varianza es la media de los cuadrados de los datos menos el cuadrado de la media aritmética de estos.
 
 ## Varianza y varianza muestral
 
@@ -369,7 +369,7 @@ Rango intercuartílico | `IQR(x, type = ...)`
 Varianza muestral | `var(x)` 
 Desviación típica muestral | `sd(x)` 
 Varianza | `var(x)*(length(x)-1)/length(x)` 
-Desviación típica | `sd(x)*(length(x)-1)/length(x)` 
+Desviación típica | `sd(x)*sqrt((length(x)-1)/length(x))` 
 
 ## Ejemplo 4
 
@@ -386,7 +386,7 @@ var(dados2)
 sd(dados2)
 n = length(dados2)
 var(dados2)*(n-1)/n
-sd(dados2)*(n-1)/n
+sd(dados2)*sqrt((n-1)/n)
 ```
 
 ## Función summary()
@@ -543,7 +543,7 @@ La sintaxis de la instrucción para dibujar en un único gráfico los diagramas 
 
 ```{r}
 boxplot(circumference~Tree, data = Orange, ylab = "Circunferencia del tronco (mm)", 
-        main = "Boxplot de los naranjos en funciónd el tipo de árbol")
+        main = "Boxplot de los naranjos en función del tipo de árbol")
 ```
 
 ## Parámetros de la función boxplot
