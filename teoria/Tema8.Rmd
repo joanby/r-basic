@@ -268,7 +268,7 @@ df.dado
 ```
 
 <div class = "example">
-Si nos piden el cuantil $Q_{0.3}$, sabemos que este es el primer elemento de la lista cuya frecuencia relativa absoluta es mayor o igual a 0.3. Este se corresponde con la puntuación 1.
+Si nos piden el cuantil $Q_{0.3}$, sabemos que este es el primer elemento de la lista cuya frecuencia relativa acumulada es mayor o igual a 0.3. Este se corresponde con la puntuación 1.
 </div>
 
 ## Ejemplo 3
@@ -317,7 +317,7 @@ Las <l class = "definition">medidas de dispersión</l> evalúan lo dispersos que
 
 - El <l class = "definition">rango</l> o <l class = "definition">recorrido</l>, que es la diferencia entre el máximo y el mínimo de las observaciones.
 
-- El <l class = "definition">rango intercuantílico</l>, que es la diferencia entre el tercer y primer cuartil, $Q_{0.75}-Q_{0.25}$.
+- El <l class = "definition">rango intercuartílico</l>, que es la diferencia entre el tercer y primer cuartil, $Q_{0.75}-Q_{0.25}$.
 
 - La <l class = "definition">varianza</l>, a la que denotaremos por $s^2$, es la media aritmética de las diferencias al cuadrado entre los datos $x_i$ y la media aritmética de las observaciones, $\bar{x}$. $$s^2 = \frac{\sum_{j=1}^n(x_j-\bar{x})^2}{n}=\frac{\sum_{j=1}^kn_j(X_j-\bar{x})^2}{n}=\sum_{j=1}^kf_j(X_j-\bar{x})^2$$.
 
@@ -334,7 +334,7 @@ $$\tilde{s}^2 = \frac{n}{n-1}s^2 = \frac{\sum_{j=1}^n(x_i-\bar{x})^2}{n-1}$$
 <l class = "prop"> Propiedades de la varianza.</l>
 
 - $s^2\ge 0$. Esto se debe a que, por definición, es una suma de cuadrados de números reales.
-- $s^2 = 0\Rightarrow(x_j-\bar{x})=0\ \forall j=,\dots,n$. En consecuencia, si $s^2=0$, entonces todos los datos son iguales.
+- $s^2 = 0\Longrightarrow x_j-\bar{x}=0\ \forall j= 1,\dots,n$. En consecuencia, si $s^2=0$, entonces todos los datos son iguales.
 - $s^2 = \sum_{j=1}^nx_j^2-n\bar{x}^2=\frac{\sum_{j=1}^nx_j^2}{n}-\bar{x}^2$. Es decir, la varianza es la media de los cuadrados de los datos menos el cuadrado de la media aritmética de estos.
 
 ## Varianza y varianza muestral
@@ -353,7 +353,7 @@ En cambio, si la muestra es relativamente pequeña (digamos $n<30$), entonces la
 
 La diferencia entre desviación típica y desviación típica muestral es análoga.
 
-Con R, calcularemos la varianza y la desviación típica muestrales. Con lo cual, si queremos calcular las que no son muestrales, tendremos que multiplicarlas por $\frac{n-1}{n}$, donde $n$ es el tamaño de la muestra. Lo veremos a continuación.
+Con `R`, calcularemos la varianza y la desviación típica **muestrales**. Con lo cual, si queremos calcular las que no son muestrales, tendremos que multiplicarlas por $\frac{n-1}{n}$, donde $n$ es el tamaño de la muestra. Lo veremos a continuación.
 
 ## Varianza y desviación típica
 
@@ -365,7 +365,7 @@ Medida de dispersión |  Instrucción
 --------------------|--------------------
 Valores mínimo y máximo | `range(x)` 
 Rango | `diff(range(x))` 
-Rango intercuantílico | `IQR(x, type = ...)`
+Rango intercuartílico | `IQR(x, type = ...)`
 Varianza muestral | `var(x)` 
 Desviación típica muestral | `sd(x)` 
 Varianza | `var(x)*(length(x)-1)/length(x)` 
@@ -399,7 +399,7 @@ Al aplicar esta función a un data frame, esta se aplica a todas sus variables d
 
 ```{r}
 cangrejos = read.table("../data/datacrab.txt", header = TRUE) #Cargamos el data frame
-cangrejos = cangrejos[-1] 
+cangrejos = cangrejos[-1] #Eliminamos la primera columna
 summary(cangrejos) #Aplicamos la función summary
 ```
 
