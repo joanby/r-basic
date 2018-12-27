@@ -153,10 +153,159 @@ Si nos fijamos bien, los extremos forman una progresión aritmética de salto $A
 
 De esta forma garantizamos que los extremos de los intervalos nunca coincidan con valores del conjunto de datos.
 
-# MASTER EJEMPLO
+## Marca de clase
+
+Solo nos queda determinar la <l class = "definition">marca de clase</l>, $X_i$, de cada intervalo $[L_i,L_{i+1})$.
+
+Este no es más que un valor del intervalo que utilizaremos para identificar la clase y para calcular algunos estadísticos.
+
+Genralmente, $$X_i = \frac{L_i+L_{i+1}}{2}$$ es decir, $X_i$ será el punto medio del intervalo, para así garantizar que el error máximo cometido al describir cualquier elemento del intervalo por medio de su marca de clase sea mínimo o igual a la mitad de la amplitud del respectivo intervalo.
+
+## Marca de clase
+
+Es sencillo concluir que, al tener todos los intervalos amplitud $A$, la distancia entre $X_i$ y $X_{i+1}$ tambien será $A$. Por consiguiente,
+
+ $$X_{i} = X_1+ (i-1)A,\qquad i=2,\dots,k$$
+ 
+ donde $$X_1 = \frac{L_1+L_2}{2}$$
+ 
+ 
+# Estudiando datos agrupados
+
+## Frecuencias
+
+Una primera consideración es tratar las clases obtenidas en el paso anterior como los niveles de una variable ordinal y calcular sus frecuencias.
+
+- La frecuencia absoluta de una clase será el número de datos originales que pertenecen a la clase
+- La frecuencia absoluta acumulada de una clase será el número de datos que pertenecen a dicha clase o alguna de las anteriores
+
+## Frecuencias
+
+Normalmente, las frecuencias de un conjunto de datos agrupados se suele representar de la siguiente forma
+
+| Intervalos | $X_j$ | $n_j$ | $N_j$ | $f_j$ | $F_j$ |  
+|-------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+|$[L_1,L_2)$|$X_1$|$n_1$|$N_1$|$f_1$|$F_1$|
+|$[L_2,L_3)$|$X_2$|$n_2$|$N_2$|$f_2$|$F_2$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$[L_k,L_{k+1})$|$X_k$|$n_k$|$N_k$|$f_k$|$F_k$|
+
+
+# MASTER EJEMPLO con cada una de las reglas
 
 Calcular las reglas a mano
 Calcular las reglas con R
 Determinar la amplitud de los intervalos
+Determinar la amplitud de los intervalos
+Calcular los extremos a mano, explicar lo de precisión
+Calcular los extremos con R
+Calcular marcas de clase a mano
+Calcular marcas de clase con R sucesión
+Calcular marcas de clase con R punto medio
+Representar datos en tabla (a mano)
+
+# Agrupando datos con R
+
+
+## Agrupando los datos con R
+
+Al agrupar los datos, lo que hacemos es convertir nuestra variable cuantitativa en un factor cuyos niveles son las clases en que ha sido dividida e identificamos cada dato con su clase.
+
+A la hora de etiquetar los niveles, podemos elegir 3 codificaciones:
+
+- Los intervalos
+- Las marcas de clase (el punto medio de cada intervalo)
+- El número de orden de cada intervalo
+
+## La función cut
+
+Esta función es la básica en R para agrupar un vector de datos numéricos y codificar sus valores con clases a las que pertenecen.
+
+Su sintaxis básica es
+
+<div class = "aligncenter">`cut(x, breaks=..., labels=..., right=...)`</div>
+
+- `x` es el vector numérico, nuestra variable cuantitativa
+- `breaks` puede ser un vector numérico formado por los extremos de los intervalos en los que queremos agrupar nuestros datos y que habremos calculado previamente. También puede ser un número $k$, en cuyo caso R agrupa los datos en $k$ clases. Para este caso, R divide el intervalo comprendido entre los valores mínimo y máximo de $x$ en $k$ intervalos y, a continuación, desplaza ligeramente el extremo inferior del primer intervalo a la izquierad y el extremo del último, a la derecha.
+
+## La función cut
+
+- `labels` es un vector con las etiquetas de los intervalos. Su valor por defecto es utilizar la etiqueta de los mismos intervalos. Si especificamos `labels = FALSE`, obtendremos los intervalos etiquetados por medio de los números naturales correlativos, empezando por 1. Para utilizar como etiqueta las marcas de clase o cualquier otra codificación, hay que entrarlo como valor de este parámetro.
+- `right` es un parámetro que igualadao a `FALSE` hace que los intervalos que consideremos sean cerrados por la izquierda y abiertos por la derecha. Este no es su valor por defecto.
+- `include.lowest` igualdo a `TRUE` combinado con `right = FALSE` hace que el último intervalo sea cerrado. Puede sernos útil en algunos casos.
+
+## La función cut
+
+En cualquier caso, el resultado de la función `cut` es una lista con los elementos del vector original codificados con las etiquetas de las clases a las que pertenecen. Bien puede ser un factor o un vector.
+
+## La función hist
+
+Una vez agrupados los datos y codificados con las etiquetas de las clases, ya podemos calcular las tablas de frecuencias absolutas, relativas y acumuladas. Podemos hacerlo mediante las funciones `table`, `prop.table` y `cumsum`.
+
+También podemos utilizar la función `hist`, que internamente genera una list cuya componente `count` es el vector de frecuencias absolutas de las clases. Por consiguiente, para calcular estas frecuencias, podemos utilizar la sintaxis
+
+<div class = "aligncenter">`hist(x, breaks=..., right=FALSE, plot=FALSE)$count`
+</div>
+
+
+
+Conviene igualar el parámetro `breaks` al vector de los extremos del intervalo debido a que `cut` y `hist` hacen uso de diferentes métodos para agrupar los datos cuando se especifica solamente el número $k$ de clases.
+
+El resultado de `hist` incluye la componente `mids` que contiene el vector de puntos medios de los intervalos, es decir, nuestras marcas de clase.
+
+## Tablas de frecuencias
+
+Podemos automatizar el cálculo de la ya tan mencionada tabla de frecuencias, utilizando las dos funciones que mostramos a continuación. 
+
+La primera sirve en el caso en que vayamos a tomar todas las clases de la misma amplitud. Sus parámetros son: $x$, el vector con los datos cuantitativos; $k$, el número de clases; $A$, su amplitud; y $p$, la precisión de los datos (p = 1 si la precisión son unidades, p = 0.1 si la precisión son décimas de unidad...).
+
+Por su parte, la segunda es para cuando, conocemos los extremos de las clases. Sus parámetros son: $x$, el vector con los datos cuantitativos; $L$, el vector de extremos de clases; y $V$ , un valor lógico, que ha de ser `TRUE` si queremos que el último intervalo sea cerrado, y `FALSE` en caso contrario.
+
+## Tablas de frecuencias
+
+```{r}
+#Primera función
+TablaFrecs = function(x,k,A,p){ 
+  L = min(x)-p/2+A*(0:k)
+  x_cut = cut(x, breaks = L, right=FALSE)
+  intervals = levels(x_cut)
+  mc = (L[1]+L[2])/2+A*(0:(k-1))
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = Fr.abs/length(x) 
+  Fr.cum.abs = cumsum(Fr.abs) 
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+  }
+```
+
+## Tablas de frecuencias
+
+```{r}
+TablaFrecs.L = function(x,L,V){
+  x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
+  intervals = levels(x_cut)
+  mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = Fr.abs/length(x) 
+  Fr.cum.abs = cumsum(Fr.abs)
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+  }
+```
+
+
+
+
+# MASTEREJEMPLO
+
+EJEMPLO CON 100 NOTAS
+Ejemplo 11.8 (utilizando la función cut de todas las formas posibles)
+Observación inmediatamente después del ejemplo 11.8
+Ejemplo 11.9 (utilizando hist). Generar data.frame
+Calcular tablas con mis dos funciones
+
+# Estadísticos para datos agrupados
 
 

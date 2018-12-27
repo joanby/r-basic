@@ -251,9 +251,180 @@
 
 <p>De esta forma garantizamos que los extremos de los intervalos nunca coincidan con valores del conjunto de datos.</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>MASTER EJEMPLO</h2></hgroup><article  id="master-ejemplo">
+</article></slide><slide class=""><hgroup><h2>Marca de clase</h2></hgroup><article  id="marca-de-clase">
 
-<p>Calcular las reglas a mano Calcular las reglas con R Determinar la amplitud de los intervalos</p></article></slide>
+<p>Solo nos queda determinar la <l class = "definition">marca de clase</l>, \(X_i\), de cada intervalo \([L_i,L_{i+1})\).</p>
+
+<p>Este no es más que un valor del intervalo que utilizaremos para identificar la clase y para calcular algunos estadísticos.</p>
+
+<p>Genralmente, \[X_i = \frac{L_i+L_{i+1}}{2}\] es decir, \(X_i\) será el punto medio del intervalo, para así garantizar que el error máximo cometido al describir cualquier elemento del intervalo por medio de su marca de clase sea mínimo o igual a la mitad de la amplitud del respectivo intervalo.</p>
+
+</article></slide><slide class=""><hgroup><h2>Marca de clase</h2></hgroup><article  id="marca-de-clase-1">
+
+<p>Es sencillo concluir que, al tener todos los intervalos amplitud \(A\), la distancia entre \(X_i\) y \(X_{i+1}\) tambien será \(A\). Por consiguiente,</p>
+
+<p>\[X_{i} = X_1+ (i-1)A,\qquad i=2,\dots,k\]</p>
+
+<p>donde \[X_1 = \frac{L_1+L_2}{2}\]</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Estudiando datos agrupados</h2></hgroup><article  id="estudiando-datos-agrupados">
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias</h2></hgroup><article  id="frecuencias">
+
+<p>Una primera consideración es tratar las clases obtenidas en el paso anterior como los niveles de una variable ordinal y calcular sus frecuencias.</p>
+
+<ul>
+<li>La frecuencia absoluta de una clase será el número de datos originales que pertenecen a la clase</li>
+<li>La frecuencia absoluta acumulada de una clase será el número de datos que pertenecen a dicha clase o alguna de las anteriores</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Frecuencias</h2></hgroup><article  id="frecuencias-1">
+
+<p>Normalmente, las frecuencias de un conjunto de datos agrupados se suele representar de la siguiente forma</p>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Intervalos</th>
+<th align="left">\(X_j\)</th>
+<th align="left">\(n_j\)</th>
+<th align="left">\(N_j\)</th>
+<th align="left">\(f_j\)</th>
+<th align="left">\(F_j\)</th>
+</tr>
+<tr class="odd">
+<td align="left">\([L_1,L_2)\)</td>
+<td align="left">\(X_1\)</td>
+<td align="left">\(n_1\)</td>
+<td align="left">\(N_1\)</td>
+<td align="left">\(f_1\)</td>
+<td align="left">\(F_1\)</td>
+</tr>
+<tr class="even">
+<td align="left">\([L_2,L_3)\)</td>
+<td align="left">\(X_2\)</td>
+<td align="left">\(n_2\)</td>
+<td align="left">\(N_2\)</td>
+<td align="left">\(f_2\)</td>
+<td align="left">\(F_2\)</td>
+</tr>
+<tr class="odd">
+<td align="left">\(\vdots\)</td>
+<td align="left">\(\vdots\)</td>
+<td align="left">\(\vdots\)</td>
+<td align="left">\(\vdots\)</td>
+<td align="left">\(\vdots\)</td>
+<td align="left">\(\vdots\)</td>
+</tr>
+<tr class="even">
+<td align="left">\([L_k,L_{k+1})\)</td>
+<td align="left">\(X_k\)</td>
+<td align="left">\(n_k\)</td>
+<td align="left">\(N_k\)</td>
+<td align="left">\(f_k\)</td>
+<td align="left">\(F_k\)</td>
+</tr>
+</table>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>MASTER EJEMPLO con cada una de las reglas</h2></hgroup><article  id="master-ejemplo-con-cada-una-de-las-reglas">
+
+<p>Calcular las reglas a mano Calcular las reglas con R Determinar la amplitud de los intervalos Determinar la amplitud de los intervalos Calcular los extremos a mano, explicar lo de precisión Calcular los extremos con R Calcular marcas de clase a mano Calcular marcas de clase con R sucesión Calcular marcas de clase con R punto medio Representar datos en tabla (a mano)</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Agrupando datos con R</h2></hgroup><article  id="agrupando-datos-con-r">
+
+</article></slide><slide class=""><hgroup><h2>Agrupando los datos con R</h2></hgroup><article  id="agrupando-los-datos-con-r">
+
+<p>Al agrupar los datos, lo que hacemos es convertir nuestra variable cuantitativa en un factor cuyos niveles son las clases en que ha sido dividida e identificamos cada dato con su clase.</p>
+
+<p>A la hora de etiquetar los niveles, podemos elegir 3 codificaciones:</p>
+
+<ul>
+<li>Los intervalos</li>
+<li>Las marcas de clase (el punto medio de cada intervalo)</li>
+<li>El número de orden de cada intervalo</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>La función cut</h2></hgroup><article  id="la-funcion-cut">
+
+<p>Esta función es la básica en R para agrupar un vector de datos numéricos y codificar sus valores con clases a las que pertenecen.</p>
+
+<p>Su sintaxis básica es</p>
+
+<div class="aligncenter">
+<code>cut(x, breaks=..., labels=..., right=...)</code></div>
+
+<ul>
+<li><code>x</code> es el vector numérico, nuestra variable cuantitativa</li>
+<li><code>breaks</code> puede ser un vector numérico formado por los extremos de los intervalos en los que queremos agrupar nuestros datos y que habremos calculado previamente. También puede ser un número \(k\), en cuyo caso R agrupa los datos en \(k\) clases. Para este caso, R divide el intervalo comprendido entre los valores mínimo y máximo de \(x\) en \(k\) intervalos y, a continuación, desplaza ligeramente el extremo inferior del primer intervalo a la izquierad y el extremo del último, a la derecha.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>La función cut</h2></hgroup><article  id="la-funcion-cut-1">
+
+<ul>
+<li><code>labels</code> es un vector con las etiquetas de los intervalos. Su valor por defecto es utilizar la etiqueta de los mismos intervalos. Si especificamos <code>labels = FALSE</code>, obtendremos los intervalos etiquetados por medio de los números naturales correlativos, empezando por 1. Para utilizar como etiqueta las marcas de clase o cualquier otra codificación, hay que entrarlo como valor de este parámetro.</li>
+<li><code>right</code> es un parámetro que igualadao a <code>FALSE</code> hace que los intervalos que consideremos sean cerrados por la izquierda y abiertos por la derecha. Este no es su valor por defecto.</li>
+<li><code>include.lowest</code> igualdo a <code>TRUE</code> combinado con <code>right = FALSE</code> hace que el último intervalo sea cerrado. Puede sernos útil en algunos casos.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>La función cut</h2></hgroup><article  id="la-funcion-cut-2">
+
+<p>En cualquier caso, el resultado de la función <code>cut</code> es una lista con los elementos del vector original codificados con las etiquetas de las clases a las que pertenecen. Bien puede ser un factor o un vector.</p>
+
+</article></slide><slide class=""><hgroup><h2>La función hist</h2></hgroup><article  id="la-funcion-hist-1">
+
+<p>Una vez agrupados los datos y codificados con las etiquetas de las clases, ya podemos calcular las tablas de frecuencias absolutas, relativas y acumuladas. Podemos hacerlo mediante las funciones <code>table</code>, <code>prop.table</code> y <code>cumsum</code>.</p>
+
+<p>También podemos utilizar la función <code>hist</code>, que internamente genera una list cuya componente <code>count</code> es el vector de frecuencias absolutas de las clases. Por consiguiente, para calcular estas frecuencias, podemos utilizar la sintaxis</p>
+
+<div class="aligncenter">
+<p><code>hist(x, breaks=..., right=FALSE, plot=FALSE)$count</code></p></div>
+
+<p>Conviene igualar el parámetro <code>breaks</code> al vector de los extremos del intervalo debido a que <code>cut</code> y <code>hist</code> hacen uso de diferentes métodos para agrupar los datos cuando se especifica solamente el número \(k\) de clases.</p>
+
+<p>El resultado de <code>hist</code> incluye la componente <code>mids</code> que contiene el vector de puntos medios de los intervalos, es decir, nuestras marcas de clase.</p>
+
+</article></slide><slide class=""><hgroup><h2>Tablas de frecuencias</h2></hgroup><article  id="tablas-de-frecuencias">
+
+<p>Podemos automatizar el cálculo de la ya tan mencionada tabla de frecuencias, utilizando las dos funciones que mostramos a continuación.</p>
+
+<p>La primera sirve en el caso en que vayamos a tomar todas las clases de la misma amplitud. Sus parámetros son: \(x\), el vector con los datos cuantitativos; \(k\), el número de clases; \(A\), su amplitud; y \(p\), la precisión de los datos (p = 1 si la precisión son unidades, p = 0.1 si la precisión son décimas de unidad&#8230;).</p>
+
+<p>Por su parte, la segunda es para cuando, conocemos los extremos de las clases. Sus parámetros son: \(x\), el vector con los datos cuantitativos; \(L\), el vector de extremos de clases; y \(V\) , un valor lógico, que ha de ser <code>TRUE</code> si queremos que el último intervalo sea cerrado, y <code>FALSE</code> en caso contrario.</p>
+
+</article></slide><slide class=""><hgroup><h2>Tablas de frecuencias</h2></hgroup><article  id="tablas-de-frecuencias-1">
+
+<pre class = 'prettyprint lang-r'>#Primera función
+TablaFrecs = function(x,k,A,p){ 
+  L = min(x)-p/2+A*(0:k)
+  x_cut = cut(x, breaks = L, right=FALSE)
+  intervals = levels(x_cut)
+  mc = (L[1]+L[2])/2+A*(0:(k-1))
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = Fr.abs/length(x) 
+  Fr.cum.abs = cumsum(Fr.abs) 
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+  }</pre>
+
+</article></slide><slide class=""><hgroup><h2>Tablas de frecuencias</h2></hgroup><article  id="tablas-de-frecuencias-2">
+
+<pre class = 'prettyprint lang-r'>TablaFrecs.L = function(x,L,V){
+  x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
+  intervals = levels(x_cut)
+  mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = Fr.abs/length(x) 
+  Fr.cum.abs = cumsum(Fr.abs)
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+}</pre>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>MASTEREJEMPLO</h2></hgroup><article  id="masterejemplo">
+
+<p>EJEMPLO CON 100 NOTAS Ejemplo 11.8 (utilizando la función cut de todas las formas posibles) Observación inmediatamente después del ejemplo 11.8 Ejemplo 11.9 (utilizando hist). Generar data.frame Calcular tablas con mis dos funciones</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Estadísticos para datos agrupados</h2></hgroup><article  id="estadisticos-para-datos-agrupados"></article></slide>
 
 
   <slide class="backdrop"></slide>
