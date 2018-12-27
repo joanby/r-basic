@@ -1,0 +1,162 @@
+---
+title: "Tema 9 - Datos cuantitativos agrupados"
+author: "Juan Gabriel Gomila & María Santos"
+output: 
+  ioslides_presentation:
+    widescreen: true
+    css: JB_style.css
+    logo: Imgs/LogoCurso.png
+    fig_height: 4
+    fig_width: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA)
+```
+
+
+## Introducción
+
+Aunque no seamos completamente conscientes de ello, tendemos a agrupar datos cuantitativos constantemente. 
+
+Sin ir más lejos, calificamos de excelente a todas las notas que están sobre el 9. También decimos que una persona tiene 20 años cuando se encuentra en el intervalo [20,21). Es decir, cuando ha cumplido los 20 pero aún no tiene los 21.
+
+En estadística, existen innumerables motivos por los cuales nos interesa agrupar los datos cuando estos son cuantitativos. Uno de estos motivos puede ser perfectamente que los datos sean muy heterogéneos. En este caso, nos encontraríamos con que las frecuencias de los valores individuales serían todas muy similares, lo que daría lugar a un diagrama de barras muy difícil de interpretar, tal y como mostramos en el siguiente ejemplo.
+
+## Ejemplo 1
+
+<div class = "example">
+**Ejemplo 1**
+
+Consideremos la siguiente muestra de 24 pesos de estudiantes:
+</div>
+
+```{r}
+pesos = c(55.1,54.0,55.2,53.7,60.2,53.2,54.6,55.1,51.2,53.2,54.8,52.3,56.9,57.0,55.0,53.5,50.9,55.1,53.6,61.2,59.5,50.3,52.7,60.0)
+```
+
+<div class = "example">
+El diagrama de barras de sus frecuencias absolutas, tomando como posibles niveles todos los pesos  entre su mínimo y máximo se muestra en la siguiente diapositiva.
+
+Como vemos, todas estas frecuencias se encuentran entre 0 y 3, cosa que no nos da mucha información.
+</div>
+
+## Ejemplo 1
+
+```{r}
+barplot(table(pesos))
+```
+
+## Ejemplo 1
+
+<div class = "example">
+En cambio, si dividiésemos todos estos posibles valores que puede tomar la variable cuantitativa en intervalos y tomásemos como sus frecuencias las de todos los valores que caen en dicho intervalo, la cosa cambia. 
+
+En este caso, sería mucho más fácil interpretar los resultados ya que estos darán mucha más información. Más adelante veremos como crear estos intervalos.
+</div>
+
+## Introducción
+
+Otro de los motivos por el que necesitamos muchas veces agrupar los datos cuantitativos es porque, como ya dijimos en temas anteriores, la precisión infinita no existe. 
+Por tanto, esta imposibilidad de medir de manera exacta muchas de las magnitudes continuas (tiempo, peso, altura...) nos obliga a trabajar con aproximaciones o redondeos de valores reales y que cada uno de estos represente todo un intervalo de posibles valores.
+
+## Introducción
+
+Por lo general, existen 3 situaciones en las cuales conviene sin lugar a dudas agrupar datos cuantitativos en intervalos, también llamados <l class = "definition">clases</l>
+
+- Cuando los datos son continuos, su redondeo ya define un agrupamiento debido a la inexistencia de precisión infinita
+- Cuando los datos son discretos, pero con un número considerablemente grande de posibles valores
+- Cuando tenemos muchísimos datos y estamos interesados en estudiar las frecuencias de sus valores
+
+# Cómo agrupar datos
+
+## Los 4 pasos
+
+Antes de estudiar unos datos agrupados, hay que, obviamente, agruparlos. Este proceso consta de 4 pasos:
+
+1. Decidir el número de intervalos que vamos a utilizar
+2. Decidir la amplitud de estos intervalos
+3. Acumular los extremos de los intervalos
+4. Calcular el valor representativo de cada intervalo, su <l class = "definition">marca de clase</l>
+
+No hay una forma de agrupar datos mejor que otra. Eso sí, cada uno de los diferentes agrupamientos para un conjunto de datos podría sacar a la luz características diferentes del conjunto.
+
+## La función hist()
+
+La función de R por excelencia para estudiar datos agrupados es `hist`. Dicha función implementa los 4 pasos del proceso.
+
+Si le indicamos como argumentos el vector de datos y el número de intervalos que deseamos, o bien el método para determinarlo (cosa que veremos a continuación), la función agrupará los datos en el número de clases que le hemos introducido, más o menos. Eso sí, sin control de ningún tipo por nuestra parte sobre los intervalos que produce.
+
+Esto puede venirnos bien en algunos casos, pero no en otros.
+
+## Estableciendo el número de clases
+
+En este tema explicaremos una receta para agrupar datos. Lo dicho, ni mejor ni peor que el resto.
+
+Lo primero es establecer el número $k$ de clases en las que vamos a dividir nuestros datos. Podemos decidir en función de nuestros intereses o podemos hacer uso de alguna de las reglas existentes. Destacaremos las más populares. Sea $n$ el número total de datos de la muestra
+
+- <l class = "definition">Regla de la raíz cuadrada</l>: $k = \lceil\sqrt{n}\ \rceil$
+- <l class = "definition">Regla de Sturges</l>: $k = \lceil 1+\log_{2}(n)\rceil$
+
+## Estableciendo el número de clases
+
+- <l class = "definition">Regla de Scott</l>: Se determina primero la <l class = "definition">amplitud teórica</l>, $A_S$ de las clases $$A_S = 3.5\cdot\tilde{s}\cdot n^{-\frac{1}{3}}$$
+donde $\tilde{s}$ es la desviación típica muestral. Luego se toma $$k = \left\lceil \frac{\max(x)-\min(x)}{A_S}\right\rceil$$
+
+## Estableciendo el número de clases
+
+- <l class = "definition">Regla de Freedman-Diaconis</l>: Se determina primero la <l class = "definition">amplitud teórica</l>, $A_{FD}$ de las clases $$A_{FD} = 2\cdot(Q_{0.75}-Q_{0.25})\cdot n^{-\frac{1}{3}}$$ (donde, recordemos, $Q_{0.75}-Q_{0.25}$, es el rango intercuantílico) y entonces 
+$$k = \left\lceil \frac{\max(x)-\min(x)}{A_{FD}}\right\rceil$$
+
+Si os fijáis, las dos primeras solo dependen de $n$, mientras que las dos últimas también tienen en cuenta, de formas diferentes, la dispersión de los datos. De nuevo, no hay ninguna mejor que las demás. Pero sí puede ocurrir que métodos diferentes den lugar a la observación de características diferentes en los datos.
+
+## Estableciendo el número de clases con R
+
+Las instrucciones para llevar a cabo las 3 últimas reglas con R son, respectivamente,
+
+- `nclass.Sturges`
+- `nclass.scott`
+- `nclass.FD`
+
+Puede ocurrir que las difrentes reglas den valores diferentes, o no.
+
+## Decidiendo la amplitud
+
+Una vez determinado $k$, hay que decidir su amplitud. 
+
+La forma más fácil y la que nosotros utilizaremos por defecto es que la amplitud de todos los intervalos sea la misma, $A$. Esta forma no es la única.
+
+Para calcular $A$, lo que haremos será dividir el rango de los datos entre $k$, el número de clases, y redondearemos por exceso a un valor de la precisión de la medida.
+
+Si se da el improbable caso en que el cociente de exacto, tomaremos como $A$ ese cociente más una unidad de precisión.
+
+## Extremos de los intervalos
+
+Es la hora de calcular los extremos de los intervalos. Nosotros tomaremos estos intervalos siempre cerrados por su izquierda y abiertos por la derecha, debido a que esta es la forma en que R los construye y porque es así como se utilizan en Teoría de Probabilidades al definir la distribución de una variable aleatoria discreta y también en otras muchas situaciones cotidianas.
+
+Utilizaremos la siguiente notación
+$$[L_1,L_2),[L_2,L_3),\dots,[L_k,L_{k+1})$$
+
+donde los $L_i$ denotan los extremos de los intervalos. Estos se calculan de la siguiente forma:
+
+$$L_1 = \min(x)-\frac{1}{2}\cdot \text{precisión}$$
+
+## Extremos de los intervalos
+
+A partir de $L_1$, el resto de intervalos se obtiene de forma recursiva:
+$$L_2 = L_1 + A$$
+$$L_3 = L_2 + A$$
+$$\vdots$$
+$$L_{k+1} = L_k+A$$
+
+Si nos fijamos bien, los extremos forman una progresión aritmética de salto $A$: $$L_{i} = L_{1}+(i-1)A,\qquad i=2,\dots,k+1$$
+
+De esta forma garantizamos que los extremos de los intervalos nunca coincidan con valores del conjunto de datos.
+
+# MASTER EJEMPLO
+
+Calcular las reglas a mano
+Calcular las reglas con R
+Determinar la amplitud de los intervalos
+
+
