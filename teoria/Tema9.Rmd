@@ -32,13 +32,14 @@ Consideremos la siguiente muestra de 24 pesos de estudiantes:
 </div>
 
 ```{r}
-pesos = c(55.1,54.0,55.2,53.7,60.2,53.2,54.6,55.1,51.2,53.2,54.8,52.3,56.9,57.0,55.0,53.5,50.9,55.1,53.6,61.2,59.5,50.3,52.7,60.0)
+pesos = c(55.2,54.0,55.2,53.7,60.2,53.2,54.6,55.1,51.2,53.2,54.8,52.3,56.9,57.0,55.0,
+          53.5,50.9,55.1,53.6,61.2,59.5,50.3,52.7,60.0)
 ```
 
 <div class = "example">
 El diagrama de barras de sus frecuencias absolutas, tomando como posibles niveles todos los pesos  entre su mínimo y máximo se muestra en la siguiente diapositiva.
 
-Como vemos, todas estas frecuencias se encuentran entre 0 y 3, cosa que no nos da mucha información.
+Como vemos, todas estas frecuencias se encuentran entre 0 y 2, cosa que no nos da mucha información.
 </div>
 
 ## Ejemplo 1
@@ -52,8 +53,12 @@ barplot(table(pesos))
 <div class = "example">
 En cambio, si dividiésemos todos estos posibles valores que puede tomar la variable cuantitativa en intervalos y tomásemos como sus frecuencias las de todos los valores que caen en dicho intervalo, la cosa cambia. 
 
-En este caso, sería mucho más fácil interpretar los resultados ya que estos darán mucha más información. Más adelante veremos como crear estos intervalos.
+En este caso, sería mucho más fácil interpretar los resultados, ya que estos darán mucha más información. Más adelante veremos como crear estos intervalos.
 </div>
+
+```{r, echo=FALSE}
+hist(pesos, breaks = 6, right = FALSE, main = "", ylab = "Frecuencia", xlab = "pesos")
+```
 
 ## Introducción
 
@@ -151,7 +156,7 @@ $$L_{k+1} = L_k+A$$
 
 Si nos fijamos bien, los extremos forman una progresión aritmética de salto $A$: $$L_{i} = L_{1}+(i-1)A,\qquad i=2,\dots,k+1$$
 
-De esta forma garantizamos que los extremos de los intervalos nunca coincidan con valores del conjunto de datos.
+De esta forma garantizamos que los extremos de los intervalos nunca coincidan con valores del conjunto de datos, puesto que tinen una precisión mayor.
 
 ## Marca de clase
 
@@ -168,41 +173,203 @@ Es sencillo concluir que, al tener todos los intervalos amplitud $A$, la distanc
  $$X_{i} = X_1+ (i-1)A,\qquad i=2,\dots,k$$
  
  donde $$X_1 = \frac{L_1+L_2}{2}$$
- 
- 
-# Estudiando datos agrupados
 
-## Frecuencias
+# Ejemplo 2
 
-Una primera consideración es tratar las clases obtenidas en el paso anterior como los niveles de una variable ordinal y calcular sus frecuencias.
+## Enunciado {.example}
 
-- La frecuencia absoluta de una clase será el número de datos originales que pertenecen a la clase
-- La frecuencia absoluta acumulada de una clase será el número de datos que pertenecen a dicha clase o alguna de las anteriores
+**Ejemplo 2**
 
-## Frecuencias
+Vamos a considerar el conjunto de datos de `datacrab`. Para nuestro estudio, trabajaremos únicamente con la variable `width`.
 
-Normalmente, las frecuencias de un conjunto de datos agrupados se suele representar de la siguiente forma
+Llevaremos a cabo los 4 pasos explicados con anterioridad: cálculo del número de intervalos, determinación de la amplitud, cálculo de los extremos y las marcas de clase.
 
-| Intervalos | $X_j$ | $n_j$ | $N_j$ | $f_j$ | $F_j$ |  
-|-------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
-|$[L_1,L_2)$|$X_1$|$n_1$|$N_1$|$f_1$|$F_1$|
-|$[L_2,L_3)$|$X_2$|$n_2$|$N_2$|$f_2$|$F_2$|
-|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
-|$[L_k,L_{k+1})$|$X_k$|$n_k$|$N_k$|$f_k$|$F_k$|
+## Solución
+
+En primer lugar, cargamos los datos en un data frame:
+
+```{r}
+crabs = read.table("../data/datacrab.txt", header = TRUE)
+str(crabs)
+cw = crabs$width
+```
+
+A continuación, definimos la variable `cw` que contiene los datos de la variable `width`.
+
+## Solución
+
+Calculemos el número de clases según las diferentes reglas que hemos visto:
+
+- Regla de la raíz cuadrada:
+
+```{r}
+n = length(cw)
+k1 = ceiling(sqrt(n))
+k1
+```
+
+- Regla de Sturges:
+
+```{r}
+k2 = ceiling(1+log(n,2))
+k2
+```
+
+## Solución
+
+- Regla de Scott:
+
+```{r}
+As = 3.5*sd(cw)*n^(-1/3) #Amplitud teórica
+k3 = ceiling(diff(range(cw))/As)
+k3
+```
+
+- Regla de Freedman-Diaconis:
+
+```{r}
+#Amplitud teórica
+Afd = 2*(quantile(cw,0.75, names = FALSE)-quantile(cw,0.25,names = FALSE))*n^(-1/3) 
+k4 = ceiling(diff(range(cw))/Afd)
+k4
+```
+
+## Solución
+
+Podemos comprobar nuestros 3 últimos resultados con R:
+
+```{r}
+nclass.Sturges(cw)
+nclass.scott(cw)
+nclass.FD(cw)
+```
+
+De momento, vamos a seguir la Regla de Scott. Es decir, vamos a considerar `r nclass.scott(cw)` intervalos.
+
+## Solución
+
+A continuación, debemos elegir la amplitud de los intervalos.
+
+```{r}
+A = diff(range(cw)) / 10
+A
+```
+
+Como nuestros datos están expresados en mm con una precisión de una cifra decimal, debemos redondear por exceso a un cifra decimal el resultado obtenido. Por lo tanto, nuestra amplitud será de 
+
+```{r}
+A = 1.3
+```
+
+Recordad que si el cociente nos hubiera dado un valor exacto con respecto a la precisión, tendríamos que haberle sumado una unidad de precisión.
+
+## Solución
+
+Ahora nos toca calcular los extremos $L_1,\dots,L_{11}$ de los intervalos.
+
+Recordad que nuestros intervalos tendrán la siguiente forma:
+
+$$[L_1,L_2),\ \dots,\ [L_{10},L_{11})$$
+Calculamos el primer extremo:
+
+```{r}
+L1 = min(cw)-1/2*0.1
+L1
+```
+
+donde 0.1 es nuestra precisión (décimas de unidad, en este caso).
+
+## Solución
+
+Y, el resto de extremos se calculan del siguiente modo:
+
+```{r}
+L2 = L1 + A
+L3 = L2 + A
+L4 = L3 + A
+L5 = L4 + A
+L6 = L5 + A
+L7 = L6 + A
+L8 = L7 + A
+L9 = L8 + A
+L10 = L9 + A
+L11 = L10 + A
+L = c(L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11)
+L
+```
+
+## Solución
+
+O bien, si queremos facilitarnos el trabajo, también los podemos calcular mucho más rápido del siguiente modo:
+
+```{r}
+L = L1 + A*(0:10)
+L
+```
+
+Así, nuestros intervalos serán los siguientes:
+
+$$[20.95,22.25),\ [22.25,23.55),\ [23.55,24.85),\ [24.85,26.15),\ [26.15,27.45),$$ $$[27.45,28.75),\ [28.75,30.05),\ [30.05,31.35),\ [31.35,32.65),\ [32.65,33.95)$$
+
+## Solución
+
+Y hemos llegado al úlitmo paso: calcular las marcas de clase.
+
+Recordemos que $X_i = \frac{L_{i}+L_{i+1}}{2} \quad\forall i=1,\dots,10$
+
+Empecemos calculando $X_1$
+
+```{r}
+X1 = (L[1]+L[2])/2
+X1
+```
 
 
-# MASTER EJEMPLO con cada una de las reglas
+## Solución
 
-Calcular las reglas a mano
-Calcular las reglas con R
-Determinar la amplitud de los intervalos
-Determinar la amplitud de los intervalos
-Calcular los extremos a mano, explicar lo de precisión
-Calcular los extremos con R
-Calcular marcas de clase a mano
-Calcular marcas de clase con R sucesión
-Calcular marcas de clase con R punto medio
-Representar datos en tabla (a mano)
+Y, el resto de marcas de clase se calculan del siguiente modo:
+
+```{r}
+X2 = X1 + A
+X3 = X2 + A
+X4 = X3 + A
+X5 = X4 + A
+X6 = X5 + A
+X7 = X6 + A
+X8 = X7 + A
+X9 = X8 + A
+X10 = X9 + A
+X = c(X1,X2,X3,X4,X5,X6,X7,X8,X9,X10)
+X
+```
+
+## Solución
+
+O bien, si queremos facilitarnos el trabajo, también los podemos calcular mucho más rápido como sucesión:
+
+```{r}
+X = X1 + A*(0:9)
+X
+```
+
+o también, como punto medio del intervalo
+
+```{r}
+X = (L[1:length(L)-1]+L[2:length(L)])/2
+X
+```
+
+## Ejercicio{.exercise}
+
+Repetir este proceso para el número de clases obtenido con 
+
+- la regla de la raíz 
+- la regla de Sturges 
+- la regla de Freedman-Diaconis
+
+
+
+
 
 # Agrupando datos con R
 
@@ -223,10 +390,11 @@ Esta función es la básica en R para agrupar un vector de datos numéricos y co
 
 Su sintaxis básica es
 
-<div class = "aligncenter">`cut(x, breaks=..., labels=..., right=...)`</div>
+<div class = "aligncenter">`cut(x, breaks=..., labels=..., right=...)`
+</div>
 
 - `x` es el vector numérico, nuestra variable cuantitativa
-- `breaks` puede ser un vector numérico formado por los extremos de los intervalos en los que queremos agrupar nuestros datos y que habremos calculado previamente. También puede ser un número $k$, en cuyo caso R agrupa los datos en $k$ clases. Para este caso, R divide el intervalo comprendido entre los valores mínimo y máximo de $x$ en $k$ intervalos y, a continuación, desplaza ligeramente el extremo inferior del primer intervalo a la izquierad y el extremo del último, a la derecha.
+- `breaks` puede ser un vector numérico formado por los extremos de los intervalos en los que queremos agrupar nuestros datos y que habremos calculado previamente. También puede ser un número $k$, en cuyo caso R agrupa los datos en $k$ clases. Para este caso, R divide el intervalo comprendido entre los valores mínimo y máximo de $x$ en $k$ intervalos y, a continuación, desplaza ligeramente el extremo inferior del primer intervalo a la izquierda y el extremo del último, a la derecha.
 
 ## La función cut
 
@@ -238,9 +406,30 @@ Su sintaxis básica es
 
 En cualquier caso, el resultado de la función `cut` es una lista con los elementos del vector original codificados con las etiquetas de las clases a las que pertenecen. Bien puede ser un factor o un vector.
 
+# Estudiando datos agrupados
+
+## Frecuencias
+
+Una primera consideración es tratar las clases obtenidas en el paso anterior como los niveles de una variable ordinal y calcular sus frecuencias.
+
+- La frecuencia absoluta de una clase será el número de datos originales que pertenecen a la clase
+- La frecuencia absoluta acumulada de una clase será el número de datos que pertenecen a dicha clase o alguna de las anteriores
+
+## Tabla de frecuencias
+
+Normalmente, las frecuencias de un conjunto de datos agrupados se suele representar de la siguiente forma
+
+| Intervalos | $X_j$ | $n_j$ | $N_j$ | $f_j$ | $F_j$ |  
+|-------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+|$[L_1,L_2)$|$X_1$|$n_1$|$N_1$|$f_1$|$F_1$|
+|$[L_2,L_3)$|$X_2$|$n_2$|$N_2$|$f_2$|$F_2$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|$\vdots$|
+|$[L_k,L_{k+1})$|$X_k$|$n_k$|$N_k$|$f_k$|$F_k$|
+
+
 ## La función hist
 
-Una vez agrupados los datos y codificados con las etiquetas de las clases, ya podemos calcular las tablas de frecuencias absolutas, relativas y acumuladas. Podemos hacerlo mediante las funciones `table`, `prop.table` y `cumsum`.
+El cálculo de las frecuencias con R podemos hacerlo mediante las funciones `table`, `prop.table` y `cumsum`.
 
 También podemos utilizar la función `hist`, que internamente genera una list cuya componente `count` es el vector de frecuencias absolutas de las clases. Por consiguiente, para calcular estas frecuencias, podemos utilizar la sintaxis
 
@@ -253,15 +442,15 @@ Conviene igualar el parámetro `breaks` al vector de los extremos del intervalo 
 
 El resultado de `hist` incluye la componente `mids` que contiene el vector de puntos medios de los intervalos, es decir, nuestras marcas de clase.
 
-## Tablas de frecuencias
+## Tabla de frecuencias con R
 
 Podemos automatizar el cálculo de la ya tan mencionada tabla de frecuencias, utilizando las dos funciones que mostramos a continuación. 
 
 La primera sirve en el caso en que vayamos a tomar todas las clases de la misma amplitud. Sus parámetros son: $x$, el vector con los datos cuantitativos; $k$, el número de clases; $A$, su amplitud; y $p$, la precisión de los datos (p = 1 si la precisión son unidades, p = 0.1 si la precisión son décimas de unidad...).
 
-Por su parte, la segunda es para cuando, conocemos los extremos de las clases. Sus parámetros son: $x$, el vector con los datos cuantitativos; $L$, el vector de extremos de clases; y $V$ , un valor lógico, que ha de ser `TRUE` si queremos que el último intervalo sea cerrado, y `FALSE` en caso contrario.
+Por su parte, la segunda es para cuando conocemos los extremos de las clases. Sus parámetros son: $x$, el vector con los datos cuantitativos; $L$, el vector de extremos de clases; y $V$ , un valor lógico, que ha de ser `TRUE` si queremos que el último intervalo sea cerrado, y `FALSE` en caso contrario.
 
-## Tablas de frecuencias
+## Tablas de frecuencias con R
 
 ```{r}
 #Primera función
@@ -271,7 +460,7 @@ TablaFrecs = function(x,k,A,p){
   intervals = levels(x_cut)
   mc = (L[1]+L[2])/2+A*(0:(k-1))
   Fr.abs = as.vector(table(x_cut)) 
-  Fr.rel = Fr.abs/length(x) 
+  Fr.rel = round(Fr.abs/length(x),4) 
   Fr.cum.abs = cumsum(Fr.abs) 
   Fr.cum.rel = cumsum(Fr.rel)
   tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
@@ -287,7 +476,7 @@ TablaFrecs.L = function(x,L,V){
   intervals = levels(x_cut)
   mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
   Fr.abs = as.vector(table(x_cut)) 
-  Fr.rel = Fr.abs/length(x) 
+  Fr.rel = round(Fr.abs/length(x),4)
   Fr.cum.abs = cumsum(Fr.abs)
   Fr.cum.rel = cumsum(Fr.rel)
   tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
@@ -298,13 +487,203 @@ TablaFrecs.L = function(x,L,V){
 
 
 
-# MASTEREJEMPLO
+# Ejemplo 2 - Continuación
 
-EJEMPLO CON 100 NOTAS
-Ejemplo 11.8 (utilizando la función cut de todas las formas posibles)
-Observación inmediatamente después del ejemplo 11.8
-Ejemplo 11.9 (utilizando hist). Generar data.frame
-Calcular tablas con mis dos funciones
+## Enunciado{.example}
+
+**Ejemplo 2**
+
+Siguiendo con el ejemplo de las anchuras de los cangrejos, vamos a calcular sus tablas de frecuencias haciendo uso de todo lo aprendido anteriormente.
+
+## Solución
+
+La tabla queda del siguiente modo:
+
+```{r, echo = FALSE}
+n = c(length(which(cw>=L[1] & cw<L[2])),length(which(cw>=L[2] & cw<L[3])),length(which(cw>=L[3] & cw<L[4])),length(which(cw>=L[4] & cw<L[5])),length(which(cw>=L[5] & cw<L[6])),length(which(cw>=L[6] & cw<L[7])),length(which(cw>=L[7] & cw<L[8])),length(which(cw>=L[8] & cw<L[9])),length(which(cw>=L[9] & cw<L[10])),length(which(cw>=L[10] & cw<L[11])))
+N = cumsum(n)
+f = round(n/N[10],4)
+FF = cumsum(f)
+```
+
+| Intervalos | $X_j$ | $n_j$ | $N_j$ | $f_j$ | $F_j$ |  
+|-------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+|[`r L[1]`, `r L[2]`)|`r X[1]`|`r n[1]`|`r N[1]`|`r f[1]`|`r FF[1]`|
+|[`r L[2]`, `r L[3]`)|`r X[2]`|`r n[2]`|`r N[2]`|`r f[2]`|`r FF[2]`|
+|[`r L[3]`, `r L[4]`)|`r X[3]`|`r n[3]`|`r N[3]`|`r f[3]`|`r FF[3]`|
+|[`r L[4]`, `r L[5]`)|`r X[4]`|`r n[4]`|`r N[4]`|`r f[4]`|`r FF[4]`|
+[`r L[5]`, `r L[6]`)|`r X[5]`|`r n[5]`|`r N[5]`|`r f[5]`|`r FF[5]`|
+|[`r L[6]`, `r L[7]`)|`r X[6]`|`r n[6]`|`r N[6]`|`r f[6]`|`r FF[6]`|
+
+## Solución
+
+| Intervalos | $X_j$ | $n_j$ | $N_j$ | $f_j$ | $F_j$ |  
+|-------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+|[`r L[7]`, `r L[8]`)|`r X[7]`|`r n[7]`|`r N[7]`|`r f[7]`|`r FF[7]`|
+|[`r L[8]`, `r L[9]`)|`r X[8]`|`r n[8]`|`r N[8]`|`r f[8]`|`r FF[8]`|
+|[`r L[9]`, `r L[10]`)|`r X[9]`|`r n[9]`|`r N[9]`|`r f[9]`|`r FF[9]`|
+|[`r L[10]`, `r L[11]`)|`r X[10]`|`r n[10]`|`r N[10]`|`r f[10]`|`r FF[10]`|
+
+## Solución
+
+Y, ahora, lo haremos con las funciones que os hemos proporcionado:
+
+```{r}
+TablaFrecs(cw,10,1.3,0.1)
+```
+
+## Solución
+
+```{r}
+TablaFrecs.L(cw,L,FALSE)
+```
+
+Fijaos que los intervalos no terminan de ser los que hemos calculado nosotros, pero eso se debe a como funciona la función `cut`.
+
+# Ejemplo 3
+
+## Enunciado{.example}
+
+**Ejemplo 3**
+
+Se han recogido las notas de un examen de historia a los 100 alumnos de primero de bachillerato de un instituto.
+
+Vamos a hacer uso de todo lo aprendido para obtener la mayor información posible utilizando las funciones `cut` e `hist` y también, las proporcionadas por nosotros.
+
+## Solución
+
+Los resultados obtenidos en la encuesta han sido:
+
+```{r, echo = FALSE}
+set.seed(4)
+notas = sample(0:10,100, replace = TRUE)
+set.seed(NULL)
+```
+
+```{r}
+notas
+```
+
+## Solución
+
+Vamos a agrupar las notas en los siguientes intervalos:
+
+$$[0,5),\ [5,7),\ [7,9),\ [9,10]$$
+
+Claramente, estos 4 intervalos no tienen la misma amplitud.
+
+Fijémonos también en que el último intervalo está cerrado por la derecha.
+
+## Solución
+
+```{r}
+#Definimos vector de extremos
+L = c(0,5,7,9,10)
+#Definimos notas1 como el resultado de la codificación en intervalos utilizando como 
+#etiquetas los propios intervalos
+notas1 = cut(notas, breaks = L, right = FALSE, include.lowest = TRUE)
+notas1
+```
+
+## Solución
+
+```{r}
+#Definimos las marcas de clase
+MC = (L[1:length(L)-1]+L[2:length(L)])/2
+#Definimos notas2 como el resultado de la codificación en intervalos utilizando como 
+#etiquetas las marcas de clase
+notas2 = cut(notas, breaks = L, labels = MC, right = FALSE, include.lowest = TRUE)
+notas2
+```
+
+## Solución
+
+```{r}
+#Definimos notas3 como el resultado de la codificación en intervalos utilizando como 
+#etiquetas la posición ordenada del intervalo (1, 2, 3 o 4)
+notas3 = cut(notas, breaks = L, labels = FALSE, right = FALSE, include.lowest = TRUE)
+notas3
+```
+
+## Solución
+
+```{r}
+#Definimos notas4 como el resultado de la codificación en intervalos utilizando como 
+#etiquetas Susp, Aprob, Not y Exc
+notas4 = cut(notas, breaks = L, labels = c("Susp", "Aprob", "Not", "Exc"), right = FALSE, include.lowest = TRUE)
+notas4
+```
+
+## Solución
+
+El resultado de `cut` ha sido, en cada caso, una lista con los elementos del vector original codificados con las etiquetas de las clases a las que pertenecen. 
+
+Las dos primeras aplicaciones de la función `cut` han producido factores (cuyos niveles son los intervalos y las marcas de clase, respectivamente, en ambos casos ordenados de manera natural), mientras que aplicándole `labels = FALSE` hemos obtenido un vector.
+
+## Solución
+
+¿Qué habría ocurrido si le hubiéramos pedido a R que cortase los datos en 4 intervalos?
+
+Pues en este caso no nos hubiera servido de mucho, sobre todo porque la amplitud de nuestros intervalos era, desde buen inicio, diferente.
+
+## Solución
+
+```{r}
+cut(notas, breaks = 4, right = FALSE, include.lowest = TRUE)
+```
+
+## Solución
+
+R ha repartido los datos en 4 intervalos de longitud 2.5, y ha desplazado ligeramente a la izquierda el extremo izquierdo del primer intervalo. 
+
+## Solución
+
+Trabajaremos ahora con `notas4` y calcularemos sus frecuencias:
+
+```{r}
+table(notas4) #Fr. Abs
+prop.table(table(notas4)) #Fr. Rel
+```
+
+## Solución
+
+```{r}
+cumsum(table(notas4)) #Fr. Abs. Cum
+cumsum(prop.table(table(notas4))) #Fr. Rel. Cum
+```
+
+## Solución
+
+Podríamos haber obtenido todo lo anterior haciendo uso de la función `hist`.
+
+```{r}
+notasHist = hist(notas, breaks = L, right = FALSE, include.lowest = TRUE, plot = FALSE)
+FAbs = notasHist$count
+FRel = prop.table(FAbs)
+FAbsCum = cumsum(FAbs)
+FRelCum = cumsum(FRel)
+```
+
+## Solución
+
+Ahora ya podemos crear un data frame con todas estas frecuencias:
+
+```{r}
+intervalos = c("[0,5)","[5,7)","[7,9)","[9,10]")
+calificacion = c("Suspenso", "Aprobado", "Notable", "Excelente")
+marcas = notasHist$mids
+tabla.Fr = data.frame(intervalos,calificacion,marcas,FAbs,FAbsCum,FRel,FRelCum)
+tabla.Fr
+```
+
+## Solución
+
+O bien, podríamos haber utilizado las funciones que os hemos proporcionado:
+
+```{r}
+TablaFrecs.L(notas, L, TRUE)
+```
+
 
 # Estadísticos para datos agrupados
 
@@ -478,7 +857,83 @@ histAbsCum = function(x,L) {
   }
 ```
 
+## Dibujando histogramas con R
 
+Con la función anterior, lo que hacemos es, en primer lugar, producir el histograma básico de los datos, sin dibujarlo para a continuación modificar la componente `density` para que contenga las sumas acumuladas de esta componente del histograma original.
+
+Seguidamente, dibujamos el nuevo histograma resultante, aplicando la función `plot`. Es aquí donde debemos especificar los parámetros y no en el histograma original.
+
+Finalmente, añadimos el eje de abcisas y las frecuencias acumuladas en color lila.
+
+## Histogramas de frecuencias relativas
+
+En estos histogramas, es común superponer una curva que estime la densidad de la distribución de la variable cuantitativa definida por la característica que estamos midiendo.
+
+La <l class = "definition">densidad</l> de una variable es una curva cuya área comprendida entre el eje de las abcisas y la propia curva sobre un intervalo es igual a la fracción de individuos de la población que caen dentro de ese intervalo.
+
+Para hacernos una idea visual, imaginad que vais aumentando el tamaño de la muestra a la vez que agrupáis los datos en un conjunto cada vez mayor de clases. Si el rango de los datos se mantiene constante, la amplitud de las clases del histograma irá menguando. Además, cuando $n$, el tamaño de la muestra, tiende a infinito, los intervalos tienden a ser puntos y, a su vez, las barras tienden a ser líneas verticales. Pues bien, los extremos superiores de estas líneas serán los que dibujen la densidad de la variable.
+
+## Campana de Gauss
+
+Es la densidad más famosa: la [Campana de Gauss](https://es.wikipedia.org/wiki/Función_gaussiana) Ésta se corresponde con una variable que siga una distribución nomal.
+
+La forma de la campana depende de dos parámetros: el valor medio, $\mu$, y su desviación típica, $\sigma$.
+
+<div class = "aligncenter">![Campana de Gauss en función de diferentes valores de $\mu$ y $\sigma$](Imgs/gauss.png)
+</div>
+
+## Dibujando la curva de densidad
+
+Existen muchos métodos con los cuales estimar la densidad de distribución a partir de una muestra.
+
+Una de ellas es mediante la función `density` de R. Al aplicarla a un conjunto de datos, produce una `list` que incluye los vectores `x` e `y` que continen la primera y segunda coordenadas, respectivamente, de 512 puntos de la forma $(x,y)$ sobre la curva de densidad estimada.
+
+Aplicando `plot` o `lines` a este resultado según pertoque, obtenemos la representación gráfica de esta curva.
+
+## Histogramas de frecuencias relativas
+
+Aquí os dejamos una función útil para calcular histogramas de frecuencias relativas más completos:
+
+```{r}
+histRel = function(x,L) {
+  h = hist(x, breaks=L, right=FALSE , plot=FALSE)
+  t = round(1.1*max(max(density(x)[[2]]),h$density),2) 
+  plot(h, freq = FALSE, col = "lightgray", 
+       main = "Histograma de frec. relativas y curva de densidad estimada", 
+       xaxt="n", ylim=c(0,t), xlab="Intervalos", ylab="Densidades")
+  axis(1, at = L) 
+  text(h$mids, h$density/2, labels = round(h$counts/length(x),2), col = "blue")
+  lines(density(x), col = "purple", lwd = 2) 
+  }
+```
+
+## Histogramas de frecuencias relativas acumuladas
+
+En este último tipo de histograma, se suele superponer una curva que estime la <l class = "definition">función de distribución</l> de la variable definida por la característica que estamos midiendo.
+
+Esta función de distribución, en cada punto nos da la fracción de individuos de la población que caen a la izquierda de este punto: su frecuencia relativa acumulada.
+
+En general, la función de distribución en un valor determinado se obtiene hallando el área de la función de densidad que hay a la izquierda del valor.
+
+## Histogramas de frecuencias relativas acumuladas
+
+Aquí os dejamos una función útil para calcular histogramas de frecuencias relativas acumuladas más completos:
+
+```{r}
+histRelCum = function(x,L){
+  h = hist(x, breaks = L, right = FALSE , plot = FALSE)
+  h$density = cumsum(h$counts)/length(x)
+  plot(h, freq = FALSE, 
+      main = "Histograma de frec. rel. acumuladas\n y curva de distribución estimada", 
+      xaxt = "n", col = "lightgray", xlab = "Intervalos", 
+      ylab = "Frec. relativas acumuladas") 
+  axis(1, at = L)
+  text(h$mids, h$density/2, labels = round(h$density ,2), col = "blue")
+  dens.x = density(x)
+  dens.x$y = cumsum(dens.x$y)*(dens.x$x[2]-dens.x$x[1]) 
+  lines(dens.x,col = "red",lwd = 2)
+}
+```
 
 
 #Master ejemplo
@@ -487,4 +942,9 @@ Histograma con intervalos de misma amplitud vs diferente amplitud
 Dibujar histogramas de los master ejemplos anteriores
 Información de hist
 Aplicar función histAbs
+Aplicar función histAbsCum
+Calcular densidad
+Aplicar histRel
+Adaptar ejemplo 11.17
+
 
