@@ -318,12 +318,3 @@ Conj(z2)
 ![](Imgs/complex.png)
 
 </div>
-
-
-
-
-			
-
-
-
-
