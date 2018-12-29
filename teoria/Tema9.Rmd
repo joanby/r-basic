@@ -723,13 +723,110 @@ $$Q_p = L_p +A_p\cdot\frac{p\cdot n-N_{p-1}}{n_p}$$
 
 donde el intervalo $[L_p,L_{p+1})$ denota el primer intervalo cuya frecuencia relativa acumulada es mayor o igual a $p$
 
-#Masterejemplo
+#Ejemplo 2 - Continuación
 
-Adaptar ejemplo 11.14
-Calcular intervalo modal
-Calcular intervalo crítico
-Aproximar mediana de datos reales
-Aproximar algunos cuantiles $Q_p$
+## Enunciado{.example}
+
+Vamos a seguir trabajando con nuestra variable `cw` y, esta vez, lo que haremos será calcular los estadísticos de la variable con los datos agrupados y, para acabar, estimaremos la mediana y algunos cuantiles.
+
+## Solución
+
+Recordemos todo lo que habíamos obtenido sobre nuestra variable `cw`:
+
+```{r, echo = FALSE}
+L = c(L1,L2,L3,L4,L5,L6,L7,L8,L9,L10,L11)
+L
+intervals = as.character(c("[20.95,22.25)","[22.25,23.55)","[23.55,24.85)","[24.85,26.15)","[26.15,27.45)","[27.45,28.75)","[28.75,30.05)","[30.05,31.35)","[31.35,32.65)","[32.65,33.95)"))
+TF.L = function(x,L,V){
+  x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
+  mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = round(Fr.abs/length(x),4)
+  Fr.cum.abs = cumsum(Fr.abs)
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+  }
+tabla = TF.L(cw,L,FALSE)
+tabla
+```
+
+## Solución
+
+Ahora ya podemos calcular los estadísticos:
+
+```{r}
+TOT = tabla$Fr.cum.abs[10]
+TOT
+anchura.media = round(sum(tabla$Fr.abs*tabla$mc)/TOT,3)
+anchura.media #Media
+anchura.var = round(sum(tabla$Fr.abs*tabla$mc^2)/TOT-anchura.media^2,3)
+anchura.var #Varianza
+```
+
+## Solución
+
+```{r}
+anchura.dt = round(sqrt(anchura.var),3)
+anchura.dt #Desviación típica
+I.modal = tabla$intervals[which(tabla$Fr.abs == max(tabla$Fr.abs))]
+I.modal #Intervalo modal
+```
+
+
+Por lo tanto, con los datos de los que disponemos, podemos afirmar que la anchura media de los cangrejos de la muestra es de `r anchura.media`mm, con una desviación típica de unos `r anchura.var`mm, y que el grupo de anchuras más numeroso era el de `r I.modal`.
+
+## Solución
+
+Pasemos ahora a calcular el intervalo crítico.
+
+```{r}
+I.critic = tabla$intervals[which(tabla$Fr.cum.rel >= 0.5)]
+I.critic[1] #Intervalo critic
+```
+
+## Solución
+
+Ahora, ya podemos calcular una estimación de la media de los datos "reales".
+
+```{r}
+n = TOT
+Lc = L[4]
+Lc.pos = L[5]
+Ac = L[5]-L[4]
+Nc.ant = tabla$Fr.cum.abs[3]
+nc = tabla$Fr.abs[4]
+M = Lc+Ac*((n/2)-Nc.ant)/nc
+M #Aproximación de la media de los datos "reales"
+mean(cw) #Media de los datos "reales"
+```
+
+## Solución
+
+También podemos hacer aproximaciones de los cuantiles. Hemos creado una función `aprox.quantile.p` para no tener que copiar la operación cada vez que queramos calcular un cuantil aproximado.
+
+```{r}
+aprox.quantile.p = function(Lcrit,Acrit,n,p,Ncrit.ant,ncrit){
+  round(Lcrit+Acrit*(p*n-Ncrit.ant)/ncrit,3)
+}
+aprox.quantile.p(Lc,Ac,n,0.25,Nc.ant,nc) #Primer cuartil
+aprox.quantile.p(Lc,Ac,n,0.75,Nc.ant,nc) #Tercer cuartil
+```
+
+## Solución
+
+Y ahora, calculemos los cuartiles de los datos "reales"
+
+```{r}
+quantile(cw,0.25)
+quantile(cw,0.75)
+```
+
+## Ejercicio {.exercise}
+
+**Ejercicio**
+
+Repetir este ejemplo para la muestra de notas del Ejemplo 3.
 
 # Histogramas 
 
@@ -754,7 +851,17 @@ Los histogramas también son utilizados para representar frecuencias acumuladas 
 El eje de las abcisas representa los datos. Aquí marcamos los extremos de las clases y se dibuja una barra sobre cada una de ellas. Esta barra tiene significados diferentes en función del tipo de histograma, pero en general representa la frecuencia de su clase
 
 - Histograma de frecuencias absolutas: la altura de cada barra es la necesaria para que el área de la barra sea igual a la frecuencia absoluta de la clase. Las amplitudes de las clases pueden ser todas iguales o no. En el primer caso, las alturas son proporcionales a las frecuencias. En el segundo caso, no existe tal proporcionalidad. De todas formas, sea cual sea el caso, conviene indicar de alguna forma la frecuencia que representa cada barra.
-    
+
+## Interpretación de los histogramas
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+hist(cw, breaks = L, right = FALSE, main = "Histograma con intervalos \n de misma anchura",xlab = "")
+Lnotas = c(0,5,7,9,10)
+hist(notas, breaks = Lnotas, right = FALSE, include.lowest = TRUE, main = "Histograma con intervalos \n de diferente anchura", xlab = "")
+par(mfrow = c(1,1))
+```
+
     
 ## Interpretación de los histogramas
 
@@ -931,20 +1038,116 @@ histRelCum = function(x,L){
   text(h$mids, h$density/2, labels = round(h$density ,2), col = "blue")
   dens.x = density(x)
   dens.x$y = cumsum(dens.x$y)*(dens.x$x[2]-dens.x$x[1]) 
-  lines(dens.x,col = "red",lwd = 2)
+  lines(dens.x,col = "purple",lwd = 2)
 }
 ```
 
 
-#Master ejemplo
+# Ejemplo 2 - Continuación
 
-Histograma con intervalos de misma amplitud vs diferente amplitud
-Dibujar histogramas de los master ejemplos anteriores
-Información de hist
-Aplicar función histAbs
-Aplicar función histAbsCum
-Calcular densidad
-Aplicar histRel
-Adaptar ejemplo 11.17
+## Enunciado{.example}
+
+Vamos a seguir trabajando con nuestra variable `cw` y, esta vez, lo que haremos será calcular histogramas de todas las formas explicadas anteriormente.
+
+
+## Solución
+
+Dibujamos el histograma con `hist` y luego observamos su información interna.
+
+```{r}
+hist(cw, breaks = L, right = FALSE, main = "Histograma de las anchuras de los cangrejos")
+```
+
+## Solución
+
+```{r}
+hist(cw, breaks = L, right = FALSE, main = "Histograma de las anchuras de los cangrejos",
+     plot = FALSE)
+```
+
+## Solución
+
+Dibujamos el histograma con `histAbs`.
+
+```{r}
+histAbs(cw,L)
+```
+
+## Solución
+
+Dibujamos el histograma con `histAbsCum`.
+
+```{r}
+histAbsCum(cw,L)
+```
+
+## Solución
+
+Hacemos uso de las funciones `rug` y `jitter`
+
+```{r}
+histAbs(cw,L)
+rug(cw)
+```
+
+## Solución
+
+```{r}
+histAbs(cw,L)
+rug(jitter(cw))
+```
+
+
+## Solución
+
+A continuación, calculamos la densidad de `cw` y la representamos con `histRel`
+
+```{r}
+str(density(cw))
+```
+
+## Solución
+
+```{r}
+histRel(cw,L)
+```
+
+## Solución
+
+La curva de densidad que hemos obtenemos en este gráfico tiene una forma de campana que nos recuerda la campana de Gauss. Para explorar este parecido, vamos a añadir al histograma la gráfica de la función densidad de una distribución normal de media y desviación típica las del conjunto de datos original
+
+Así, aplicando las instrucciones siguientes, acabamos obteniendo
+
+```{r, results="hide", eval = FALSE}
+histRel(cw,L)
+curve(dnorm(x, mean(cw), sd(cw)), col="cyan1", lty=4, lwd=2,
+add=TRUE)
+legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan1"), legend=c("densidad estimada","densidad normal"))
+```
+
+## Solución
+
+```{r, echo=FALSE}
+histRel(cw,L)
+curve(dnorm(x, mean(cw), sd(cw)), col="cyan1", lty=4, lwd=2,
+add=TRUE)
+legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan1"), legend=c("densidad estimada","densidad normal"))
+```
+
+## Solución
+
+Dibujamos el histograma con `histRelCum`.
+
+```{r}
+histRelCum(cw,L)
+```
+
+
+
+
+
+
+
+
 
 
