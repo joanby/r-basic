@@ -505,6 +505,51 @@ irisdf</code></pre>
 ## 149  [4.54,5.72)  [5.08,5.54) [5,6)    4 XGran
 ## 150  [4.54,5.72)  [5.08,5.54) [5,6)    4 XGran</code></pre>
 </div>
+<div id="funciones-para-las-tablas-de-frecuencias" class="section level1">
+<h1>Funciones para las tablas de frecuencias</h1>
+<pre class="r"><code>TablaFrecs = function(x,k,A,p){ 
+  L = min(x)-p/2+A*(0:k)
+  x_cut = cut(x, breaks = L, right=FALSE)
+  intervals = levels(x_cut)
+  mc = (L[1]+L[2])/2+A*(0:(k-1))
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = round(Fr.abs/length(x),4) 
+  Fr.cum.abs = cumsum(Fr.abs) 
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+}
+
+TablaFrecs.L = function(x,L,V){
+  x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
+  intervals = levels(x_cut)
+  mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = round(Fr.abs/length(x),4)
+  Fr.cum.abs = cumsum(Fr.abs)
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+  }</code></pre>
+<p>La tabla de frecuencias de la longitud de los pétalos de <em>Iris</em> es:</p>
+<pre class="r"><code>TablaFrecs(petals, k = 6, A = 1, p = 0.1)</code></pre>
+<pre><code>##     intervals   mc Fr.abs Fr.cum.abs Fr.rel Fr.cum.rel
+## 1 [0.95,1.95) 1.45     50         50 0.3333     0.3333
+## 2 [1.95,2.95) 2.45      0         50 0.0000     0.3333
+## 3 [2.95,3.95) 3.45     11         61 0.0733     0.4066
+## 4 [3.95,4.95) 4.45     43        104 0.2867     0.6933
+## 5 [4.95,5.95) 5.45     35        139 0.2333     0.9266
+## 6 [5.95,6.95) 6.45     11        150 0.0733     0.9999</code></pre>
+<pre class="r"><code>TablaFrecs.L(petals, L = c(1,3,4,5,5.5,6,6.5,7), V = FALSE)</code></pre>
+<pre><code>##   intervals   mc Fr.abs Fr.cum.abs Fr.rel Fr.cum.rel
+## 1     [1,3) 2.00     50         50 0.3333     0.3333
+## 2     [3,4) 3.50     11         61 0.0733     0.4066
+## 3     [4,5) 4.50     43        104 0.2867     0.6933
+## 4   [5,5.5) 5.25     18        122 0.1200     0.8133
+## 5   [5.5,6) 5.75     17        139 0.1133     0.9266
+## 6   [6,6.5) 6.25      7        146 0.0467     0.9733
+## 7   [6.5,7) 6.75      4        150 0.0267     1.0000</code></pre>
+</div>
 
 
 
