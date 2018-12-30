@@ -215,7 +215,7 @@ con $\alpha = 10^a$ y $\beta = 10^b$
 
 Si al representar unos puntos $(x_i, y_i)_{i=1,\dots,n}$ en escala doble logarítmica observamos que siguen aproximadamente una recta, esto querrá decir que los valores $\log(y)$ siguen una ley aproximadamente lineal en los valores $\log(x)$, y, por lo tanto, que $y$ sigue una <l class = "definition">ley aproximadamente potencial</l> en $x$. 
 
-En efecto, si $\log(y) = ax + b$, entonces, por propiedades de logaritmos
+En efecto, si $\log(y) = a\log(x) + b$, entonces, por propiedades de logaritmos
 
 $$y = 10^{\log(y)} = 10^{a\log(x)+b}= (10^{\log(x)})^a\cdot 10^b = x^{a}\beta$$
 con $\beta = 10^b$
