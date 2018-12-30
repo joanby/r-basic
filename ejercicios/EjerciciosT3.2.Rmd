@@ -1,0 +1,64 @@
+---
+title: "Ejercicios sobre LaTeX, R y Markdown"
+author: "Juan Gabriel Gomila & María Santos"
+date: "30/12/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones
+
+En primer lugar, debéis reproducir este documento tal cual está. Necesitaréis instalar [MiKTeX](https://miktex.org/download) y [Texmaker](http://www.xm1math.net/texmaker/).
+
+A continuación de cada pregunta, tenéis que redactar vuestras respuestas de manera correcta y argumentada, indicando qué hacéis, por qué, etc. Si se os pide utilizar instrucciones de `R`, tendréis que mostrarlas todas en chunks.
+
+El objetivo de esta tarea es que os familiaricéis con los documentos Markdown, las fórmulas en \LaTeX\   y los chunks de `R`. Y, de lo más importante, que os acostumbréis a explicar lo que hacéis en cada momento.
+
+# Preguntas
+
+## Pregunta 1
+
+Realizad los siguientes productos de matrices siguiente en `R`:
+
+$$A\cdot B$$
+$$B\cdot A$$
+$$(A\cdot B)^t$$
+$$B^t\cdot A$$
+$$(A\cdot B)^{-1}$$
+$$A^{-1}\cdot B^t$$
+
+donde
+$$A = \begin{pmatrix}1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2\\ 3 & 0 & 4 & 0\end{pmatrix}\qquad B= \begin{pmatrix}4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4\\ 0 & 1 & 0 & 2\end{pmatrix}$$
+
+Finalmente, escribe haciendo uso de \LaTeX\  el resultado de los dos primeros productos de forma adecuada.
+
+```{r, echo = FALSE, eval = FALSE}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
+A%*%B
+B%*%A
+t(A%*%B)
+t(B)%*%A
+solve(A%*%B)
+solve(A)%*%t(B)
+```
+
+## Pregunta 2
+
+Considerad en un vector los números de vuestro DNI y llamadlo `dni`. Por ejemplo, si vuestro DNI es 54201567K, vuestro vector será $$dni = (5,4,2,0,1,5,6,7)$$.
+
+Definid el vector en `R`. Calculad con `R` el vector `dni` al cuadrado, la raíz cuadrada del vector `dni` y, por último, la suma de todas las cifras del vector `dni`.
+
+Finalmente, escribid todos estos vectores también a \LaTeX
+
+## Pregunta 3
+
+Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo `name`. Por ejemplo, en mi caso sería $$nombre = (M,A,R,I,A,S,A,N,T,O,S)$$.
+
+Definid dicho vector en `R`. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido.
+Ordenadlo alfabéticamente. Cread una matriz con este vector.
+
+Redactad todos vuestros resultados y utilizad \LaTeX\   cuando pertoque
