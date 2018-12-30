@@ -778,7 +778,7 @@ Por lo tanto, con los datos de los que disponemos, podemos afirmar que la anchur
 
 ## Solución
 
-Pasemos ahora a calcular el intervalo crítico.
+Pasemos ahora a calcular el intervalo crítico para la mediana.
 
 ```{r}
 I.critic = tabla$intervals[which(tabla$Fr.cum.rel >= 0.5)]
@@ -787,7 +787,7 @@ I.critic[1] #Intervalo critic
 
 ## Solución
 
-Ahora, ya podemos calcular una estimación de la media de los datos "reales".
+Ahora, ya podemos calcular una estimación de la mediana de los datos "reales".
 
 ```{r}
 n = TOT
@@ -797,8 +797,8 @@ Ac = L[5]-L[4]
 Nc.ant = tabla$Fr.cum.abs[3]
 nc = tabla$Fr.abs[4]
 M = Lc+Ac*((n/2)-Nc.ant)/nc
-M #Aproximación de la media de los datos "reales"
-mean(cw) #Media de los datos "reales"
+M #Aproximación de la mediana de los datos "reales"
+median(cw) #Mediana de los datos "reales"
 ```
 
 ## Solución
@@ -957,7 +957,7 @@ histAbsCum = function(x,L) {
   h = hist(x, breaks = L, right = FALSE , plot = FALSE) 
   h$density = cumsum(h$density)
   plot(h, freq = FALSE, xaxt = "n", yaxt = "n", col = "lightgray", 
-       main = "Histograma de frecuencias absolutas acumuladas", xlab = "Intervalos", 
+       main = "Histograma de frecuencias\nabsolutas acumuladas", xlab = "Intervalos", 
        ylab = "Frec. absolutas acumuladas")
   axis(1, at=L)
   text(h$mids, h$density/2, labels = cumsum(h$counts), col = "purple") 
@@ -971,6 +971,24 @@ Con la función anterior, lo que hacemos es, en primer lugar, producir el histog
 Seguidamente, dibujamos el nuevo histograma resultante, aplicando la función `plot`. Es aquí donde debemos especificar los parámetros y no en el histograma original.
 
 Finalmente, añadimos el eje de abcisas y las frecuencias acumuladas en color lila.
+
+
+
+## Dibujando histogramas con R
+
+```{r, echo=FALSE}
+set.seed(1)
+edades = c(sample(0:99,80,replace = TRUE),rep(35,10),rep(22,5),rep(17,3),50,50)
+extremos = c(0,20,40,60,80,100)
+par(mfrow=c(1, 2))
+histAbsCum(edades, extremos)
+rug(edades)
+histAbsCum(edades, extremos)
+rug(jitter(edades))
+par(mfrow=c(1,1))
+set.seed(NULL)
+```
+
 
 ## Histogramas de frecuencias relativas
 
@@ -1006,13 +1024,29 @@ histRel = function(x,L) {
   h = hist(x, breaks=L, right=FALSE , plot=FALSE)
   t = round(1.1*max(max(density(x)[[2]]),h$density),2) 
   plot(h, freq = FALSE, col = "lightgray", 
-       main = "Histograma de frec. relativas y curva de densidad estimada", 
+       main = "Histograma de frec. relativas\ny curva de densidad estimada", 
        xaxt="n", ylim=c(0,t), xlab="Intervalos", ylab="Densidades")
   axis(1, at = L) 
   text(h$mids, h$density/2, labels = round(h$counts/length(x),2), col = "blue")
   lines(density(x), col = "purple", lwd = 2) 
   }
 ```
+
+## Histogramas de frecuencias relativas
+
+```{r, echo=FALSE}
+set.seed(1)
+edades = c(sample(0:99,80,replace = TRUE),rep(35,10),rep(22,5),rep(17,3),50,50)
+extremos = c(0,20,40,60,80,100)
+par(mfrow=c(1, 2))
+histRel(edades, extremos)
+rug(edades)
+histRel(edades, extremos)
+rug(jitter(edades))
+par(mfrow=c(1,1))
+set.seed(NULL)
+```
+
 
 ## Histogramas de frecuencias relativas acumuladas
 
@@ -1021,6 +1055,7 @@ En este último tipo de histograma, se suele superponer una curva que estime la 
 Esta función de distribución, en cada punto nos da la fracción de individuos de la población que caen a la izquierda de este punto: su frecuencia relativa acumulada.
 
 En general, la función de distribución en un valor determinado se obtiene hallando el área de la función de densidad que hay a la izquierda del valor.
+
 
 ## Histogramas de frecuencias relativas acumuladas
 
@@ -1043,6 +1078,23 @@ histRelCum = function(x,L){
 ```
 
 
+
+## Histogramas de frecuencias relativas acumuladas
+
+```{r, echo=FALSE}
+set.seed(1)
+edades = c(sample(0:99,80,replace = TRUE),rep(35,10),rep(22,5),rep(17,3),50,50)
+extremos = c(0,20,40,60,80,100)
+par(mfrow=c(1, 2))
+histRelCum(edades, extremos)
+rug(edades)
+histRelCum(edades, extremos)
+rug(jitter(edades))
+par(mfrow=c(1,1))
+set.seed(NULL)
+```
+
+
 # Ejemplo 2 - Continuación
 
 ## Enunciado{.example}
@@ -1061,8 +1113,7 @@ hist(cw, breaks = L, right = FALSE, main = "Histograma de las anchuras de los ca
 ## Solución
 
 ```{r}
-hist(cw, breaks = L, right = FALSE, main = "Histograma de las anchuras de los cangrejos",
-     plot = FALSE)
+hist(cw, breaks = L, right = FALSE, plot = FALSE)
 ```
 
 ## Solución
@@ -1120,18 +1171,19 @@ Así, aplicando las instrucciones siguientes, acabamos obteniendo
 
 ```{r, results="hide", eval = FALSE}
 histRel(cw,L)
-curve(dnorm(x, mean(cw), sd(cw)), col="cyan1", lty=4, lwd=2,
+curve(dnorm(x, mean(cw), sd(cw)), col="cyan4", lty=4, lwd=2,
 add=TRUE)
-legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan1"), legend=c("densidad estimada","densidad normal"))
+legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan4"),
+       legend=c("densidad estimada","densidad normal"))
 ```
 
 ## Solución
 
 ```{r, echo=FALSE}
 histRel(cw,L)
-curve(dnorm(x, mean(cw), sd(cw)), col="cyan1", lty=4, lwd=2,
+curve(dnorm(x, mean(cw), sd(cw)), col="cyan4", lty=4, lwd=2,
 add=TRUE)
-legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan1"), legend=c("densidad estimada","densidad normal"))
+legend("topright", lwd=c(2,2), lty=c(1,4), col=c("purple","cyan4"), legend=c("densidad estimada","densidad normal"))
 ```
 
 ## Solución

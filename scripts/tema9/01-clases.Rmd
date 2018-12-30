@@ -1,0 +1,22 @@
+---
+title: "Clases"
+author: "Curso de Estadística Descriptiva"
+date: "29/12/2018"
+output: html_document
+---
+
+# La función `cut`
+
+```{r}
+irisdf = iris
+petals = iris$Petal.Length
+irisdf$div1 = cut(petals, breaks = 5, right = FALSE)
+irisdf$div2 = cut(petals, breaks = ceiling(sqrt(length(petals))), right = FALSE)
+irisdf$div3 = cut(petals, breaks = c(1,2,3,4,5,6,7), right = FALSE)
+irisdf$div4 = cut(petals, breaks = 5, right = FALSE, labels = FALSE)
+irisdf$div5 = cut(petals, breaks = 5, right = FALSE, 
+    labels = c("Peq", "Norm", "Gran", "XGran", "Gigan"))
+irisdf
+```
+
+
