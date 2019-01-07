@@ -114,6 +114,140 @@
           </hgroup>
   </slide>
 
+<slide class=""><hgroup><h2>Distribución de probabilidad</h2></hgroup><article  id="distribucion-de-probabilidad">
+
+<p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Variable_aleatoria' title=''>Variable aleatoria</a>.</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.</p>
+
+<p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones discretas</h2></hgroup><article  id="distribuciones-discretas">
+
+<ul>
+<li>Binomial</li>
+<li>Geométrica</li>
+<li>Hipergeométrica</li>
+<li>Poisson</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribución Binomial</h2></hgroup><article  id="distribucion-binomial">
+
+</article></slide><slide class=""><hgroup><h2>Distribución Geométrica</h2></hgroup><article  id="distribucion-geometrica">
+
+</article></slide><slide class=""><hgroup><h2>Distribución Hipergeométrica</h2></hgroup><article  id="distribucion-hipergeometrica">
+
+</article></slide><slide class=""><hgroup><h2>Distribución de Poisson</h2></hgroup><article  id="distribucion-de-poisson">
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones discretas en R</h2></hgroup><article  id="distribuciones-discretas-en-r">
+
+<p>R conoce las distribuciones de probabilidad más importantes.</p>
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Distribución</th>
+<th align="left">Instrucción</th>
+<th align="left">Parámetros</th>
+</tr>
+<tr class="odd">
+<td align="left">Binomial</td>
+<td align="left"><code>binom</code></td>
+<td align="left">tamaño de la muestra \(n\) y probabilidad de éxito \(p\)</td>
+</tr>
+<tr class="even">
+<td align="left">Geométrica</td>
+<td align="left"><code>geom</code></td>
+<td align="left">probabilidad de éxito \(p\)</td>
+</tr>
+<tr class="odd">
+<td align="left">Hipergeométrica</td>
+<td align="left"><code>hyper</code></td>
+<td align="left">\(N,M,n\)</td>
+</tr>
+<tr class="even">
+<td align="left">Poisson</td>
+<td align="left"><code>pois</code></td>
+<td align="left">esperanza \(\lambda\)</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones continuas</h2></hgroup><article  id="distribuciones-continuas">
+
+<ul>
+<li>Uniforme</li>
+<li>Exponencial</li>
+<li>Normal</li>
+<li>Khi cuadrado</li>
+<li>t de Student</li>
+<li>F de Fisher</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribución Uniforme</h2></hgroup><article  id="distribucion-uniforme">
+
+</article></slide><slide class=""><hgroup><h2>Distribución Exponencial</h2></hgroup><article  id="distribucion-exponencial">
+
+</article></slide><slide class=""><hgroup><h2>Distribución Normal</h2></hgroup><article  id="distribucion-normal">
+
+</article></slide><slide class=""><hgroup><h2>Distribución Khi cuadrado</h2></hgroup><article  id="distribucion-khi-cuadrado">
+
+</article></slide><slide class=""><hgroup><h2>Distribución t de Student</h2></hgroup><article  id="distribucion-t-de-student">
+
+</article></slide><slide class=""><hgroup><h2>Distribución F de Fisher</h2></hgroup><article  id="distribucion-f-de-fisher">
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones continuas en R</h2></hgroup><article  id="distribuciones-continuas-en-r">
+
+<table class = 'rmdtable'>
+<tr class="header">
+<th align="left">Distribución</th>
+<th align="left">Instrucción</th>
+<th align="left">Parámetros</th>
+</tr>
+<tr class="odd">
+<td align="left">Uniforme</td>
+<td align="left"><code>unif</code></td>
+<td align="left">mínimo y máximo</td>
+</tr>
+<tr class="even">
+<td align="left">Exponencial</td>
+<td align="left"><code>exp</code></td>
+<td align="left">\(\lambda\)</td>
+</tr>
+<tr class="odd">
+<td align="left">Normal</td>
+<td align="left"><code>norm</code></td>
+<td align="left">media \(\mu\), desviación típica \(\sigma\)</td>
+</tr>
+<tr class="even">
+<td align="left">Khi cuadrado</td>
+<td align="left"><code>chisq</code></td>
+<td align="left">grados de libertad</td>
+</tr>
+<tr class="odd">
+<td align="left">t de Student</td>
+<td align="left"><code>t</code></td>
+<td align="left">grados de libertad</td>
+</tr>
+<tr class="even">
+<td align="left">F de Fisher</td>
+<td align="left"><code>f</code></td>
+<td align="left">los dos grados de libertad</td>
+</tr>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones de probabilidad en R</h2></hgroup><article  id="distribuciones-de-probabilidad-en-r">
+
+<p>Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:</p>
+
+<ul>
+<li>Función densidad: añadiendo prefijo <code>d</code></li>
+<li>Función de distribución de probabilidad: añadiendo prefijo <code>p</code></li>
+<li>Cuantiles: añadiendo prefijo <code>q</code></li>
+<li>Listas de números aleatorios generados con esta distribución: añadiendo prefijo <code>r</code></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribución Normal en R</h2></hgroup><article  id="distribucion-normal-en-r">
+
+<p>Si a la hora de llamar a alguna de las 4 funciones siguientes: <code>dnorm</code>, <code>pnorm</code>, <code>qnorm</code> o <code>rnorm</code> no especificásemos los parámetros de la media ni la desviación típica, R entiende que se trata de la normal estándar: la \(\mathcal{N}(0,1)\).</p>
+
+<p>Es decir, R interpreta \(\mu = 0\) y \(\sigma = 1\)</p></article></slide>
 
 
   <slide class="backdrop"></slide>

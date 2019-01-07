@@ -14,3 +14,81 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
+## Distribución de probabilidad
+
+<l class = "definition">[Variable aleatoria](https://es.wikipedia.org/wiki/Variable_aleatoria).</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.
+
+<l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
+
+## Distribuciones discretas
+
+- Binomial
+- Geométrica
+- Hipergeométrica
+- Poisson
+
+## Distribución Binomial
+
+## Distribución Geométrica
+
+## Distribución Hipergeométrica
+
+## Distribución de Poisson
+
+## Distribuciones discretas en R
+
+R conoce las distribuciones de probabilidad más importantes.
+
+Distribución |  Instrucción  |  Parámetros                                
+--------------------|--------------------|--------------------
+Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
+Geométrica | `geom` | probabilidad de éxito $p$
+Hipergeométrica | `hyper` | $N,M,n$
+Poisson | `pois` | esperanza $\lambda$
+
+## Distribuciones continuas
+
+- Uniforme
+- Exponencial
+- Normal
+- Khi cuadrado
+- t de Student
+- F de Fisher
+
+## Distribución Uniforme
+
+## Distribución Exponencial
+
+## Distribución Normal
+
+## Distribución Khi cuadrado
+
+## Distribución t de Student
+
+## Distribución F de Fisher
+
+## Distribuciones continuas en R
+
+Distribución |  Instrucción  |  Parámetros                                
+--------------------|--------------------|--------------------
+Uniforme | `unif` | mínimo y máximo
+Exponencial | `exp` | $\lambda$
+Normal | `norm` | media $\mu$, desviación típica $\sigma$
+Khi cuadrado | `chisq` | grados de libertad
+t de Student | `t` | grados de libertad
+F de Fisher | `f` | los dos grados de libertad
+
+## Distribuciones de probabilidad en R
+
+Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:
+
+- Función densidad: añadiendo prefijo `d`
+- Función de distribución de probabilidad: añadiendo prefijo `p`
+- Cuantiles: añadiendo prefijo `q`
+- Listas de números aleatorios generados con esta distribución: añadiendo prefijo `r`
+
+## Distribución Normal en R
+
+Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
+
+Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
