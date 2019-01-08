@@ -20,12 +20,36 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
 
+## Esperanza de una variable aleatoria
+
+## Varianza de una variable aleatoria
+
 ## Distribuciones discretas
 
+<l class = "definition">Distribución discreta</l>
+
+- Bernoulli
 - Binomial
 - Geométrica
 - Hipergeométrica
 - Poisson
+
+## Distribución de Bernoulli
+
+Si $X$ es variable aleatoria que mide el "número de éxitos" y se realiza un único experimento con dos posibles resultados (éxito, que toma valor 1, o fracaso, que toma valor 0), diremos que $X$ se distribuye como una Bernoulli con parámetro $p$
+
+$$X\sim \text{Be}(p)$$
+
+donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
+
+- El **dominio** de $X$ será $X(\Omega) = \{0,1\}$
+- La **función de probabilidad** vendrá dada por $$f(x) = p^x(1-p)^x =  \left\{
+\begin{array}{rl}
+     p & \text{si } x=0 
+  \\ q & \text{si } x=1
+  \\ 0 & \text{en cualquier otro caso}
+\end{array}
+\right.$$
 
 ## Distribución Binomial
 
