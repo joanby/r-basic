@@ -7,7 +7,7 @@ output:
     css: JB_style.css
     logo: Imgs/LogoCurso.png
     fig_height: 4
-    fig_width: 8
+    fig_width: 10
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +22,11 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 ## Esperanza de una variable aleatoria
 
+<l class = "definition">Esperanza</l>
+
 ## Varianza de una variable aleatoria
+
+<l class = "definition">Varianza</l>
 
 ## Distribuciones discretas
 
@@ -43,15 +47,58 @@ $$X\sim \text{Be}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
 - El **dominio** de $X$ será $X(\Omega) = \{0,1\}$
-- La **función de probabilidad** vendrá dada por $$f(x) = p^x(1-p)^x =  \left\{
+- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^k =  \left\{
 \begin{array}{rl}
-     p & \text{si } x=0 
-  \\ q & \text{si } x=1
+     p & \text{si } k=0 
+  \\ q & \text{si } k=1
   \\ 0 & \text{en cualquier otro caso}
 \end{array}
 \right.$$
 
+## Distribución de Bernoulli
+
+- La **función de distribución** vendrá dada por $$F(k) = \left\{
+\begin{array}{rl}
+     0 & \text{si } k<0 
+  \\ q & \text{si } 0\le k<1
+  \\ 1 & \text{si } k\ge 1
+\end{array}
+\right.$$
+- **Esperanza** E$(X) = p$
+- **Varianza** Var$(X) = pq$
+
 ## Distribución Binomial
+
+Si $X$ es variable aleatoria que mide el "número de éxitos" y se realizan $n$ ensayos de Bernoulli independientes entre sí, diremos que $X$ se distribuye como una Binomial con parámetros $n$ y $p$
+
+$$X\sim \text{B}(n,p)$$
+
+donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
+
+- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
+- La **función de probabilidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
+
+## Distribución Binomial
+
+- La **función de distribución** vendrá dada por $$F(k) = \left\{
+\begin{array}{cl}
+     0 & \text{si } k<0 
+  \\ \sum_{i=0}^kf(k) & \text{si } 0\le k<n
+  \\ 1 & \text{si } k\ge n
+\end{array}
+\right.$$
+- **Esperanza** E$(X) = np$
+- **Varianza** Var$(X) = npq$
+
+## Distribución Binomial
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(dbinom(1:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una B(50,0.5)")
+plot(pbinom(1:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una B(50,0.5)")
+par(mfrow= c(1,1))
+
+```
 
 ## Distribución Geométrica
 
