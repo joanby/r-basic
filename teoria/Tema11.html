@@ -114,27 +114,53 @@
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Distribución de probabilidad</h2></hgroup><article  id="distribucion-de-probabilidad">
+<slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad">
+
+<p>Por ahora, os basta la siguiente definición de probabilidad:</p>
+
+<p><l class = "definition">Probabilidad. </l>medida de la certidumbre asociada a un suceso o evento futuro y suele expresarse como un número entre 0 y 1</p>
+
+</article></slide><slide class=""><hgroup><h2>Variable aleatoria</h2></hgroup><article  id="variable-aleatoria">
 
 <p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Variable_aleatoria' title=''>Variable aleatoria</a>.</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.</p>
 
-<p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
+<ul>
+<li><l class = "definition">Variable aleatoria discreta.</l> Solamente puede tomar un número finito de valores.</li>
+<li><l class = "definition">Variable aleatoria continua.</l> Puede tomar como valores un intervalo (finito o infinito) de números reales.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Funciones de probabilidad y densidad</h2></hgroup><article  id="funciones-de-probabilidad-y-densidad">
+
+<ul>
+<li><p><l class = "definition">Función de probabilidad.</l> Asocia a cada punto del dominio de \(X\) la probabilidad de que ésta lo asuma. Es útil cuando \(X\) es v.a. discreta. De ser \(X\) v.a. continua, la función de probabilidad es la función nula.</p></li>
+<li><p><l class = "definition">Función de densidad.</l> Cuando \(X\) es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Función de distribución</h2></hgroup><article  id="funcion-de-distribucion">
+
+<p><l class = "definition">Función de distribución.</l> Describe la probabilidad de que \(X\) tenga un valor menor o igual que \(x\).</p>
 
 </article></slide><slide class=""><hgroup><h2>Esperanza de una variable aleatoria</h2></hgroup><article  id="esperanza-de-una-variable-aleatoria">
 
-<p><l class = "definition">Esperanza</l></p>
+<p><l class = "definition">Esperanza de una variable aleatoria discreta.</l> E\([X]= \sum_{i=1}^nx_n\cdot p\{X=x_i\}\). Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.</p>
+
+<p><l class = "definition">Esperanza de una variable aleatoria continua.</l> E\([X]= \int_{-\infty}^{\infty}x\cdot f(x)\). Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.</p>
 
 </article></slide><slide class=""><hgroup><h2>Varianza de una variable aleatoria</h2></hgroup><article  id="varianza-de-una-variable-aleatoria">
 
-<p><l class = "definition">Varianza</l></p>
+<p><l class = "definition">Varianza.</l></p>
+
+</article></slide><slide class=""><hgroup><h2>Distribución de probabilidad</h2></hgroup><article  id="distribucion-de-probabilidad">
+
+<p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas</h2></hgroup><article  id="distribuciones-discretas">
 
 <p><l class = "definition">Distribución discreta</l></p>
 
 <ul>
-<li>Bernoulli</li>
-<li>Binomial</li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_de_Bernoulli' title=''>Bernoulli</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_binomial' title=''>Binomial</a></li>
 <li>Geométrica</li>
 <li>Hipergeométrica</li>
 <li>Poisson</li>

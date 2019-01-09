@@ -14,26 +14,55 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-## Distribución de probabilidad
+
+## Probabilidad
+
+Por ahora, os basta la siguiente definición de probabilidad:
+
+<l class = "definition">Probabilidad. </l>medida de la certidumbre asociada a un suceso o evento futuro y suele expresarse como un número entre 0 y 1
+
+
+## Variable aleatoria
 
 <l class = "definition">[Variable aleatoria](https://es.wikipedia.org/wiki/Variable_aleatoria).</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.
 
-<l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
+- <l class = "definition">Variable aleatoria discreta.</l> Solamente puede tomar un número finito de valores.
+- <l class = "definition">Variable aleatoria continua.</l> Puede tomar como valores un intervalo (finito o infinito) de números reales.
+
+
+## Funciones de probabilidad y densidad
+
+- <l class = "definition">Función de probabilidad.</l> Asocia a cada punto del dominio de $X$ la probabilidad de que ésta lo asuma. Es útil cuando $X$ es v.a. discreta. De ser $X$ v.a. continua, la función de probabilidad es la función nula.
+
+- <l class = "definition">Función de densidad.</l> Cuando $X$ es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.
+
+
+
+## Función de distribución
+
+<l class = "definition">Función de distribución.</l> Describe la probabilidad de que $X$ tenga un valor menor o igual que $x$.
 
 ## Esperanza de una variable aleatoria
 
-<l class = "definition">Esperanza</l>
+<l class = "definition">Esperanza de una variable aleatoria discreta.</l> E$[X]= \sum_{i=1}^nx_n\cdot p\{X=x_i\}$. Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.
+
+<l class = "definition">Esperanza de una variable aleatoria continua.</l> E$[X]= \int_{-\infty}^{\infty}x\cdot f(x)$. Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.
 
 ## Varianza de una variable aleatoria
 
-<l class = "definition">Varianza</l>
+<l class = "definition">Varianza.</l>
+
+## Distribución de probabilidad
+
+<l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
+
 
 ## Distribuciones discretas
 
 <l class = "definition">Distribución discreta</l>
 
-- Bernoulli
-- Binomial
+- [Bernoulli](https://es.wikipedia.org/wiki/Distribución_de_Bernoulli)
+- [Binomial](https://es.wikipedia.org/wiki/Distribución_binomial)
 - Geométrica
 - Hipergeométrica
 - Poisson
