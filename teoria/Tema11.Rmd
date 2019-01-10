@@ -14,12 +14,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
+# Conceptos básicos
 
 ## Probabilidad
 
 Por ahora, os basta la siguiente definición de probabilidad:
 
-<l class = "definition">Probabilidad. </l>medida de la certidumbre asociada a un suceso o evento futuro y suele expresarse como un número entre 0 y 1
+<l class = "definition">Probabilidad. </l>Medida de la certidumbre asociada a un suceso o evento que aún no ha sucedido y que se expresa como un número entre 0 y 1, ambos incluidos.
+
+<div class = "example">
+**Ejemplo**
+
+La probilidad de que salga cara cuando tiramos una moneda no trucada es $p = \frac{1}{2} = 0.5$
+</div>
 
 
 ## Variable aleatoria
@@ -29,6 +36,12 @@ Por ahora, os basta la siguiente definición de probabilidad:
 - <l class = "definition">Variable aleatoria discreta.</l> Solamente puede tomar un número finito de valores.
 - <l class = "definition">Variable aleatoria continua.</l> Puede tomar como valores un intervalo (finito o infinito) de números reales.
 
+<div class = "example">
+**Ejemplo**
+
+La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una moneda $n$ veces es una variable aleatoria discreta
+</div>
+
 
 ## Funciones de probabilidad y densidad
 
@@ -37,10 +50,12 @@ Por ahora, os basta la siguiente definición de probabilidad:
 - <l class = "definition">Función de densidad.</l> Cuando $X$ es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.
 
 
-
 ## Función de distribución
 
 <l class = "definition">Función de distribución.</l> Describe la probabilidad de que $X$ tenga un valor menor o igual que $x$.
+
+- Es creciente
+- Toma valores entre 0 y 1
 
 ## Esperanza de una variable aleatoria
 
@@ -63,9 +78,9 @@ Por ahora, os basta la siguiente definición de probabilidad:
 
 - [Bernoulli](https://es.wikipedia.org/wiki/Distribución_de_Bernoulli)
 - [Binomial](https://es.wikipedia.org/wiki/Distribución_binomial)
-- Geométrica
-- Hipergeométrica
-- Poisson
+- [Geométrica](https://es.wikipedia.org/wiki/Distribución_geométrica)
+- [Hipergeométrica](https://es.wikipedia.org/wiki/Distribución_hipergeométrica)
+- [Poisson](https://es.wikipedia.org/wiki/Distribución_de_Poisson)
 
 ## Distribución de Bernoulli
 
@@ -130,6 +145,22 @@ par(mfrow= c(1,1))
 ```
 
 ## Distribución Geométrica
+
+Si $X$ es variable aleatoria que mide el "número de repeticiones independientes del experimento hasta haber conseguido éxito", diremos que $X$ se distribuye como una Geométrica con parámetro $p$
+
+$$X\sim \text{Geom}(p)$$
+donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
+
+- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
+
+- La **función de probabilidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
+$$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
+
+## Distribución Geométrica
+ 
+- **Esperanza** E$(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
+- **Varianza** Var$(X) = \frac{1-p}{p^2}$
+- No tiene memoria. Es decir, $p\{X>m+n:\ X>m\} = p\{X>n\}$
 
 ## Distribución Hipergeométrica
 
