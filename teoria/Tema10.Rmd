@@ -1,5 +1,5 @@
 ---
-title: "Tema 10 - Introducción a la regresión lineal"
+title: Tema 10 - Introducción a la regresión lineal
 author: "Juan Gabriel Gomila & María Santos"
 output: 
   ioslides_presentation:
