@@ -1,0 +1,52 @@
+---
+title: "Pokemon"
+author: "Curso de Estadística Descriptiva"
+date: "9/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+library(reticulate)
+use_python("/anaconda3/bin/python")
+```
+
+# Pokemon (Py -> R)
+
+## Limpieza de datos en Python
+
+```{python}
+import pandas as pd
+pokemon = pd.read_csv("../../data/Pokemon.csv")
+print(pokemon.head())
+print(pokemon.shape)
+pokemon = pokemon[pokemon["Generation"]==1]
+pokemon = pokemon[["Type 1", "Type 2", "Speed"]]
+print(pokemon.shape)
+pokemon = pokemon.dropna()
+print(pokemon.shape)
+```
+
+## Transmisión de los datos de Python a R
+```{r, fig.width=7, fig.height=4}
+hist(py$pokemon[,"Speed"], breaks = 10, main = "Velocidad de los Pokemon")
+```
+
+# Pokemon (R -> Py)
+## Carga de datos en R
+```{r}
+pokemon2 <- read.csv("../../data/Pokemon.csv", header = TRUE)
+head(pokemon2)
+library(tidyverse)
+pokemon2 <- pokemon2 %>% 
+  filter(Generation == 1) %>%
+  select(Type.1, Type.2, Speed) %>%
+  na.omit()
+summary(pokemon2)
+```
+
+## Transmisión de datos de R a Python
+```{python}
+print(r.pokemon2.head())
+```
+

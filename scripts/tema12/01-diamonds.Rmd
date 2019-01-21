@@ -1,0 +1,88 @@
+---
+title: "Diamantes"
+author: "Curso de Estadística Descriptiva"
+date: "8/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+# Análisis de los diamantes
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib
+from ggplot import diamonds
+
+matplotlib.style.use("ggplot")
+
+print(diamonds.shape)
+print(diamonds.head(10))
+```
+
+## Histograma
+```{python}
+diamonds.hist(column="carat", figsize=(8,8), color="blue", 
+              bins = 50, range = (0,3.5))
+matplotlib.pyplot.show()
+```
+
+## Filtro de outliers
+```{python}
+print(diamonds[diamonds["carat"]>3.5])
+```
+
+## Boxplots
+```{python}
+matplotlib.pyplot.clf()
+diamonds.boxplot(column = "price", figsize = (8,8))
+matplotlib.pyplot.show()
+```
+
+```{python}
+diamonds.boxplot(column = "price", by = "clarity", figsize = (8,8))
+matplotlib.pyplot.show()
+```
+
+```{python}
+diamonds.boxplot(column = "carat", by = "clarity", figsize = (8,8))
+matplotlib.pyplot.show()
+```
+
+## Densidades
+```{python}
+matplotlib.pyplot.clf()
+diamonds["carat"].plot(kind="density", figsize=(8,8), xlim=(0,5))
+matplotlib.pyplot.show()
+```
+
+## Tabla de frecuencias y Barplot
+```{python}
+carat_table = pd.crosstab(index=diamonds["clarity"], columns="count")
+print(carat_table)
+matplotlib.pyplot.clf()
+carat_table.plot(kind="bar", figsize=(8,8))
+matplotlib.pyplot.show()
+```
+
+```{python}
+carat_table_2 = pd.crosstab(index=diamonds["clarity"], columns=diamonds["color"])
+print(carat_table_2)
+matplotlib.pyplot.clf()
+carat_table_2.plot(kind="bar", figsize=(8,8), stacked=True)
+matplotlib.pyplot.show()
+matplotlib.pyplot.clf()
+carat_table_2.plot(kind="bar", figsize=(8,8), stacked=False)
+matplotlib.pyplot.show()
+```
+
+## Scatterplot
+```{python}
+matplotlib.pyplot.clf()
+diamonds.plot(kind="scatter", x = "carat", y = "price", figsize=(10,10), ylim=(0,20000), xlim = (0,6), alpha = 0.1)
+matplotlib.pyplot.show()
+```
+
