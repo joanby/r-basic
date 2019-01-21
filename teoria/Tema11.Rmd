@@ -79,15 +79,25 @@ La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una 
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
 
-## Funciones de distribución en `R`
+# Las distribuciones más conocidas
+
+## Distribuciones en `R`
 
 Dada cualquier variable aleatoria, $va$, `R` nos da cuatro funciones para poder trabajar con ellas:
 
-* `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
-* `pva(q,...)`: Función de distribución $F(x)$ de la variable aleatoria para el cuantil $q$.
-* `qva(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
-* `rva(n,...)`: Generador de $n$ observaciones siguiendo la distribución de la variable aleatoria.
+- `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
+- `pva(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $x$ del dominio de definición.
+- `qva(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
+- `rva(n,...)`: Generador de $n$ observaciones siguiendo la distribución de la variable aleatoria.
 
+## Distribuciones en `Python`
+
+Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:
+
+- `pmf(k,...)` o `pdf(x,...)`: Función de probabilidad $f(k)$ o de densidad $f(x)$ de la variable aleatoria para los valores $k$ o $x$ del dominio.
+- `cdf(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $k$ del dominio.
+- `ppf(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
+- `rvs(size,...)`: Generador de $size$ observaciones siguiendo la distribución de la variable aleatoria.
 
 ## Distribuciones discretas
 
@@ -108,10 +118,10 @@ $$X\sim \text{Be}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
 - El **dominio** de $X$ será $X(\Omega) = \{0,1\}$
-- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^k =  \left\{
+- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
-     p & \text{si } k=0 
-  \\ q & \text{si } k=1
+     p & \text{si } k=1 
+  \\ 1-p & \text{si } k=0
   \\ 0 & \text{en cualquier otro caso}
 \end{array}
 \right.$$
@@ -127,6 +137,13 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 \right.$$
 - **Esperanza** $E(X) = p$
 - **Varianza** $Var(X) = pq$
+
+## Distribución de Bernoulli
+
+El código de la distribución de Beroulli:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dbenr(x,prob), pbenr(q,prob), qbenr(p,prob), rbenr(n, prob)` donde `prob` es la probabilidad de éxito.
+- En `Python` tenemos las funciones del paquete `scipy.stats.bernoulli`: `pmf(k,p), cdf(k,p), ppf(q,p), rvs(p, size)` donde `p` es la probabilidad de éxito.
 
 ## Distribución Binomial
 

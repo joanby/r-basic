@@ -187,15 +187,28 @@
 
 <p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
 
-</article></slide><slide class=""><hgroup><h2>Funciones de distribución en <code>R</code></h2></hgroup><article  id="funciones-de-distribucion-en-r">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Las distribuciones más conocidas</h2></hgroup><article  id="las-distribuciones-mas-conocidas">
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>R</code></h2></hgroup><article  id="distribuciones-en-r">
 
 <p>Dada cualquier variable aleatoria, \(va\), <code>R</code> nos da cuatro funciones para poder trabajar con ellas:</p>
 
 <ul>
 <li><code>dva(x,...)</code>: Función de densidad o de probabilidad \(f(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
-<li><code>pva(q,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el cuantil \(q\).</li>
+<li><code>pva(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
 <li><code>qva(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
 <li><code>rva(n,...)</code>: Generador de \(n\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>Python</code></h2></hgroup><article  id="distribuciones-en-python">
+
+<p>Dada cualquier variable aleatoria, en <code>Python</code> tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:</p>
+
+<ul>
+<li><code>pmf(k,...)</code> o <code>pdf(x,...)</code>: Función de probabilidad \(f(k)\) o de densidad \(f(x)\) de la variable aleatoria para los valores \(k\) o \(x\) del dominio.</li>
+<li><code>cdf(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(k\) del dominio.</li>
+<li><code>ppf(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
+<li><code>rvs(size,...)</code>: Generador de \(size\) observaciones siguiendo la distribución de la variable aleatoria.</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas</h2></hgroup><article  id="distribuciones-discretas">
@@ -220,10 +233,10 @@
 
 <ul>
 <li>El <strong>dominio</strong> de \(X\) será \(X(\Omega) = \{0,1\}\)</li>
-<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = p^k(1-p)^k =  \left\{
+<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
- p &amp; \text{si } k=0 
-  \\ q &amp; \text{si } k=1
+ p &amp; \text{si } k=1 
+  \\ 1-p &amp; \text{si } k=0
   \\ 0 &amp; \text{en cualquier otro caso}
 \end{array}
 \right.\]</li>
@@ -241,6 +254,15 @@
 \right.\]</li>
 <li><strong>Esperanza</strong> \(E(X) = p\)</li>
 <li><strong>Varianza</strong> \(Var(X) = pq\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribución de Bernoulli</h2></hgroup><article  id="distribucion-de-bernoulli-2">
+
+<p>El código de la distribución de Beroulli:</p>
+
+<ul>
+<li>En <code>R</code> tenemos las funciones del paquete <code>Rlab</code>: <code>dbenr(x,prob), pbenr(q,prob), qbenr(p,prob), rbenr(n, prob)</code> donde <code>prob</code> es la probabilidad de éxito.</li>
+<li>En <code>Python</code> tenemos las funciones del paquete <code>scipy.stats.bernoulli</code>: <code>pmf(k,p), cdf(k,p), ppf(q,p), rvs(p, size)</code> donde <code>p</code> es la probabilidad de éxito.</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Binomial</h2></hgroup><article  id="distribucion-binomial">
