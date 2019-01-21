@@ -63,6 +63,10 @@
       font-style: italic;
     }
 
+    summary {
+      display: list-item;
+    }
+
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -182,6 +186,17 @@
 </article></slide><slide class=""><hgroup><h2>Distribución de probabilidad</h2></hgroup><article  id="distribucion-de-probabilidad">
 
 <p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
+
+</article></slide><slide class=""><hgroup><h2>Funciones de distribución en <code>R</code></h2></hgroup><article  id="funciones-de-distribucion-en-r">
+
+<p>Dada cualquier variable aleatoria, \(va\), <code>R</code> nos da cuatro funciones para poder trabajar con ellas:</p>
+
+<ul>
+<li><code>dva(x,...)</code>: Función de densidad o de probabilidad \(f(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
+<li><code>pva(q,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el cuantil \(q\).</li>
+<li><code>qva(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
+<li><code>rva(n,...)</code>: Generador de \(n\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas</h2></hgroup><article  id="distribuciones-discretas">
 

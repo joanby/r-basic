@@ -79,6 +79,15 @@ La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una 
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
 
+## Funciones de distribución en `R`
+
+Dada cualquier variable aleatoria, $va$, `R` nos da cuatro funciones para poder trabajar con ellas:
+
+* `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
+* `pva(q,...)`: Función de distribución $F(x)$ de la variable aleatoria para el cuantil $q$.
+* `qva(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
+* `rva(n,...)`: Generador de $n$ observaciones siguiendo la distribución de la variable aleatoria.
+
 
 ## Distribuciones discretas
 
