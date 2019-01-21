@@ -18,15 +18,20 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 ## Probabilidad
 
-Por ahora, os basta la siguiente definición de probabilidad:
+Por ahora, nos basta la siguiente definición de probabilidad:
 
 <l class = "definition">Probabilidad. </l>Medida de la certidumbre asociada a un suceso o evento que aún no ha sucedido y que se expresa como un número entre 0 y 1, ambos incluidos.
 
 <div class = "example">
 **Ejemplo**
 
-La probilidad de que salga cara cuando tiramos una moneda no trucada es $p = \frac{1}{2} = 0.5$
+- La probilidad de que salga cara cuando tiramos una moneda no trucada es $p = \frac{1}{2} = 0.5$
+- La probilidad de que salga al tirar un dado no trucado nos salga 5 es $p = \frac{1}{6}$
 </div>
+
+Por lo general, si nos encontramos en un caso como los anteriores, la probabilidad la podemos calcular del siguiente modo:
+
+$$p=\frac{\text{casos favorables}}{\text{casos posibles}}$$
 
 
 ## Variable aleatoria
@@ -54,18 +59,21 @@ La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una 
 
 <l class = "definition">Función de distribución.</l> Describe la probabilidad de que $X$ tenga un valor menor o igual que $x$.
 
+- Es continua por la derecha
 - Es creciente
 - Toma valores entre 0 y 1
 
 ## Esperanza de una variable aleatoria
 
-<l class = "definition">Esperanza de una variable aleatoria discreta.</l> E$[X]= \sum_{i=1}^nx_n\cdot p\{X=x_i\}$. Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.
+<l class = "definition">Esperanza de una variable aleatoria discreta.</l> $E(X)= \sum_{i=1}^nx_i\cdot p\{X=x_i\}$. Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.
 
-<l class = "definition">Esperanza de una variable aleatoria continua.</l> E$[X]= \int_{-\infty}^{\infty}x\cdot f(x)$. Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.
+<l class = "definition">Esperanza de una variable aleatoria continua.</l> $E(X)= \int_{-\infty}^{\infty}x\cdot f(x)dx$. Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.
 
 ## Varianza de una variable aleatoria
 
-<l class = "definition">Varianza.</l>
+<l class = "definition">Varianza.</l> $Var(X)=E((X-E(X))^2)$. Es decir, es una medida de dispersión definida como la esperanza del cuadrado de la desviación de dicha variable respecto a su media.
+
+- De entre sus propiedades, una de las más interesantes es: $Var(X)=E(X^2)-(E(X))^2$
 
 ## Distribución de probabilidad
 
@@ -108,8 +116,8 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
   \\ 1 & \text{si } k\ge 1
 \end{array}
 \right.$$
-- **Esperanza** E$(X) = p$
-- **Varianza** Var$(X) = pq$
+- **Esperanza** $E(X) = p$
+- **Varianza** $Var(X) = pq$
 
 ## Distribución Binomial
 
@@ -131,8 +139,8 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
   \\ 1 & \text{si } k\ge n
 \end{array}
 \right.$$
-- **Esperanza** E$(X) = np$
-- **Varianza** Var$(X) = npq$
+- **Esperanza** $E(X) = np$
+- **Varianza** $Var(X) = npq$
 
 ## Distribución Binomial
 
@@ -158,13 +166,28 @@ $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 
 ## Distribución Geométrica
  
-- **Esperanza** E$(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
-- **Varianza** Var$(X) = \frac{1-p}{p^2}$
+- **Esperanza** $E(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
+- **Varianza** $Var(X) = \frac{1-p}{p^2}$
 - No tiene memoria. Es decir, $p\{X>m+n:\ X>m\} = p\{X>n\}$
 
 ## Distribución Hipergeométrica
 
 ## Distribución de Poisson
+
+Si $X$ es variable aleatoria que mide el "número de eventos en un cierto intervalo de tiempo", diremos que $X$ se distribuye como una Poisson con parámetro $\lambda$
+
+$$X\sim \text{Po}(\lambda)$$
+donde $\lambda$ representa el número de veces que se espera que ocurra el evento durante un intervalo dado
+
+- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
+
+- La **función de probabilidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
+
+## Distribución de Poisson
+ 
+- **Esperanza** $E(X) = \lambda$
+- **Varianza** $Var(X) = \lambda$
+
 
 ## Distribuciones discretas en R
 
@@ -223,3 +246,4 @@ Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:
 Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
 
 Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
+
