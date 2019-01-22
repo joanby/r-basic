@@ -63,10 +63,6 @@
       font-style: italic;
     }
 
-    summary {
-      display: list-item;
-    }
-
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -120,11 +116,219 @@
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Conceptos básicos</h2></hgroup><article  id="conceptos-basicos">
 
+</article></slide><slide class=""><hgroup><h2>Experimento aleatorio</h2></hgroup><article  id="experimento-aleatorio">
+
+<p><l class = "definition">Experimento aleatorio. </l> Experimento que efectuado en las mismas condiciones puede dar lugar a resultados diferentes</p>
+
+<p><l class = "definition">Suceso elemental. </l> Cada uno de los posibles resultados del experimento aleatorio</p>
+
+<p><l class = "definition">Espacio muestral. </l> Conjunto \(\Omega\) formado por todos los sucesos elementales del experimento aleatorio</p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>Lanzar una moneda es un experimento aleatorio</p>
+
+<p>Los sucesos elementales son: sacar cara (C) y sacar cruz (+)</p>
+
+<p>El espacio muestral de este experimento aleatorio es \(\Omega = \{C,+\}\)</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos">
+
+<p><l class = "definition">Suceso. </l> Subconjunto del espacio muestral</p>
+
+<p><l class = "definition">Suceso total o seguro. </l> \(\Omega\)</p>
+
+<p><l class = "definition">Suceso vacío o imposible. </l> \(\emptyset\)</p>
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>Lanzar un dado es un experimento aleatorio</p>
+
+<p>Algunos sucesos podrían ser: sacar número par (\(\{2,4,6\}\)), sacar mayor que 4 (\(\{5,6\}\)), sacar número múltiplo de 3 (\(\{3,6\}\))&#8230;</p>
+
+<p>El suceso total de este experimento aleatorio es \(\Omega = \{1,2,3,4,5,6\}\)</p>
+
+<p>Un ejemplo de suceso imposible de este experimento aleatorio es \(\emptyset = \{7\}\) (sacar 7)</p></div>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-1">
+
+<p><l class = "prop">Operaciones con sucesos. </l> \(A,B\subseteq \Omega\)</p>
+
+<ul>
+<li>\(A\cup B.\) Suceso unión (resultados pertenecen a \(A\), o a \(B\), o a ambos)</li>
+<li>\(A\cap B.\) Suceso intersección (resultados pertenecen a \(A\) y \(B\))</li>
+<li>\(A^c.\) Suceso complementario (resultados que no pertenecen a \(A\))</li>
+<li>\(A-B = A\cap B^c.\) Suceso diferencia (resultados que pertenecen a \(A\) pero no a \(B\))</li>
+</ul>
+
+<p><l class = "definition">Sucesos incompatibles. </l> Si \(A\cap B = \emptyset\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-2">
+
+<p><l class = "prop">Propiedades de los sucesos. </l></p>
+
+<ul>
+<li>Conmutativa: \[A\cup B = B\cup A\] \[A\cap B = B\cap A\]</li>
+<li>Asociativa: \[A\cup(B\cup C) = (A\cup B)\cup C\] \[A\cap(B\cap C) = (A\cap B)\cap C\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-3">
+
+<p><l class = "prop">Propiedades de los sucesos. </l></p>
+
+<ul>
+<li>Distributiva: \[A\cap(B\cup C) = (A\cap B)\cup (A\cap C)\] \[A\cup(B\cap C) = (A\cup B)\cap (A\cup C)\]</li>
+<li>Doble complementario: \((A^c)^c = A\)</li>
+<li>Leyes de De Morgan: \[(A\cup B)^c = A^c\cap B^c\] \[(A\cap B)^c = A^c\cup B^c\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-4">
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>\(\Omega = \{\text{conejos de la granja}\}\) \(A = \{\text{conejos hembra}\}\) \(B = \{\text{conejos con dos colores}\}\)</p>
+
+<p>\(A\cup B = \{\text{Conejos que son hembra o tienen dos colores}\}\) \(A\cap B = \{\text{Conejos que son hembra y tienen dos colores}\}\) \(A^c = \{\text{Conejos que no son hembra}\}= \{\text{Conejos que son macho}\}\) \(A-B = \{\text{Conejos que son hembra y no tienen dos colores}\}\) \(B- A = \{\text{Conejos que tienen dos colores y son macho}\}\)</p>
+
+<p>No son incompatibles</p></div>
+
 </article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad">
 
-<p>Por ahora, nos basta la siguiente definición de probabilidad:</p>
+<p><l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso</p>
 
-<p><l class = "definition">Probabilidad. </l>Medida de la certidumbre asociada a un suceso o evento que aún no ha sucedido y que se expresa como un número entre 0 y 1, ambos incluidos.</p>
+</article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad-1">
+
+<p><l class = "definition">Probabilidad. </l> Sea \(\Omega\) el espacio muestral de un experimento aleatorio. Suponiendo que \(\Omega\) es <strong>finito</strong>, una probabilidad sobre \(\Omega\) es una aplicación \[p: \mathcal{P}(\Omega)\longrightarrow [0,1]\] que satisface</p>
+
+<ul>
+<li>\(0\le p(A)\le 1 \ \forall A\in\mathcal{P}(\Omega)\)</li>
+<li>\(p(\Omega) = 1\)</li>
+<li>Si \(\{A_1,\dots,A_n\}\) son sucesos incompatibles dos a dos (\(A_i\cap A_j=\emptyset \ \forall i\ne j\)), entonces \[p(A_1\cup\cdots \cup A_n)=p(A_1)+\cdots+p(A_n)\]</li>
+</ul>
+
+<p><l class = "important">Notación: </l> Si \(a\in\Omega\), escribiremos \(p(a)\) en vez de \(p(\{a\})\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad-2">
+
+<p><l class = "prop">Propiedades. </l></p>
+
+<ul>
+<li>\(p(\emptyset) = 0\)</li>
+<li>\(p(A-B) = p(A)-p(A\cap B)\)</li>
+<li>Si \(B\subseteq A\), entonces \(0\le p(B)\le p(A)\)</li>
+<li>\(p(A^c) = 1-p(A)\)</li>
+<li>\(p(A\cup B) = p(A)+p(B)-p(A\cap B)\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad-3">
+
+<p><l class = "prop">Propiedades. </l></p>
+
+<ul>
+<li>\[p(A\cup B\cup C) =\] \[p(A)+p(B)+p(C)-p(A\cap B)-p(A\cap C)-p(B\cap C)+p(A\cap B\cap C)\]</li>
+<li>Si \(A = \{a_1,\dots,a_k\}\), entonces \(p(A) = p(a_1)+\cdots+p(a_k)\)</li>
+<li>Si todos los sucesos elementales tienen la misma probabilidad, cada uno tiene probabilidad \(\frac{1}{|\Omega|}\) y, por tanto \[p(A) = \frac{|A|}{|\Omega|} = \frac{\text{# casos favorables}}{\text{# casos posibles}}\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada">
+
+<p><l class = "definition">Probabilidad condicionada. </l> Dados \(A,B\) sucesos, con \(p(B)&gt;0\), la probabilidad \(p(A|B)\) de \(A\) condicionada a \(B\) es la probabilidad de que</p>
+
+<ul>
+<li>pase \(A\) suponiendo que pasa \(B\)</li>
+<li>si pasa \(B\), entonces pase \(A\)</li>
+<li>que un resultado de \(B\) también pertenezca a \(A\)</li>
+</ul>
+
+<p>\[p(A|B) = \frac{p(A\cap B)}{p(B)}\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada-1">
+
+<p><l class = "important">¡Alerta! </l> Cabe distinguir entre</p>
+
+<ul>
+<li>\(p(A\cap B):\) probabilidad de \(A\) y \(B\)</li>
+<li>\(p(A|B):\) probabilidad de que si pasa \(B\) entonces pase \(A\).</li>
+</ul>
+
+<p>En \(p(A|B)\) restringimos el espacio muestral a \(B\).</p>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada-2">
+
+<p><l class = "prop">Proposición. </l> Sea \(A\subseteq \Omega\) un acontecimiento tal que \(p(A)&gt;0\). Entonces \[p(\cdot |A): \mathcal{P}(\Omega)\longrightarrow [0,1]\] tal que \(B\mapsto p(B|A)\) satisface las propiedades de probabilidad</p>
+
+<p>Lo que nos dice este resultado es que la probabilidad condicionada es, en efecto, una probabilidad.</p>
+
+</article></slide><slide class=""><hgroup><h2>Teorema de la probabilidad total</h2></hgroup><article  id="teorema-de-la-probabilidad-total">
+
+<p><l class = "prop">Teorema. </l> \(A,B\) sucesos. Entonces,</p>
+
+<p>\[p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Teorema de la probabilidad total</h2></hgroup><article  id="teorema-de-la-probabilidad-total-1">
+
+<p><l class = "definition"> Partición del espacio muestral. </l>Los sucesos \(A_1,\dots, A_n\) forman una partición del espacio muestral \(\Omega\) de un determinado experimento aleatorio, si se cumple</p>
+
+<ul>
+<li>\(A_1\cup\cdots \cup A_n = \Omega\)</li>
+<li>\(A_1,\dots,A_n\) son incompatibles dos a dos \((A_i\cap A_j = \emptyset)\)</li>
+</ul>
+
+<p><l class = "prop">Teorema. </l> \(A_1,\dots, A_n\) partición de \(\Omega\) y \(B\) suceso cualquiera. Entonces,</p>
+
+<p>\[p(B) = p(B\cap A_1)+\cdots+p(B\cap A_n) = p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Diagnósticos</h2></hgroup><article  id="diagnosticos">
+
+<p>En un diagnóstico de una cierta condición, tenemos dos tipos de suceso:</p>
+
+<ul>
+<li>\(P:\) test da positivo</li>
+<li>\(S:\) sujeto satisface la condición</li>
+</ul>
+
+<p>Entonces,</p>
+
+<ul>
+<li><l class = "definition">Falso positivo. </l> \(P\cap S^c\) (el test da positivo, pero la condición no se da)</li>
+<li><l class = "definition">Falso negativo. </l> \(P^c\cap S\) (el test da negativo, pero sí se da la condición)</li>
+<li><l class = "definition">Coeficiente de falso positivo. </l> \(p(P|S^c)\)</li>
+<li><l class = "definition">Coeficiente de falso negativo. </l> \(p(P^c|S)\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Fórmula de Bayes</h2></hgroup><article  id="formula-de-bayes">
+
+<p><l class = "prop">Teorema de Bayes. </l> \(A,B\) sucesos. Si \(p(B)&gt;0\), entonces</p>
+
+<p>\[p(A|B) = \frac{p(A)\cdot p(B|A)}{p(B)}=\frac{p(A)\cdot p(B|A)}{p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)}\]</p>
+
+<p><l class = "prop">Teorema de Bayes. </l> \(A_1,\dots,A_n\) partición de \(\Omega\). Sea \(B\) suceso tal que \(p(B)&gt;0\). Entonces</p>
+
+<p>\[p(A_i|B) = \frac{p(A_i)\cdot p(B|A_i)}{p(B)}=\frac{p(A_i)\cdot p(B|A_i)}{p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)}\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos independientes</h2></hgroup><article  id="sucesos-independientes">
+
+<p><l class = "definition">Sucesos independientes. </l> Dados \(A,B\) sucesos, son independientes si \(p(A\cap B) = p(A)\cdot p(B)\)</p>
+
+<p><l class = "definition">Sucesos independientes. </l> Dados \(A_1,\dots,A_n\), son independientes cuando para toda subfamilia \(A_{i_1},\dots,A_{i_k}\), \[p(A_{i_1}\cap\dots\cap A_{i_k})=p(A_{i_1})\cdots p(A_{i_k})\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos independientes</h2></hgroup><article  id="sucesos-independientes-1">
+
+<p><l class = "prop">Proposición. </l> Dados dos sucesos \(A,B\) con \(p(A),p(B)&gt;0\) son equivalentes</p>
+
+<ul>
+<li>\(A\) y \(B\) son independientes</li>
+<li>\(p(A|B) = p(A)\)</li>
+<li>\(p(B|A) = p(B)\)</li>
+<li>\(A^c\) y \(B\) son independientes</li>
+<li>\(A\) y \(B^c\) son independientes</li>
+<li>\(A^c\) y \(B^c\) son independientes</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>MAAAAAAAL</h2></hgroup><article  id="maaaaaaal">
 
 <div class="example">
 <p><strong>Ejemplo</strong></p>

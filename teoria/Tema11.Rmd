@@ -16,11 +16,208 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 # Conceptos básicos
 
+## Experimento aleatorio
+
+<l class = "definition">Experimento aleatorio. </l> Experimento que efectuado en las mismas condiciones puede dar lugar a resultados diferentes
+
+<l class = "definition">Suceso elemental. </l> Cada uno de los posibles resultados del experimento aleatorio
+
+<l class = "definition">Espacio muestral. </l> Conjunto $\Omega$ formado por todos los sucesos elementales del experimento aleatorio
+
+<div class = "example">
+**Ejemplo**
+
+Lanzar una moneda es un experimento aleatorio
+
+Los sucesos elementales son: sacar cara (C) y sacar cruz (+)
+
+El espacio muestral de este experimento aleatorio es $\Omega = \{C,+\}$
+</div>
+
+## Sucesos
+
+<l class = "definition">Suceso. </l> Subconjunto del espacio muestral
+
+<l class = "definition">Suceso total o seguro. </l> $\Omega$
+
+<l class = "definition">Suceso vacío o imposible. </l> $\emptyset$
+
+<div class = "example">
+**Ejemplo**
+
+Lanzar un dado es un experimento aleatorio
+
+Algunos sucesos podrían ser: sacar número par ($\{2,4,6\}$), sacar mayor que 4 ($\{5,6\}$), sacar número múltiplo de 3 ($\{3,6\}$)...
+
+El suceso total de este experimento aleatorio es $\Omega = \{1,2,3,4,5,6\}$
+
+Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7\}$ (sacar 7)
+</div>
+
+
+## Sucesos
+
+<l class = "prop">Operaciones con sucesos. </l> $A,B\subseteq \Omega$
+
+- $A\cup B.$ Suceso unión (resultados pertenecen a $A$, o a $B$, o a ambos)
+- $A\cap B.$ Suceso intersección (resultados pertenecen a $A$ y $B$)
+- $A^c.$ Suceso complementario (resultados que no pertenecen a $A$)
+- $A-B = A\cap B^c.$ Suceso diferencia (resultados que pertenecen a $A$ pero no a $B$)
+
+<l class = "definition">Sucesos incompatibles. </l> Si $A\cap B = \emptyset$
+
+## Sucesos
+
+<l class = "prop">Propiedades de los sucesos. </l>
+
+- Conmutativa: $$A\cup B = B\cup A$$ $$A\cap B = B\cap A$$
+- Asociativa: $$A\cup(B\cup C) = (A\cup B)\cup C$$ $$A\cap(B\cap C) = (A\cap B)\cap C$$
+
+## Sucesos
+
+<l class = "prop">Propiedades de los sucesos. </l>
+
+- Distributiva: $$A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$$ $$A\cup(B\cap C) = (A\cup B)\cap (A\cup C)$$
+- Doble complementario: $(A^c)^c = A$
+- Leyes de De Morgan: $$(A\cup B)^c = A^c\cap B^c$$ $$(A\cap B)^c = A^c\cup B^c$$
+
+## Sucesos
+
+<div class = "example">
+**Ejemplo**
+
+$\Omega = \{\text{conejos de la granja}\}$ 
+$A = \{\text{conejos hembra}\}$
+$B = \{\text{conejos con dos colores}\}$
+
+$A\cup B = \{\text{Conejos que son hembra o tienen dos colores}\}$
+$A\cap B = \{\text{Conejos que son hembra y tienen dos colores}\}$
+$A^c = \{\text{Conejos que no son hembra}\}= \{\text{Conejos que son macho}\}$
+$A-B = \{\text{Conejos que son hembra y no tienen dos colores}\}$
+$B- A = \{\text{Conejos que tienen dos colores y son macho}\}$
+
+No son incompatibles
+</div>
+
 ## Probabilidad
 
-Por ahora, nos basta la siguiente definición de probabilidad:
+<l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso
 
-<l class = "definition">Probabilidad. </l>Medida de la certidumbre asociada a un suceso o evento que aún no ha sucedido y que se expresa como un número entre 0 y 1, ambos incluidos.
+## Probabilidad
+
+<l class = "definition">Probabilidad. </l> Sea $\Omega$ el espacio muestral de un experimento aleatorio. Suponiendo que $\Omega$ es **finito**, una probabilidad sobre $\Omega$ es una aplicación $$p: \mathcal{P}(\Omega)\longrightarrow [0,1]$$ que satisface
+
+- $0\le p(A)\le 1 \ \forall A\in\mathcal{P}(\Omega)$
+- $p(\Omega) = 1$
+- Si $\{A_1,\dots,A_n\}$ son sucesos incompatibles dos a dos ($A_i\cap A_j=\emptyset \ \forall i\ne j$), entonces $$p(A_1\cup\cdots \cup A_n)=p(A_1)+\cdots+p(A_n)$$
+
+<l class = "important">Notación: </l> Si $a\in\Omega$, escribiremos $p(a)$ en vez de $p(\{a\})$
+
+## Probabilidad
+
+<l class = "prop">Propiedades. </l>
+
+- $p(\emptyset) = 0$
+- $p(A-B) = p(A)-p(A\cap B)$
+- Si $B\subseteq A$, entonces $0\le p(B)\le p(A)$
+- $p(A^c) = 1-p(A)$
+- $p(A\cup B) = p(A)+p(B)-p(A\cap B)$
+
+## Probabilidad
+
+<l class = "prop">Propiedades. </l>
+
+- $$p(A\cup B\cup C) =$$ $$p(A)+p(B)+p(C)-p(A\cap B)-p(A\cap C)-p(B\cap C)+p(A\cap B\cap C)$$
+- Si $A = \{a_1,\dots,a_k\}$, entonces $p(A) = p(a_1)+\cdots+p(a_k)$
+- Si todos los sucesos elementales tienen la misma probabilidad, cada uno tiene probabilidad $\frac{1}{|\Omega|}$ y, por tanto $$p(A) = \frac{|A|}{|\Omega|} = \frac{\text{# casos favorables}}{\text{# casos posibles}}$$
+
+## Probabilidad condicionada
+
+<l class = "definition">Probabilidad condicionada. </l> Dados $A,B$ sucesos, con $p(B)>0$, la probabilidad $p(A|B)$ de $A$ condicionada a $B$ es la probabilidad de que 
+
+- pase $A$ suponiendo que pasa $B$
+- si pasa $B$, entonces pase $A$
+- que un resultado de $B$ también pertenezca a $A$
+
+$$p(A|B) = \frac{p(A\cap B)}{p(B)}$$
+
+## Probabilidad condicionada
+
+<l class = "important">¡Alerta! </l> Cabe distinguir entre
+
+- $p(A\cap B):$ probabilidad de $A$ y $B$
+- $p(A|B):$ probabilidad de que si pasa $B$ entonces pase $A$. 
+
+En $p(A|B)$ restringimos el espacio muestral a $B$.
+
+## Probabilidad condicionada
+
+<l class = "prop">Proposición. </l> Sea $A\subseteq \Omega$ un acontecimiento tal que $p(A)>0$. Entonces $$p(\cdot |A): \mathcal{P}(\Omega)\longrightarrow [0,1]$$ tal que $B\mapsto p(B|A)$ satisface las propiedades de probabilidad
+
+Lo que nos dice este resultado es que la probabilidad condicionada es, en efecto, una probabilidad.
+
+
+## Teorema de la probabilidad total
+
+<l class = "prop">Teorema. </l> $A,B$ sucesos. Entonces,
+
+$$p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)$$
+
+## Teorema de la probabilidad total
+
+<l class = "definition"> Partición del espacio muestral. </l>Los sucesos $A_1,\dots, A_n$ forman una partición del espacio muestral $\Omega$ de un determinado experimento aleatorio,  si se cumple 
+
+- $A_1\cup\cdots \cup A_n = \Omega$
+- $A_1,\dots,A_n$ son incompatibles dos a dos $(A_i\cap A_j = \emptyset)$
+
+<l class = "prop">Teorema. </l> $A_1,\dots, A_n$ partición de $\Omega$ y $B$ suceso cualquiera. Entonces,
+
+$$p(B) = p(B\cap A_1)+\cdots+p(B\cap A_n) = p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)$$
+
+## Diagnósticos
+
+En un diagnóstico de una cierta condición, tenemos dos tipos de suceso:
+
+- $P:$ test da positivo
+- $S:$ sujeto satisface la condición
+
+Entonces,
+
+- <l class = "definition">Falso positivo. </l> $P\cap S^c$ (el test da positivo, pero la condición no se da)
+- <l class = "definition">Falso negativo. </l> $P^c\cap S$ (el test da negativo, pero sí se da la condición)
+- <l class = "definition">Coeficiente de falso positivo. </l> $p(P|S^c)$
+- <l class = "definition">Coeficiente de falso negativo. </l> $p(P^c|S)$
+
+## Fórmula de Bayes
+
+<l class = "prop">Teorema de Bayes. </l> $A,B$ sucesos. Si $p(B)>0$, entonces
+
+$$p(A|B) = \frac{p(A)\cdot p(B|A)}{p(B)}=\frac{p(A)\cdot p(B|A)}{p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)}$$
+
+<l class = "prop">Teorema de Bayes. </l> $A_1,\dots,A_n$ partición de $\Omega$. Sea $B$ suceso tal que $p(B)>0$. Entonces
+
+$$p(A_i|B) = \frac{p(A_i)\cdot p(B|A_i)}{p(B)}=\frac{p(A_i)\cdot p(B|A_i)}{p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)}$$
+
+## Sucesos independientes
+
+<l class = "definition">Sucesos independientes. </l> Dados $A,B$ sucesos, son independientes si $p(A\cap B) = p(A)\cdot p(B)$
+
+<l class = "definition">Sucesos independientes. </l> Dados $A_1,\dots,A_n$, son independientes cuando para toda subfamilia $A_{i_1},\dots,A_{i_k}$, $$p(A_{i_1}\cap\dots\cap A_{i_k})=p(A_{i_1})\cdots p(A_{i_k})$$
+
+
+## Sucesos independientes
+
+<l class = "prop">Proposición. </l> Dados dos sucesos $A,B$ con $p(A),p(B)>0$ son equivalentes
+
+- $A$ y $B$ son independientes
+- $p(A|B) = p(A)$
+- $p(B|A) = p(B)$
+- $A^c$ y $B$ son independientes
+- $A$ y $B^c$ son independientes
+- $A^c$ y $B^c$ son independientes
+
+
+## MAAAAAAAL
 
 <div class = "example">
 **Ejemplo**
