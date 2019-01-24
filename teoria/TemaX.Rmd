@@ -1,5 +1,5 @@
 ---
-title: "Tema 11 - Introducción a distribuciones de probabilidad"
+title: "Tema X - Probabilidad y variables aleatorias"
 author: "Juan Gabriel Gomila & María Santos"
 output: 
   ioslides_presentation:
@@ -66,6 +66,39 @@ Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7
 
 <l class = "definition">Sucesos incompatibles. </l> Si $A\cap B = \emptyset$
 
+## Sucesos
+
+<l class = "prop">Propiedades de los sucesos. </l>
+
+- Conmutativa: $$A\cup B = B\cup A$$ $$A\cap B = B\cap A$$
+- Asociativa: $$A\cup(B\cup C) = (A\cup B)\cup C$$ $$A\cap(B\cap C) = (A\cap B)\cap C$$
+
+## Sucesos
+
+<l class = "prop">Propiedades de los sucesos. </l>
+
+- Distributiva: $$A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$$ $$A\cup(B\cap C) = (A\cup B)\cap (A\cup C)$$
+- Doble complementario: $(A^c)^c = A$
+- Leyes de De Morgan: $$(A\cup B)^c = A^c\cap B^c$$ $$(A\cap B)^c = A^c\cup B^c$$
+
+## Sucesos
+
+<div class = "example">
+**Ejemplo**
+
+$\Omega = \{\text{conejos de la granja}\}$ 
+$A = \{\text{conejos hembra}\}$
+$B = \{\text{conejos con dos colores}\}$
+
+$A\cup B = \{\text{Conejos que son hembra o tienen dos colores}\}$
+$A\cap B = \{\text{Conejos que son hembra y tienen dos colores}\}$
+$A^c = \{\text{Conejos que no son hembra}\}= \{\text{Conejos que son macho}\}$
+$A-B = \{\text{Conejos que son hembra y no tienen dos colores}\}$
+$B- A = \{\text{Conejos que tienen dos colores y son macho}\}$
+
+No son incompatibles
+</div>
+
 ## Probabilidad
 
 <l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso
@@ -79,6 +112,109 @@ Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7
 - Si $\{A_1,\dots,A_n\}$ son sucesos incompatibles dos a dos ($A_i\cap A_j=\emptyset \ \forall i\ne j$), entonces $$p(A_1\cup\cdots \cup A_n)=p(A_1)+\cdots+p(A_n)$$
 
 <l class = "important">Notación: </l> Si $a\in\Omega$, escribiremos $p(a)$ en vez de $p(\{a\})$
+
+## Probabilidad
+
+<l class = "prop">Propiedades. </l>
+
+- $p(\emptyset) = 0$
+- $p(A-B) = p(A)-p(A\cap B)$
+- Si $B\subseteq A$, entonces $0\le p(B)\le p(A)$
+- $p(A^c) = 1-p(A)$
+- $p(A\cup B) = p(A)+p(B)-p(A\cap B)$
+
+## Probabilidad
+
+<l class = "prop">Propiedades. </l>
+
+- $$p(A\cup B\cup C) =$$ $$p(A)+p(B)+p(C)-p(A\cap B)-p(A\cap C)-p(B\cap C)+p(A\cap B\cap C)$$
+- Si $A = \{a_1,\dots,a_k\}$, entonces $p(A) = p(a_1)+\cdots+p(a_k)$
+- Si todos los sucesos elementales tienen la misma probabilidad, cada uno tiene probabilidad $\frac{1}{|\Omega|}$ y, por tanto $$p(A) = \frac{|A|}{|\Omega|} = \frac{\text{# casos favorables}}{\text{# casos posibles}}$$
+
+## Probabilidad condicionada
+
+<l class = "definition">Probabilidad condicionada. </l> Dados $A,B$ sucesos, con $p(B)>0$, la probabilidad $p(A|B)$ de $A$ condicionada a $B$ es la probabilidad de que 
+
+- pase $A$ suponiendo que pasa $B$
+- si pasa $B$, entonces pase $A$
+- que un resultado de $B$ también pertenezca a $A$
+
+$$p(A|B) = \frac{p(A\cap B)}{p(B)}$$
+
+## Probabilidad condicionada
+
+<l class = "important">¡Alerta! </l> Cabe distinguir entre
+
+- $p(A\cap B):$ probabilidad de $A$ y $B$
+- $p(A|B):$ probabilidad de que si pasa $B$ entonces pase $A$. 
+
+En $p(A|B)$ restringimos el espacio muestral a $B$.
+
+## Probabilidad condicionada
+
+<l class = "prop">Proposición. </l> Sea $A\subseteq \Omega$ un acontecimiento tal que $p(A)>0$. Entonces $$p(\cdot |A): \mathcal{P}(\Omega)\longrightarrow [0,1]$$ tal que $B\mapsto p(B|A)$ satisface las propiedades de probabilidad
+
+Lo que nos dice este resultado es que la probabilidad condicionada es, en efecto, una probabilidad.
+
+
+## Teorema de la probabilidad total
+
+<l class = "prop">Teorema. </l> $A,B$ sucesos. Entonces,
+
+$$p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)$$
+
+## Teorema de la probabilidad total
+
+<l class = "definition"> Partición del espacio muestral. </l>Los sucesos $A_1,\dots, A_n$ forman una partición del espacio muestral $\Omega$ de un determinado experimento aleatorio,  si se cumple 
+
+- $A_1\cup\cdots \cup A_n = \Omega$
+- $A_1,\dots,A_n$ son incompatibles dos a dos $(A_i\cap A_j = \emptyset)$
+
+<l class = "prop">Teorema. </l> $A_1,\dots, A_n$ partición de $\Omega$ y $B$ suceso cualquiera. Entonces,
+
+$$p(B) = p(B\cap A_1)+\cdots+p(B\cap A_n) = p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)$$
+
+## Diagnósticos
+
+En un diagnóstico de una cierta condición, tenemos dos tipos de suceso:
+
+- $P:$ test da positivo
+- $S:$ sujeto satisface la condición
+
+Entonces,
+
+- <l class = "definition">Falso positivo. </l> $P\cap S^c$ (el test da positivo, pero la condición no se da)
+- <l class = "definition">Falso negativo. </l> $P^c\cap S$ (el test da negativo, pero sí se da la condición)
+- <l class = "definition">Coeficiente de falso positivo. </l> $p(P|S^c)$
+- <l class = "definition">Coeficiente de falso negativo. </l> $p(P^c|S)$
+
+## Fórmula de Bayes
+
+<l class = "prop">Teorema de Bayes. </l> $A,B$ sucesos. Si $p(B)>0$, entonces
+
+$$p(A|B) = \frac{p(A)\cdot p(B|A)}{p(B)}=\frac{p(A)\cdot p(B|A)}{p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)}$$
+
+<l class = "prop">Teorema de Bayes. </l> $A_1,\dots,A_n$ partición de $\Omega$. Sea $B$ suceso tal que $p(B)>0$. Entonces
+
+$$p(A_i|B) = \frac{p(A_i)\cdot p(B|A_i)}{p(B)}=\frac{p(A_i)\cdot p(B|A_i)}{p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)}$$
+
+## Sucesos independientes
+
+<l class = "definition">Sucesos independientes. </l> Dados $A,B$ sucesos, son independientes si $p(A\cap B) = p(A)\cdot p(B)$
+
+<l class = "definition">Sucesos independientes. </l> Dados $A_1,\dots,A_n$, son independientes cuando para toda subfamilia $A_{i_1},\dots,A_{i_k}$, $$p(A_{i_1}\cap\dots\cap A_{i_k})=p(A_{i_1})\cdots p(A_{i_k})$$
+
+
+## Sucesos independientes
+
+<l class = "prop">Proposición. </l> Dados dos sucesos $A,B$ con $p(A),p(B)>0$ son equivalentes
+
+- $A$ y $B$ son independientes
+- $p(A|B) = p(A)$
+- $p(B|A) = p(B)$
+- $A^c$ y $B$ son independientes
+- $A$ y $B^c$ son independientes
+- $A^c$ y $B^c$ son independientes
 
 
 ## Variable aleatoria
@@ -95,16 +231,29 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 
 - $p(X=a) = p(\{\omega\in\Omega \ |\  X(\omega) = a\})$
 - $p(X<b) = p(\{\omega\in\Omega \ |\  X(\omega) < b\})$
-- $p(X\le b) = p(\{\omega\in\Omega \ |\  X(\omega) \le b\})$
-- $p(a<X) = p(\{\omega\in\Omega \ |\  a<X(\omega)\})$
 - $p(a\le X) = p(\{\omega\in\Omega \ |\  a\le X(\omega)\})$
-- $p(a\le X\le b) = p(\{\omega\in\Omega \ |\  a\le X(\omega) \le b\})$
-- $p(a< X< b) = p(\{\omega\in\Omega \ |\  a< X(\omega) < b\})$
+- $p(a< X\le b) = p(\{\omega\in\Omega \ |\  a< X(\omega) \le b\})$
+- $\vdots$
 - $p(X\in A) = p(\{\omega\in\Omega \ |\  X(\omega)\in A\})$
+- Para la unión utilizaremos $o$: $p(X>b\ o\ X<a)$
+- Para la intersección utilizaremos una coma $,$:$p(X>b,\ X<a)$
 
 ## Función de distribución
 
 <l class = "definition">Función de distribución de la v.a. X.</l> Es una función  $$F:\mathbb{R}\longrightarrow [0,1]$$ definida por $F(x)=p(X\le x)$
+
+## Función de distribución
+
+<l class = "prop">Propiedades básicas.</l>
+
+- $0\leF(x)\le 1$
+- $F$ es creciente
+- $F$ es continua por la derecha: $\lim_{x\rightarrow a^+}F(X):= \lim_{t\rightarrow 0^+}F(a+t)=F(a)$, pero $F$ no tiene por qué ser continua
+- $\lim_{x\rightarrow +\infty} F(X)= 1$, $\lim_{x\rightarrow -\infty} F(X)= 0$
+
+Toda función $F$ que satisfaga estas propiedades es la distribución de alguna v.a. $X$ 
+
+
 
 
 ## MAAAAAAAL
@@ -112,7 +261,18 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 
 
 
+## Variable aleatoria
 
+<l class = "definition">[Variable aleatoria](https://es.wikipedia.org/wiki/Variable_aleatoria).</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.
+
+- <l class = "definition">Variable aleatoria discreta.</l> Solamente puede tomar un número finito de valores.
+- <l class = "definition">Variable aleatoria continua.</l> Puede tomar como valores un intervalo (finito o infinito) de números reales.
+
+<div class = "example">
+**Ejemplo**
+
+La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una moneda $n$ veces es una variable aleatoria discreta
+</div>
 
 
 ## Funciones de probabilidad y densidad
@@ -122,6 +282,13 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 - <l class = "definition">Función de densidad.</l> Cuando $X$ es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.
 
 
+## Función de distribución
+
+<l class = "definition">Función de distribución.</l> Describe la probabilidad de que $X$ tenga un valor menor o igual que $x$.
+
+- Es continua por la derecha
+- Es creciente
+- Toma valores entre 0 y 1
 
 ## Esperanza de una variable aleatoria
 
