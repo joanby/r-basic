@@ -104,42 +104,64 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 
 ## Función de distribución
 
-<l class = "definition">Función de distribución de la v.a. X.</l> Es una función  $$F:\mathbb{R}\longrightarrow [0,1]$$ definida por $F(x)=p(X\le x)$
+<l class = "definition">Función de distribución de la v.a. $X$.</l> Es una función  $$F:\mathbb{R}\longrightarrow [0,1]$$ definida por $F(x)=p(X\le x)$
 
 
-## MAAAAAAAL
+Sea $F$ una función de distribución de una v.a. $X$ y digamos $$F(a^-)=\lim_{x\rightarrow a^-}F(x)$$
+
+- $p(X\le a)=F(a)$
+- $p(X<a)=\lim_{b\rightarrow a,\  b<a}p(X\le b) = \lim_{b\rightarrow a,\  b<a} F(b) = F(a^-)$
+- $p(X=a) = p(X\le a)-p(X<a)=F(a)-F(a^-)$
+- $p(a\le X\le b) = p(X\le b)-p(X< a)=F(b)-F(a^-)$
+
+## Cuantiles
+
+<l class = "definition">Cuantil de orden $p$ de una v.a. $X$.</l> Es el $x_p\in\mathbb{R}$ más pequeño tal que $F(x_p)\ge p$
+
+Nótese que la mediana es el cuantil de orden 0.5
+
+# Variables aleatorias discretas
+
+## Variable aleatoria discreta
+
+<l class = "definition">Variable aleatoria discreta.</l> Una v.a. $X:\Omega\longrightarrow \mathbb{R}$ es discreta cuando $D_X$ es finito o un subconjunto de $\mathbb{N}$ 
+
+<l class = "definition">Función de densidad.</l> Es la función $f:\mathbb{R}\longrightarrow[0,1]$ definida por $$f(x) = p(X=x)$$
+
+Nótese que $f(x)=0$ si $x\not\in D_X$. Por tanto, interpretaremos la función de densidad como la función $$f:D_X\longrightarrow [0,1]$$
+
+## Esperanza
+
+<l class = "definition">Esperanza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la esperanza respecto de la densidad es la suma ponderada de los elementos de $D_X$, multiplicando cada elemento $x$ de $D_X$ por su probabilidad, $$E(X) = \sum_{x\in D_X}x\cdot f(x)$$
+
+Si $g:D_X\longrightarrow \mathbb{R}$ es una aplicación $$E(g(X))=\sum_{x\in D_X}g(x)\cdot f(x)$$
 
 
+## Varianza
 
+<l class = "definition">Varianza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la varianza respecto de la densidad es el valor esperado de la diferencia al cuadrado entre $X$ y su valor medio $E(X)$, $$Var(X)= E((X-E(X))^2) $$
 
+La varianza mide como de variados son los resultados de $X$ respecto de la media
 
+<div class = "exercise"> **Ejercicio.** Demostrar la siguiente igualdad. $$Var(X)= E(X^2)-(E(X))^2$$</div>
 
+## Varianza
 
-## Funciones de probabilidad y densidad
+Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$Var(g(X))=E((g(X)-E(g(X)))^2)=E(g(X)^2)-(E(g(X)))^2$$
 
-- <l class = "definition">Función de probabilidad.</l> Asocia a cada punto del dominio de $X$ la probabilidad de que ésta lo asuma. Es útil cuando $X$ es v.a. discreta. De ser $X$ v.a. continua, la función de probabilidad es la función nula.
+## Desviación típica
 
-- <l class = "definition">Función de densidad.</l> Cuando $X$ es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.
+<l class = "definition">Desviación típica de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la desviación típica respecto de la densidad es $$\sigma(X)=\sqrt{Var(X)}$$
 
+Las unidades de la varianza son las de $X$ al cuadrado. En cambio, las de la desviación típica son las mismas unidades que las de $X$
 
+Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$\sigma(g(X))=\sqrt{Var(g(X))}$$
 
-## Esperanza de una variable aleatoria
-
-<l class = "definition">Esperanza de una variable aleatoria discreta.</l> $E(X)= \sum_{i=1}^nx_i\cdot p\{X=x_i\}$. Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.
-
-<l class = "definition">Esperanza de una variable aleatoria continua.</l> $E(X)= \int_{-\infty}^{\infty}x\cdot f(x)dx$. Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.
-
-## Varianza de una variable aleatoria
-
-<l class = "definition">Varianza.</l> $Var(X)=E((X-E(X))^2)$. Es decir, es una medida de dispersión definida como la esperanza del cuadrado de la desviación de dicha variable respecto a su media.
-
-- De entre sus propiedades, una de las más interesantes es: $Var(X)=E(X^2)-(E(X))^2$
+# Distribuciones de probabilidad
 
 ## Distribución de probabilidad
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
-
-# Las distribuciones más conocidas
 
 ## Distribuciones en `R`
 
@@ -159,6 +181,8 @@ Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funcion
 - `ppf(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
 - `rvs(size,...)`: Generador de $size$ observaciones siguiendo la distribución de la variable aleatoria.
 
+# Distribuciones discretas más conocidas
+
 ## Distribuciones discretas
 
 <l class = "definition">Distribución discreta</l>
@@ -177,8 +201,8 @@ $$X\sim \text{Be}(p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1\}$
-- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1\}$
+- La **función de densidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
      p & \text{si } k=1 
   \\ 1-p & \text{si } k=0
@@ -188,11 +212,11 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 ## Distribución de Bernoulli
 
-- La **función de distribución** vendrá dada por $$F(k) = \left\{
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
 \begin{array}{rl}
-     0 & \text{si } k<0 
-  \\ q & \text{si } 0\le k<1
-  \\ 1 & \text{si } k\ge 1
+     0 & \text{si } x<0 
+  \\ 1-p & \text{si } 0\le x<1
+  \\ 1 & \text{si } x\ge 1
 \end{array}
 \right.$$
 - **Esperanza** $E(X) = p$
@@ -213,20 +237,22 @@ $$X\sim \text{B}(n,p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
-- La **función de probabilidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
+- La **función de densidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
 
 ## Distribución Binomial
 
-- La **función de distribución** vendrá dada por $$F(k) = \left\{
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
 \begin{array}{cl}
-     0 & \text{si } k<0 
-  \\ \sum_{i=0}^kf(k) & \text{si } 0\le k<n
-  \\ 1 & \text{si } k\ge n
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
 \end{array}
 \right.$$
 - **Esperanza** $E(X) = np$
 - **Varianza** $Var(X) = npq$
+
+<l class = "important">Atención.</l> Fijaos que la distribución de Bernoulli es un caso particular de la Binomial. Basta tomar $n=1$ y tendremos que $X\sim \text{Be}(p)$ y $X\sim\text{B}(1,p)$ son equivalentes.
 
 ## Distribución Binomial
 
@@ -242,21 +268,45 @@ par(mfrow= c(1,1))
 
 Si $X$ es variable aleatoria que mide el "número de repeticiones independientes del experimento hasta haber conseguido éxito", diremos que $X$ se distribuye como una Geométrica con parámetro $p$
 
-$$X\sim \text{Geom}(p)$$
+$$X\sim \text{Ge}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
 
-- La **función de probabilidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
+- La **función de densidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
 $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 
 ## Distribución Geométrica
- 
+
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ 1-(1-p)^{k+1} & \text{si } k\le x<k+1,\ k\in\mathbb{N}
+\end{array}
+\right.$$ 
 - **Esperanza** $E(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
 - **Varianza** $Var(X) = \frac{1-p}{p^2}$
-- No tiene memoria. Es decir, $p\{X>m+n:\ X>m\} = p\{X>n\}$
+- <l class = "prop">Propiedad de la falta de memoria.</l> Si $X$ es una v.a. \text{Ge}(p), entonces, $$p\{X\ge m+n:\ X\ge n\} = p\{X\ge m\}\ \forall m,n=0,1,\dots$$
 
 ## Distribución Hipergeométrica
+
+Consideremos el experimento "extraer a la vez (o una detrás de otra, sin retornarlos) $n$ objetos donde hay $N$ de tipo A y $M$ de tipo B". Si $X$ es variable aleatoria que mide el "número de objetos del tipo A", diremos que $X$ se distribuye como una Hipergeométrica con parámetro $N,M,n$
+$$X\sim \text{H}(N,M,n)$$
+
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,N\}$ (en general)
+- La **función de densidad** vendrá dada por $$f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}$$
+
+## Distribución Hipergeométrica
+
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
+\end{array}
+\right.$$
+- **Esperanza** $E(X) = \frac{nN}{N+M}$ 
+- **Varianza** $Var(X) = \frac{nNM}{(N+M)^2}\cdot\frac{N+M-n}{N+M-1}$
 
 ## Distribución de Poisson
 
@@ -265,15 +315,21 @@ Si $X$ es variable aleatoria que mide el "número de eventos en un cierto interv
 $$X\sim \text{Po}(\lambda)$$
 donde $\lambda$ representa el número de veces que se espera que ocurra el evento durante un intervalo dado
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
 
-- La **función de probabilidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
+- La **función de densidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
 
 ## Distribución de Poisson
  
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
+\end{array}
+\right.$$ 
 - **Esperanza** $E(X) = \lambda$
 - **Varianza** $Var(X) = \lambda$
-
 
 ## Distribuciones discretas en R
 
@@ -285,6 +341,38 @@ Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
 Geométrica | `geom` | probabilidad de éxito $p$
 Hipergeométrica | `hyper` | $N,M,n$
 Poisson | `pois` | esperanza $\lambda$
+
+
+## MAAAAAAAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Distribuciones continuas
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tema 11 - Introducción a distribuciones de probabilidad</title>
+  <title>Tema X - Probabilidad y variables aleatorias</title>
 
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -20,7 +20,7 @@
     var SLIDE_CONFIG = {
       // Slide settings
       settings: {
-                title: 'Tema 11 - Introducción a distribuciones de probabilidad',
+                title: 'Tema X - Probabilidad y variables aleatorias',
                         useBuilds: true,
         usePrettify: true,
         enableSlideAreas: true,
@@ -165,6 +165,36 @@
 
 <p><l class = "definition">Sucesos incompatibles. </l> Si \(A\cap B = \emptyset\)</p>
 
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-2">
+
+<p><l class = "prop">Propiedades de los sucesos. </l></p>
+
+<ul>
+<li>Conmutativa: \[A\cup B = B\cup A\] \[A\cap B = B\cap A\]</li>
+<li>Asociativa: \[A\cup(B\cup C) = (A\cup B)\cup C\] \[A\cap(B\cap C) = (A\cap B)\cap C\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-3">
+
+<p><l class = "prop">Propiedades de los sucesos. </l></p>
+
+<ul>
+<li>Distributiva: \[A\cap(B\cup C) = (A\cap B)\cup (A\cap C)\] \[A\cup(B\cap C) = (A\cup B)\cap (A\cup C)\]</li>
+<li>Doble complementario: \((A^c)^c = A\)</li>
+<li>Leyes de De Morgan: \[(A\cup B)^c = A^c\cap B^c\] \[(A\cap B)^c = A^c\cup B^c\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos</h2></hgroup><article  id="sucesos-4">
+
+<div class="example">
+<p><strong>Ejemplo</strong></p>
+
+<p>\(\Omega = \{\text{conejos de la granja}\}\) \(A = \{\text{conejos hembra}\}\) \(B = \{\text{conejos con dos colores}\}\)</p>
+
+<p>\(A\cup B = \{\text{Conejos que son hembra o tienen dos colores}\}\) \(A\cap B = \{\text{Conejos que son hembra y tienen dos colores}\}\) \(A^c = \{\text{Conejos que no son hembra}\}= \{\text{Conejos que son macho}\}\) \(A-B = \{\text{Conejos que son hembra y no tienen dos colores}\}\) \(B- A = \{\text{Conejos que tienen dos colores y son macho}\}\)</p>
+
+<p>No son incompatibles</p></div>
+
 </article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad">
 
 <p><l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso</p>
@@ -181,6 +211,123 @@
 
 <p><l class = "important">Notación: </l> Si \(a\in\Omega\), escribiremos \(p(a)\) en vez de \(p(\{a\})\)</p>
 
+</article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad-2">
+
+<p><l class = "prop">Propiedades. </l></p>
+
+<ul>
+<li>\(p(\emptyset) = 0\)</li>
+<li>\(p(A-B) = p(A)-p(A\cap B)\)</li>
+<li>Si \(B\subseteq A\), entonces \(0\le p(B)\le p(A)\)</li>
+<li>\(p(A^c) = 1-p(A)\)</li>
+<li>\(p(A\cup B) = p(A)+p(B)-p(A\cap B)\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad</h2></hgroup><article  id="probabilidad-3">
+
+<p><l class = "prop">Propiedades. </l></p>
+
+<ul>
+<li>\[p(A\cup B\cup C) =\] \[p(A)+p(B)+p(C)-p(A\cap B)-p(A\cap C)-p(B\cap C)+p(A\cap B\cap C)\]</li>
+<li>Si \(A = \{a_1,\dots,a_k\}\), entonces \(p(A) = p(a_1)+\cdots+p(a_k)\)</li>
+<li>Si todos los sucesos elementales tienen la misma probabilidad, cada uno tiene probabilidad \(\frac{1}{|\Omega|}\) y, por tanto \[p(A) = \frac{|A|}{|\Omega|} = \frac{\text{# casos favorables}}{\text{# casos posibles}}\]</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada">
+
+<p><l class = "definition">Probabilidad condicionada. </l> Dados \(A,B\) sucesos, con \(p(B)&gt;0\), la probabilidad \(p(A|B)\) de \(A\) condicionada a \(B\) es la probabilidad de que</p>
+
+<ul>
+<li>pase \(A\) suponiendo que pasa \(B\)</li>
+<li>si pasa \(B\), entonces pase \(A\)</li>
+<li>que un resultado de \(B\) también pertenezca a \(A\)</li>
+</ul>
+
+<p>\[p(A|B) = \frac{p(A\cap B)}{p(B)}\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada-1">
+
+<p><l class = "important">¡Alerta! </l> Cabe distinguir entre</p>
+
+<ul>
+<li>\(p(A\cap B):\) probabilidad de \(A\) y \(B\)</li>
+<li>\(p(A|B):\) probabilidad de que si pasa \(B\) entonces pase \(A\).</li>
+</ul>
+
+<p>En \(p(A|B)\) restringimos el espacio muestral a \(B\).</p>
+
+</article></slide><slide class=""><hgroup><h2>Probabilidad condicionada</h2></hgroup><article  id="probabilidad-condicionada-2">
+
+<p><l class = "prop">Proposición. </l> Sea \(A\subseteq \Omega\) un acontecimiento tal que \(p(A)&gt;0\). Entonces \[p(\cdot |A): \mathcal{P}(\Omega)\longrightarrow [0,1]\] tal que \(B\mapsto p(B|A)\) satisface las propiedades de probabilidad</p>
+
+<p>Lo que nos dice este resultado es que la probabilidad condicionada es, en efecto, una probabilidad.</p>
+
+</article></slide><slide class=""><hgroup><h2>Teorema de la probabilidad total</h2></hgroup><article  id="teorema-de-la-probabilidad-total">
+
+<p><l class = "prop">Teorema. </l> \(A,B\) sucesos. Entonces,</p>
+
+<p>\[p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Teorema de la probabilidad total</h2></hgroup><article  id="teorema-de-la-probabilidad-total-1">
+
+<p><l class = "definition"> Partición del espacio muestral. </l>Los sucesos \(A_1,\dots, A_n\) forman una partición del espacio muestral \(\Omega\) de un determinado experimento aleatorio, si se cumple</p>
+
+<ul>
+<li>\(A_1\cup\cdots \cup A_n = \Omega\)</li>
+<li>\(A_1,\dots,A_n\) son incompatibles dos a dos \((A_i\cap A_j = \emptyset)\)</li>
+</ul>
+
+<p><l class = "prop">Teorema. </l> \(A_1,\dots, A_n\) partición de \(\Omega\) y \(B\) suceso cualquiera. Entonces,</p>
+
+<p>\[p(B) = p(B\cap A_1)+\cdots+p(B\cap A_n) = p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Diagnósticos</h2></hgroup><article  id="diagnosticos">
+
+<p>En un diagnóstico de una cierta condición, tenemos dos tipos de suceso:</p>
+
+<ul>
+<li>\(P:\) test da positivo</li>
+<li>\(S:\) sujeto satisface la condición</li>
+</ul>
+
+<p>Entonces,</p>
+
+<ul>
+<li><l class = "definition">Falso positivo. </l> \(P\cap S^c\) (el test da positivo, pero la condición no se da)</li>
+<li><l class = "definition">Falso negativo. </l> \(P^c\cap S\) (el test da negativo, pero sí se da la condición)</li>
+<li><l class = "definition">Coeficiente de falso positivo. </l> \(p(P|S^c)\)</li>
+<li><l class = "definition">Coeficiente de falso negativo. </l> \(p(P^c|S)\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Fórmula de Bayes</h2></hgroup><article  id="formula-de-bayes">
+
+<p><l class = "prop">Teorema de Bayes. </l> \(A,B\) sucesos. Si \(p(B)&gt;0\), entonces</p>
+
+<p>\[p(A|B) = \frac{p(A)\cdot p(B|A)}{p(B)}=\frac{p(A)\cdot p(B|A)}{p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)}\]</p>
+
+<p><l class = "prop">Teorema de Bayes. </l> \(A_1,\dots,A_n\) partición de \(\Omega\). Sea \(B\) suceso tal que \(p(B)&gt;0\). Entonces</p>
+
+<p>\[p(A_i|B) = \frac{p(A_i)\cdot p(B|A_i)}{p(B)}=\frac{p(A_i)\cdot p(B|A_i)}{p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)}\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos independientes</h2></hgroup><article  id="sucesos-independientes">
+
+<p><l class = "definition">Sucesos independientes. </l> Dados \(A,B\) sucesos, son independientes si \(p(A\cap B) = p(A)\cdot p(B)\)</p>
+
+<p><l class = "definition">Sucesos independientes. </l> Dados \(A_1,\dots,A_n\), son independientes cuando para toda subfamilia \(A_{i_1},\dots,A_{i_k}\), \[p(A_{i_1}\cap\dots\cap A_{i_k})=p(A_{i_1})\cdots p(A_{i_k})\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Sucesos independientes</h2></hgroup><article  id="sucesos-independientes-1">
+
+<p><l class = "prop">Proposición. </l> Dados dos sucesos \(A,B\) con \(p(A),p(B)&gt;0\) son equivalentes</p>
+
+<ul>
+<li>\(A\) y \(B\) son independientes</li>
+<li>\(p(A|B) = p(A)\)</li>
+<li>\(p(B|A) = p(B)\)</li>
+<li>\(A^c\) y \(B\) son independientes</li>
+<li>\(A\) y \(B^c\) son independientes</li>
+<li>\(A^c\) y \(B^c\) son independientes</li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Variable aleatoria</h2></hgroup><article  id="variable-aleatoria">
 
 <p><l class = "definition">Variable aleatoria. </l> Una variable aleatoria (v.a.) sobre \(\Omega\) es una aplicación \[X: \Omega\longrightarrow \mathbb{R}\] que asigna a cada suceso elemental \(\omega\) un número real \(X(\omega)\)</p>
@@ -196,17 +343,32 @@
 <ul>
 <li>\(p(X=a) = p(\{\omega\in\Omega \ |\  X(\omega) = a\})\)</li>
 <li>\(p(X&lt;b) = p(\{\omega\in\Omega \ |\  X(\omega) &lt; b\})\)</li>
-<li>\(p(X\le b) = p(\{\omega\in\Omega \ |\  X(\omega) \le b\})\)</li>
-<li>\(p(a&lt;X) = p(\{\omega\in\Omega \ |\  a&lt;X(\omega)\})\)</li>
 <li>\(p(a\le X) = p(\{\omega\in\Omega \ |\  a\le X(\omega)\})\)</li>
-<li>\(p(a\le X\le b) = p(\{\omega\in\Omega \ |\  a\le X(\omega) \le b\})\)</li>
-<li>\(p(a&lt; X&lt; b) = p(\{\omega\in\Omega \ |\  a&lt; X(\omega) &lt; b\})\)</li>
+<li>\(p(a&lt; X\le b) = p(\{\omega\in\Omega \ |\  a&lt; X(\omega) \le b\})\)</li>
+<li>\(\vdots\)</li>
 <li>\(p(X\in A) = p(\{\omega\in\Omega \ |\  X(\omega)\in A\})\)</li>
+<li>Para la unión utilizaremos \(o\): \(p(X&gt;b\ o\ X&lt;a)\)</li>
+<li>Para la intersección utilizaremos una coma \(,\):\(p(X&gt;b,\ X&lt;a)\)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Función de distribución</h2></hgroup><article  id="funcion-de-distribucion">
 
 <p><l class = "definition">Función de distribución de la v.a. \(X\).</l> Es una función \[F:\mathbb{R}\longrightarrow [0,1]\] definida por \(F(x)=p(X\le x)\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Función de distribución</h2></hgroup><article  id="funcion-de-distribucion-1">
+
+<p><l class = "prop">Propiedades básicas.</l></p>
+
+<ul>
+<li>\(0\le F(x)\le 1\)</li>
+<li>\(F\) es creciente</li>
+<li>\(F\) es continua por la derecha: \(\lim_{x\rightarrow a^+}F(X):= \lim_{t\rightarrow 0^+}F(a+t)=F(a)\), pero \(F\) no tiene por qué ser continua</li>
+<li>\(\lim_{x\rightarrow +\infty} F(X)= 1\), \(\lim_{x\rightarrow -\infty} F(X)= 0\)</li>
+</ul>
+
+<p>Toda función \(F\) que satisfaga estas propiedades es la distribución de alguna v.a. \(X\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Función de distribución</h2></hgroup><article  id="funcion-de-distribucion-2">
 
 <p>Sea \(F\) una función de distribución de una v.a. \(X\) y digamos \[F(a^-)=\lim_{x\rightarrow a^-}F(x)\]</p>
 
@@ -215,6 +377,7 @@
 <li>\(p(X&lt;a)=\lim_{b\rightarrow a,\  b&lt;a}p(X\le b) = \lim_{b\rightarrow a,\  b&lt;a} F(b) = F(a^-)\)</li>
 <li>\(p(X=a) = p(X\le a)-p(X&lt;a)=F(a)-F(a^-)\)</li>
 <li>\(p(a\le X\le b) = p(X\le b)-p(X&lt; a)=F(b)-F(a^-)\)</li>
+<li>\(\vdots\)</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Cuantiles</h2></hgroup><article  id="cuantiles">
@@ -222,6 +385,14 @@
 <p><l class = "definition">Cuantil de orden \(p\) de una v.a. \(X\).</l> Es el \(x_p\in\mathbb{R}\) más pequeño tal que \(F(x_p)\ge p\)</p>
 
 <p>Nótese que la mediana es el cuantil de orden 0.5</p>
+
+</article></slide><slide class=""><hgroup><h2>Variables aleatorias independientes</h2></hgroup><article  id="variables-aleatorias-independientes">
+
+<p><l class = "definition">Variables independientes.</l> \(X_1,\dots,X_n\) son v.a. independientes cuando, para cada \(a_1,\dots,a_n\in \mathbb{R}\), los sucesos \[X_1\le a_1,\dots,X_n\le a_n\] son independientes</p>
+
+<ul>
+<li>Si \(X,Y\) independientes, entonces \[p(X\le a, Y\le b) = p(X\le a)\cdot p(Y\le b) = F_X(a)\cdot F_Y(b)\]</li>
+</ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Variables aleatorias discretas</h2></hgroup><article  id="variables-aleatorias-discretas">
 
@@ -233,11 +404,64 @@
 
 <p>Nótese que \(f(x)=0\) si \(x\not\in D_X\). Por tanto, interpretaremos la función de densidad como la función \[f:D_X\longrightarrow [0,1]\]</p>
 
+</article></slide><slide class=""><hgroup><h2>Función de densidad</h2></hgroup><article  id="funcion-de-densidad">
+
+<p><l class = "prop">Propiedades.</l></p>
+
+<ul>
+<li>\(0\le f(x)\le 1\)</li>
+<li>\(f(x) = 0\) si \(x\not\in D_X\)</li>
+<li>\(\sum_{x\in D_X} f(x) = 1\)</li>
+<li>\(F(a) = p(X\le a)=\sum_{x\in D_X,\ x\le a}f(x)\)</li>
+<li>\(p(X\in A)= \sum_{x\in A}f(x)\)</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Función de densidad</h2></hgroup><article  id="funcion-de-densidad-1">
+
+<p><l class = "important"> ¡Ojo!</l> ¿Qué ocurre con \(\sum_{x\in A}f(x)\) si \(A\subseteq\mathbb{N}\) no es finito?</p>
+
+<p>Al ser subconjunto de los naturales, \(\mathbb{N}\), los elementos de \(A\) pueden ordenarse \[A=\{x_0,x_1,\dots,x_n,\dots\}\]</p>
+
+<p>Llamemos \[S_n = \sum_{i\le n}f(x_i)\]</p>
+
+<p>Entonces, \[\sum_{x\in A}f(x):=\lim_{n\rightarrow +\infty}S_n\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Función de distribución vs. densidad</h2></hgroup><article  id="funcion-de-distribucion-vs.-densidad">
+
+<p>Sea \(X\) v.a. discreta:</p>
+
+<ul>
+<li>Conocida la densidad \(f\) conocemos la distribución \(F\) \[F(a) = \sum_{x\in D_X,\ x\le a}f(x)\]</li>
+<li>Conocida la distribución \(F\), conocemos la densidad \(f\): si \(a_0\in D_X\) es el elemento inmediantamente más pequeño que \(a\), \[F(a)= p(X\le a)=p(X\le a_0)+p(X=a)= F(a_0)+f(a)\Rightarrow\]\[f(a)=F(a)-F(a_0)\]</li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza">
 
 <p><l class = "definition">Esperanza de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la densidad de \(X\), entonces la esperanza respecto de la densidad es la suma ponderada de los elementos de \(D_X\), multiplicando cada elemento \(x\) de \(D_X\) por su probabilidad, \[E(X) = \sum_{x\in D_X}x\cdot f(x)\]</p>
 
 <p>Si \(g:D_X\longrightarrow \mathbb{R}\) es una aplicación \[E(g(X))=\sum_{x\in D_X}g(x)\cdot f(x)\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza-1">
+
+<p><l class = "prop">Teorema.</l> Sean \(\epsilon\) un experimento aleatorio con espacio muestral \(\Omega\) y \(X:\Omega\longrightarrow\mathbb{R}\) una v.a. discreta. Sea \(\bar{X}_n\) la v.a. «repetir el experimento \(\epsilon\) \(n\) veces y calcular la media de las imágenes de \(X\) de los \(n\) resultados». Entonces, \[p(\lim_{n\rightarrow \infty}\bar{X}_n=E(X))=1\]</p>
+
+<p>Básicamente, \(E(X)\) es el límite de la media de los valores de \(X\) si efectuamos el experimento \(n\) veces y hacemos \(n\rightarrow \infty\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza-2">
+
+<p><l class = "prop">Propiedades.</l></p>
+
+<ul>
+<li>\(E(b)=b,\  b\in\mathbb{R}\)</li>
+<li>\(E(aX+b)=aE(X)+b\)</li>
+<li>\(E(X+Y)=E(X)+E(Y)\)</li>
+<li>Si \(X\le Y\), entonces \(E(X)\le E(Y)\)</li>
+<li>Si \(a&lt;X&lt;b\), entonces \(a&lt;E(X)&lt;b\)</li>
+<li>Si \(X\ge 0\), entonces \(E(X)\ge 0\)</li>
+<li>Si \(g(X)\le h(X)\), entonces \(E(g(X))\le E(h(X))\)</li>
+<li><l class = "important">¡Cuidado!</l> En general, \(E(g(X))\ne g(E(X))\)</li>
+<li><l class = "important">¡Cuidado!</l> \(E\) solo tiene sentido si la suma que la define es convergente, \(&lt;\infty\)</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Varianza</h2></hgroup><article  id="varianza">
 
@@ -252,6 +476,16 @@
 
 <p>Si \(X\) es una v.a. discreta y \(g:D_X\longrightarrow \mathbb{R}\) una función, \[Var(g(X))=E((g(X)-E(g(X)))^2)=E(g(X)^2)-(E(g(X)))^2\]</p>
 
+</article></slide><slide class=""><hgroup><h2>Varianza</h2></hgroup><article  id="varianza-2">
+
+<p><l class = "prop">Propiedades.</l></p>
+
+<ul>
+<li>\(Var(b)=0,\ \forall b\in\mathbb{R}\)</li>
+<li>\(Var(aX+b)=a^2Var(X)\)</li>
+<li>Si \(X,Y\) son v.a. independientes, \(Var(X+Y)=Var(X)+Var(Y)\)</li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Desviación típica</h2></hgroup><article  id="desviacion-tipica">
 
 <p><l class = "definition">Desviación típica de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la densidad de \(X\), entonces la desviación típica respecto de la densidad es \[\sigma(X)=\sqrt{Var(X)}\]</p>
@@ -259,6 +493,15 @@
 <p>Las unidades de la varianza son las de \(X\) al cuadrado. En cambio, las de la desviación típica son las mismas unidades que las de \(X\)</p>
 
 <p>Si \(X\) es una v.a. discreta y \(g:D_X\longrightarrow \mathbb{R}\) una función, \[\sigma(g(X))=\sqrt{Var(g(X))}\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Desviación típica</h2></hgroup><article  id="desviacion-tipica-1">
+
+<p><l class = "prop">Propiedades.</l></p>
+
+<ul>
+<li>\(\sigma(b)=0,\ \forall b\in\mathbb{R}\)</li>
+<li>\(\sigma(aX+b)=a\sigma(X)\)</li>
+</ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Distribuciones discretas más conocidas</h2></hgroup><article  id="distribuciones-discretas-mas-conocidas">
 
@@ -408,152 +651,46 @@
 <p>\[X\sim \text{Po}(\lambda)\] donde \(\lambda\) representa el número de veces que se espera que ocurra el evento durante un intervalo dado</p>
 
 <ul>
-<li><p>El <strong>dominio</strong> de \(X\) será \(X(\Omega) = \{0,1,2,\dots\}\)</p></li>
-<li><p>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
+<li><p>El <strong>espacio muestral</strong> de \(X\) será \(X(\Omega) = \{0,1,2,\dots\}\)</p></li>
+<li><p>La <strong>función de densidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución de Poisson</h2></hgroup><article  id="distribucion-de-poisson-1">
 
 <ul>
+<li>La <strong>función de distribución</strong> vendrá dada por \[F(x) = \left\{
+\begin{array}{cl}
+ 0 &amp; \text{si } x&lt;0 
+  \\ \sum_{k=0}^xf(k) &amp; \text{si } 0\le x&lt;n
+  \\ 1 &amp; \text{si } x\ge n
+\end{array}
+\right.\]</li>
 <li><strong>Esperanza</strong> \(E(X) = \lambda\)</li>
 <li><strong>Varianza</strong> \(Var(X) = \lambda\)</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>MAAAAAAAL</h2></hgroup><article  id="maaaaaaal">
+</article></slide><slide class=""><hgroup><h2>Procesos de Poisson</h2></hgroup><article  id="procesos-de-poisson">
 
-</article></slide><slide class=""><hgroup><h2>Distribuciones discretas en R</h2></hgroup><article  id="distribuciones-discretas-en-r">
-
-<p>R conoce las distribuciones de probabilidad más importantes.</p>
-
-<table class = 'rmdtable'>
-<tr class="header">
-<th align="left">Distribución</th>
-<th align="left">Instrucción</th>
-<th align="left">Parámetros</th>
-</tr>
-<tr class="odd">
-<td align="left">Binomial</td>
-<td align="left"><code>binom</code></td>
-<td align="left">tamaño de la muestra \(n\) y probabilidad de éxito \(p\)</td>
-</tr>
-<tr class="even">
-<td align="left">Geométrica</td>
-<td align="left"><code>geom</code></td>
-<td align="left">probabilidad de éxito \(p\)</td>
-</tr>
-<tr class="odd">
-<td align="left">Hipergeométrica</td>
-<td align="left"><code>hyper</code></td>
-<td align="left">\(N,M,n\)</td>
-</tr>
-<tr class="even">
-<td align="left">Poisson</td>
-<td align="left"><code>pois</code></td>
-<td align="left">esperanza \(\lambda\)</td>
-</tr>
-</table>
-
-</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>R</code></h2></hgroup><article  id="distribuciones-en-r">
-
-<p>Dada cualquier variable aleatoria, \(va\), <code>R</code> nos da cuatro funciones para poder trabajar con ellas:</p>
+<p><l class = "definition">Proceso de Poisson.</l> La v.a. discreta \(X_t\) que cuenta el número de objetos en una región (intervalo de tiempo, espacio&#8230;) de medida \(t\), con las siguientes características:</p>
 
 <ul>
-<li><code>dva(x,...)</code>: Función de densidad o de probabilidad \(f(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
-<li><code>pva(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
-<li><code>qva(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
-<li><code>rva(n,...)</code>: Generador de \(n\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+<li>El número medio de objetos en una región es proporcional a la medida.</li>
+<li>Los números de objetos en regiones distintas son independientes</li>
+<li>La probabilidad de encontrar más de un objeto en una región tiende a 0 si la medida de la región tiende a 0</li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>Python</code></h2></hgroup><article  id="distribuciones-en-python">
+<p>Entonces, para cada \(t\), \(X_t\) es de Poisson con parámetro \(\lambda_t\). Ahora bien, como por un lado \(\lambda_t\) es el número medio de objetos en la región de medida \(t\) y, por otro, el número medio de objetos en una región es proporcional a la medida</p>
 
-<p>Dada cualquier variable aleatoria, en <code>Python</code> tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:</p>
+<p>\[\lambda_{x\cdot t}=x\cdot \lambda_t \text{ y, en particular, } \lambda_t = t\cdot \lambda_1\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Distribución de Poisson</h2></hgroup><article  id="distribucion-de-poisson-2">
+
+<p><l class = "prop">Propiedades.</l></p>
 
 <ul>
-<li><code>pmf(k,...)</code> o <code>pdf(x,...)</code>: Función de probabilidad \(f(k)\) o de densidad \(f(x)\) de la variable aleatoria para los valores \(k\) o \(x\) del dominio.</li>
-<li><code>cdf(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(k\) del dominio.</li>
-<li><code>ppf(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
-<li><code>rvs(size,...)</code>: Generador de \(size\) observaciones siguiendo la distribución de la variable aleatoria.</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Distribuciones continuas</h2></hgroup><article  id="distribuciones-continuas">
-
-<ul>
-<li>Uniforme</li>
-<li>Exponencial</li>
-<li>Normal</li>
-<li>Khi cuadrado</li>
-<li>t de Student</li>
-<li>F de Fisher</li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Distribución Uniforme</h2></hgroup><article  id="distribucion-uniforme">
-
-</article></slide><slide class=""><hgroup><h2>Distribución Exponencial</h2></hgroup><article  id="distribucion-exponencial">
-
-</article></slide><slide class=""><hgroup><h2>Distribución Normal</h2></hgroup><article  id="distribucion-normal">
-
-</article></slide><slide class=""><hgroup><h2>Distribución Khi cuadrado</h2></hgroup><article  id="distribucion-khi-cuadrado">
-
-</article></slide><slide class=""><hgroup><h2>Distribución t de Student</h2></hgroup><article  id="distribucion-t-de-student">
-
-</article></slide><slide class=""><hgroup><h2>Distribución F de Fisher</h2></hgroup><article  id="distribucion-f-de-fisher">
-
-</article></slide><slide class=""><hgroup><h2>Distribuciones continuas en R</h2></hgroup><article  id="distribuciones-continuas-en-r">
-
-<table class = 'rmdtable'>
-<tr class="header">
-<th align="left">Distribución</th>
-<th align="left">Instrucción</th>
-<th align="left">Parámetros</th>
-</tr>
-<tr class="odd">
-<td align="left">Uniforme</td>
-<td align="left"><code>unif</code></td>
-<td align="left">mínimo y máximo</td>
-</tr>
-<tr class="even">
-<td align="left">Exponencial</td>
-<td align="left"><code>exp</code></td>
-<td align="left">\(\lambda\)</td>
-</tr>
-<tr class="odd">
-<td align="left">Normal</td>
-<td align="left"><code>norm</code></td>
-<td align="left">media \(\mu\), desviación típica \(\sigma\)</td>
-</tr>
-<tr class="even">
-<td align="left">Khi cuadrado</td>
-<td align="left"><code>chisq</code></td>
-<td align="left">grados de libertad</td>
-</tr>
-<tr class="odd">
-<td align="left">t de Student</td>
-<td align="left"><code>t</code></td>
-<td align="left">grados de libertad</td>
-</tr>
-<tr class="even">
-<td align="left">F de Fisher</td>
-<td align="left"><code>f</code></td>
-<td align="left">los dos grados de libertad</td>
-</tr>
-</table>
-
-</article></slide><slide class=""><hgroup><h2>Distribuciones de probabilidad en R</h2></hgroup><article  id="distribuciones-de-probabilidad-en-r">
-
-<p>Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:</p>
-
-<ul>
-<li>Función densidad: añadiendo prefijo <code>d</code></li>
-<li>Función de distribución de probabilidad: añadiendo prefijo <code>p</code></li>
-<li>Cuantiles: añadiendo prefijo <code>q</code></li>
-<li>Listas de números aleatorios generados con esta distribución: añadiendo prefijo <code>r</code></li>
-</ul>
-
-</article></slide><slide class=""><hgroup><h2>Distribución Normal en R</h2></hgroup><article  id="distribucion-normal-en-r">
-
-<p>Si a la hora de llamar a alguna de las 4 funciones siguientes: <code>dnorm</code>, <code>pnorm</code>, <code>qnorm</code> o <code>rnorm</code> no especificásemos los parámetros de la media ni la desviación típica, R entiende que se trata de la normal estándar: la \(\mathcal{N}(0,1)\).</p>
-
-<p>Es decir, R interpreta \(\mu = 0\) y \(\sigma = 1\)</p></article></slide>
+<li>Si \(X_1,\dots,X_n\) son v.a. de Poisson independientes, con cada \(X_i\) con parámetro \(\lambda_i\), entonces \(X_1+\cdots+X_n\) es una v.a. de Poisson con parámetro \(\lambda_1+\cdots+\lambda_n\)</li>
+<li>\(X_1,X_2\) v.a. de Poisson independientes, con cada \(X_i\) con parámetro \(\lambda_i\), entonces la probabilidad condicionada \(p(X_1=k \ :\ X_1+X_2=n )\) es binomial de parámetros \(n\) y \(p = \frac{\lambda_1}{\lambda_1+\lambda_2}\)</li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>

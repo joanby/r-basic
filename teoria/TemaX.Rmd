@@ -240,91 +240,144 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 
 ## Función de distribución
 
-<l class = "definition">Función de distribución de la v.a. X.</l> Es una función  $$F:\mathbb{R}\longrightarrow [0,1]$$ definida por $F(x)=p(X\le x)$
+<l class = "definition">Función de distribución de la v.a. $X$.</l> Es una función  $$F:\mathbb{R}\longrightarrow [0,1]$$ definida por $F(x)=p(X\le x)$
 
 ## Función de distribución
 
 <l class = "prop">Propiedades básicas.</l>
 
-- $0\leF(x)\le 1$
+- $0\le F(x)\le 1$
 - $F$ es creciente
 - $F$ es continua por la derecha: $\lim_{x\rightarrow a^+}F(X):= \lim_{t\rightarrow 0^+}F(a+t)=F(a)$, pero $F$ no tiene por qué ser continua
 - $\lim_{x\rightarrow +\infty} F(X)= 1$, $\lim_{x\rightarrow -\infty} F(X)= 0$
 
 Toda función $F$ que satisfaga estas propiedades es la distribución de alguna v.a. $X$ 
 
+## Función de distribución 
 
+Sea $F$ una función de distribución de una v.a. $X$ y digamos $$F(a^-)=\lim_{x\rightarrow a^-}F(x)$$
 
+- $p(X\le a)=F(a)$
+- $p(X<a)=\lim_{b\rightarrow a,\  b<a}p(X\le b) = \lim_{b\rightarrow a,\  b<a} F(b) = F(a^-)$
+- $p(X=a) = p(X\le a)-p(X<a)=F(a)-F(a^-)$
+- $p(a\le X\le b) = p(X\le b)-p(X< a)=F(b)-F(a^-)$
+- $\vdots$
 
-## MAAAAAAAL
+## Cuantiles
 
+<l class = "definition">Cuantil de orden $p$ de una v.a. $X$.</l> Es el $x_p\in\mathbb{R}$ más pequeño tal que $F(x_p)\ge p$
 
+Nótese que la mediana es el cuantil de orden 0.5
 
+## Variables aleatorias independientes
 
-## Variable aleatoria
+<l class = "definition">Variables independientes.</l> $X_1,\dots,X_n$ son v.a. independientes cuando, para cada $a_1,\dots,a_n\in \mathbb{R}$, los sucesos $$X_1\le a_1,\dots,X_n\le a_n$$ son independientes
 
-<l class = "definition">[Variable aleatoria](https://es.wikipedia.org/wiki/Variable_aleatoria).</l> Una variable aleatoria es una función que asigna un valor, usualmente numérico, al resultado de un experimento aleatorio. Las hay de dos tipos: discretas y continuas.
+- Si $X,Y$ independientes, entonces $$p(X\le a, Y\le b) = p(X\le a)\cdot p(Y\le b) = F_X(a)\cdot F_Y(b)$$
 
-- <l class = "definition">Variable aleatoria discreta.</l> Solamente puede tomar un número finito de valores.
-- <l class = "definition">Variable aleatoria continua.</l> Puede tomar como valores un intervalo (finito o infinito) de números reales.
+# Variables aleatorias discretas
 
-<div class = "example">
-**Ejemplo**
+## Variable aleatoria discreta
 
-La variable aleatoria $X$ que cuenta el número de caras que salen al tirar una moneda $n$ veces es una variable aleatoria discreta
-</div>
+<l class = "definition">Variable aleatoria discreta.</l> Una v.a. $X:\Omega\longrightarrow \mathbb{R}$ es discreta cuando $D_X$ es finito o un subconjunto de $\mathbb{N}$ 
 
+<l class = "definition">Función de densidad.</l> Es la función $f:\mathbb{R}\longrightarrow[0,1]$ definida por $$f(x) = p(X=x)$$
 
-## Funciones de probabilidad y densidad
+Nótese que $f(x)=0$ si $x\not\in D_X$. Por tanto, interpretaremos la función de densidad como la función $$f:D_X\longrightarrow [0,1]$$
 
-- <l class = "definition">Función de probabilidad.</l> Asocia a cada punto del dominio de $X$ la probabilidad de que ésta lo asuma. Es útil cuando $X$ es v.a. discreta. De ser $X$ v.a. continua, la función de probabilidad es la función nula.
+## Función de densidad
 
-- <l class = "definition">Función de densidad.</l> Cuando $X$ es v.a. continua, la función de densidad describe la probabilidad relativa según la cual dicha variable aleatoria tomará determinado valor.
+<l class = "prop">Propiedades.</l>
 
+- $0\le f(x)\le 1$
+- $f(x) = 0$ si $x\not\in D_X$
+- $\sum_{x\in D_X} f(x) = 1$
+- $F(a) = p(X\le a)=\sum_{x\in D_X,\ x\le a}f(x)$
+- $p(X\in A)= \sum_{x\in A}f(x)$
 
-## Función de distribución
+## Función de densidad
 
-<l class = "definition">Función de distribución.</l> Describe la probabilidad de que $X$ tenga un valor menor o igual que $x$.
+<l class = "important"> ¡Ojo!</l> ¿Qué ocurre con $\sum_{x\in A}f(x)$ si $A\subseteq\mathbb{N}$ no es finito?
 
-- Es continua por la derecha
-- Es creciente
-- Toma valores entre 0 y 1
+Al ser subconjunto de los naturales, $\mathbb{N}$, los elementos de $A$ pueden ordenarse $$A=\{x_0,x_1,\dots,x_n,\dots\}$$
 
-## Esperanza de una variable aleatoria
+Llamemos $$S_n = \sum_{i\le n}f(x_i)$$
 
-<l class = "definition">Esperanza de una variable aleatoria discreta.</l> $E(X)= \sum_{i=1}^nx_i\cdot p\{X=x_i\}$. Es decir, es la suma del producto de todos los valores que puede tomar la variable aleatoria discreta por su probabilidad.
+Entonces, $$\sum_{x\in A}f(x):=\lim_{n\rightarrow +\infty}S_n$$
 
-<l class = "definition">Esperanza de una variable aleatoria continua.</l> $E(X)= \int_{-\infty}^{\infty}x\cdot f(x)dx$. Es decir, es la integral de todos los valores que puede tomar la variable aleatoria continua por su función de densidad.
+## Función de distribución vs. densidad
 
-## Varianza de una variable aleatoria
+Sea $X$ v.a. discreta:
 
-<l class = "definition">Varianza.</l> $Var(X)=E((X-E(X))^2)$. Es decir, es una medida de dispersión definida como la esperanza del cuadrado de la desviación de dicha variable respecto a su media.
+- Conocida la densidad $f$ conocemos la distribución $F$ $$F(a) = \sum_{x\in D_X,\ x\le a}f(x)$$
+- Conocida la distribución $F$, conocemos la densidad $f$: si $a_0\in D_X$ es el elemento inmediantamente más pequeño que $a$, $$F(a)= p(X\le a)=p(X\le a_0)+p(X=a)= F(a_0)+f(a)\Rightarrow$$$$f(a)=F(a)-F(a_0)$$
 
-- De entre sus propiedades, una de las más interesantes es: $Var(X)=E(X^2)-(E(X))^2$
+## Esperanza
+
+<l class = "definition">Esperanza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la esperanza respecto de la densidad es la suma ponderada de los elementos de $D_X$, multiplicando cada elemento $x$ de $D_X$ por su probabilidad, $$E(X) = \sum_{x\in D_X}x\cdot f(x)$$
+
+Si $g:D_X\longrightarrow \mathbb{R}$ es una aplicación $$E(g(X))=\sum_{x\in D_X}g(x)\cdot f(x)$$
+
+## Esperanza
+
+<l class = "prop">Teorema.</l> Sean $\epsilon$ un experimento aleatorio con espacio muestral $\Omega$ y $X:\Omega\longrightarrow\mathbb{R}$ una v.a. discreta. Sea $\bar{X}_n$ la v.a. «repetir el experimento $\epsilon$ $n$ veces y calcular la media de las imágenes de $X$ de los $n$ resultados». Entonces, $$p(\lim_{n\rightarrow \infty}\bar{X}_n=E(X))=1$$
+
+Básicamente, $E(X)$ es el límite de la media de los valores de $X$ si efectuamos el experimento $n$ veces y hacemos $n\rightarrow \infty$
+
+## Esperanza
+
+<l class = "prop">Propiedades.</l>
+
+- $E(b)=b,\  b\in\mathbb{R}$
+- $E(aX+b)=aE(X)+b$
+- $E(X+Y)=E(X)+E(Y)$
+- Si $X\le Y$, entonces $E(X)\le E(Y)$
+- Si $a<X<b$, entonces $a<E(X)<b$
+- Si $X\ge 0$, entonces $E(X)\ge 0$
+- Si $g(X)\le h(X)$, entonces $E(g(X))\le E(h(X))$
+- <l class = "important">¡Cuidado!</l> En general, $E(g(X))\ne g(E(X))$
+- <l class = "important">¡Cuidado!</l> $E$ solo tiene sentido si la suma que la define es convergente, $<\infty$
+
+## Varianza
+
+<l class = "definition">Varianza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la varianza respecto de la densidad es el valor esperado de la diferencia al cuadrado entre $X$ y su valor medio $E(X)$, $$Var(X)= E((X-E(X))^2) $$
+
+La varianza mide como de variados son los resultados de $X$ respecto de la media
+
+<div class = "exercise"> **Ejercicio.** Demostrar la siguiente igualdad. $$Var(X)= E(X^2)-(E(X))^2$$</div>
+
+## Varianza
+
+Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$Var(g(X))=E((g(X)-E(g(X)))^2)=E(g(X)^2)-(E(g(X)))^2$$
+
+## Varianza
+
+<l class = "prop">Propiedades.</l>
+
+- $Var(b)=0,\ \forall b\in\mathbb{R}$
+- $Var(aX+b)=a^2Var(X)$
+- Si $X,Y$ son v.a. independientes, $Var(X+Y)=Var(X)+Var(Y)$ 
+
+## Desviación típica
+
+<l class = "definition">Desviación típica de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la desviación típica respecto de la densidad es $$\sigma(X)=\sqrt{Var(X)}$$
+
+Las unidades de la varianza son las de $X$ al cuadrado. En cambio, las de la desviación típica son las mismas unidades que las de $X$
+
+Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$\sigma(g(X))=\sqrt{Var(g(X))}$$
+
+## Desviación típica
+
+<l class = "prop">Propiedades.</l>
+
+- $\sigma(b)=0,\ \forall b\in\mathbb{R}$
+- $\sigma(aX+b)=a\sigma(X)$
+
+# Distribuciones discretas más conocidas
 
 ## Distribución de probabilidad
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
-
-# Las distribuciones más conocidas
-
-## Distribuciones en `R`
-
-Dada cualquier variable aleatoria, $va$, `R` nos da cuatro funciones para poder trabajar con ellas:
-
-- `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
-- `pva(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $x$ del dominio de definición.
-- `qva(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
-- `rva(n,...)`: Generador de $n$ observaciones siguiendo la distribución de la variable aleatoria.
-
-## Distribuciones en `Python`
-
-Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:
-
-- `pmf(k,...)` o `pdf(x,...)`: Función de probabilidad $f(k)$ o de densidad $f(x)$ de la variable aleatoria para los valores $k$ o $x$ del dominio.
-- `cdf(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $k$ del dominio.
-- `ppf(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
-- `rvs(size,...)`: Generador de $size$ observaciones siguiendo la distribución de la variable aleatoria.
 
 ## Distribuciones discretas
 
@@ -344,8 +397,8 @@ $$X\sim \text{Be}(p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1\}$
-- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1\}$
+- La **función de densidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
      p & \text{si } k=1 
   \\ 1-p & \text{si } k=0
@@ -355,11 +408,11 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 ## Distribución de Bernoulli
 
-- La **función de distribución** vendrá dada por $$F(k) = \left\{
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
 \begin{array}{rl}
-     0 & \text{si } k<0 
-  \\ q & \text{si } 0\le k<1
-  \\ 1 & \text{si } k\ge 1
+     0 & \text{si } x<0 
+  \\ 1-p & \text{si } 0\le x<1
+  \\ 1 & \text{si } x\ge 1
 \end{array}
 \right.$$
 - **Esperanza** $E(X) = p$
@@ -380,20 +433,22 @@ $$X\sim \text{B}(n,p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
-- La **función de probabilidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
+- La **función de densidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
 
 ## Distribución Binomial
 
-- La **función de distribución** vendrá dada por $$F(k) = \left\{
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
 \begin{array}{cl}
-     0 & \text{si } k<0 
-  \\ \sum_{i=0}^kf(k) & \text{si } 0\le k<n
-  \\ 1 & \text{si } k\ge n
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
 \end{array}
 \right.$$
 - **Esperanza** $E(X) = np$
 - **Varianza** $Var(X) = npq$
+
+<l class = "important">Atención.</l> Fijaos que la distribución de Bernoulli es un caso particular de la Binomial. Basta tomar $n=1$ y tendremos que $X\sim \text{Be}(p)$ y $X\sim\text{B}(1,p)$ son equivalentes.
 
 ## Distribución Binomial
 
@@ -409,21 +464,45 @@ par(mfrow= c(1,1))
 
 Si $X$ es variable aleatoria que mide el "número de repeticiones independientes del experimento hasta haber conseguido éxito", diremos que $X$ se distribuye como una Geométrica con parámetro $p$
 
-$$X\sim \text{Geom}(p)$$
+$$X\sim \text{Ge}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
 
-- La **función de probabilidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
+- La **función de densidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
 $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 
 ## Distribución Geométrica
- 
+
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ 1-(1-p)^{k+1} & \text{si } k\le x<k+1,\ k\in\mathbb{N}
+\end{array}
+\right.$$ 
 - **Esperanza** $E(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
 - **Varianza** $Var(X) = \frac{1-p}{p^2}$
-- No tiene memoria. Es decir, $p\{X>m+n:\ X>m\} = p\{X>n\}$
+- <l class = "prop">Propiedad de la falta de memoria.</l> Si $X$ es una v.a. \text{Ge}(p), entonces, $$p\{X\ge m+n:\ X\ge n\} = p\{X\ge m\}\ \forall m,n=0,1,\dots$$
 
 ## Distribución Hipergeométrica
+
+Consideremos el experimento "extraer a la vez (o una detrás de otra, sin retornarlos) $n$ objetos donde hay $N$ de tipo A y $M$ de tipo B". Si $X$ es variable aleatoria que mide el "número de objetos del tipo A", diremos que $X$ se distribuye como una Hipergeométrica con parámetro $N,M,n$
+$$X\sim \text{H}(N,M,n)$$
+
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,N\}$ (en general)
+- La **función de densidad** vendrá dada por $$f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}$$
+
+## Distribución Hipergeométrica
+
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
+\end{array}
+\right.$$
+- **Esperanza** $E(X) = \frac{nN}{N+M}$ 
+- **Varianza** $Var(X) = \frac{nNM}{(N+M)^2}\cdot\frac{N+M-n}{N+M-1}$
 
 ## Distribución de Poisson
 
@@ -432,71 +511,38 @@ Si $X$ es variable aleatoria que mide el "número de eventos en un cierto interv
 $$X\sim \text{Po}(\lambda)$$
 donde $\lambda$ representa el número de veces que se espera que ocurra el evento durante un intervalo dado
 
-- El **dominio** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
+- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
 
-- La **función de probabilidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
+- La **función de densidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
 
 ## Distribución de Poisson
  
+- La **función de distribución** vendrá dada por $$F(x) = \left\{
+\begin{array}{cl}
+     0 & \text{si } x<0 
+  \\ \sum_{k=0}^xf(k) & \text{si } 0\le x<n
+  \\ 1 & \text{si } x\ge n
+\end{array}
+\right.$$ 
 - **Esperanza** $E(X) = \lambda$
 - **Varianza** $Var(X) = \lambda$
 
 
-## Distribuciones discretas en R
+## Procesos de Poisson
 
-R conoce las distribuciones de probabilidad más importantes.
+<l class = "definition">Proceso de Poisson.</l> La v.a. discreta $X_t$ que cuenta el número de objetos en una región (intervalo de tiempo, espacio...) de medida $t$, con las siguientes características:
 
-Distribución |  Instrucción  |  Parámetros                                
---------------------|--------------------|--------------------
-Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
-Geométrica | `geom` | probabilidad de éxito $p$
-Hipergeométrica | `hyper` | $N,M,n$
-Poisson | `pois` | esperanza $\lambda$
+- El número medio de objetos en una región es proporcional a la medida.
+- Los números de objetos en regiones distintas son independientes
+- La probabilidad de encontrar más de un objeto en una región tiende a 0 si la medida de la región tiende a 0
 
-## Distribuciones continuas
+Entonces, para cada $t$, $X_t$ es de Poisson con parámetro $\lambda_t$. Ahora bien, como por un lado $\lambda_t$ es el número medio de objetos en la región de medida $t$ y, por otro, el número medio de objetos en una región es proporcional a la medida
 
-- Uniforme
-- Exponencial
-- Normal
-- Khi cuadrado
-- t de Student
-- F de Fisher
+$$\lambda_{x\cdot t}=x\cdot \lambda_t \text{ y, en particular, } \lambda_t = t\cdot \lambda_1$$
 
-## Distribución Uniforme
+## Distribución de Poisson
 
-## Distribución Exponencial
+<l class = "prop">Propiedades.</l>
 
-## Distribución Normal
-
-## Distribución Khi cuadrado
-
-## Distribución t de Student
-
-## Distribución F de Fisher
-
-## Distribuciones continuas en R
-
-Distribución |  Instrucción  |  Parámetros                                
---------------------|--------------------|--------------------
-Uniforme | `unif` | mínimo y máximo
-Exponencial | `exp` | $\lambda$
-Normal | `norm` | media $\mu$, desviación típica $\sigma$
-Khi cuadrado | `chisq` | grados de libertad
-t de Student | `t` | grados de libertad
-F de Fisher | `f` | los dos grados de libertad
-
-## Distribuciones de probabilidad en R
-
-Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:
-
-- Función densidad: añadiendo prefijo `d`
-- Función de distribución de probabilidad: añadiendo prefijo `p`
-- Cuantiles: añadiendo prefijo `q`
-- Listas de números aleatorios generados con esta distribución: añadiendo prefijo `r`
-
-## Distribución Normal en R
-
-Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
-
-Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
-
+- Si $X_1,\dots,X_n$ son v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces $X_1+\cdots+X_n$ es una v.a. de Poisson con parámetro $\lambda_1+\cdots+\lambda_n$
+- $X_1,X_2$ v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces la probabilidad condicionada $p(X_1=k \ :\ X_1+X_2=n )$ es binomial de parámetros $n$ y $p = \frac{\lambda_1}{\lambda_1+\lambda_2}$
