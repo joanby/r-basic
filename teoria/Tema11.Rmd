@@ -343,47 +343,99 @@ Hipergeométrica | `hyper` | $N,M,n$
 Poisson | `pois` | esperanza $\lambda$
 
 
-## MAAAAAAAL
+# Variables aleatorias continuas
+
+## Variable aleatoria continua
+
+<l class = "definition">Variable aleatoria continua.</l> Una v.a. $X:\Omega\longrightarrow\mathbb{R}$ es continua cuando su función de distribución $F_X:\mathbb{R}\longrightarrow[0,1]$ es continua
+
+En este caso, $F_X(x)=F_X(x^-)$ y, por este motivo, $$p(X=x)=0\ \forall x\in\mathbb{R}$$
+pero esto no significa que sean sucesos imposibles
+
+## Función de densidad
+
+<l class = "definition">Función de densidad.</l> Función $f:\mathbb{R}\longrightarrow\mathbb{R}$ que satisface 
+
+- $f(x)\ge 0\ \forall x\in\mathbb{R}$
+- $\int_{-\infty}^{+\infty}f(t)dt=1$
+
+Una función de densidad puede tener puntos de discontinuidad
+
+## Variable aleatoria continua
+
+Toda variable aleatoria $X$ con función de distribución 
+
+$$F(x)=\int_{-\infty}^{x}f(t)dt\ \forall x\in\mathbb{R}$$ para cualquier densidad $f$ es una v.a. continua
+
+Diremos entonces que $f$ es la función de densidad de $X$
+
+A partir de ahora, considerareos solamente las v.a. $X$ continuas que tienen función de densidad
 
 
+## Esperanza
 
+<l class = "definition">Esperanza de una v.a. continua.</l> Sea $X$ v.a. continua con densidad $f_X$. La esperanza de $X$ es $$E(X)=\int_{-\infty}^{+\infty}x\cdot f_X(x)dx$$
 
+Si el dominio $D_X$ de $X$ es un intervalo de extremos $a<b$, entonces $$E(X)=\int_a^b x\cdot f_X(x)dx$$
 
+## Esperanza
 
+Sea $g:D_X\longrightarrow \mathbb{R}$ una función continua. Entonces, 
 
+$$E(g(X)) = \int_{-\infty}^{+\infty}g(x)\cdot f_X(x)dx$$
 
+Si el dominio $D_X$ de $X$ es un intervalo de extremos $a<b$, entonces $$E(g(X))=\int_a^b g(x)\cdot f_X(x)dx$$
 
+## Varianza
 
+<l class = "definition">Varianza de una v.a. continua.</l> Como en el caso discreto, $$Var(X)=E((X-E(X))^2)$$
 
+y se puede demostrar que
 
+$$Var(X)=E(X^2)-(E(X))^2$$
 
+## Desviación típica
 
+<l class = "definition">Desviación típica de una v.a. continua.</l> Como en el caso discreto, $$\sigma = \sqrt{Var(X)}$$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Distribuciones continuas más conocidas
 
 ## Distribuciones continuas
 
-- Uniforme
-- Exponencial
-- Normal
-- Khi cuadrado
-- t de Student
-- F de Fisher
+- [Uniforme](https://es.wikipedia.org/wiki/Distribución_uniforme_continua)
+- [Exponencial](https://es.wikipedia.org/wiki/Distribución_exponencial)
+- [Normal](https://es.wikipedia.org/wiki/Distribución_normal)
+- [Khi cuadrado](https://es.wikipedia.org/wiki/Distribución_χ²)
+- [t de Student](https://es.wikipedia.org/wiki/Distribución_t_de_Student)
+- [F de Fisher](https://es.wikipedia.org/wiki/Distribución_F)
+
 
 ## Distribución Uniforme
+
+Una v.a. continua $X$ tiene distribución uniforme sobre el intervalo real $[a,b]$ con $a<b$, $X\sim\text{U}(a,b)$ si su función de densidad es $$f_X(x)=\left\{
+\begin{array}{rl}
+     \frac{1}{b-a} & \text{si } a\le x\le b
+  \\ 0 & \text{en cualquier otro caso}
+\end{array}
+\right.$$
+
+Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
+
+## Distribución uniforme
+
+- El **dominio** de $X$ será $D_X = [a,b]$
+
+- La **función de distribución** vendrá dada por $$F_X(x)=\left\{
+\begin{array}{rl}
+    0 & \text{si } x<a
+  \\ \frac{x-a}{b-a} & \text{si } a\le x< b
+  \\ 1 & \text{si } x\ge b
+\end{array}
+\right.$$
+
+- **Esperanza** $E(X) = \frac{a+b}{2}$
+- **Varianza** $Var(X) = \frac{(b-a)^2}{12}$
+
 
 ## Distribución Exponencial
 
@@ -406,14 +458,6 @@ Khi cuadrado | `chisq` | grados de libertad
 t de Student | `t` | grados de libertad
 F de Fisher | `f` | los dos grados de libertad
 
-## Distribuciones de probabilidad en R
-
-Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:
-
-- Función densidad: añadiendo prefijo `d`
-- Función de distribución de probabilidad: añadiendo prefijo `p`
-- Cuantiles: añadiendo prefijo `q`
-- Listas de números aleatorios generados con esta distribución: añadiendo prefijo `r`
 
 ## Distribución Normal en R
 

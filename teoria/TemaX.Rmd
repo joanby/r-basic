@@ -373,15 +373,35 @@ Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$
 - $\sigma(b)=0,\ \forall b\in\mathbb{R}$
 - $\sigma(aX+b)=a\sigma(X)$
 
-# Distribuciones discretas más conocidas
+# Distribuciones de probabilidad
 
 ## Distribución de probabilidad
 
 <l class = "definition">[Distribución de probabilidad](https://es.wikipedia.org/wiki/Distribución_de_probabilidad).</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.
 
-## Distribuciones discretas
+## Distribuciones en `R`
 
-<l class = "definition">Distribución discreta</l>
+Dada cualquier variable aleatoria, $va$, `R` nos da cuatro funciones para poder trabajar con ellas:
+
+- `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
+- `pva(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $x$ del dominio de definición.
+- `qva(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
+- `rva(n,...)`: Generador de $n$ observaciones siguiendo la distribución de la variable aleatoria.
+
+## Distribuciones en `Python`
+
+Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:
+
+- `pmf(k,...)` o `pdf(x,...)`: Función de probabilidad $f(k)$ o de densidad $f(x)$ de la variable aleatoria para los valores $k$ o $x$ del dominio.
+- `cdf(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $k$ del dominio.
+- `ppf(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
+- `rvs(size,...)`: Generador de $size$ observaciones siguiendo la distribución de la variable aleatoria.
+
+
+
+# Distribuciones discretas más conocidas
+
+## Distribuciones discretas
 
 - [Bernoulli](https://es.wikipedia.org/wiki/Distribución_de_Bernoulli)
 - [Binomial](https://es.wikipedia.org/wiki/Distribución_binomial)
@@ -546,3 +566,117 @@ $$\lambda_{x\cdot t}=x\cdot \lambda_t \text{ y, en particular, } \lambda_t = t\c
 
 - Si $X_1,\dots,X_n$ son v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces $X_1+\cdots+X_n$ es una v.a. de Poisson con parámetro $\lambda_1+\cdots+\lambda_n$
 - $X_1,X_2$ v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces la probabilidad condicionada $p(X_1=k \ :\ X_1+X_2=n )$ es binomial de parámetros $n$ y $p = \frac{\lambda_1}{\lambda_1+\lambda_2}$
+
+## Distribuciones discretas en R
+
+R conoce las distribuciones de probabilidad más importantes.
+
+Distribución |  Instrucción  |  Parámetros                                
+--------------------|--------------------|--------------------
+Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
+Geométrica | `geom` | probabilidad de éxito $p$
+Hipergeométrica | `hyper` | $N,M,n$
+Poisson | `pois` | esperanza $\lambda$
+
+# Variables aleatorias continuas
+
+## Variable aleatoria continua
+
+<l class = "definition">Variable aleatoria continua.</l> Una v.a. $X:\Omega\longrightarrow\mathbb{R}$ es continua cuando su función de distribución $F_X:\mathbb{R}\longrightarrow[0,1]$ es continua
+
+En este caso, $F_X(x)=F_X(x^-)$ y, por este motivo, $$p(X=x)=0\ \forall x\in\mathbb{R}$$
+pero esto no significa que sean sucesos imposibles
+
+## Función de densidad
+
+<l class = "definition">Función de densidad.</l> Función $f:\mathbb{R}\longrightarrow\mathbb{R}$ que satisface 
+
+- $f(x)\ge 0\ \forall x\in\mathbb{R}$
+- $\int_{-\infty}^{+\infty}f(t)dt=1$
+
+Una función de densidad puede tener puntos de discontinuidad
+
+## Variable aleatoria continua
+
+Toda variable aleatoria $X$ con función de distribución 
+
+$$F(x)=\int_{-\infty}^{x}f(t)dt\ \forall x\in\mathbb{R}$$ para cualquier densidad $f$ es una v.a. continua
+
+Diremos entonces que $f$ es la función de densidad de $X$
+
+A partir de ahora, considerareos solamente las v.a. $X$ continuas que tienen función de densidad
+
+## Variable aleatoria continua
+
+<l class = "prop">Propiedades.</l>
+
+- $F_X$ es continua
+- El dominio de $X$ es $D_X=\{x:f(x)>0\}$
+- Si $A\subset \mathbb{R}$ es un intervalo con extremos $a<b$, entonces $$p(X\in A)=\int_a^b f_X(x)dx$$
+
+## Esperanza
+
+<l class = "definition">Esperanza de una v.a. continua.</l> Sea $X$ v.a. continua con densidad $f_X$. La esperanza de $X$ es $$E(X)=\int_{-\infty}^{+\infty}x\cdot f_X(x)dx$$
+
+Si el dominio $D_X$ de $X$ es un intervalo de extremos $a<b$, entonces $$E(X)=\int_a^b x\cdot f_X(x)dx$$
+
+$E(X)$ es casi seguramente el límite de la media de los valores de $X$ si efectuamos el experimento $n$ veces y hacemos $n\rightarrow \infty$
+
+## Esperanza
+
+Sea $g:D_X\longrightarrow \mathbb{R}$ una función continua. Entonces, 
+
+$$E(g(X)) = \int_{-\infty}^{+\infty}g(x)\cdot f_X(x)dx$$
+
+Si el dominio $D_X$ de $X$ es un intervalo de extremos $a<b$, entonces $$E(g(X))=\int_a^b g(x)\cdot f_X(x)dx$$
+
+## Varianza
+
+l class = "definition">Varianza de una v.a. continua.</l> Como en el caso discreto, $$Var(X)=E((X-E(X))^2)$$
+
+y se puede demostrar que
+
+$$Var(X)=E(X^2)-(E(X))^2$$
+
+## Desviación típica
+
+<l class = "definition">Desviación típica de una v.a. continua.</l> Como en el caso discreto, $$\sigma = \sqrt{Var(X)}$$
+
+# Distribuciones continuas más conocidas
+
+## Distribuciones continuas
+
+- [Uniforme](https://es.wikipedia.org/wiki/Distribución_uniforme_continua)
+- [Exponencial](https://es.wikipedia.org/wiki/Distribución_exponencial)
+- [Normal](https://es.wikipedia.org/wiki/Distribución_normal)
+- [Khi cuadrado](https://es.wikipedia.org/wiki/Distribución_χ²)
+- [t de Student](https://es.wikipedia.org/wiki/Distribución_t_de_Student)
+- [F de Fisher](https://es.wikipedia.org/wiki/Distribución_F)
+
+
+## Distribución Uniforme
+
+Una v.a. continua $X$ tiene distribución uniforme sobre el intervalo real $[a,b]$ con $a<b$, $X\sim\text{U}(a,b)$ si su función de densidad es $$f_X(x)=\left\{
+\begin{array}{rl}
+     \frac{1}{b-a} & \text{si } a\le x\le b
+  \\ 0 & \text{en cualquier otro caso}
+\end{array}
+\right.$$
+
+Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
+
+## Distribución uniforme
+
+- El **dominio** de $X$ será $D_X = [a,b]$
+
+- La **función de distribución** vendrá dada por $$F_X(x)=\left\{
+\begin{array}{rl}
+    0 & \text{si } x<a
+  \\ \frac{x-a}{b-a} & \text{si } a\le x< b
+  \\ 1 & \text{si } x\ge b
+\end{array}
+\right.$$
+
+- **Esperanza** $E(X) = \frac{a+b}{2}$
+- **Varianza** $Var(X) = \frac{(b-a)^2}{12}$
+
