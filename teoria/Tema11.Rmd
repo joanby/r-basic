@@ -439,6 +439,32 @@ Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
 
 ## Distribución Exponencial
 
+Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\text{Exp}(\lambda)$ si su función de densidad es $$f_X(x)=\left\{
+\begin{array}{rl}
+     0 & \text{si }  x\le 0
+  \\ \lambda\cdot e^{-\lambda x} & \text{si }x>0
+\end{array}
+\right.$$
+
+<l class = "prop">Teorema. </l> Si tenemos un proceso de Poisson de parámetro $\lambda$ por unidad de tiempo, el tiempo que pasa entre dos sucesos consecutivos es una v.a. $\text{Exp}(\lambda)$ 
+
+<l class = "prop">Propiedad de la pérdida de memoria. </l> Si $X$ es v.a. $\text{Exp}(\lambda)$, entonces $$p(X>s+t\ :\ X>s)=p(X>t)\ \forall s,t>0$$
+
+## Distribución Exponencial
+
+- El **dominio** de $X$ será $D_X = [0,\infty)$
+
+- La **función de distribución** vendrá dada por $$F_X(x)=\left\{
+\begin{array}{rl}
+    0 & \text{si } x\le 0
+  \\ 1-e^{-\lambda x} & \text{si } x>0
+\end{array}
+\right.$$
+
+- **Esperanza** $E(X) = \frac{1}{\lambda}$
+- **Varianza** $Var(X) = \frac{1}{\lambda^2}$
+
+
 ## Distribución Normal
 
 ## Distribución Khi cuadrado

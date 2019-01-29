@@ -260,11 +260,35 @@
 
 <p>Si \(X\) es una v.a. discreta y \(g:D_X\longrightarrow \mathbb{R}\) una función, \[\sigma(g(X))=\sqrt{Var(g(X))}\]</p>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Distribuciones discretas más conocidas</h2></hgroup><article  id="distribuciones-discretas-mas-conocidas">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Distribuciones de probabilidad</h2></hgroup><article  id="distribuciones-de-probabilidad">
 
 </article></slide><slide class=""><hgroup><h2>Distribución de probabilidad</h2></hgroup><article  id="distribucion-de-probabilidad">
 
 <p><l class = "definition"><a href='https://es.wikipedia.org/wiki/Distribución_de_probabilidad' title=''>Distribución de probabilidad</a>.</l> En teoría de la probabilidad y estadística, la distribución de probabilidad de una variable aleatoria es una función que asigna a cada suceso definido sobre la variable la probabilidad de que dicho suceso ocurra.</p>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>R</code></h2></hgroup><article  id="distribuciones-en-r">
+
+<p>Dada cualquier variable aleatoria, \(va\), <code>R</code> nos da cuatro funciones para poder trabajar con ellas:</p>
+
+<ul>
+<li><code>dva(x,...)</code>: Función de densidad o de probabilidad \(f(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
+<li><code>pva(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
+<li><code>qva(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
+<li><code>rva(n,...)</code>: Generador de \(n\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>Python</code></h2></hgroup><article  id="distribuciones-en-python">
+
+<p>Dada cualquier variable aleatoria, en <code>Python</code> tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:</p>
+
+<ul>
+<li><code>pmf(k,...)</code> o <code>pdf(x,...)</code>: Función de probabilidad \(f(k)\) o de densidad \(f(x)\) de la variable aleatoria para los valores \(k\) o \(x\) del dominio.</li>
+<li><code>cdf(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(k\) del dominio.</li>
+<li><code>ppf(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
+<li><code>rvs(size,...)</code>: Generador de \(size\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Distribuciones discretas más conocidas</h2></hgroup><article  id="distribuciones-discretas-mas-conocidas">
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas</h2></hgroup><article  id="distribuciones-discretas">
 
@@ -408,18 +432,23 @@
 <p>\[X\sim \text{Po}(\lambda)\] donde \(\lambda\) representa el número de veces que se espera que ocurra el evento durante un intervalo dado</p>
 
 <ul>
-<li><p>El <strong>dominio</strong> de \(X\) será \(X(\Omega) = \{0,1,2,\dots\}\)</p></li>
-<li><p>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
+<li><p>El <strong>espacio muestral</strong> de \(X\) será \(X(\Omega) = \{0,1,2,\dots\}\)</p></li>
+<li><p>La <strong>función de densidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución de Poisson</h2></hgroup><article  id="distribucion-de-poisson-1">
 
 <ul>
+<li>La <strong>función de distribución</strong> vendrá dada por \[F(x) = \left\{
+\begin{array}{cl}
+ 0 &amp; \text{si } x&lt;0 
+  \\ \sum_{k=0}^xf(k) &amp; \text{si } 0\le x&lt;n
+  \\ 1 &amp; \text{si } x\ge n
+\end{array}
+\right.\]</li>
 <li><strong>Esperanza</strong> \(E(X) = \lambda\)</li>
 <li><strong>Varianza</strong> \(Var(X) = \lambda\)</li>
 </ul>
-
-</article></slide><slide class=""><hgroup><h2>MAAAAAAAL</h2></hgroup><article  id="maaaaaaal">
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas en R</h2></hgroup><article  id="distribuciones-discretas-en-r">
 
@@ -453,42 +482,126 @@
 </tr>
 </table>
 
-</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>R</code></h2></hgroup><article  id="distribuciones-en-r">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Variables aleatorias continuas</h2></hgroup><article  id="variables-aleatorias-continuas">
 
-<p>Dada cualquier variable aleatoria, \(va\), <code>R</code> nos da cuatro funciones para poder trabajar con ellas:</p>
+</article></slide><slide class=""><hgroup><h2>Variable aleatoria continua</h2></hgroup><article  id="variable-aleatoria-continua">
 
-<ul>
-<li><code>dva(x,...)</code>: Función de densidad o de probabilidad \(f(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
-<li><code>pva(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(x\) del dominio de definición.</li>
-<li><code>qva(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
-<li><code>rva(n,...)</code>: Generador de \(n\) observaciones siguiendo la distribución de la variable aleatoria.</li>
-</ul>
+<p><l class = "definition">Variable aleatoria continua.</l> Una v.a. \(X:\Omega\longrightarrow\mathbb{R}\) es continua cuando su función de distribución \(F_X:\mathbb{R}\longrightarrow[0,1]\) es continua</p>
 
-</article></slide><slide class=""><hgroup><h2>Distribuciones en <code>Python</code></h2></hgroup><article  id="distribuciones-en-python">
+<p>En este caso, \(F_X(x)=F_X(x^-)\) y, por este motivo, \[p(X=x)=0\ \forall x\in\mathbb{R}\] pero esto no significa que sean sucesos imposibles</p>
 
-<p>Dada cualquier variable aleatoria, en <code>Python</code> tenemos las mismas cuatro funciones, sin que su nombre dependa de la misma:</p>
+</article></slide><slide class=""><hgroup><h2>Función de densidad</h2></hgroup><article  id="funcion-de-densidad">
+
+<p><l class = "definition">Función de densidad.</l> Función \(f:\mathbb{R}\longrightarrow\mathbb{R}\) que satisface</p>
 
 <ul>
-<li><code>pmf(k,...)</code> o <code>pdf(x,...)</code>: Función de probabilidad \(f(k)\) o de densidad \(f(x)\) de la variable aleatoria para los valores \(k\) o \(x\) del dominio.</li>
-<li><code>cdf(x,...)</code>: Función de distribución \(F(x)\) de la variable aleatoria para el valor \(k\) del dominio.</li>
-<li><code>ppf(p,...)</code>: Cuantil \(p\)-ésimo de la variable aleatoria (el valor de \(x\) más pequeño tal que \(F(x)\geq p\)).</li>
-<li><code>rvs(size,...)</code>: Generador de \(size\) observaciones siguiendo la distribución de la variable aleatoria.</li>
+<li>\(f(x)\ge 0\ \forall x\in\mathbb{R}\)</li>
+<li>\(\int_{-\infty}^{+\infty}f(t)dt=1\)</li>
 </ul>
+
+<p>Una función de densidad puede tener puntos de discontinuidad</p>
+
+</article></slide><slide class=""><hgroup><h2>Variable aleatoria continua</h2></hgroup><article  id="variable-aleatoria-continua-1">
+
+<p>Toda variable aleatoria \(X\) con función de distribución</p>
+
+<p>\[F(x)=\int_{-\infty}^{x}f(t)dt\ \forall x\in\mathbb{R}\] para cualquier densidad \(f\) es una v.a. continua</p>
+
+<p>Diremos entonces que \(f\) es la función de densidad de \(X\)</p>
+
+<p>A partir de ahora, considerareos solamente las v.a. \(X\) continuas que tienen función de densidad</p>
+
+</article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza-1">
+
+<p><l class = "definition">Esperanza de una v.a. continua.</l> Sea \(X\) v.a. continua con densidad \(f_X\). La esperanza de \(X\) es \[E(X)=\int_{-\infty}^{+\infty}x\cdot f_X(x)dx\]</p>
+
+<p>Si el dominio \(D_X\) de \(X\) es un intervalo de extremos \(a&lt;b\), entonces \[E(X)=\int_a^b x\cdot f_X(x)dx\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza-2">
+
+<p>Sea \(g:D_X\longrightarrow \mathbb{R}\) una función continua. Entonces,</p>
+
+<p>\[E(g(X)) = \int_{-\infty}^{+\infty}g(x)\cdot f_X(x)dx\]</p>
+
+<p>Si el dominio \(D_X\) de \(X\) es un intervalo de extremos \(a&lt;b\), entonces \[E(g(X))=\int_a^b g(x)\cdot f_X(x)dx\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Varianza</h2></hgroup><article  id="varianza-2">
+
+<p><l class = "definition">Varianza de una v.a. continua.</l> Como en el caso discreto, \[Var(X)=E((X-E(X))^2)\]</p>
+
+<p>y se puede demostrar que</p>
+
+<p>\[Var(X)=E(X^2)-(E(X))^2\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Desviación típica</h2></hgroup><article  id="desviacion-tipica-1">
+
+<p><l class = "definition">Desviación típica de una v.a. continua.</l> Como en el caso discreto, \[\sigma = \sqrt{Var(X)}\]</p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Distribuciones continuas más conocidas</h2></hgroup><article  id="distribuciones-continuas-mas-conocidas">
 
 </article></slide><slide class=""><hgroup><h2>Distribuciones continuas</h2></hgroup><article  id="distribuciones-continuas">
 
 <ul>
-<li>Uniforme</li>
-<li>Exponencial</li>
-<li>Normal</li>
-<li>Khi cuadrado</li>
-<li>t de Student</li>
-<li>F de Fisher</li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_uniforme_continua' title=''>Uniforme</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_exponencial' title=''>Exponencial</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_normal' title=''>Normal</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_χ²' title=''>Khi cuadrado</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_t_de_Student' title=''>t de Student</a></li>
+<li><a href='https://es.wikipedia.org/wiki/Distribución_F' title=''>F de Fisher</a></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Uniforme</h2></hgroup><article  id="distribucion-uniforme">
 
+<p>Una v.a. continua \(X\) tiene distribución uniforme sobre el intervalo real \([a,b]\) con \(a&lt;b\), \(X\sim\text{U}(a,b)\) si su función de densidad es \[f_X(x)=\left\{
+\begin{array}{rl}
+     \frac{1}{b-a} &amp; \text{si } a\le x\le b
+  \\ 0 &amp; \text{en cualquier otro caso}
+\end{array}
+\right.\]</p>
+
+<p>Modela el elegir un elemento del intervalo \([a,b]\) de manera equiprobable</p>
+
+</article></slide><slide class=""><hgroup><h2>Distribución uniforme</h2></hgroup><article  id="distribucion-uniforme-1">
+
+<ul>
+<li><p>El <strong>dominio</strong> de \(X\) será \(D_X = [a,b]\)</p></li>
+<li><p>La <strong>función de distribución</strong> vendrá dada por \[F_X(x)=\left\{
+\begin{array}{rl}
+0 &amp; \text{si } x&lt;a
+  \\ \frac{x-a}{b-a} &amp; \text{si } a\le x&lt; b
+  \\ 1 &amp; \text{si } x\ge b
+\end{array}
+\right.\]</p></li>
+<li><strong>Esperanza</strong> \(E(X) = \frac{a+b}{2}\)</li>
+<li><p><strong>Varianza</strong> \(Var(X) = \frac{(b-a)^2}{12}\)</p></li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Distribución Exponencial</h2></hgroup><article  id="distribucion-exponencial">
+
+<p>Una v.a. \(X\) tiene distribución exponencial de parámetro \(\lambda\), \(X\sim\text{Exp}(\lambda)\) si su función de densidad es \[f_X(x)=\left\{
+\begin{array}{rl}
+     0 &amp; \text{si }  x\le 0
+  \\ \lambda\cdot e^{-\lambda x} &amp; \text{si }x&gt;0
+\end{array}
+\right.\]</p>
+
+<p><l class = "prop">Teorema. </l> Si tenemos un proceso de Poisson de parámetro \(\lambda\) por unidad de tiempo, el tiempo que pasa entre dos sucesos consecutivos es una v.a. \(\text{Exp}(\lambda)\)</p>
+
+<p><l class = "prop">Propiedad de la pérdida de memoria. </l> Si \(X\) es v.a. \(\text{Exp}(\lambda)\), entonces \[p(X&gt;s+t\ :\ X&gt;s)=p(X&gt;t)\ \forall s,t&gt;0\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Distribución Exponencial</h2></hgroup><article  id="distribucion-exponencial-1">
+
+<ul>
+<li><p>El <strong>dominio</strong> de \(X\) será \(D_X = [0,\infty)\)</p></li>
+<li><p>La <strong>función de distribución</strong> vendrá dada por \[F_X(x)=\left\{
+\begin{array}{rl}
+0 &amp; \text{si } x\le 0
+  \\ 1-e^{-\lambda x} &amp; \text{si } x&gt;0
+\end{array}
+\right.\]</p></li>
+<li><strong>Esperanza</strong> \(E(X) = \frac{1}{\lambda}\)</li>
+<li><p><strong>Varianza</strong> \(Var(X) = \frac{1}{\lambda^2}\)</p></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Normal</h2></hgroup><article  id="distribucion-normal">
 
@@ -537,17 +650,6 @@
 <td align="left">los dos grados de libertad</td>
 </tr>
 </table>
-
-</article></slide><slide class=""><hgroup><h2>Distribuciones de probabilidad en R</h2></hgroup><article  id="distribuciones-de-probabilidad-en-r">
-
-<p>Para cada una de las funciones anteriores, R sabe calcular cuatro funciones:</p>
-
-<ul>
-<li>Función densidad: añadiendo prefijo <code>d</code></li>
-<li>Función de distribución de probabilidad: añadiendo prefijo <code>p</code></li>
-<li>Cuantiles: añadiendo prefijo <code>q</code></li>
-<li>Listas de números aleatorios generados con esta distribución: añadiendo prefijo <code>r</code></li>
-</ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Normal en R</h2></hgroup><article  id="distribucion-normal-en-r">
 
