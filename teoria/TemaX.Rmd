@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 Lanzar una moneda es un experimento aleatorio
 
-Los sucesos elementales son: sacar cara (C) y sacar cruz (+)
+Los sucesos elementales son: sacar cara ($C$) y sacar cruz ($+$)
 
 El espacio muestral de este experimento aleatorio es $\Omega = \{C,+\}$
 </div>
@@ -57,12 +57,12 @@ Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7
 
 ## Sucesos
 
-<l class = "prop">Operaciones con sucesos. </l> $A,B\subseteq \Omega$
+<l class = "prop">Operaciones con sucesos. </l> Sean $A,B\subseteq \Omega$ sucesos. Entonces,
 
-- $A\cup B.$ Suceso unión (resultados pertenecen a $A$, o a $B$, o a ambos)
-- $A\cap B.$ Suceso intersección (resultados pertenecen a $A$ y $B$)
-- $A^c.$ Suceso complementario (resultados que no pertenecen a $A$)
-- $A-B = A\cap B^c.$ Suceso diferencia (resultados que pertenecen a $A$ pero no a $B$)
+- $A\cup B$ es el suceso unión (resultados pertenecen a $A$, o a $B$, o a ambos)
+- $A\cap B$ es el suceso intersección (resultados pertenecen a $A$ y $B$)
+- $A^c$ es el suceso complementario (resultados que no pertenecen a $A$)
+- $A-B = A\cap B^c$ es el suceso diferencia (resultados que pertenecen a $A$ pero no a $B$)
 
 <l class = "definition">Sucesos incompatibles. </l> Si $A\cap B = \emptyset$
 
@@ -102,6 +102,20 @@ No son incompatibles
 ## Probabilidad
 
 <l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso
+
+<div class = "example">
+**Ejemplo**
+
+- La probabilidad de sacar un 6 al lanzar un dado estándar no trucado es $\frac{1}{6}$
+- La probabilidad de sacar un 6 al lanzar un dado de 4 caras es $0$
+- La probabilidad de sacar un 6 al lanzar un dado de 20 caras es $\frac{1}{20}$
+
+</div>
+
+<div class = "aligncenter">
+![](Imgs/dado.png)
+</div>
+
 
 ## Probabilidad
 
@@ -163,6 +177,11 @@ Lo que nos dice este resultado es que la probabilidad condicionada es, en efecto
 
 $$p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)$$
 
+<div class = "aligncenter">
+![](Imgs/ABsets.png)
+</div>
+
+
 ## Teorema de la probabilidad total
 
 <l class = "definition"> Partición del espacio muestral. </l>Los sucesos $A_1,\dots, A_n$ forman una partición del espacio muestral $\Omega$ de un determinado experimento aleatorio,  si se cumple 
@@ -173,6 +192,10 @@ $$p(B) = p(B\cap A)+p(B\cap A^c) = p(A)\cdot p(B|A)+p(A^c)\cdot p(B|A^c)$$
 <l class = "prop">Teorema. </l> $A_1,\dots, A_n$ partición de $\Omega$ y $B$ suceso cualquiera. Entonces,
 
 $$p(B) = p(B\cap A_1)+\cdots+p(B\cap A_n) = p(A_1)\cdot p(B|A_1)+\cdots+p(A_n)\cdot p(B|A_n)$$
+
+<div class = "aligncenter">
+![](Imgs/probtotal.gif)
+</div>
 
 ## Diagnósticos
 
@@ -216,6 +239,7 @@ $$p(A_i|B) = \frac{p(A_i)\cdot p(B|A_i)}{p(B)}=\frac{p(A_i)\cdot p(B|A_i)}{p(A_1
 - $A$ y $B^c$ son independientes
 - $A^c$ y $B^c$ son independientes
 
+# Variables aleatorias
 
 ## Variable aleatoria
 
@@ -236,7 +260,7 @@ Una variable aleatoria puede definir sucesos, de los cuales queremos conocer la 
 - $\vdots$
 - $p(X\in A) = p(\{\omega\in\Omega \ |\  X(\omega)\in A\})$
 - Para la unión utilizaremos $o$: $p(X>b\ o\ X<a)$
-- Para la intersección utilizaremos una coma $,$:$p(X>b,\ X<a)$
+- Para la intersección utilizaremos una coma $,$:$\ p(X>b,\ X<a)$
 
 ## Función de distribución
 
@@ -741,6 +765,28 @@ En particualr, si $Z$ sigue una distribución estándar,
 Aumentar $\mu$ hace que el máximo se desplace a la derecha y con él, toda la curva
 
 Aumentar $\sigma$ aplasta la curva: al aumentar la varianza, los valores se alejan más del valor medio $\mu$
+
+## Distribución Normal
+
+<l class = "prop">Estandarización de una v.a. normal.</l> Si $X$ es una v.a. $\mathcal{N}(\mu,\sigma)$, entonces $$Z=\frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$$
+
+Las probabilidades de una normal estándar $Z$ determinan las de cualquier $X$ de tipo $\mathcal{N}(\mu,\sigma)$:
+
+$$p(X\le x)=p\left(\frac{X-\mu}{\sigma}\le\frac{x-\mu}{\sigma}\right)=p\left(Z\le\frac{x-\mu}{\sigma}\right)$$
+
+## Distribución Normal
+
+$F_Z$ no tiene expresión conocida.
+
+Se puede calcular con cualquier programa, como por ejemplo R, o bien a mano utilizando las [tablas de la $\mathcal{N}(0,1)$](https://github.com/joanby/r-basic/blob/master/teoria/TablaNormal.pdf)
+
+Con las tablas se pueden calcular tanto probabilidades como cuantiles
+
+## Distribución Normal en R
+
+Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
+
+Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
 
 
 

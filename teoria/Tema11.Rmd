@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 Lanzar una moneda es un experimento aleatorio
 
-Los sucesos elementales son: sacar cara (C) y sacar cruz (+)
+Los sucesos elementales son: sacar cara ($C$) y sacar cruz ($+$)
 
 El espacio muestral de este experimento aleatorio es $\Omega = \{C,+\}$
 </div>
@@ -57,18 +57,31 @@ Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7
 
 ## Sucesos
 
-<l class = "prop">Operaciones con sucesos. </l> $A,B\subseteq \Omega$
+<l class = "prop">Operaciones con sucesos. </l> Sean $A,B\subseteq \Omega$ sucesos. Entonces,
 
-- $A\cup B.$ Suceso unión (resultados pertenecen a $A$, o a $B$, o a ambos)
-- $A\cap B.$ Suceso intersección (resultados pertenecen a $A$ y $B$)
-- $A^c.$ Suceso complementario (resultados que no pertenecen a $A$)
-- $A-B = A\cap B^c.$ Suceso diferencia (resultados que pertenecen a $A$ pero no a $B$)
+- $A\cup B$ es el suceso unión (resultados pertenecen a $A$, o a $B$, o a ambos)
+- $A\cap B$ es el suceso intersección (resultados pertenecen a $A$ y $B$)
+- $A^c$ es el suceso complementario (resultados que no pertenecen a $A$)
+- $A-B = A\cap B^c$ es el suceso diferencia (resultados que pertenecen a $A$ pero no a $B$)
 
 <l class = "definition">Sucesos incompatibles. </l> Si $A\cap B = \emptyset$
 
 ## Probabilidad
 
 <l class = "definition">Probabilidad de un suceso. </l>Número entre 0 y 1 (ambos incluidos) que mide la expectativa de que se dé este suceso
+
+<div class = "example">
+**Ejemplo**
+
+- La probabilidad de sacar un 6 al lanzar un dado estándar no trucado es $\frac{1}{6}$
+- La probabilidad de sacar un 6 al lanzar un dado de 4 caras es $0$
+- La probabilidad de sacar un 6 al lanzar un dado de 20 caras es $\frac{1}{20}$
+
+</div>
+
+<div class = "aligncenter">
+![](Imgs/dado.png)
+</div>
 
 ## Probabilidad
 
@@ -80,6 +93,7 @@ Un ejemplo de suceso imposible de este experimento aleatorio es $\emptyset = \{7
 
 <l class = "important">Notación: </l> Si $a\in\Omega$, escribiremos $p(a)$ en vez de $p(\{a\})$
 
+# Variables aleatorias
 
 ## Variable aleatoria
 
@@ -496,7 +510,15 @@ $$p(X\le x)=p\left(\frac{X-\mu}{\sigma}\le\frac{x-\mu}{\sigma}\right)=p\left(Z\l
 
 $F_Z$ no tiene expresión conocida.
 
-Se puede calcular con cualquier programa, como por ejemplo R, o bien a mano utilizando las [tablas]()
+Se puede calcular con cualquier programa, como por ejemplo R, o bien a mano utilizando las [tablas de la $\mathcal{N}(0,1)$](https://github.com/joanby/r-basic/blob/master/teoria/TablaNormal.pdf)
+
+Con las tablas se pueden calcular tanto probabilidades como cuantiles
+
+## Distribución Normal en R
+
+Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
+
+Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
 
 
 ## Distribución Khi cuadrado
@@ -517,9 +539,5 @@ t de Student | `t` | grados de libertad
 F de Fisher | `f` | los dos grados de libertad
 
 
-## Distribución Normal en R
 
-Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
-
-Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
 
