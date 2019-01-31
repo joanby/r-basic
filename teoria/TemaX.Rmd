@@ -707,3 +707,41 @@ Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\tex
 - **Esperanza** $E(X) = \frac{1}{\lambda}$
 - **Varianza** $Var(X) = \frac{1}{\lambda^2}$
 
+## Distribución Normal
+
+Una v.a. $X$ tiene distribución normal o gaussiana de parámetros $\mu$ y $\sigma$, $X\sim\mathcal{N}(\mu,\sigma)$ si su función de densidad es $$f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\quad \forall x\in\mathbb{R}$$
+
+La gráfica de $f_X$ es conocida como la <l class = "definition">Campana de Gauss</l>
+
+Cuando $\mu = 0$ y $\sigma = 1$, diremos que la v.a. $X$ es <l class = "definition">estándar</l> y la indicaremos usualmente como $Z$, la cual tendrá función de densidad
+$$f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\quad \forall z\in\mathbb{R}$$
+
+## Distribución Normal
+
+<l class = "prop">Propiedades.</l>
+
+- $f_X$ es simétrica respecto de $x=\mu$: $$f_X(\mu-x)=f_X(\mu+x)$$
+- $f_X$ alcanza su máximo en $x=\mu$
+- En particular, si $Z\sim\mathcal{N}(0,1)$, entonces $f_Z(-z)=f_Z(z)$ y alcanza su máximo en $z=0$
+- La simetría hace iguales las áreas a la izquierda de $\mu-x$ y a la derecha de $\mu+x$: $$F_X(\mu-x) = p(X\le \mu-x) = p(X\ge\mu+x)=1-F_X(\mu+x)$$
+- En $\mathcal{N}(0,1)$ esta simetría hace iguales las áreas a la izquierda de $-z$ y a la derecha de $z$: $$F_Z(-z)=p(Z\le -z)=p(Z\ge z)=1-F_Z(z)$$
+
+## Distribución Normal
+
+- **Esperanza** $E(X) = \mu$
+- **Varianza** $Var(X) = \sigma^2$
+
+En particualr, si $Z$ sigue una distribución estándar,
+
+- **Esperanza** $E(X) = 0$
+- **Varianza** $Var(X) = 1$ 
+
+## Distribución Normal
+
+Aumentar $\mu$ hace que el máximo se desplace a la derecha y con él, toda la curva
+
+Aumentar $\sigma$ aplasta la curva: al aumentar la varianza, los valores se alejan más del valor medio $\mu$
+
+
+
+

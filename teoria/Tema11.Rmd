@@ -467,6 +467,38 @@ Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\tex
 
 ## Distribución Normal
 
+Una v.a. $X$ tiene distribución normal o gaussiana de parámetros $\mu$ y $\sigma$, $X\sim\mathcal{N}(\mu,\sigma)$ si su función de densidad es $$f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\quad \forall x\in\mathbb{R}$$
+
+La gráfica de $f_X$ es conocida como la <l class = "definition">Campana de Gauss</l>
+
+Cuando $\mu = 0$ y $\sigma = 1$, diremos que la v.a. $X$ es <l class = "definition">estándar</l> y la indicaremos usualmente como $Z$, la cual tendrá función de densidad
+$$f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\quad \forall z\in\mathbb{R}$$
+
+## Distribución Normal
+
+- **Esperanza** $E(X) = \mu$
+- **Varianza** $Var(X) = \sigma^2$
+
+En particualr, si $Z$ sigue una distribución estándar,
+
+- **Esperanza** $E(X) = 0$
+- **Varianza** $Var(X) = 1$ 
+
+## Distribución Normal
+
+<l class = "prop">Estandarización de una v.a. normal.</l> Si $X$ es una v.a. $\mathcal{N}(\mu,\sigma)$, entonces $$Z=\frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$$
+
+Las probabilidades de una normal estándar $Z$ determinan las de cualquier $X$ de tipo $\mathcal{N}(\mu,\sigma)$:
+
+$$p(X\le x)=p\left(\frac{X-\mu}{\sigma}\le\frac{x-\mu}{\sigma}\right)=p\left(Z\le\frac{x-\mu}{\sigma}\right)$$
+
+## Distribución Normal
+
+$F_Z$ no tiene expresión conocida.
+
+Se puede calcular con cualquier programa, como por ejemplo R, o bien a mano utilizando las [tablas]()
+
+
 ## Distribución Khi cuadrado
 
 ## Distribución t de Student
