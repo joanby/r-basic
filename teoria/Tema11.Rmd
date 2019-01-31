@@ -345,6 +345,23 @@ donde $\lambda$ representa el número de veces que se espera que ocurra el event
 - **Esperanza** $E(X) = \lambda$
 - **Varianza** $Var(X) = \lambda$
 
+## Distribución Binomial Negativa
+
+Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar los $r$ éxitos en ensayos de Bernoulli con probabilidad $p$", diremos que $X$ se distribuye como una Binomial Negativa con parámetros $r$ y $p$, $BN(r,p)$.
+
+- El **espacio muestral** de $X$ será $X(\Omega) = \{r, r+1, r+2,\dots\}$
+
+- La **función de densidad** vendrá dada por $$f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r$$
+
+
+## Distribución Binomial Negativa
+ 
+- La **función de distribución** no tiene una expresión analítica. 
+
+- **Esperanza** $E(X) = \frac{r}{p}$
+- **Varianza** $Var(X) = r\frac{1-p}{p^2}$
+
+
 ## Distribuciones discretas en R
 
 R conoce las distribuciones de probabilidad más importantes.
@@ -538,6 +555,10 @@ Khi cuadrado | `chisq` | grados de libertad
 t de Student | `t` | grados de libertad
 F de Fisher | `f` | los dos grados de libertad
 
+## Otras distribuciones conocidas
 
-
-
+- Power Law
+- Distribución Gamma y Beta
+- Log Normal
+- Distribución de Weibull
+- ...

@@ -63,6 +63,10 @@
       font-style: italic;
     }
 
+    summary {
+      display: list-item;
+    }
+
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -464,6 +468,23 @@
 <li><strong>Varianza</strong> \(Var(X) = \lambda\)</li>
 </ul>
 
+</article></slide><slide class=""><hgroup><h2>Distribución Binomial Negativa</h2></hgroup><article  id="distribucion-binomial-negativa">
+
+<p>Si \(X\) es variable aleatoria que mide el &quot;número de repeticiones hasta observar los \(r\) éxitos en ensayos de Bernoulli con probabilidad \(p\)&quot;, diremos que \(X\) se distribuye como una Binomial Negativa con parámetros \(r\) y \(p\), \(BN(r,p)\).</p>
+
+<ul>
+<li><p>El <strong>espacio muestral</strong> de \(X\) será \(X(\Omega) = \{r, r+1, r+2,\dots\}\)</p></li>
+<li><p>La <strong>función de densidad</strong> vendrá dada por \[f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r\]</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Distribución Binomial Negativa</h2></hgroup><article  id="distribucion-binomial-negativa-1">
+
+<ul>
+<li><p>La <strong>función de distribución</strong> no tiene una expresión analítica.</p></li>
+<li><strong>Esperanza</strong> \(E(X) = \frac{r}{p}\)</li>
+<li><p><strong>Varianza</strong> \(Var(X) = r\frac{1-p}{p^2}\)</p></li>
+</ul>
+
 </article></slide><slide class=""><hgroup><h2>Distribuciones discretas en R</h2></hgroup><article  id="distribuciones-discretas-en-r">
 
 <p>R conoce las distribuciones de probabilidad más importantes.</p>
@@ -705,7 +726,17 @@
 <td align="left"><code>f</code></td>
 <td align="left">los dos grados de libertad</td>
 </tr>
-</table></article></slide>
+</table>
+
+</article></slide><slide class=""><hgroup><h2>Otras distribuciones conocidas</h2></hgroup><article  id="otras-distribuciones-conocidas">
+
+<ul>
+<li>Power Law</li>
+<li>Distribución Gamma y Beta</li>
+<li>Log Normal</li>
+<li>Distribución de Weibull</li>
+<li>&#8230;</li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>

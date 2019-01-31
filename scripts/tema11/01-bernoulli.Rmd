@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Sea $X = Be(p=0.7)$, la distribución que modela la probabilidad de obtener una cara usando una moneda trucada. 
 
 $$f(k) = p^k(1-p)^{1-p},\ k\in \{0,1\}$$
+
 ## En R
 
 
@@ -27,7 +28,6 @@ qbern(0.25, prob = 0.7)
 rbern(100, prob = 0.7) -> data
 hist(data)
 ```
-
 
 ## En Python
 
