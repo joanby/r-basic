@@ -405,7 +405,7 @@ Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$
 
 ## Distribuciones en `R`
 
-Dada cualquier variable aleatoria, $va$, `R` nos da cuatro funciones para poder trabajar con ellas:
+Dada cualquier variable aleatoria, `va`, `R` nos da cuatro funciones para poder trabajar con ellas:
 
 - `dva(x,...)`: Función de densidad o de probabilidad $f(x)$ de la variable aleatoria para el valor  $x$ del dominio de definición.
 - `pva(x,...)`: Función de distribución $F(x)$ de la variable aleatoria para el valor $x$ del dominio de definición.
@@ -441,7 +441,7 @@ $$X\sim \text{Be}(p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
-- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1\}$
+- El **dominio** de $X$ será $D_X = \{0,1\}$
 - La **función de densidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
      p & \text{si } k=1 
@@ -477,7 +477,7 @@ $$X\sim \text{B}(n,p)$$
 
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,n\}$
+- El **dominio** de $X$ será $D_X= \{0,1,2,\dots,n\}$
 - La **función de densidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
 
 ## Distribución Binomial
@@ -511,7 +511,7 @@ Si $X$ es variable aleatoria que mide el "número de repeticiones independientes
 $$X\sim \text{Ge}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
-- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$ o bien $X(\Omega) = \{1,2,\dots\}$ en función de si empieza en 0 o en 1
+- El **dominio** de $X$ será $D_X = \{0,1,2,\dots\}$ o bien $D_X = \{1,2,\dots\}$ en función de si empieza en 0 o en 1, respectivamente
 
 - La **función de densidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
 $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
@@ -526,14 +526,24 @@ $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 \right.$$ 
 - **Esperanza** $E(X) = \frac{1-p}{p}$ si empieza en 0 y E$(X) = \frac{1}{p}$ si empieza en 1
 - **Varianza** $Var(X) = \frac{1-p}{p^2}$
-- <l class = "prop">Propiedad de la falta de memoria.</l> Si $X$ es una v.a. \text{Ge}(p), entonces, $$p\{X\ge m+n:\ X\ge n\} = p\{X\ge m\}\ \forall m,n=0,1,\dots$$
+- <l class = "prop">Propiedad de la falta de memoria.</l> Si $X$ es una v.a. $\text{Ge}(p)$, entonces, $$p\{X\ge m+n:\ X\ge n\} = p\{X\ge m\}\ \forall m,n=0,1,\dots$$
+
+## Distribución Geométrica
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(dgeom(1:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Ge(0.5)")
+plot(pgeom(1:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Ge(0.5)")
+par(mfrow= c(1,1))
+
+```
 
 ## Distribución Hipergeométrica
 
-Consideremos el experimento "extraer a la vez (o una detrás de otra, sin retornarlos) $n$ objetos donde hay $N$ de tipo A y $M$ de tipo B". Si $X$ es variable aleatoria que mide el "número de objetos del tipo A", diremos que $X$ se distribuye como una Hipergeométrica con parámetro $N,M,n$
+Consideremos el experimento "extraer a la vez (o una detrás de otra, sin retornarlos) $n$ objetos donde hay $N$ de tipo A y $M$ de tipo B". Si $X$ es variable aleatoria que mide el "número de objetos del tipo A", diremos que $X$ se distribuye como una Hipergeométrica con parámetros $N,M,n$
 $$X\sim \text{H}(N,M,n)$$
 
-- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots,N\}$ (en general)
+- El **dominio** de $X$ será $D_X = \{0,1,2,\dots,N\}$ (en general)
 - La **función de densidad** vendrá dada por $$f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}$$
 
 ## Distribución Hipergeométrica
@@ -548,6 +558,16 @@ $$X\sim \text{H}(N,M,n)$$
 - **Esperanza** $E(X) = \frac{nN}{N+M}$ 
 - **Varianza** $Var(X) = \frac{nNM}{(N+M)^2}\cdot\frac{N+M-n}{N+M-1}$
 
+## Distribución Hipergeométrica
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(dhyper(1:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una H(20,10,30)")
+plot(phyper(1:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una H(20,10,30)")
+par(mfrow= c(1,1))
+
+```
+
 ## Distribución de Poisson
 
 Si $X$ es variable aleatoria que mide el "número de eventos en un cierto intervalo de tiempo", diremos que $X$ se distribuye como una Poisson con parámetro $\lambda$
@@ -555,7 +575,7 @@ Si $X$ es variable aleatoria que mide el "número de eventos en un cierto interv
 $$X\sim \text{Po}(\lambda)$$
 donde $\lambda$ representa el número de veces que se espera que ocurra el evento durante un intervalo dado
 
-- El **espacio muestral** de $X$ será $X(\Omega) = \{0,1,2,\dots\}$
+- El **dominio** de $X$ será $D_X = \{0,1,2,\dots\}$
 
 - La **función de densidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
 
@@ -590,6 +610,16 @@ $$\lambda_{x\cdot t}=x\cdot \lambda_t \text{ y, en particular, } \lambda_t = t\c
 
 - Si $X_1,\dots,X_n$ son v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces $X_1+\cdots+X_n$ es una v.a. de Poisson con parámetro $\lambda_1+\cdots+\lambda_n$
 - $X_1,X_2$ v.a. de Poisson independientes, con cada $X_i$ con parámetro $\lambda_i$, entonces la probabilidad condicionada $p(X_1=k \ :\ X_1+X_2=n )$ es binomial de parámetros $n$ y $p = \frac{\lambda_1}{\lambda_1+\lambda_2}$
+
+## Distribución de Poisson
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(dpois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Po(2)")
+plot(ppois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Po(2)")
+par(mfrow= c(1,1))
+
+```
 
 ## Distribuciones discretas en R
 
@@ -656,7 +686,7 @@ Si el dominio $D_X$ de $X$ es un intervalo de extremos $a<b$, entonces $$E(g(X))
 
 ## Varianza
 
-l class = "definition">Varianza de una v.a. continua.</l> Como en el caso discreto, $$Var(X)=E((X-E(X))^2)$$
+<l class = "definition">Varianza de una v.a. continua.</l> Como en el caso discreto, $$Var(X)=E((X-E(X))^2)$$
 
 y se puede demostrar que
 
@@ -689,7 +719,7 @@ Una v.a. continua $X$ tiene distribución uniforme sobre el intervalo real $[a,b
 
 Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
 
-## Distribución uniforme
+## Distribución Uniforme
 
 - El **dominio** de $X$ será $D_X = [a,b]$
 
@@ -704,9 +734,15 @@ Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
 - **Esperanza** $E(X) = \frac{a+b}{2}$
 - **Varianza** $Var(X) = \frac{(b-a)^2}{12}$
 
+## Distribución Uniforme
+
+```{r, echo = FALSE}
+plot(dunif(1:20,min = 0, max = 20),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una U(0,20)", type = "o")
+```
+
 ## Distribución Exponencial
 
-Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\text{Exp}(\lambda)$ si su función de densidad es $$f_X(x)=\left\{
+Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\text{Exp}(\lambda)$, si su función de densidad es $$f_X(x)=\left\{
 \begin{array}{rl}
      0 & \text{si }  x\le 0
   \\ \lambda\cdot e^{-\lambda x} & \text{si }x>0
@@ -731,6 +767,12 @@ Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\tex
 - **Esperanza** $E(X) = \frac{1}{\lambda}$
 - **Varianza** $Var(X) = \frac{1}{\lambda^2}$
 
+## Distribución Exponencial
+
+```{r, echo = FALSE}
+plot(dexp(1:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una Exp(0.2)", type = "o")
+```
+
 ## Distribución Normal
 
 Una v.a. $X$ tiene distribución normal o gaussiana de parámetros $\mu$ y $\sigma$, $X\sim\mathcal{N}(\mu,\sigma)$ si su función de densidad es $$f_X(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\quad \forall x\in\mathbb{R}$$
@@ -747,6 +789,11 @@ $$f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\quad \forall z\in\mathbb{R}$$
 - $f_X$ es simétrica respecto de $x=\mu$: $$f_X(\mu-x)=f_X(\mu+x)$$
 - $f_X$ alcanza su máximo en $x=\mu$
 - En particular, si $Z\sim\mathcal{N}(0,1)$, entonces $f_Z(-z)=f_Z(z)$ y alcanza su máximo en $z=0$
+
+## Distribución Normal
+
+<l class = "prop">Propiedades.</l>
+
 - La simetría hace iguales las áreas a la izquierda de $\mu-x$ y a la derecha de $\mu+x$: $$F_X(\mu-x) = p(X\le \mu-x) = p(X\ge\mu+x)=1-F_X(\mu+x)$$
 - En $\mathcal{N}(0,1)$ esta simetría hace iguales las áreas a la izquierda de $-z$ y a la derecha de $z$: $$F_Z(-z)=p(Z\le -z)=p(Z\ge z)=1-F_Z(z)$$
 
@@ -758,13 +805,38 @@ $$f_Z(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}\quad \forall z\in\mathbb{R}$$
 En particualr, si $Z$ sigue una distribución estándar,
 
 - **Esperanza** $E(X) = 0$
-- **Varianza** $Var(X) = 1$ 
+- **Varianza** $Var(X) = 1$
+
+## Distribución Normal
+
+```{r, echo = FALSE}
+z_scores <- seq(-10, 10, by = .1)
+dvalues <- dnorm(z_scores)
+plot(dvalues, ylab = "", xlab= "",
+     xaxt = "n",
+     type = "l", 
+     col = "purple",
+     main = "Función de densidad de una N(0,1)")
+```
+
 
 ## Distribución Normal
 
 Aumentar $\mu$ hace que el máximo se desplace a la derecha y con él, toda la curva
 
 Aumentar $\sigma$ aplasta la curva: al aumentar la varianza, los valores se alejan más del valor medio $\mu$
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+x <- seq(5, 15, length=1000)
+y <- dnorm(x, mean=10, sd=3)
+plot(x, y, type="l", lwd=1, xlab = "", ylab = "", col = "purple", main = "Función de densidad de una N(10,3)")
+x <- seq(5, 15, length=1000)
+y <- dnorm(x, mean=12.5, sd=5)
+plot(x, y, type="l", lwd=1, xlab = "", ylab = "", col = "purple", main = "Función de densidad de una N(12.5,5)")
+par(mfrow = c(1,1))
+```
+
 
 ## Distribución Normal
 
@@ -787,6 +859,17 @@ Con las tablas se pueden calcular tanto probabilidades como cuantiles
 Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
 
 Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
+
+## Distribuciones continuas en R
+
+Distribución |  Instrucción  |  Parámetros                                
+--------------------|--------------------|--------------------
+Uniforme | `unif` | mínimo y máximo
+Exponencial | `exp` | $\lambda$
+Normal | `norm` | media $\mu$, desviación típica $\sigma$
+Khi cuadrado | `chisq` | grados de libertad
+t de Student | `t` | grados de libertad
+F de Fisher | `f` | los dos grados de libertad
 
 
 
