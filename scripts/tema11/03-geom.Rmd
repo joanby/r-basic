@@ -1,0 +1,65 @@
+---
+title: "Geométrica"
+author: "Curso de Estadística Descriptiva"
+date: "4/2/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Función de densidad
+
+Sea $X=Geom(p=0.1)$ la distribución que modela la probabilidad de intentar abrir una puerta hasta conseguirlo.
+
+$$f(k) = (1-p)^{k-1}p$$
+
+
+## En `R`
+
+```{r}
+library(Rlab)
+p = 0.1
+plot(0:20, dgeom(0:20, p))
+plot(0:20, pgeom(0:20, p), ylim = c(0,1))
+qgeom(0.5, p)
+qgeom(0.75, p)
+hist(rgeom(10000, p))
+```
+
+## En Python
+```{python}
+from scipy.stats import geom
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(1,1)
+p = 0.3
+mean, var, skew, kurt = geom.stats(p, moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+
+x = np.arange(geom.ppf(0.01,p), geom.ppf(0.99, p))
+ax.plot(x, geom.pmf(x, p), 'bo', ms = 8, label = "Función de probabilidad de Geom(0.3)")
+ax.vlines(x,0,geom.pmf(x,p),  colors = 'b', lw = 4, alpha = 0.5)
+
+rv = geom(p)
+ax.vlines(x,0,rv.pmf(x), colors = 'k', linestyles = '--', lw = 1, label = "Frozen PMF")
+ax.legend(loc = 'best')
+plt.show()
+
+
+fig, ax = plt.subplots(1,1)
+prob = geom.cdf(x,p)
+ax.plot(x, prob, 'bo', ms = 8, label = "Función de distribución acumulada")
+plt.show()
+
+fig, ax = plt.subplots(1,1)
+r = geom.rvs(p, size = 10000)
+plt.hist(r)
+plt.show()
+```
+
