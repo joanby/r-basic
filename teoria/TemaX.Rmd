@@ -432,6 +432,7 @@ Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funcion
 - [Geométrica](https://es.wikipedia.org/wiki/Distribución_geométrica)
 - [Hipergeométrica](https://es.wikipedia.org/wiki/Distribución_hipergeométrica)
 - [Poisson](https://es.wikipedia.org/wiki/Distribución_de_Poisson)
+- [Binomial Negativa](https://es.wikipedia.org/wiki/Distribución_binomial_negativa)
 
 ## Distribución de Bernoulli
 
@@ -618,6 +619,29 @@ par(mfrow = c(1,2))
 plot(dpois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Po(2)")
 plot(ppois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Po(2)")
 par(mfrow= c(1,1))
+```
+
+## Distribución Binomial Negativa
+
+Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar los $r$ éxitos en ensayos de Bernoulli", diremos que $X$ se distribuye como una Binomial Negativa con parámetros $r$ y $p$, $$X\sim\text{BN}(r,p)$$ donde $p$ es la probabilidad de éxito
+
+- El **dominio** de $X$ será $D_X = \{r, r+1, r+2,\dots\}$
+- La **función de densidad** vendrá dada por $$f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r$$
+
+
+## Distribución Binomial Negativa
+ 
+- La **función de distribución** no tiene una expresión analítica. 
+- **Esperanza** $E(X) = \frac{r}{p}$
+- **Varianza** $Var(X) = r\frac{1-p}{p^2}$
+
+## Distribución Binomial Negativa
+
+```{r, echo = FALSE}
+par(mfrow = c(1,2))
+plot(dnbinom(1:50,10,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una BN(10,0.5)")
+plot(pnbinom(1:50,10,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una BN(10,0.5)")
+par(mfrow= c(1,1))
 
 ```
 
@@ -631,6 +655,7 @@ Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
 Geométrica | `geom` | probabilidad de éxito $p$
 Hipergeométrica | `hyper` | $N,M,n$
 Poisson | `pois` | esperanza $\lambda$
+Binomial Negativa | `nbinom` | número de éxitos $r$ y probabilidad de éxito $p$
 
 # Variables aleatorias continuas
 
