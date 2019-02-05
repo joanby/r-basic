@@ -613,8 +613,12 @@ F de Fisher | `f` | los dos grados de libertad
 
 ## Otras distribuciones conocidas
 
-- Power Law
+- Distribución de Pareto (Power Law)
 - Distribución Gamma y Beta
-- Log Normal
+- Distribución Log Normal
 - Distribución de Weibull
+- Distribución de Cauchy
+- Distribución Exponencial Normal
+- Distribución Von Mises
+- Distribución Rayleigh
 - ...
