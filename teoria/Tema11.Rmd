@@ -271,11 +271,18 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
-plot(dbinom(1:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una B(50,0.5)")
-plot(pbinom(1:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una B(50,0.5)")
+plot(0:50,dbinom(0:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una B(50,0.5)")
+plot(0:50, pbinom(0:50,50,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una B(50,0.5)", ylim = c(0,1))
 par(mfrow= c(1,1))
-
 ```
+
+## Distribución Binomial
+
+El código de la distribución Binomial:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dbinom(x, size, prob), pbinom(q,size, prob), qbinom(p, size, prob), rbinom(n, size, prob)` donde `prob` es la probabilidad de éxito y `size` el número de ensayos del experimento.
+- En `Python` tenemos las funciones del paquete `scipy.stats.binom`: `pmf(k,n,p), cdf(k,n,p), ppf(q,n,p), rvs(n, p, size)` donde `p` es la probabilidad de éxito y `n` el número de ensayos del experimento.
+
 
 ## Distribución Geométrica
 
@@ -305,11 +312,17 @@ $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
-plot(dgeom(1:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Ge(0.5)")
-plot(pgeom(1:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Ge(0.5)")
+plot(0:20, dgeom(0:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Ge(0.5)")
+plot(0:20, pgeom(0:20,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Ge(0.5)", ylim = c(0,1))
 par(mfrow= c(1,1))
-
 ```
+
+## Distribución Geométrica
+
+El código de la distribución Geométrica:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dgeom(x, prob), pgeom(q, prob), qgeom(p, prob), rgeom(n, prob)` donde `prob` es la probabilidad de éxito  del experimento.
+- En `Python` tenemos las funciones del paquete `scipy.stats.geom`: `pmf(k,p), cdf(k,p), ppf(q,p), rvs(p, size)` donde `p` es la probabilidad de éxito del experimento.
 
 ## Distribución Hipergeométrica
 
@@ -334,11 +347,9 @@ $$X\sim \text{H}(N,M,n)$$
 ## Distribución Hipergeométrica
 
 ```{r, echo = FALSE}
-par(mfrow = c(1,2))
-plot(dhyper(1:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una H(20,10,30)")
-plot(phyper(1:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una H(20,10,30)")
+plot(0:30, dhyper(0:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una H(20,10,30)")
+plot(0:30, phyper(0:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una H(20,10,30)", ylim = c(0,1))
 par(mfrow= c(1,1))
-
 ```
 
 ## Distribución de Poisson
@@ -368,10 +379,9 @@ donde $\lambda$ representa el número de veces que se espera que ocurra el event
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
-plot(dpois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Po(2)")
-plot(ppois(1:20,2),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Po(2)")
+plot(0:20, dpois(0:20,2),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una Po(2)")
+plot(0:20, ppois(0:20,2),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Po(2)", ylim = c(0,1))
 par(mfrow= c(1,1))
-
 ```
 
 ## Distribución Binomial Negativa
@@ -392,10 +402,11 @@ Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar
 
 ```{r, echo = FALSE}
 par(mfrow = c(1,2))
-plot(dnbinom(1:50,10,0.5),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una BN(10,0.5)")
-plot(pnbinom(1:50,10,0.5),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una BN(10,0.5)")
+exitos = 5
+size = 20
+plot(c(rep(0,exitos),exitos:(size+exitos)), c(rep(0,exitos),dnbinom(0:size,exitos,0.5)),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una BN(5, 0.5)")
+plot(c(rep(0,exitos),exitos:(size+exitos)), c(rep(0,exitos),pnbinom(0:size,exitos,0.5)),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una BN(5, 0.5)")
 par(mfrow= c(1,1))
-
 ```
 
 
