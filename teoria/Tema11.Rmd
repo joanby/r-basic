@@ -195,6 +195,8 @@ Dada cualquier variable aleatoria, en `Python` tenemos las mismas cuatro funcion
 - `ppf(p,...)`: Cuantil $p$-ésimo de la variable aleatoria (el valor de $x$ más pequeño tal que $F(x)\geq p$).
 - `rvs(size,...)`: Generador de $size$ observaciones siguiendo la distribución de la variable aleatoria.
 
+También vale la pena conocer la función `stats(moments='mvsk')` que nos devuelve cuatro valores con los estadísticos de la media `m`, la varianza `v`, el sesgo `s` y la curtosis `k` de la distribución.
+
 # Distribuciones discretas más conocidas
 
 ## Distribuciones discretas 
@@ -347,10 +349,18 @@ $$X\sim \text{H}(N,M,n)$$
 ## Distribución Hipergeométrica
 
 ```{r, echo = FALSE}
+par(mfrow = c(1,2))
 plot(0:30, dhyper(0:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de probabilidad de una H(20,10,30)")
 plot(0:30, phyper(0:30,10,20,10),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una H(20,10,30)", ylim = c(0,1))
 par(mfrow= c(1,1))
 ```
+
+## Distribución Hipergeométrica
+
+El código de la distribución Hipergeométrica:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dhyper(x, m, n, k), phyper(q,  m, n, k), qhyper(p,  m, n, k), rhyper(nn,  m, n, k)` donde `m` es el número de objetos del primer tipo, `n` el número de objetos del segundo tipo y `k` el número de extracciones realizadas.
+- En `Python` tenemos las funciones del paquete `scipy.stats.hypergeom`: `pmf(k,M, n, N), cdf(k,M, n, N), ppf(q,M, n, N), rvs(M, n, N, size)` donde `M` es el número de objetos del primer tipo, `N` el número de objetos del segundo tipo y `n` el número de extracciones realizadas.
 
 ## Distribución de Poisson
 
@@ -384,6 +394,13 @@ plot(0:20, ppois(0:20,2),col = "purple", xlab = "", ylab = "", main = "Función 
 par(mfrow= c(1,1))
 ```
 
+## Distribución de Poisson
+
+El código de la distribución de Poisson:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dpois(x, lambda), ppois(q,lambda), qpois(p,lambda), rpois(n, lambda)` donde `lambda` es el número esperado de eventos por unidad de tiempo de la distribución.
+- En `Python` tenemos las funciones del paquete `scipy.stats.poisson`: `pmf(k,mu), cdf(k,mu), ppf(q,mu), rvs(M,mu)` donde `mu` es el número esperado de eventos por unidad de tiempo de la distribución.
+
 ## Distribución Binomial Negativa
 
 Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar los $r$ éxitos en ensayos de Bernoulli", diremos que $X$ se distribuye como una Binomial Negativa con parámetros $r$ y $p$, $$X\sim\text{BN}(r,p)$$ donde $p$ es la probabilidad de éxito
@@ -409,6 +426,12 @@ plot(c(rep(0,exitos),exitos:(size+exitos)), c(rep(0,exitos),pnbinom(0:size,exito
 par(mfrow= c(1,1))
 ```
 
+## Distribución  Binomial Negativa
+
+El código de la distribución Binomial Negativa:
+
+- En `R` tenemos las funciones del paquete `Rlab`: `dnbinom(x, size, prop), pnbinom(q, size, prop), qnbinom(p, size, prop), rnbinom(n, size, prop)` donde `size` es el número de casos exitosos y `prob` la probabilidad del éxito.
+- En `Python` tenemos las funciones del paquete `scipy.stats.nbinom`: `pmf(k,n,p), cdf(k,n,p), ppf(q,n,p), rvs(n,p)` donde `n`es el número de casos exitosos y `p` la probabilidad del éxito.
 
 ## Distribuciones discretas en R
 
@@ -519,9 +542,19 @@ Modela el elegir un elemento del intervalo $[a,b]$ de manera equiprobable
 ## Distribución Uniforme
 
 ```{r, echo = FALSE}
-plot(punif(1:20,min = 0, max = 20),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una U(0,20)", type = "o")
+par(mfrow=c(1,2))
+plot(c(0,1,1:4,4,5), c(0,0,dunif(1:4,min = 1, max = 4),0,0),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una U(1,4)", type = "o", ylim = c(0,1))
+plot(0:5, punif(0:5,min = 1, max = 4),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una U(1,4)", type = "o")
+par(mfrow=c(1,1))
 ```
 
+
+## Distribución Uniforme
+
+El código de la distribución Uniforme:
+
+- En `R` tenemos las funciones del paquete `stats`: `dunif(x, min, max), punif(q, min, max), qunif(p, min, max), runif(n,  min, max)` donde `min` y `max` són los extremos de los intervalos de la distribución uniforme.
+- En `Python` tenemos las funciones del paquete `scipy.stats.uniform`: `pdf(k,loc, scale), cdf(k,loc, scale), ppf(q,loc, scale), rvs(n,loc, scaler)` donde la distribución uniforme está definida en el intervalo `[loc, loc+scale]`.
 
 ## Distribución Exponencial
 
@@ -553,8 +586,16 @@ Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\tex
 ## Distribución Exponencial
 
 ```{r, echo = FALSE}
-plot(pexp(1:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una Exp(0.2)", type = "o")
+plot(0:20, pexp(0:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una Exp(0.2)", type = "o")
 ```
+
+
+## Distribución Exponencial
+
+El código de la distribución Exponencial:
+
+- En `R` tenemos las funciones del paquete `stats`: `dexp(x, rate), pexp(q, rate), qexp(p, rate), rexp(n,  rate)` donde `rate`$=\lambda$ es el tiempo entre dos sucesos consecutivos de la distribución.
+- En `Python` tenemos las funciones del paquete `scipy.stats.expon`: `pdf(k, scale), cdf(k, scale), ppf(q, scale), rvs(n, scaler)` donde `scale`$=1/\lambda$ es la inversa del tiempo entre dos sucesos consecutivos de la distribución.
 
 
 ## Distribución Normal
@@ -590,6 +631,14 @@ plot(dvalues, ylab = "", xlab= "",
 
 ## Distribución Normal
 
+El código de la distribución Normal:
+
+- En `R` tenemos las funciones del paquete `stats`: `dnorm(x, mean, sd), pnorm(q,  mean, sd), qnorm(p,  mean, sd), rnorm(n,   mean, sd)` donde `mean` es la media y `sd` es la desviación estándar de la normal $N(\mu, \sigma)$.
+- En `Python` tenemos las funciones del paquete `scipy.stats.expon`: `pdf(k, mu, scale), cdf(k,  mu, scale), ppf(q,  mu, scale), rvs(n,  mu, scale)`  donde `mu` es la media y `scale` es la desviación estándar de la normal $N(\mu, \sigma)$.
+
+
+## Distribución Normal
+
 <l class = "prop">Estandarización de una v.a. normal.</l> Si $X$ es una v.a. $\mathcal{N}(\mu,\sigma)$, entonces $$Z=\frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$$
 
 Las probabilidades de una normal estándar $Z$ determinan las de cualquier $X$ de tipo $\mathcal{N}(\mu,\sigma)$:
@@ -610,6 +659,23 @@ Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`,
 
 Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
 
+## Otras distribuciones importantes
+
+- La distribución $\chi^2_k$, donde $k$ representa los grados de libertad de la misma y que procede de la suma de los cuadrados de $k$ distribuciones normales estándar independientes:
+
+$$X = Z_1^2 + Z_2^2+\cdots + Z_k^2\sim \chi_k^2$$
+
+## Otras distribuciones importantes
+
+- La distribución $t_k$ surge del problema de estimar la media de una población normalmente distribuida cuando el tamaño de la muestra es pequeña y procede del cociente
+
+$$T = \frac{Z}{\sqrt{\chi^2_k/k}}\sim T_k$$
+
+## Otras distribuciones importantes
+
+- La distribución $F_{n_1,n_2}$ aparece frecuentemente como la distribución nula de una prueba estadística, especialmente en el análisis de varianza. Viene definida como el cociente
+
+$$F = \frac{\chi^2_{n_1}/n_1}{\chi^2_{n_2}/n_2}\sim F_{n_1,n_2}$$
 
 ## Distribuciones continuas en R
 

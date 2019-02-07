@@ -60,7 +60,7 @@ plt.show()
 
 fix, ax = plt.subplots(1,1)
 r = binom.rvs(n, p, size = 10000)
-ax.hist(r, bins = 7)
+ax.hist(r, bins = n)
 plt.show()
 ```
 
