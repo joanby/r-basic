@@ -437,13 +437,14 @@ El código de la distribución Binomial Negativa:
 
 R conoce las distribuciones de probabilidad más importantes.
 
-Distribución |  Instrucción  |  Parámetros                                
---------------------|--------------------|--------------------
-Binomial | `binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
-Geométrica | `geom` | probabilidad de éxito $p$
-Hipergeométrica | `hyper` | $N,M,n$
-Poisson | `pois` | esperanza $\lambda$
-Binomial Negativa | `nbinom` | número de éxitos $r$ y probabilidad de éxito $p$
+Distribución |  Instrucción en R  |  Instrucción en Python  |  Parámetros                                
+--------------------|--------------------|--------------------|--------------------
+Bernoulli | `bern` | `scipy.stats.bernoulli` | probabilidad de éxito $p$
+Binomial | `binom` | `scipy.stats.binom` | tamaño de la muestra $n$ y probabilidad de éxito $p$
+Geométrica | `geom` | `scipy.stats.geom` | probabilidad de éxito $p$
+Hipergeométrica | `hyper` | `scipy.stats.hypergeom` | $N,M,n$
+Poisson | `pois` | `scipy.stats.poisson` | esperanza $\lambda$
+Binomial Negativa | `nbinom` | `scipy.stats.nbinom` | número de éxitos $r$ y probabilidad de éxito $p$
 
 
 # Variables aleatorias continuas
@@ -586,7 +587,10 @@ Una v.a. $X$ tiene distribución exponencial de parámetro $\lambda$, $X\sim\tex
 ## Distribución Exponencial
 
 ```{r, echo = FALSE}
-plot(0:20, pexp(0:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una Exp(0.2)", type = "o")
+par(mfrow = c(1,2))
+plot(0:20, dexp(0:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de densidad de una Exp(0.2)", type = "o")
+plot(0:20, pexp(0:20,0.2),col = "purple", xlab = "", ylab = "", main = "Función de distribución de una Exp(0.2)", type = "o", ylim = c(0,1))
+par(mfrow = c(1,1))
 ```
 
 
@@ -620,13 +624,19 @@ En particualr, si $Z$ sigue una distribución estándar,
 ## Distribución Normal
 
 ```{r, echo = FALSE}
+par(mfrow = c(1,2))
 z_scores <- seq(-10, 10, by = .1)
 dvalues <- dnorm(z_scores)
-plot(dvalues, ylab = "", xlab= "",
-     xaxt = "n",
+plot(z_scores, dvalues, ylab = "", xlab= "",
      type = "l", 
      col = "purple",
      main = "Función de densidad de una N(0,1)")
+dvalues <- pnorm(z_scores)
+plot(z_scores, dvalues, ylab = "", xlab= "",
+     type = "l", 
+     col = "purple",
+     main = "Función de distribución de una N(0,1)", ylim = c(0,1))
+par(mfrow = c(1,1))
 ```
 
 ## Distribución Normal
@@ -634,7 +644,7 @@ plot(dvalues, ylab = "", xlab= "",
 El código de la distribución Normal:
 
 - En `R` tenemos las funciones del paquete `stats`: `dnorm(x, mean, sd), pnorm(q,  mean, sd), qnorm(p,  mean, sd), rnorm(n,   mean, sd)` donde `mean` es la media y `sd` es la desviación estándar de la normal $N(\mu, \sigma)$.
-- En `Python` tenemos las funciones del paquete `scipy.stats.expon`: `pdf(k, mu, scale), cdf(k,  mu, scale), ppf(q,  mu, scale), rvs(n,  mu, scale)`  donde `mu` es la media y `scale` es la desviación estándar de la normal $N(\mu, \sigma)$.
+- En `Python` tenemos las funciones del paquete `scipy.stats.normal`: `pdf(k, mu, scale), cdf(k,  mu, scale), ppf(q,  mu, scale), rvs(n,  mu, scale)`  donde `mu` es la media y `scale` es la desviación estándar de la normal $N(\mu, \sigma)$.
 
 
 ## Distribución Normal
@@ -653,11 +663,13 @@ Se puede calcular con cualquier programa, como por ejemplo R, o bien a mano util
 
 Con las tablas se pueden calcular tanto probabilidades como cuantiles
 
-## Distribución Normal en R
+## Distribución Normal en R y Python
 
 Si a la hora de llamar a alguna de las 4 funciones siguientes: `dnorm`, `pnorm`, `qnorm` o `rnorm` no especificásemos los parámetros de  la media ni la desviación típica, R entiende que se trata de la normal estándar: la $\mathcal{N}(0,1)$.
 
 Es decir, R interpreta $\mu = 0$ y $\sigma = 1$
+
+En Python ocurre exactamente lo mismo.
 
 ## Otras distribuciones importantes
 
@@ -679,14 +691,14 @@ $$F = \frac{\chi^2_{n_1}/n_1}{\chi^2_{n_2}/n_2}\sim F_{n_1,n_2}$$
 
 ## Distribuciones continuas en R
 
-Distribución |  Instrucción  |  Parámetros                                
---------------------|--------------------|--------------------
-Uniforme | `unif` | mínimo y máximo
-Exponencial | `exp` | $\lambda$
-Normal | `norm` | media $\mu$, desviación típica $\sigma$
-Khi cuadrado | `chisq` | grados de libertad
-t de Student | `t` | grados de libertad
-F de Fisher | `f` | los dos grados de libertad
+Distribución |  Instrucción en R |  Instrucción en Python |  Parámetros                                
+--------------------|--------------------|--------------------|--------------------
+Uniforme | `unif` | `scipy.stats.uniform` | mínimo y máximo
+Exponencial | `exp` | `scipy.stats.expon` | $\lambda$
+Normal | `norm` | `scipy.stats.normal` | media $\mu$, desviación típica $\sigma$
+Khi cuadrado | `chisq` | `scipy.stats.chi2` | grados de libertad
+t de Student | `t` | `scipy.stats.t` | grados de libertad
+F de Fisher | `f` | `scipy.stats.f` | los dos grados de libertad
 
 ## Otras distribuciones conocidas
 
