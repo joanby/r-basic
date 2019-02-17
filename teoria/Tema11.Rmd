@@ -140,20 +140,20 @@ Nótese que la mediana es el cuantil de orden 0.5
 
 <l class = "definition">Variable aleatoria discreta.</l> Una v.a. $X:\Omega\longrightarrow \mathbb{R}$ es discreta cuando $D_X$ es finito o un subconjunto de $\mathbb{N}$ 
 
-<l class = "definition">Función de densidad.</l> Es la función $f:\mathbb{R}\longrightarrow[0,1]$ definida por $$f(x) = p(X=x)$$
+<l class = "definition">Función de probabilidad.</l> Es la función $f:\mathbb{R}\longrightarrow[0,1]$ definida por $$f(x) = p(X=x)$$
 
-Nótese que $f(x)=0$ si $x\not\in D_X$. Por tanto, interpretaremos la función de densidad como la función $$f:D_X\longrightarrow [0,1]$$
+Nótese que $f(x)=0$ si $x\not\in D_X$. Por tanto, interpretaremos la función de probabilidad como la función $$f:D_X\longrightarrow [0,1]$$
 
 ## Esperanza
 
-<l class = "definition">Esperanza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la esperanza respecto de la densidad es la suma ponderada de los elementos de $D_X$, multiplicando cada elemento $x$ de $D_X$ por su probabilidad, $$E(X) = \sum_{x\in D_X}x\cdot f(x)$$
+<l class = "definition">Esperanza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la función de probabilidad de $X$, entonces la esperanza respecto de la función de probabilidad es la suma ponderada de los elementos de $D_X$, multiplicando cada elemento $x$ de $D_X$ por su probabilidad, $$E(X) = \sum_{x\in D_X}x\cdot f(x)$$
 
 Si $g:D_X\longrightarrow \mathbb{R}$ es una aplicación $$E(g(X))=\sum_{x\in D_X}g(x)\cdot f(x)$$
 
 
 ## Varianza
 
-<l class = "definition">Varianza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la varianza respecto de la densidad es el valor esperado de la diferencia al cuadrado entre $X$ y su valor medio $E(X)$, $$Var(X)= E((X-E(X))^2) $$
+<l class = "definition">Varianza de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la función de probabilidad de $X$, entonces la varianza respecto de la función de probabilidad es el valor esperado de la diferencia al cuadrado entre $X$ y su valor medio $E(X)$, $$Var(X)= E((X-E(X))^2) $$
 
 La varianza mide como de variados son los resultados de $X$ respecto de la media
 
@@ -165,7 +165,7 @@ Si $X$ es una v.a. discreta y $g:D_X\longrightarrow \mathbb{R}$ una función, $$
 
 ## Desviación típica
 
-<l class = "definition">Desviación típica de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la densidad de $X$, entonces la desviación típica respecto de la densidad es $$\sigma(X)=\sqrt{Var(X)}$$
+<l class = "definition">Desviación típica de una v.a. discreta.</l> Sea $f:D_X\longrightarrow[0,1]$ la función de probabilidad de $X$, entonces la desviación típica respecto de la función de probabilidad es $$\sigma(X)=\sqrt{Var(X)}$$
 
 Las unidades de la varianza son las de $X$ al cuadrado. En cambio, las de la desviación típica son las mismas unidades que las de $X$
 
@@ -217,7 +217,7 @@ $$X\sim \text{Be}(p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso.
 
 - El **dominio** de $X$ será $D_X = \{0,1\}$
-- La **función de densidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
+- La **función de probabilidad** vendrá dada por $$f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
      p & \text{si } k=1 
   \\ 1-p & \text{si } k=0
@@ -253,7 +253,7 @@ $$X\sim \text{B}(n,p)$$
 donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 - El **dominio** de $X$ será $D_X = \{0,1,2,\dots,n\}$
-- La **función de densidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
+- La **función de probabilidad** vendrá dada por $$f(k) = {n\choose k}p^k(1-p)^{n-k} $$
 
 ## Distribución Binomial
 
@@ -295,7 +295,7 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 - El **dominio** de $X$ será $D_X= \{0,1,2,\dots\}$ o bien $D_X = \{1,2,\dots\}$ en función de si empieza en 0 o en 1, respectivamente
 
-- La **función de densidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
+- La **función de probabilidad** vendrá dada por $$f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}$$
 $$f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}$$
 
 ## Distribución Geométrica
@@ -332,7 +332,7 @@ Consideremos el experimento "extraer a la vez (o una detrás de otra, sin retorn
 $$X\sim \text{H}(N,M,n)$$
 
 - El **dominio** de $X$ será $D_X = \{0,1,2,\dots,N\}$ (en general)
-- La **función de densidad** vendrá dada por $$f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}$$
+- La **función de probabilidad** vendrá dada por $$f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}$$
 
 ## Distribución Hipergeométrica
 
@@ -371,7 +371,7 @@ donde $\lambda$ representa el número de veces que se espera que ocurra el event
 
 - El **dominio** de $X$ será $D_X = \{0,1,2,\dots\}$
 
-- La **función de densidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
+- La **función de probabilidad** vendrá dada por $$f(k) = \frac{e^{-\lambda}\lambda^k}{k!}$$
 
 ## Distribución de Poisson
  
@@ -406,7 +406,7 @@ El código de la distribución de Poisson:
 Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar los $r$ éxitos en ensayos de Bernoulli", diremos que $X$ se distribuye como una Binomial Negativa con parámetros $r$ y $p$, $$X\sim\text{BN}(r,p)$$ donde $p$ es la probabilidad de éxito
 
 - El **dominio** de $X$ será $D_X = \{r, r+1, r+2,\dots\}$
-- La **función de densidad** vendrá dada por $$f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r$$
+- La **función de probabilidad** vendrá dada por $$f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r$$
 
 
 ## Distribución Binomial Negativa

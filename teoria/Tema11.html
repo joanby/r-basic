@@ -243,19 +243,19 @@
 
 <p><l class = "definition">Variable aleatoria discreta.</l> Una v.a. \(X:\Omega\longrightarrow \mathbb{R}\) es discreta cuando \(D_X\) es finito o un subconjunto de \(\mathbb{N}\)</p>
 
-<p><l class = "definition">Función de densidad.</l> Es la función \(f:\mathbb{R}\longrightarrow[0,1]\) definida por \[f(x) = p(X=x)\]</p>
+<p><l class = "definition">Función de probabilidad.</l> Es la función \(f:\mathbb{R}\longrightarrow[0,1]\) definida por \[f(x) = p(X=x)\]</p>
 
-<p>Nótese que \(f(x)=0\) si \(x\not\in D_X\). Por tanto, interpretaremos la función de densidad como la función \[f:D_X\longrightarrow [0,1]\]</p>
+<p>Nótese que \(f(x)=0\) si \(x\not\in D_X\). Por tanto, interpretaremos la función de probabilidad como la función \[f:D_X\longrightarrow [0,1]\]</p>
 
 </article></slide><slide class=""><hgroup><h2>Esperanza</h2></hgroup><article  id="esperanza">
 
-<p><l class = "definition">Esperanza de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la densidad de \(X\), entonces la esperanza respecto de la densidad es la suma ponderada de los elementos de \(D_X\), multiplicando cada elemento \(x\) de \(D_X\) por su probabilidad, \[E(X) = \sum_{x\in D_X}x\cdot f(x)\]</p>
+<p><l class = "definition">Esperanza de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la función de probabilidad de \(X\), entonces la esperanza respecto de la función de probabilidad es la suma ponderada de los elementos de \(D_X\), multiplicando cada elemento \(x\) de \(D_X\) por su probabilidad, \[E(X) = \sum_{x\in D_X}x\cdot f(x)\]</p>
 
 <p>Si \(g:D_X\longrightarrow \mathbb{R}\) es una aplicación \[E(g(X))=\sum_{x\in D_X}g(x)\cdot f(x)\]</p>
 
 </article></slide><slide class=""><hgroup><h2>Varianza</h2></hgroup><article  id="varianza">
 
-<p><l class = "definition">Varianza de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la densidad de \(X\), entonces la varianza respecto de la densidad es el valor esperado de la diferencia al cuadrado entre \(X\) y su valor medio \(E(X)\), \[Var(X)= E((X-E(X))^2) \]</p>
+<p><l class = "definition">Varianza de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la función de probabilidad de \(X\), entonces la varianza respecto de la función de probabilidad es el valor esperado de la diferencia al cuadrado entre \(X\) y su valor medio \(E(X)\), \[Var(X)= E((X-E(X))^2) \]</p>
 
 <p>La varianza mide como de variados son los resultados de \(X\) respecto de la media</p>
 
@@ -268,7 +268,7 @@
 
 </article></slide><slide class=""><hgroup><h2>Desviación típica</h2></hgroup><article  id="desviacion-tipica">
 
-<p><l class = "definition">Desviación típica de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la densidad de \(X\), entonces la desviación típica respecto de la densidad es \[\sigma(X)=\sqrt{Var(X)}\]</p>
+<p><l class = "definition">Desviación típica de una v.a. discreta.</l> Sea \(f:D_X\longrightarrow[0,1]\) la función de probabilidad de \(X\), entonces la desviación típica respecto de la función de probabilidad es \[\sigma(X)=\sqrt{Var(X)}\]</p>
 
 <p>Las unidades de la varianza son las de \(X\) al cuadrado. En cambio, las de la desviación típica son las mismas unidades que las de \(X\)</p>
 
@@ -327,7 +327,7 @@
 
 <ul>
 <li>El <strong>dominio</strong> de \(X\) será \(D_X = \{0,1\}\)</li>
-<li>La <strong>función de densidad</strong> vendrá dada por \[f(k) = p^k(1-p)^{1-k} =  \left\{
+<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = p^k(1-p)^{1-k} =  \left\{
 \begin{array}{rl}
  p &amp; \text{si } k=1 
   \\ 1-p &amp; \text{si } k=0
@@ -369,7 +369,7 @@
 
 <ul>
 <li>El <strong>dominio</strong> de \(X\) será \(D_X = \{0,1,2,\dots,n\}\)</li>
-<li>La <strong>función de densidad</strong> vendrá dada por \[f(k) = {n\choose k}p^k(1-p)^{n-k} \]</li>
+<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = {n\choose k}p^k(1-p)^{n-k} \]</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Binomial</h2></hgroup><article  id="distribucion-binomial-1">
@@ -409,7 +409,7 @@
 
 <ul>
 <li><p>El <strong>dominio</strong> de \(X\) será \(D_X= \{0,1,2,\dots\}\) o bien \(D_X = \{1,2,\dots\}\) en función de si empieza en 0 o en 1, respectivamente</p></li>
-<li><p>La <strong>función de densidad</strong> vendrá dada por \[f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}\] \[f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}\]</p></li>
+<li><p>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = (1-p)^{k}p \qquad\text{ si empieza en 0}\] \[f(k) = (1-p)^{k-1}p \qquad\text{ si empieza en 1}\]</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Geométrica</h2></hgroup><article  id="distribucion-geometrica-1">
@@ -445,7 +445,7 @@
 
 <ul>
 <li>El <strong>dominio</strong> de \(X\) será \(D_X = \{0,1,2,\dots,N\}\) (en general)</li>
-<li>La <strong>función de densidad</strong> vendrá dada por \[f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}\]</li>
+<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = \frac{{N\choose k}{M\choose n-k}}{N+M\choose n}\]</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Hipergeométrica</h2></hgroup><article  id="distribucion-hipergeometrica-1">
@@ -483,7 +483,7 @@
 
 <ul>
 <li><p>El <strong>dominio</strong> de \(X\) será \(D_X = \{0,1,2,\dots\}\)</p></li>
-<li><p>La <strong>función de densidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
+<li><p>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución de Poisson</h2></hgroup><article  id="distribucion-de-poisson-1">
@@ -519,7 +519,7 @@
 
 <ul>
 <li>El <strong>dominio</strong> de \(X\) será \(D_X = \{r, r+1, r+2,\dots\}\)</li>
-<li>La <strong>función de densidad</strong> vendrá dada por \[f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r\]</li>
+<li>La <strong>función de probabilidad</strong> vendrá dada por \[f(k) = {k-1\choose r-1}p^r(1-p)^{k-r}, k\geq r\]</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Distribución Binomial Negativa</h2></hgroup><article  id="distribucion-binomial-negativa-1">
@@ -831,37 +831,44 @@
 <table class = 'rmdtable'>
 <tr class="header">
 <th align="left">Distribución</th>
-<th align="left">Instrucción</th>
+<th align="left">Instrucción en R</th>
+<th align="left">Instrucción en Python</th>
 <th align="left">Parámetros</th>
 </tr>
 <tr class="odd">
 <td align="left">Uniforme</td>
 <td align="left"><code>unif</code></td>
+<td align="left"><code>scipy.stats.uniform</code></td>
 <td align="left">mínimo y máximo</td>
 </tr>
 <tr class="even">
 <td align="left">Exponencial</td>
 <td align="left"><code>exp</code></td>
+<td align="left"><code>scipy.stats.expon</code></td>
 <td align="left">\(\lambda\)</td>
 </tr>
 <tr class="odd">
 <td align="left">Normal</td>
 <td align="left"><code>norm</code></td>
+<td align="left"><code>scipy.stats.normal</code></td>
 <td align="left">media \(\mu\), desviación típica \(\sigma\)</td>
 </tr>
 <tr class="even">
 <td align="left">Khi cuadrado</td>
 <td align="left"><code>chisq</code></td>
+<td align="left"><code>scipy.stats.chi2</code></td>
 <td align="left">grados de libertad</td>
 </tr>
 <tr class="odd">
 <td align="left">t de Student</td>
 <td align="left"><code>t</code></td>
+<td align="left"><code>scipy.stats.t</code></td>
 <td align="left">grados de libertad</td>
 </tr>
 <tr class="even">
 <td align="left">F de Fisher</td>
 <td align="left"><code>f</code></td>
+<td align="left"><code>scipy.stats.f</code></td>
 <td align="left">los dos grados de libertad</td>
 </tr>
 </table>
