@@ -21,7 +21,7 @@ library(knitr)
 <l class="definition">R Markdown.
 </l> Es un tipo de fichero en el cual podemos intercalar sin problema alguno texto, código y fórmulas matemáticas.
 
-Para la mayor parte de las necesidades de este curso, en lo referente a la creación y composición de este tipo de ficheros, el documento *[Markdown Quick Reference](https://en.support.wordpress.com/markdown-quick-reference/)* y la [chuleta](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) de R Markdown deberían ser suficientes.
+Para la mayor parte de las necesidades de este curso, en lo referente a la creación y composición de este tipo de ficheros, el documento *[Markdown Quick Reference](https://en.support.wordpress.com/markdown-quick-reference/)* y la [chuleta](http://shiny.rstudio.com/images/rm-cheatsheet.pdf.zip.) de R Markdown deberían ser suficientes.
 
 Sin embargo, a lo largo de este curso iremos ampliando estos contenidos en algunos temas cuando lo creamos necesario.
 
@@ -44,9 +44,9 @@ Para escribir fórmulas matemáticas bien formateadas utilizaremos la sintaxis $
 
 Para que veáis que RStudio ignora el exceso de espacios en blanco, aquí os damos un ejemplo en el que hemos introducido espacios innecesarios:
 
-Código: `En en instituto`$\ \ \ \ \ $ `nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,`$\ \ \ \ \ \ \ \ \ $ `las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2`$\ \ \ \ \ \ \ \ \ \ \ \ $`-4\alpha\gamma}}{2\alpha}$$.`
+Código: `En en insitituto`$\ \ \ \ \ $ `nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,`$\ \ \ \ \ \ \ \ \ $ `las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2`$\ \ \ \ \ \ \ \ \ \ \ \ $`-4\alpha\gamma}}{2\alpha}$$.`
 
-Resultado: En en instituto    nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante *la Regla de Ruffini*. Por su parte,       las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}$$.
+Resultado: En en insitituto    nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante *la Regla de Ruffini*. Por su parte,       las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}$$.
 
 ## Símbolos 
 
@@ -74,7 +74,7 @@ Significado |  Código  |  Resultado
 Fracción | `\frac{a}{b}`    | $\frac{a}{b}$              
 Más menos | `\pm` | $\pm$
 Raíz n-ésima | `\sqrt[n]{x}` | $\sqrt[n]{x}$
-Unión | `\cup` | $\cup$                     
+Unión | `cup` | $\cup$                     
 Intersección | `\cap` | $\cap$  
 OR lógico | `\vee` | $\vee$
 AND lógico | `\wedge` | $\wedge$
@@ -356,12 +356,12 @@ ax+by=c\\
 ex-fy=g
 \end{array}\right\}$$
 
-`$$|x|=\left\{\begin{array}{rr}
+`$$|x|=\left\{\begin{array}{l}
 -x & \text{si }x\le 0\\
 x & \text{si }x\ge 0
 \end{array}\right.$$`
     
-$$|x|=\left\{\begin{array}{rr}
+$$|x|=\left\{\begin{array}{l}
 -x & \text{si }x\le 0\\
 x & \text{si }x\ge 0
 \end{array}\right.$$
@@ -398,7 +398,7 @@ Hay diversas opciones de crear un bloque de código de R:
 
 - Ir al menú desplegable de "Chunks" y seleccionar el de R
 - Introducir manualmente
-- Alt + Command + I (para Mac) o Alt + Command + I (para Windows)
+- Alt + Command + I (para Mac) o Alt + Control + I (para Windows)
 
 ## Chunks de R
 
@@ -604,7 +604,7 @@ Para introducir una parte de código dentro de un párrafo y que se ejecute al c
 
 La raíz cuadrada de 64 es `` `r "\u0060r sqrt(64)\u0060"` `` o, lo que viene siendo lo mismo, $\sqrt{64}=$`` `r "\u0060r sqrt(64)\u0060"` ``
 
-La raíz quinta de 32 es `r 32^(1/5)` o, lo que viene siendo lo mismo, $\sqrt[5]{64}=$ `r 32^(1/5)`.
+La raíz quinta de 32 es `r sqrt(64)` o, lo que viene siendo lo mismo, $\sqrt{64}=$`r sqrt(32)`
 </div>
 
 
