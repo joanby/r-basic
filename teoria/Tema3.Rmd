@@ -380,7 +380,7 @@ apply(A, MARGIN = 2, FUN = sum)
 - `mtx.exp(matriz,n)`: para elevar la matriz a $n$
     - Del paquete `Biodem`
 		- No calcula las potencias exactas, las aproxima
-- `%%`: para elevar matrices
+- `%^%`: para elevar matrices
     - Del paquete `expm`
 		- No calcula las potencias exactas, las aproxima
 
