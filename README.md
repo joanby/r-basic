@@ -7,6 +7,10 @@
 
 Conoce toda la estadística descriptiva de la mano de Juan Gabriel Gomila y asienta las bases para convertirte en el Data Scientist del futuro con todo el contenido del curso. En particular verás los mismos contenidos que explicamos en primera de carrera a matemáticos, ingenieros o informáticos como por ejemplo:
 
+
+
+
+
 * Logística e instalación de R y RStudio y de Anaconda Navigator para Python
 * Cómo usar R y Python como si fuese una calculadora científica (incluyendo un repaso de funciones, trigonometría y combinatoria)
 * Introducción a la programación funcional con R desde cero (ideal para seguir tomando a posteriori cursos de análisis de datos).
