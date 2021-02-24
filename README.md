@@ -1,7 +1,6 @@
 # [Curso de introducción a la estadística descriptiva con R Studio y Python](https://www.udemy.com/estadistica-descriptiva/?couponCode=FROM_BOKDOWN_RSTUDIO)
 *Con Juan Gabriel Gomila y María Santos*
-Estoy probando los cambios
-
+Esto es otra prueba, espero que ya funcione
 
 No se actualiza en github
 
