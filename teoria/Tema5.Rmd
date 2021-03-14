@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
 
-##Data frames
+## Data frames
 
 <l class="definition">Data frame.</l> Un data frame es una tabla de doble entrada, formada por variables en las columnas y observaciones de estas variables en las filas, de manera que cada fila contiene los valores de las variables para un mismo caso o un mismo individuo.
 
@@ -94,7 +94,7 @@ dataOrange[dataOrange$circumference<=50,]
 - `read.table()`: para definir un data frame a partir de una tabla de datos contenida en un fichero
     - Este fichero puede estar guardado en nuestro ordenador o bien podemos conocer su url. Sea cual sea el caso, se aplica la función al nombre del fichero o a la dirección entre comillas
     
-Aquí tenéis una [lista de data frames](http://www.public.iastate.edu/~maitra/stat501/datasets.html) para practicar
+Aquí tenéis una [lista de data frames](https://archive.ics.uci.edu/ml/datasets.php) para practicar
     
 ## Parámetros de read.table()
 
@@ -106,7 +106,8 @@ Aquí tenéis una [lista de data frames](http://www.public.iastate.edu/~maitra/s
 ## Parámetros de read.table()
 
 ```{r}
-students = read.table("http://www.public.iastate.edu/~maitra/stat501/datasets/morel.dat", 
+path = "https://raw.githubusercontent.com/joanby/r-basic/master/data/StudentsData"
+students = read.table(path, 
   col.names = c("technicalDisciplines","aptitude","maths", "language",
                 "generalKnowledge"))
 head(students,8)
