@@ -132,7 +132,7 @@ plot(x,y, main = "Ejemplo de grafico", pch = 8, cex = 1, type = "b", lty = 4, lw
 
 - `points(x,y)`: añade un punto de coordenadas $(x, y)$ a un gráfico ya existente
 - `abline`: para añadir una recta a un gráfico ya existente
-    - `abline(a,b)`: añade la recta $y=ax+b$
+    - `abline(a,b)`: añade la recta $y=bx+a$
     - `abline(v = x0)`: añade la recta vertical $x=x_0$. $v$ puede estar asignado a un vector
     - `abline(h = y0)`:  añade la recta horizontal $y=y_0$. $h$ puede estar asignado a un vector
     
