@@ -774,7 +774,7 @@ I.modal #Intervalo modal
 ```
 
 
-Por lo tanto, con los datos de los que disponemos, podemos afirmar que la anchura media de los cangrejos de la muestra es de `r anchura.media`mm, con una desviación típica de unos `r anchura.var`mm, y que el grupo de anchuras más numeroso era el de `r I.modal`.
+Por lo tanto, con los datos de los que disponemos, podemos afirmar que la anchura media de los cangrejos de la muestra es de `r anchura.media`mm, con una varianza de unos `r anchura.var`mm, y que el grupo de anchuras más numeroso era el de `r I.modal`.
 
 ## Solución
 
