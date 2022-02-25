@@ -44,9 +44,9 @@ Para escribir fórmulas matemáticas bien formateadas utilizaremos la sintaxis $
 
 Para que veáis que RStudio ignora el exceso de espacios en blanco, aquí os damos un ejemplo en el que hemos introducido espacios innecesarios:
 
-Código: `En en insitituto`$\ \ \ \ \ $ `nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,`$\ \ \ \ \ \ \ \ \ $ `las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2`$\ \ \ \ \ \ \ \ \ \ \ \ $`-4\alpha\gamma}}{2\alpha}$$.`
+Código: `En en instituto` $\ \ \ \ \ $ `nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante \textit{la Regla de Ruffini}. Por su parte,`$\ \ \ \ \ \ \ \ \ $ `las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2` $\ \ \ \ \ \ \ \ \ \ \ \ $`-4\alpha\gamma}}{2\alpha}$$.`
 
-Resultado: En en insitituto    nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante *la Regla de Ruffini*. Por su parte,       las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}$$.
+Resultado: En en instituto    nos enseñaron que las raíces de las ecuaciones de tercer grado, de la forma $Ax^3+Bx^2+Cx+D=0$, se encuentran mediante *la Regla de Ruffini*. Por su parte,       las raíces de las ecuaciones de segundo grado de la forma $\alpha x^2+\beta x+\gamma=0$ se encuentran siguiendo la fórmula $$x = \frac{-\beta\pm\sqrt{\beta^2    -4\alpha\gamma}}{2\alpha}$$.
 
 ## Símbolos 
 
@@ -177,7 +177,7 @@ Significado |  Código  |  Resultado
 --------------------|--------------------|--------------------
 Gorrito | `\widehat{xyz}` | $\widehat{xyz}$
 Barra | `\overline{xyz}` | $\overline{xyz}$
-Subrallado | `\underline{xyz}` | $\underline{xyz}$
+Subrayado | `\underline{xyz}` | $\underline{xyz}$
 Llave superior | `\overbrace{xyz}` | $\overbrace{xyz}$ 
 Llave inferior | `\underbrace{xyz}` | $\underbrace{xyz}$ 
 Tilde | `\widetilde{xyz}` | $\widetilde{xyz}$
