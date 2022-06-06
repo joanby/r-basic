@@ -377,13 +377,14 @@ La función `text{}` nos permite introducir texto en fórmulas matemáticas.
 Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente
 
 <div class = "r-code">
-`r ''` ```{r}
+` ```{r}`
 
 ` x = 1+1`
 
 ` x`
 
-`r ''` ```</div>
+` ``` `
+</div>
 
 que resulta en
 
@@ -398,28 +399,25 @@ Hay diversas opciones de crear un bloque de código de R:
 
 - Ir al menú desplegable de "Chunks" y seleccionar el de R
 - Introducir manualmente
-- Alt + Command + I (para Mac) o Alt + Control + I (para Windows)
+- Alt + Command + I (para Mac) o Alt + Ctrl + I (para Windows)
 
 ## Chunks de R
 
 A los chunks se les puede poner etiqueta, para así localizarlos de manera más fácil. Por ejemplo
 
 <div class = "r-code">
-`r ''` ```{r PrimerChunk}
+` ```{r PrimerChunk}`
 
 ` x = 1+2+3`
 
-`r ''` ```</div>
-
-\n
-
+` ``` `</div>
 
 <div class = "r-code">
-`r ''` ```{r SegundoChunk}
+` ```{r SegundoChunk}`
 
 ` y = 1*2*3`
 
-`r ''` ```</div>
+` ``` `</div>
 
 
 
@@ -442,7 +440,7 @@ Código |  Significado
 ## Parámetros de los chunks
 
 <div class = "r-code">
-`r ''` ```{r, echo=FALSE}
+` ```{r, echo=FALSE}`
 
 ` sec = 10:20`
 
@@ -450,7 +448,7 @@ Código |  Significado
 
 `cumsum(sec)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -459,13 +457,13 @@ No aparece
 ## Parámetros de los chunks
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, message = TRUE}
+` ```{r, echo=TRUE, message = TRUE}`
 
 `library(car)`
 
 `head(cars,3)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -477,13 +475,13 @@ head(cars,3)
 ## Parámetros de los chunks
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, message = FALSE, comment = NA}
+` ```{r, echo=TRUE, message = FALSE, comment = NA}`
 
 `library(car)`
 
 `head(cars,3)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -501,13 +499,13 @@ Significado |  Código  |  Resultado
 `results` | `markup` | Valor por defecto. Nos muestra los resultados en el documento final línea a línea, encabezados por `##`
 `results` | `hide` | No se nos muestra el resultado en el documento final
 `results` | `asis` | Nos devuelve los resultados línea a línea de manera literal en el documento final y el programa con el que se abre el documento final los interpreta como texto y formatea adecuadamente
-`results` | `hold` | Miestra todos los resultados al final del bloque de código
+`results` | `hold` | Muestra todos los resultados al final del bloque de código
  
 ## Parámetros de los chunks
 
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, results = "markup"}
+` ```{r, echo=TRUE, results = "markup"}`
 
 ` sec = 10:20`
 
@@ -515,7 +513,7 @@ Significado |  Código  |  Resultado
 
 `cumsum(sec)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -529,7 +527,7 @@ cumsum(sec)
 
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, results = "hide"}
+` ```{r, echo=TRUE, results = "hide"}`
 
 ` sec = 10:20`
 
@@ -537,7 +535,7 @@ cumsum(sec)
 
 `cumsum(sec)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -551,7 +549,7 @@ cumsum(sec)
 
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, results = "asis"}
+` ```{r, echo=TRUE, results = "asis"}`
 
 ` sec = 10:20`
 
@@ -559,7 +557,7 @@ cumsum(sec)
 
 `cumsum(sec)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -573,7 +571,7 @@ cumsum(sec)
 
 
 <div class = "r-code">
-`r ''` ```{r, echo=TRUE, results = "hold"}
+` ```{r, echo=TRUE, results = "hold"}`
 
 ` sec = 10:20`
 
@@ -581,7 +579,7 @@ cumsum(sec)
 
 `cumsum(sec)`
 
-`r ''` ```</div>
+` ``` `</div>
 
 \n
 
@@ -597,14 +595,14 @@ cumsum(sec)
 
 Con lo explicado hasta ahora, solamente hemos generado resultados en la línea aparte
 
-Para introducir una parte de código dentro de un párrafo y que se ejecute al comilarse el documento mostrando así el resultado final, hay que hacerlo utilizando `` `r "\u0060r ...\u0060"` ``
+Para introducir una parte de código dentro de un párrafo y que se ejecute al compilarse el documento mostrando así el resultado final, hay que hacerlo utilizando `` `r "\u0060r ...\u0060"` ``
 
 <div class = "example">
 **Ejemplo**
 
-La raíz cuadrada de 64 es `` `r "\u0060r sqrt(64)\u0060"` `` o, lo que viene siendo lo mismo, $\sqrt{64}=$`` `r "\u0060r sqrt(64)\u0060"` ``
+La raíz cuadrada de 64 es `` `r "\u0060r sqrt(64)\u0060"` `` o, lo que viene siendo lo mismo, $\sqrt{64}=$ `` `r "\u0060r sqrt(64)\u0060"` ``
 
-La raíz quinta de 32 es `r sqrt(64)` o, lo que viene siendo lo mismo, $\sqrt{64}=$`r sqrt(32)`
+La raíz quinta de 32 es `r 32^(1/5)` o, lo que viene siendo lo mismo, $\sqrt[5]{32}=$ `r 32^(1/5)`
 </div>
 
 
