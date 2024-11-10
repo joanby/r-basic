@@ -112,19 +112,66 @@ opBasic = function(a,b){
   
 }
 opBasic(6.35,4) # Llamando la función con los argumentos
+
 #Funciones de formateo de texto y numeros
-paste0("Hola", "mundo") # "Holamundo"
+
+# paste: Concatena vectores de texto, permitiendo un separador personalizado.
 paste("Hola","Mundo", sep = " ") # "Hola Mundo"
+
+#paste0: Similar a paste, pero sin separador (equivalente a paste(..., sep = "")).
+paste0("Hola", "mundo") # "Holamundo"
+
+#collapse: Concatena todos los elementos en una sola cadena.
 paste(1:3, collapse = "-") #"1-2-3"
-sprintf("El hexadecimal es: %X", 1987) #"hex: b9"
-formatC(42, width = 5, flag = "0") #00042 #FormatC formate numeros
+
+#sprintf tiene diferentes codigos para insertar textos o numeros
+#%s: cadena, %d o %i: entero DEC, %f: flotante DEC, %e o %E: Notac. Cient.,
+#Otros codigos: %g o G, x o X, o, %3d: ancho minimo 3 char, %05d: ancho min 5 char relleno de 0 si no se alcanza
+sprintf("Número: %05d", 42) #El resultado es "Número: 00042"
+z<-48 #variable de ejemplo
+sprintf("El hexadecimal de %i es: %X", z, z) #"El hexadecimal de 48 es: 30"
+paste(sprintf("El Octal de %i es: %o", z, z)) #El Octal de 48 es: 60"
+
+formatC(42, width = 5, flag = "0") #00042 #FormatC formatea numeros, width es el ancho
 
 n <- 1
 mensaje <- ngettext(n, "There is one file", "There are %d files")
 sprintf(mensaje, n)
 
 # Conversion de números con strtoi()
-hex_value <- "1A"  # Ejemplo en hexadecimal "1A"
-decimal_value <- strtoi(hex_value, base = 16) #base 16 indica que hexadecimal
-print(decimal_value)  # Resultado: 26
+#Tomando el ejemplo con el numero hexadecimal "1A"
+variable_Hex <- "1A"  # Ejemplo de un hexadecimal "1A"
 
+#Se convierte a decimal: base 16 indica que "1A" es un hexadecimal
+conversion_Decimal <- strtoi(variable_Hex, base = 16)
+print(conversion_Decimal)  # Se imprime la variable con resultado: 26
+
+#Ahora se convierte desde un octal
+variable_Octal <- 32
+octal_a_decimal <- strtoi(variable_Octal, base = 8)
+print(octal_a_decimal)
+
+#NUMEROS COMPLEJOS EN R
+#Los complejos tienen una parte real y una imaginaria. Ejemplos:
+z <- 5+3i
+w <- 2-4i
+Re(z) #Parte real de z: "5"
+Im(z) #parte imaginaria de z: 3
+Mod(z) #el modulo es 5.830952: Es la "distancia" desde el origen en el plano complejo
+Arg(z) #El argumento es 0.5404195: es el ángulo que forma el número con el eje real, se expresa en radianes (0.5404195 radianes)
+#El conjugado: cambia el signo de la parte imaginaria
+Conj(z) #Resultado: 5-3i
+
+#La clave de i es la propiedad: i^2 = −1 | i = sqrt(-1)
+#Ej. sqrt(-4) = sqrt(4*(-1)) = 2i
+sqrt(-4) #Resultado: NaN | Las calculadoras no calculan la raiz cuadrada 
+#de números negativos por eso se usan los números imaginarios
+
+#suma de complejos
+z+w #Resultado: "7-1i"
+#resta
+z-w #Resultado: 3+7i
+#multiplicación
+z*w #Resultado: 22-14i
+#División
+z/w #Resultado: -0.1+1.3i 
