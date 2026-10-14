@@ -1,4 +1,7 @@
 # [Curso de introducción a la estadística descriptiva con R Studio y Python](https://www.udemy.com/estadistica-descriptiva/?couponCode=FROM_BOKDOWN_RSTUDIO)
+
+> **🆕 Octubre de 2026 — rama [`update-2026`](https://github.com/joanby/r-basic/tree/update-2026):** el mismo código del curso, adaptado a las versiones de hoy (R 4.5, pandas 3, NumPy 2, matplotlib 3.11). Qué ha cambiado y por qué: [`CAMBIOS-2026.md`](https://github.com/joanby/r-basic/blob/update-2026/CAMBIOS-2026.md).
+
 *Con Juan Gabriel Gomila y María Santos*
 
 Conoce toda la estadística descriptiva de la mano de Juan Gabriel Gomila y asienta las bases para convertirte en el Data Scientist del futuro con todo el contenido del curso. En particular verás los mismos contenidos que explicamos en primera de carrera a matemáticos, ingenieros o informáticos como por ejemplo:

@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 
 ### Carga de datos
 ```{python}
-from ggplot import mtcars
+from plotnine.data import mtcars
 data = mtcars
 data.index = data["name"]
 print(data.head())
@@ -21,9 +21,9 @@ print(data.head())
 
 ### Medidas de centralización
 ```{python}
-print(data.mean()) # Media por columnas
-print(data.mean(axis = 1)) # Media por filas
-print(data.median())
+print(data.mean(numeric_only=True)) # Media por columnas
+print(data.mean(axis = 1, numeric_only=True)) # Media por filas
+print(data.median(numeric_only=True))
 print(mtcars.mode())
 ```
 
@@ -65,7 +65,7 @@ plt.show()
 ### Medidas de dispersión
  - Rango de `mpg`, five nums, cuartiles
 ```{python}
-from ggplot import mtcars
+from plotnine.data import mtcars
 
 rang = max(mtcars["mpg"]) - min(mtcars["mpg"])
 print(rang)
@@ -100,7 +100,7 @@ plt.show()
 - Varianza y desviación típica
 
 ```{python}
-from ggplot import mtcars
+from plotnine.data import mtcars
 
 print(mtcars["mpg"].var())
 print(mtcars["mpg"].std())
@@ -113,7 +113,7 @@ print(mad.median()*k)
 - El sesgo y la curtosis
 
 ```{python}
-from ggplot import mtcars
+from plotnine.data import mtcars
 
 print(mtcars["mpg"].skew())
 print(mtcars["mpg"].kurt())

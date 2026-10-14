@@ -1,0 +1,9 @@
+# Versiones con las que se han comprobado los notebooks de Python del curso (octubre de 2026).
+# Para abrirlos hace falta además Jupyter (pip install jupyterlab) o Anaconda.
+numpy==2.5.4
+pandas==3.0.6
+matplotlib==3.11.2
+scipy==1.18.1
+seaborn==0.13.2
+plotnine==0.15.8
+scikit-learn==1.9.1
