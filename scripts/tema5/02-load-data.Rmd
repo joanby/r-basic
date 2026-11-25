@@ -31,7 +31,7 @@ head(df)
 # Carga desde URL
 
 ```{r}
-df2 = read.table("https://maitra.public.iastate.edu/stat501/datasets/bulls.dat",
+df2 = read.table("https://raw.githubusercontent.com/joanby/r-basic/master/data/bulls.dat",
                  header = FALSE, 
                 col.names = c("breed", "sale_price", "shoulder",
                           "fat_free", "percent_ff", "frame_scale",
@@ -45,7 +45,7 @@ str(df2)
 # Factores en un DF
 
 ```{r}
-df3 = read.table("https://maitra.public.iastate.edu/stat501/datasets/olive.dat",
+df3 = read.table("https://raw.githubusercontent.com/joanby/r-basic/master/data/olive.txt",
                  stringsAsFactors = FALSE,
                  header = TRUE)
 str(df3)

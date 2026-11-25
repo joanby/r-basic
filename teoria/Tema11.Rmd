@@ -644,7 +644,7 @@ par(mfrow = c(1,1))
 El código de la distribución Normal:
 
 - En `R` tenemos las funciones del paquete `stats`: `dnorm(x, mean, sd), pnorm(q,  mean, sd), qnorm(p,  mean, sd), rnorm(n,   mean, sd)` donde `mean` es la media y `sd` es la desviación estándar de la normal $N(\mu, \sigma)$.
-- En `Python` tenemos las funciones del paquete `scipy.stats.normal`: `pdf(k, mu, scale), cdf(k,  mu, scale), ppf(q,  mu, scale), rvs(n,  mu, scale)`  donde `mu` es la media y `scale` es la desviación estándar de la normal $N(\mu, \sigma)$.
+- En `Python` tenemos las funciones del paquete `scipy.stats.norm`: `pdf(k, loc, scale), cdf(k,  loc, scale), ppf(q,  loc, scale), rvs(n,  loc, scale)`  donde `loc` es la media y `scale` es la desviación estándar de la normal $N(\mu, \sigma)$.
 
 
 ## Distribución Normal
@@ -695,7 +695,7 @@ Distribución |  Instrucción en R |  Instrucción en Python |  Parámetros
 --------------------|--------------------|--------------------|--------------------
 Uniforme | `unif` | `scipy.stats.uniform` | mínimo y máximo
 Exponencial | `exp` | `scipy.stats.expon` | $\lambda$
-Normal | `norm` | `scipy.stats.normal` | media $\mu$, desviación típica $\sigma$
+Normal | `norm` | `scipy.stats.norm` | media $\mu$, desviación típica $\sigma$
 Khi cuadrado | `chisq` | `scipy.stats.chi2` | grados de libertad
 t de Student | `t` | `scipy.stats.t` | grados de libertad
 F de Fisher | `f` | `scipy.stats.f` | los dos grados de libertad
